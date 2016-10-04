@@ -1,0 +1,297 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+    /* font-properties */
+    font-family: Univers-UltraCondensed;
+    src:url(../fonts/Univers/Univers/Univers-UltraCondensed.otf);
+}
+@font-face {
+    /* font-properties */
+    font-family: UniversLTStd-UltraCn;
+    src:url(../fonts/univers_lt_std_59_ultra_condensed/UniversLTStd-UltraCn.otf);
+}
+a{
+	display:block;
+}
+
+.container{
+	width:100%;
+}
+.collapse{
+	width:100%;
+	padding-top:60px;
+	left:0;
+}
+.collapse img{
+	width:200px;
+}
+.logo-link{
+	display:block;
+	float:left;
+	margin-left:5%;
+}
+ul.nav{
+	width:80%;
+	float:left;
+}
+.header{
+	width:100%;
+	margin:80px auto 0;;
+	padding:360px 0 0 0;
+	background:url(../images/logo1.png) no-repeat;
+	background-position:center -5px;
+}
+
+.slide-bar-container{
+	width:90%;
+	height:550px;
+	margin:0 auto 40px;
+	overflow:hidden;
+	position:relative;
+}
+.slide-bar-container ul{
+	display:block;
+	height:550px;
+	margin:0;
+	padding:0;
+	list-style:none;
+	cursor:pointer;
+}
+.slide-bar-container ul li{
+	display:block;
+	width:100%;
+	height:550px;
+	position:absolute;
+	top:0;
+	cursor:pointer;
+}
+.slide-bar-container ul li img{
+	width:100%;
+}
+.slide-bar-container ul .slide-filter{
+	width:100%;
+	height:550px;
+	bottom:0;
+	opacity:0.8;
+	background:#666;
+	position:absolute;
+	top:0;
+	left:0;
+	display:none;
+	cursor:pointer;
+	z-index:10;
+}
+.slide-bar-container ul li.active{
+	/*left:-100%;*/
+}
+.slide-bar-container ul p{
+	display:block;
+	color:#FFFFFF;
+	width:100%;
+	height:350px;
+	text-align:center;
+	position:absolute;
+	top:0;
+	padding-top:10%;
+	font-size:100px;
+	display:none;
+	font-family:"Univers-UltraCondensed";
+}
+.slide-bar-container ol{
+	width:100%;
+	height:50px;
+	position:absolute;
+	bottom:0;
+	margin:0;
+	padding:10px 40%;
+	z-index:10;
+	background:#666666;
+}
+.slide-bar-container ol li{
+	list-style:none;
+	float:left;
+	display:block;
+	padding:0;
+	margin:0 6%;
+	font-size:1.25em;
+	cursor:pointer;
+	color:#CCCCCC;
+}
+.slide-bar-container ol li.active{
+	color:#333333;
+}
+
+.main{
+	width:100%;
+}
+.main .banner-box{
+	width:90%;
+	height:200px;
+	margin:0 auto;
+}
+.main .new-box{
+	width:30%;
+	height:200px;
+	float:left;
+	background:#FF0000;
+}
+.main .kicks-box{
+	width:90%;
+	margin:30px auto;
+	padding:20px 0;
+	border-bottom:2px solid #999999;
+}
+.main .kicks-pic{
+	width:30%;
+	float:left;
+	position:relative;
+	cursor:pointer;
+}
+.main .kicks-pic .kicks-filter{
+	width:0;
+	height:350px;
+	position:absolute;
+	top:0;
+	left:0;
+	opacity:0;
+	filter:alpha(opacity=0);
+	background:#666;
+}
+.main .kicks-pic p{
+	width:100%;
+	height:350px;
+	position:absolute;
+	text-align:center;
+	top:0;
+	left:0;
+	font-size:70px;
+	display:none;
+	color:#FFFFFF;
+	padding-top:25%;
+	font-family:"UniversLTStd-UltraCn";
+}
+.main .kicks-intro{
+	width:55%;
+	float:right;
+	background:#CC3300;
+}
+.main .kicks-intro h2{
+	margin:0;
+	width:100%;
+	height:50px;
+	line-height:50px;
+	font-size:30px;
+	background:#99FF33;
+}
+
+.main .kicks-intro .kicks-intro-content{
+	width:100%;
+	height:270px;
+	margin-top:30px;
+	font-size:24px;
+	background:#99FF33;
+}
+.main .wait_load{
+	display:none;
+}
+.main .to-view-more{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	background:#FF9;
+	cursor:pointer;
+	font-size:18px;
+	color:#666666;
+}
+
+@media only screen and (max-width:1024px) {
+	.collapse img{
+		width:130px;
+		margin-top:5px;
+	}
+	.collapse ul li{
+		font-size:0.5em;
+	}
+	.slide-bar-container{
+		width:100%;
+		height:500px;
+	}
+	.main .banner-box{
+		width:100%;
+		height:200px
+	}
+	.main .kicks-box{
+		width:90%;
+		margin:30px auto;
+		padding:20px 0;
+		border-bottom:2px solid #999999;
+	}
+	.main .kicks-pic{
+		width:40%;
+	}
+	.main .kicks-intro{
+		width:45%;
+	}
+}
+@media only screen and (max-width:767px) {
+	.navbar .container{
+		width:100%;
+		position:relative;
+	}
+	.navbar-collapse{
+		width:100%;
+		padding:0;
+		border:none;
+		display:block;
+		position:absolute;
+		top:-10px;
+		left:0;
+	}
+	.collapse ul{
+		width:100%;
+		position:relative;
+		display:none;
+	}
+	.collapse ul a{
+		padding-left:0;
+		padding-right:0;
+	}
+	.collapse ul li{
+		width:33%;
+		float:left;
+		text-align:center;
+		font-size:0.8em;
+		background-color:#f8f8f8;
+	}
+	.collapse ul li.first{
+		display:none;
+	}
+	.collapse ul li.last{
+		width:34%;
+	}
+	#Image1{
+		position:absolute;
+		top:20px;
+		left:5%;
+	}
+	.slide-bar-container{
+		height:300px;
+	}
+	.slide-bar-container ol{
+		padding:10px 33%;
+	}
+	.main .new-box{
+		height:100px;
+	}
+	.main .kicks-pic, .main .kicks-intro{
+		width:90%;
+		margin:0 auto 10px;
+		float:none;
+	}
+	footer .container{
+		width:80%;
+		margin:0 auto;
+		padding:0;
+	}
+}
