@@ -42,11 +42,7 @@ h6 {
 
 .intro-message {
     position: relative;
-<<<<<<< HEAD
     padding-top: 30%;
-=======
-    padding-top: 20%;
->>>>>>> origin/master
     padding-bottom:30%;
 }
 
@@ -221,7 +217,7 @@ p.text2 {
 	font-family: 'Droid Sans', sans-serif;
 	text-align:center
 	}
-	
+
 	p.text3 {
 	background:#F58972;
 	padding: 10px;
@@ -233,7 +229,7 @@ p.text2 {
 	font-family: 'Droid Sans', sans-serif;
 	text-align:center;
 }
-   
+
 p.text4 {
 	background:#F58972;
 	padding: 10px;
@@ -244,7 +240,7 @@ p.text4 {
 	font-family: 'Droid Sans', sans-serif;
 	text-align:center
 	}
-	
+
 	p.text5 {
 	background:#F58972;
 	padding: 10px;
@@ -369,7 +365,7 @@ p.text4 {
 }
 
 /*media*/
-***** Media Quries *****/
+/***** Media Quries *****/
 @media only screen and (max-width: 1024px) {
 	.wrap{
 		width:95%;
@@ -1648,15 +1644,18 @@ p.product_descr {
     float: left;
     margin: 0% 0 0% 3.6%;
 }
-@media (max-width: 768px)
-.span_1_of_about1 {
-    width: 100%;
+@media (max-width: 768px) {
+  .span_1_of_about1 {
+      width: 100%;
+  }
 }
-@media (max-width: 800px)
-.span_1_of_about1 {
-    width: 100%;
+@media (max-width: 800px) {
+  .span_1_of_about1 {
+      width: 100%;
+  }
 }
-@media only screen and (max-width: 800px)
-.col {
-    margin: 1% 0 1% 0%;
+@media only screen and (max-width: 800px) {
+  .col {
+      margin: 1% 0 1% 0%;
+  }
 }
