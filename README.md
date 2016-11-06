@@ -30,3 +30,13 @@ $ rvm requirements                                  # set up packages
 $ rvm install 2.3.1                                 # install Ruby 2.3.1
 $ gem install rails                                 # install Rails
 ```
+
+##### Special notice for developing on Windows
+- [Setting up Linux subsystem on Windows](https://gorails.com/setup/windows/10) is strongly recommended; after you've done so, simply repeat the setup procedure for Linux
+- If you run into `"Error: Command 'rails' not recognized"` during generating controller pages, try
+```bash
+$ bundle install --binstubs                         # re-setup bundle
+$ bundle config --delete bin                        # Re-configure
+$ rake rails:update:bin                             # version control
+$ git add bin
+```
