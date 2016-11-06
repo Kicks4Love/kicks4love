@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Kicks4love</title>
-    <%= csrf_meta_tags %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  	<head>
+	    <title>Kicks4love</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	    <!-- Bootstrap Core CSS -->
+	    <%= stylesheet_link_tag "bootstrap.min.css" %>
 
-  <body>
-    <%= yield %>
-  </body>
+	    <!-- Custom CSS -->
+	    <%= stylesheet_link_tag "landing-page.css" %>
+
+	    <!-- Custom Fonts -->
+	    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+	    <%= content_for :head %>
+	</head>
+  	<body>
+    	<%= yield %>
+  	</body>
+  	<%= javascript_include_tag "jquery-1.8.3.js" %>
+  	<%= content_for :end_of_body %>
 </html>
