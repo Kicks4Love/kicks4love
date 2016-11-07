@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   	resources :main
 
+  	namespace :admin do
+  		resources :posts
+  	end
+
 end
