@@ -1,0 +1,16 @@
+<label>Title:</label>
+<%= form.text_field :title %>
+
+<br>
+
+<label>Content:</label>
+<%= form.text_field :content %>
+
+<br>
+
+<label>Image:</label>
+<%= form.select :image, @image_list %>
+
+<br>
+
+<%= form.submit %>

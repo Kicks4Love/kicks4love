@@ -1,0 +1,4 @@
+# Temporary/log files #
+###################
+log/*
+tmp/*
