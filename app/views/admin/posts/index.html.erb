@@ -1,6 +1,36 @@
-<h1>Admin index placeholder</h1>
+<h1>Admin</h1>
+
+<br>
 
 <%= link_to "New Post", new_admin_post_path %>
 
-<table>
-</table>
+<br><br>
+
+<% if @posts.any? %>
+	<table border="1" style="width:100%">
+		<tbody>
+			<tr>
+				<th></th>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Image</th>
+			</tr>
+		</tbody>
+		<tbody>
+			<% @posts.each do |post| %>
+				<tr>
+					<td>
+						<%= link_to "Edit", edit_admin_post_path(post) %>
+						|
+						<%= link_to "Delete", admin_post_path(post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+					</td>
+					<td><%= post.title %></td>
+					<td><%= post.content %></td>
+					<td><%= image_tag "post/#{post.image}", :height => "20px" %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<p>No Record</p>
+<% end %>

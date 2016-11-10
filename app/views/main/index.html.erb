@@ -84,82 +84,30 @@
             	<img src = "images/small-news1.jpg" style = "width:100%" ;>
             </div>
         </div>
-    	<div class="kicks-box clearfix">
-        	<div class="kicks-pic">
-            	<img src="images/Curry1.jpg" alt="" style="width:100%;" />
-                <div class="kicks-filter">
+        <% @post.each_with_index do |post, index| %>
+        	<div class="kicks-box<%= ' wait_load' if index > 2 %> clearfix">
+            	<div class="kicks-pic">
+                	<%= image_tag "post/#{post.image}" %>
+                    <div class="kicks-filter">
+                    </div>
+                    <a href="#"><p>Placeholder</p></a>
+                	<div class="kicks-title">
+                    </div>
                 </div>
-                <a href="#"><p>The first pic.</p></a>
-            	<div class="kicks-title">
-                </div>
-            </div>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
-            </div>
-        </div>
-        <div class="kicks-box clearfix">
-        	<div class="kicks-pic">
-            	<img src="images/Curry1.jpg" alt="" style="width:100%;" />
-            	<div class="kicks-filter">
-                </div>
-                <a href="#"><p>The second pic.</p></a>
-            </div>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
+                <div class="kicks-intro">
+                	<h2><%= post.title %></h2>
+                    <div class="kicks-intro-content">
+                    	<span><%= post.content %></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="kicks-box clearfix">
-        	<div class="kicks-pic">
-            	<img src="images/Curry1.jpg" alt="" style="width:100%;" />
-            	<div class="kicks-filter">
+            <% if index == 3 %>
+                <div class="to-view-more">
+                    <span>Click To View More</span>
                 </div>
-                <a href="#"><p>The third pic.</p></a>
-            </div>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
-            </div>
-        </div>
-        <div class="to-view-more">
-        	<span>Click To View More</span>
-        </div>
-        <div class="kicks-box wait_load clearfix">
-        	<div class="kicks-pic">
-            	<img src="images/Curry1.jpg" alt="" style="width:100%;" />
-            	<div class="kicks-filter">
-                </div>
-                <a href="#"><p>The fourth pic.</p></a>
-            </div>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
-            </div>
-        </div>
-        <div class="kicks-box wait_load clearfix">
-        	<div class="kicks-pic">
-            	<img src="images/Curry1.jpg" alt="" style="width:100%;" />
-            	<div class="kicks-filter">
-                </div>
-                <a href="#"><p>The fifth pic.</p></a>
-            </div>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
-            </div>
-        </div>
-    </div>
+            <% end %>
+        <% end %>
+        
 
     <footer>
         <div class="container">
