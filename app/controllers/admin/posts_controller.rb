@@ -4,8 +4,14 @@ class Admin::PostsController < Admin::AdminController
 	before_action :get_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
-		@posts = Post.all.order(:created_at => :DESC)
 		@page_title = "Kicks4Love Admin | Posts"
+		@posts = Post.all.order(:created_at => :DESC)
+
+		if params[:filter].present?
+			if params[:filter][:post_type].present?
+				@posts = @posts.where(:post_type => params[:filter][:post_type])
+			end
+		end
 	end
 
 	def new
@@ -15,6 +21,7 @@ class Admin::PostsController < Admin::AdminController
 	end
 
 	def create
+		Rails.logger.debug("The params is =>\n#{post_params}")
 		post = Post.new post_params
 
 		if post.save
@@ -52,7 +59,7 @@ class Admin::PostsController < Admin::AdminController
 	private 
 
 	def post_params
-		params.require(:post).permit(:title, :content, :image)
+		params.require(:post).permit(:title, :content, :post_type, :image)
 	end
 
 	def get_post

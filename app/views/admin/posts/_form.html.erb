@@ -4,7 +4,12 @@
 <br>
 
 <label>Content:</label>
-<%= form.text_field :content %>
+<%= form.text_area :content %>
+
+<br>
+
+<label>Post Type:</label>
+<%= form.select :post_type, Post.post_types.keys %>
 
 <br>
 
