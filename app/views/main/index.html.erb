@@ -15,7 +15,7 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1" style="position: absolute; margin-left:0; transform: translateY(-45%)">
-            <a href="#home" class="logo-link"><img src="images/logo.png" id="Image1" style="float:left;" onMouseOver="MM_swapImage('Image1','','images/logo.jpg',1)" onMouseOut="MM_swapImgRestore()"></a>
+            <%= link_to image_tag("logo.png"), :root, :class => "logo-link" %> 
             <ul class="nav navbar-nav navbar-right">
                 <li class="first">
                     <a href="index.html">HOME</a>

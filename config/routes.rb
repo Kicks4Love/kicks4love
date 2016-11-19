@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   	resources :main
 
-  	get '/admin/', :to => 'admin/posts#index', :as => :admin_root
+  	get '/admin/', :to => 'admin/dashboard#index', :as => :admin_root
 
   	namespace :admin do
   		resources :posts
