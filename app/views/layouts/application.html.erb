@@ -12,6 +12,7 @@
 	    <%= stylesheet_link_tag "bootstrap.min.css" %>
 
 	    <!-- Custom CSS -->
+	    <%= stylesheet_link_tag "common.css" %>
 	    <%= stylesheet_link_tag "landing-page.css" %>
 
 	    <!-- Custom Fonts -->
@@ -20,6 +21,49 @@
 	    <%= content_for :head %>
 	</head>
   	<body>
+  		<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" style="height: 70px;">
+		    <div class="container topnav">
+		        <!-- Brand and toggle get grouped for better mobile display -->
+		        <div class="navbar-header">
+		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		        </div>
+		        <!-- Collect the nav links, forms, and other content for toggling -->
+		        <div class="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1" style="position: absolute; margin-left:0; transform: translateY(-45%)">
+		            <%= link_to image_tag("logo.png"), :root, :class => "logo-link" %> 
+		            <ul class="nav navbar-nav navbar-right">
+		                <li class="first">
+		                    <a href="index.html">HOME</a>
+		                </li>
+		                <li>
+		                    <a href="featured.html">FEATURES</a>
+		                </li>
+		                <li>
+		                    <a href="trend.html">TREND</a>
+		                </li>
+		                <li class="last">
+		                    <a href="upcoming.html">UPCOMING</a>
+		                </li>
+		                <li>
+		                    <a href="oncourt.html">ON-COURT</a>
+		                </li>
+		                <li>
+		                    <a href="streetsnap.html">STREET-SNAP</a>
+		                </li>
+		                <li class="last">
+		                    <a href="rumors.html">RUMORS</a>
+		                </li>
+		            </ul>
+		        </div>
+		        <!-- /.navbar-collapse -->
+		    </div>
+		    <!-- /.container -->
+		</nav>
+
     	<%= yield %>
   	</body>
   	<%= javascript_include_tag "application.js" %>

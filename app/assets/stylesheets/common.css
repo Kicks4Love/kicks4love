@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+    /* font-properties */
+    font-family: Univers-UltraCondensed;
+    src:url(../fonts/Univers/Univers/Univers-UltraCondensed.otf);
+}
+@font-face {
+    /* font-properties */
+    font-family: UniversLTStd-UltraCn;
+    src:url(../fonts/univers_lt_std_59_ultra_condensed/UniversLTStd-UltraCn.otf);
+}
+a{
+	display:block;
+}
+.container{
+	width:100%;
+}
+.collapse{
+	width:100%;
+	padding-top:60px;
+	left:0;
+}
+.collapse img{
+	width:200px;
+}
+.logo-link{
+	display:block;
+	float:left;
+	margin-left:5%;
+}
+ul.nav{
+	width:80%;
+	float:left;
+}
+
+.main{
+	width:100%;
+}
+
+@media only screen and (max-width:1024px) {
+	.collapse img{
+		width:130px;
+		margin-top:5px;
+	}
+	.collapse ul li{
+		font-size:0.5em;
+	}
+}
+
+@media only screen and (max-width:767px) {
+	.navbar .container{
+		width:100%;
+		position:relative;
+	}
+	.navbar-collapse{
+		width:100%;
+		padding:0;
+		border:none;
+		display:block;
+		position:absolute;
+		top:-10px;
+		left:0;
+	}
+	.collapse ul{
+		width:100%;
+		position:relative;
+		display:none;
+	}
+	.collapse ul a{
+		padding-left:0;
+		padding-right:0;
+	}
+	.collapse ul li{
+		width:33%;
+		float:left;
+		text-align:center;
+		font-size:0.8em;
+		background-color:#f8f8f8;
+	}
+	.collapse ul li.first{
+		display:none;
+	}
+	.collapse ul li.last{
+		width:34%;
+	}
+	#Image1{
+		position:absolute;
+		top:20px;
+		left:5%;
+	}
+	footer .container{
+		width:80%;
+		margin:0 auto;
+		padding:0;
+	}
+}

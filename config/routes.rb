@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   	resources :main do
   		collection do 
+        get 'features'
   			get 'get_posts'
   		end
   	end

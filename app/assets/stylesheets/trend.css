@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+
+.header{
+	padding-top:80px
+}
+.main{
+	width:90%;
+	margin:10px auto;
+}
+.trend{
+	width:22%;
+	padding:40px 0;
+	margin-right:5%;
+	font-size:60px;
+	background-color:#000000;
+	color:#FFFFFF;
+	float:left;
+	position:fixed;
+}
+.photo{
+	width:35%;
+	margin-top:2%;
+	padding:2%;
+	float:right;
+}
+.photo ul{
+	width:100%;
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.photo ul li{
+	width:100%;
+	margin-bottom:50px;
+	position:relative;
+}
+.photo ul li img{
+	width:100%;
+}
+.photo ul li span{
+	position:absolute;
+	bottom:10%;
+	left:10%;
+	font-size:24px;
+}
+
+@media only screen and (max-width:1024px) {
+	.trend{
+		width:15%;
+		font-size:36px;
+		padding:60px 0;
+	}
+	.photo{
+		width:40%;
+		margin-top:2%;
+		padding:2%;
+		float:right;
+	}
+}
+
+@media only screen and (max-width:767px) {
+	.header{
+		padding-top:100px
+	}
+	.trend{
+		width:80%;
+		font-size:30px;
+		padding:20px 0;
+		float:none;
+		position:static;
+	}
+	.photo{
+		width:50%;
+	}
+}

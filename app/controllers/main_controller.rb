@@ -6,6 +6,11 @@ class MainController < ApplicationController
 		@regular_posts = all_posts.where(:post_type => :POST).limit(3)
 	end
 
+	def features
+		@page_title = 'Kicks4Love | Features'
+	end
+
+
 	def get_posts
 		render :nothing => true and return unless params[:index].present?
 
