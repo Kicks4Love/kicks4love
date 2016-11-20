@@ -15,10 +15,11 @@ class MainController < ApplicationController
 
 		@regular_posts.each_with_index { |post, index| 
 			next if index < params[:index].to_i || index > params[:index].to_i + 2
+			no_more = @regular_posts[index+1].nil?
 			return_posts << post
 		}
 
-		render :json => return_posts.to_json, :layout => false
+		render :json => {:no_more => no_more, :posts => return_posts}.to_json, :layout => false
 	end
 
 end

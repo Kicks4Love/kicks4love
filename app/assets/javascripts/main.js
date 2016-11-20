@@ -1,4 +1,5 @@
 var currentIndex = 0;
+var slideUl = null
 
 $(document).ready(function() {
 	$('.navbar-toggle').click(function(){
@@ -23,7 +24,7 @@ $(document).ready(function() {
 	});
 	
 	/*--轮播图-slidebar--*/
-	var slideUl = $('.slide-bar-container ul li').length;
+	slideUl = $('.slide-bar-container ul li').length;
 	$('.slide-bar-container ol li').eq(0).addClass("active");
 	
 	for(var i=1; i<slideUl; i++){
@@ -44,7 +45,7 @@ $(document).ready(function() {
 		$('.slide-bar-container .slide-filter').fadeOut();
 		$('.slide-bar-container ul p').eq(currentIndex).fadeOut();
 		timer=setInterval(slide,2000);
-	})
+	});
 	
 	$('.slide-bar-container ol li').each(function() {
 		$(this).hover(function(){
@@ -70,7 +71,7 @@ $(document).ready(function() {
 		}, function(){
 			timer = setInterval(slide,2000);
 		})
-	})
+	});
 	
 	/*--新鞋介绍-main--*/
 	$('.kicks-pic').hover(function(){
@@ -89,7 +90,9 @@ $(document).ready(function() {
 			width:'0'
 		},1000);
 		title.fadeOut(1000);
-	})
+	});
+
+	initLoadPostHandler();
 });
 
 function initLoadPostHandler() {
@@ -126,12 +129,13 @@ function initLoadPostHandler() {
 	            }
             	target.fadeOut();
             	$('.wait_load').fadeIn(1000);
+            	initLoadPostHandler();
             }
 		});
 	});
 }
 
-function slide(){
+function slide() {
 	$('.slide-bar-container ol li').eq(currentIndex).removeClass("active");
 	currentIndex++;
 		
