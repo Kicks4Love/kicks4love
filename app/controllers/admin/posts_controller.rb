@@ -21,7 +21,6 @@ class Admin::PostsController < Admin::AdminController
 	end
 
 	def create
-		Rails.logger.debug("The params is =>\n#{post_params}")
 		post = Post.new post_params
 
 		if post.save
