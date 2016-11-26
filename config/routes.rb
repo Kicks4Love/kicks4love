@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   	
-  	root :to => "main#index"
+  	root :to => 'main#index'
 
-  	resources :main do
+  	resources :main, :path => '', :only => [:features] do
   		collection do 
         get 'features'
   			get 'get_posts'

@@ -17,16 +17,16 @@
 			</tr>
 		</tbody>
 		<tbody>
-			<% @feature_posts.each do |post| %>
+			<% @feature_posts.each do |feature_post| %>
 				<tr>
 					<td>
-						<%= link_to "Edit", edit_admin_feature_post_path(post) %>
+						<%= link_to "Edit", edit_admin_feature_post_path(feature_post) %>
 						|
-						<%= link_to "Delete", admin_feature_post_path(post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+						<%= link_to "Delete", admin_feature_post_path(feature_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
 					</td>
-					<td><%= post.title %></td>
-					<td><%= post.content %></td>
-					<td><%= image_tag "feature_post/#{post.image}", :height => "20px" %></td>
+					<td><%= feature_post.title %></td>
+					<td><%= feature_post.content %></td>
+					<td><%= image_tag "feature_post/#{feature_post.image}", :height => "20px" %></td>
 				</tr>
 			<% end %>
 		</tbody>

@@ -42,7 +42,7 @@ class Admin::PostsController < Admin::AdminController
 
 	def edit
 		@image_list = Dir.glob("#{Rails.root}/app/assets/images/post/*").map{|path| path.split('/').last}
-		@page_title = "Kicks4Love Admin | New Post"
+		@page_title = "Kicks4Love Admin | Edit Post"
 	end
 
 	def destroy
