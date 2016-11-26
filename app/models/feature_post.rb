@@ -1,0 +1,2 @@
+class FeaturePost < ApplicationRecord
+end
