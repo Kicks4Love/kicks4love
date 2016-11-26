@@ -2,119 +2,43 @@
     <%= stylesheet_link_tag "feature.css" %>
 <% end %>
 
-<body>
-    <a name="home"></a>
-    <div class="header">
-    </div>
+<a name="home"></a>
+<div class="header">
+</div>
     
-    <div class="main clearfix">
-    	<div class="kicks-box clearfix">
-        	<dl>
-            	<dt>
-                	<a href="#">
-                        <img src="images/Curry1.jpg" alt="" style="width:100%;" />
-                        <div class="filter">
-                            <p>ADIDAS</p>
-                        </div>
-                    </a>
-                </dt>
-            	<dd>
-                	<a href="#">Air Jodan</a>
-                </dd>
-            </dl>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
-            </div>
-        </div>
+<div class="main clearfix">
+    <!-- maximum should be three only (more will be loaded by ajax) -->
+    <% @all_feature_posts.each_with_index do |feature_post, index| %>
         <div class="kicks-box clearfix">
-        	<dl>
-            	<dt>
-                	<a href="#">
-                        <img src="images/Curry1.jpg" alt="" style="width:100%;" />
+            <dl>
+                <dt>
+                    <a href="#">
+                        <%= image_tag "feature_post/#{feature_post.image}", :style => "width:100%" %>
                         <div class="filter">
-                            <p>ADIDAS</p>
+                            <p>PlaceHolder></p>
                         </div>
                     </a>
                 </dt>
-            	<dd>
-                	<a href="#">Air Jodan</a>
+                <dd>
+                    <a href="#">PlaceHolder</a>
                 </dd>
             </dl>
             <div class="kicks-intro">
-            	<h2>The title.</h2>
+                <h2><%= feature_post.title %></h2>
                 <div class="kicks-intro-content">
-                	<span>The content.</span>
+                    <span><%= feature_post.content %></span>
                 </div>
             </div>
         </div>
-        <div class="kicks-box clearfix">
-        	<dl>
-            	<dt>
-                	<a href="#">
-                        <img src="images/Curry1.jpg" alt="" style="width:100%;" />
-                        <div class="filter">
-                            <p>ADIDAS</p>
-                        </div>
-                    </a>
-                </dt>
-            	<dd>
-                	<a href="#">Air Jodan</a>
-                </dd>
-            </dl>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
+        <% if index == 2 %>
+            <div class="to-view-more">
+                <span>Click To View More</span>
             </div>
-        </div>
-        <div class="kicks-box wait_load clearfix">
-        	<dl>
-            	<dt>
-                	<a href="#">
-                        <img src="images/Curry1.jpg" alt="" style="width:100%;" />
-                        <div class="filter">
-                            <p>ADIDAS</p>
-                        </div>
-                    </a>
-                </dt>
-            	<dd>
-                	<a href="#">Air Jodan</a>
-                </dd>
-            </dl>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
-            </div>
-        </div>
-        <div class="kicks-box wait_load clearfix">
-        	<dl>
-            	<dt>
-                	<a href="#">
-                        <img src="images/Curry1.jpg" alt="" style="width:100%;" />
-                        <div class="filter">
-                            <p>ADIDAS</p>
-                        </div>
-                    </a>
-                </dt>
-            	<dd>
-                	<a href="#">Air Jodan</a>
-                </dd>
-            </dl>
-            <div class="kicks-intro">
-            	<h2>The title.</h2>
-                <div class="kicks-intro-content">
-                	<span>The content.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="to-view-more">
-        <span>Click To View More</span>
-    </div>
-</body>
+        <% end %>
+    <% end %>
+    <%= hidden_field_tag "post_index", "3", :name => nil %>
+</div>
+
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "feature.js" %>
+<% end %>

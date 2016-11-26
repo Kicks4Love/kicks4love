@@ -39,7 +39,7 @@
     <% @regular_posts.each_with_index do |post, index| %>
         <div class="kicks-box clearfix">
             <div class="kicks-pic">
-                <%= image_tag "post/#{post.image}" %>
+                <%= image_tag "post/#{post.image}", :style => "width:100%" %>
                 <div class="kicks-filter">
                 </div>
                 <a href="#"><p>Placeholder</p></a>

@@ -8,7 +8,7 @@ class MainController < ApplicationController
 
 	def features
 		@page_title = 'Kicks4Love | Features'
-		all_feature_posts = FeaturePost.order(:created_at => :DESC).limit(3)
+		@all_feature_posts = FeaturePost.order(:created_at => :DESC).limit(3)
 	end
 
 
@@ -19,7 +19,7 @@ class MainController < ApplicationController
 		no_more = false
 
 		case params[:source_page]
-		when 'main'
+		when 'index'
 			@regular_posts = Post.where(:post_type => :POST).order(:created_at => :DESC)
 
 			@regular_posts.each_with_index { |post, index| 

@@ -40,7 +40,7 @@
 		                	<%= link_to 'HOME', root_path %>
 		                </li>
 		                <li>
-		                    <%= link_to 'FEATURES', features_main_index_path %>
+		                    <%= link_to 'FEATURES', features_path %>
 		                </li>
 		                <li>
 		                    <a href="trend.html">TREND</a>
@@ -76,7 +76,7 @@
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		    					<%= link_to 'Features', features_main_index_path %>
+		    					<%= link_to 'Features', features_path %>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		 					<li>
@@ -113,5 +113,6 @@
 		    </div>
 		</footer>
   	</body>
+  	<%= javascript_include_tag "application.js" %>
   	<%= content_for :end_of_body %>
 </html>

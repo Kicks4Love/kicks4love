@@ -1,7 +1,4 @@
-var currentIndex = 0;
-var slideUl = null
-
-$(document).ready(function() {
+$(document).ready(function(){
 	$('.navbar-toggle').click(function(){
 		$('.navbar-collapse ul').addClass('down');
 		if($('.navbar-collapse ul').hasClass('in')){
@@ -20,57 +17,13 @@ $(document).ready(function() {
 			})
 			$('.collapse ul li').eq(0).css('display','none');
 			$('.navbar-collapse ul').addClass('in');
-		}
+		}	
 	});
 	
-	/*--轮播图-slidebar--*/
-	slideUl = $('.slide-bar-container ul li').length;
-	$('.slide-bar-container ol li').eq(0).addClass("active");
-	
-	for(var i=1; i<slideUl; i++){
-		$('.slide-bar-container ul li').eq(i).css('left','100%');
-	}
-	for(var i=0; i<slideUl; i++){
-		$('.slide-bar-container ul li').eq(i).css('z-index',i);
-		$('.slide-bar-container ul p').eq(i).css('z-index',i+$('.slide-bar-container .slide-filter').css('z-index'));
-	}
-	
-	var timer = setInterval(slide,2000);
-	
-	$('.slide-bar-container ul').hover(function(){
-		$('.slide-bar-container .slide-filter').fadeIn();
-		$('.slide-bar-container ul p').eq(currentIndex).fadeIn();
-		clearInterval(timer);
+	$('.main dl').hover(function(){
+		$(this).find('.filter').fadeIn();
 	},function(){
-		$('.slide-bar-container .slide-filter').fadeOut();
-		$('.slide-bar-container ul p').eq(currentIndex).fadeOut();
-		timer=setInterval(slide,2000);
-	});
-	
-	$('.slide-bar-container ol li').each(function() {
-		$(this).hover(function(){
-			clearInterval(timer);
-			if(currentIndex<$(this).index()){
-				$('.slide-bar-container ol li').eq(currentIndex).removeClass("active");
-				currentIndex=$(this).index();
-				$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-				$('.slide-bar-container ul li').eq(currentIndex).animate({
-					left:'0%'
-				})
-			}else if(currentIndex>$(this).index()){
-				$('.slide-bar-container ol li').eq(currentIndex).removeClass("active");
-				currentIndex=$(this).index();
-				$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-				$('.slide-bar-container ul li').eq(currentIndex).css('left',0);
-				for(var j=currentIndex+1; j<slideUl; j++){
-					$('.slide-bar-container ul li').eq(j).animate({
-						left:'100%'
-					})
-				}
-			}		
-		}, function(){
-			timer = setInterval(slide,2000);
-		})
+		$(this).find('.filter').fadeOut();
 	});
 	
 	/*--新鞋介绍-main--*/
@@ -90,9 +43,7 @@ $(document).ready(function() {
 			width:'0'
 		},1000);
 		title.fadeOut(1000);
-	});
-
-	initLoadPostHandler();
+	});	
 });
 
 function initLoadPostHandler() {
@@ -104,7 +55,7 @@ function initLoadPostHandler() {
 
 		$.ajax({
 			type: 'GET',
-            url: '/main/get_posts?index=' + postIndex.val() +'&source_page=index',
+            url: '/main/get_posts?index=' + postIndex.val(),
             dataType: "json",
             success: function(data) { 
             	var parent = target.parent('.main');
@@ -133,18 +84,4 @@ function initLoadPostHandler() {
             }
 		});
 	});
-}
-
-function slide() {
-	$('.slide-bar-container ol li').eq(currentIndex).removeClass("active");
-	currentIndex++;
-		
-	$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-	$('.slide-bar-container ul li').eq(currentIndex).animate({left:'0%'});
-	if(currentIndex == slideUl) {
-		currentIndex=0;
-		$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-		for(var j=currentIndex+1; j<slideUl; j++)
-			$('.slide-bar-container ul li').eq(j).animate({left:'100%'});
-	}
 }
