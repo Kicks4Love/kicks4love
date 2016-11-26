@@ -112,7 +112,7 @@ function initLoadPostHandler() {
             		parent.append(
             			'<div class="kicks-box wait_load clearfix">' +
             			'<div class="kicks-pic">' +
-                		'<img src="assets/post/' + data.posts[post].image + '">' + 
+                		'<img src="assets/post/' + data.posts[post].image + '" style="width:100%">' + 
                 		'<div class="kicks-filter">' + 
                 		'</div><a href="#"><p>Placeholder</p></a><div class="kicks-title">' + 
                 		'</div></div>' +

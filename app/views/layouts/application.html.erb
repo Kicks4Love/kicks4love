@@ -18,9 +18,13 @@
 	    <!-- Custom Fonts -->
 	    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-	    <%= content_for :head %>
+	    <!-- Third Party JS -->
+	    <%= javascript_include_tag "application.js" %>
 	</head>
   	<body>
+
+  		<%= content_for :head %>
+
   		<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" style="height: 70px;">
 		    <div class="container topnav">
 		        <!-- Brand and toggle get grouped for better mobile display -->
@@ -112,7 +116,8 @@
 		        </div>
 		    </div>
 		</footer>
+  		
+		<%= content_for :end_of_body %>
+
   	</body>
-  	<%= javascript_include_tag "application.js" %>
-  	<%= content_for :end_of_body %>
 </html>
