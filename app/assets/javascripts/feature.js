@@ -44,12 +44,14 @@ $(document).ready(function(){
 		},1000);
 		title.fadeOut(1000);
 	});	
+
+	initLoadPostHandler();
 });
 
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
 	$('.to-view-more').click(function() {
-		var postIndex = $('#post_index');
+		var postIndex = $('#feature_post_index');
 		var target = $(this);
 		target.find('span').text('Loading...');
 
@@ -59,19 +61,19 @@ function initLoadPostHandler() {
             dataType: "json",
             success: function(data) { 
             	var parent = target.parent('.main');
-            	for (feature_post in data.feature_posts) {
+            	for (post in data.posts) {
             		parent.append(
             			'<div class="kicks-box wait_load clearfix">' +
             			'<dl><dt>' +
             			'<a href="#">' + 
-                		'<img src="assets/feature_post/' + data.feature_posts[feature_post].image + '" style="width:100%">' + 
+                		'<img src="assets/feature_post/' + data.posts[post].image + '" style="width:100%">' + 
                 		'<div class="filter">' + 
                 		'<p>PlaceHolder</p>' + 
                 		'</div></a></dt><dd><a href="#">PlaceHolder</a></dd></dl>' +
             			'<div class="kicks-intro">' + 
-                		'<h2>' + data.feature_posts[feature_post].title + '</h2>' +
+                		'<h2>' + data.posts[post].title + '</h2>' +
                 		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.feature_posts[feature_post].content + '</span>' +
+                    	'<span>' + data.posts[post].content + '</span>' +
                 		'</div></div></div>'
             		);
             	}
