@@ -11,41 +11,43 @@
     font-family: UniversLTStd-UltraCn;
     src:url(../fonts/univers_lt_std_59_ultra_condensed/UniversLTStd-UltraCn.otf);
 }
-a{
-	display:block;
+
+.container {
+	width: 100%;
 }
-.container{
-	width:100%;
-}
-.collapse{
-	width:100%;
-	padding-top:60px;
-	left:0;
+.collapse {
+	width: 100%;
+	padding-top: 60px;
+	left: 0;
 }
 .collapse img{
 	width:200px;
 }
-.logo-link{
-	display:block;
-	float:left;
-	margin-left:5%;
+.collapse.navbar-custom {
+	padding-left: 5%;
+	padding-right: 5%;
+	position:absolute;
+	transform:translateY(-45%)
 }
-ul.nav{
-	width:80%;
+.logo-link{
 	float:left;
 }
 
 .main{
-	width:100%;
+	width: 100%;
 }
 
 @media only screen and (max-width:1024px) {
 	.collapse img{
-		width:130px;
-		margin-top:5px;
+		width: 170px;
+		margin-top: 5px;
 	}
-	.collapse ul li{
-		font-size:0.5em;
+	.collapse ul li {
+		font-size: 0.8em;
+	}
+	.collapse ul li a {
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 }
 
