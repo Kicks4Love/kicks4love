@@ -9,10 +9,6 @@ body, h1, h2, h3, h4, h5, h6 {
 	color: #000;
 }
 
-.topnav {
-    height: 70px;
-}
-
 .lead {
     font-size: 18px;
     font-weight: 400;
@@ -265,9 +261,6 @@ p.text4 {
 .services-nav li a:hover{
 	color:#F58972;
 }
-.services-nav li.last {
-	border-bottom: none;
-}
 
 .poling {
 	margin-bottom: 17%;
@@ -354,8 +347,6 @@ p.text4 {
 	font-family: 'Droid Sans', sans-serif;
 }
 
-/*media*/
-***** Media Quries *****/
 @media only screen and (max-width: 1024px) {
 	.wrap{
 		width:95%;

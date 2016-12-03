@@ -1,28 +1,7 @@
 var currentIndex = 0;
 var slideUl = null
 
-$(document).ready(function() {
-	$('.navbar-toggle').click(function(){
-		$('.navbar-collapse ul').addClass('down');
-		if($('.navbar-collapse ul').hasClass('in')){
-			$('.collapse ul').slideUp();
-			$('.header').animate({
-				'margin-top': '80px',
-			})
-			$('.navbar-collapse ul').removeClass('in');
-			$('.navbar-collapse ul').removeClass('down');
-		}
-		
-		if($('.navbar-collapse ul').hasClass('down')){
-			$('.collapse ul').css('background','#F8F8F8').css('width','100%').css('position','absolute').css('top','70px').css('left','15px').slideDown();
-			$('.header').animate({
-				'margin-top': '160px',
-			})
-			$('.collapse ul li').eq(0).css('display','none');
-			$('.navbar-collapse ul').addClass('in');
-		}
-	});
-	
+$(document).ready(function() {	
 	/*--轮播图-slidebar--*/
 	slideUl = $('.slide-bar-container ul li').length;
 	$('.slide-bar-container ol li').eq(0).addClass("active");

@@ -12,87 +12,20 @@
     src:url(../fonts/univers_lt_std_59_ultra_condensed/UniversLTStd-UltraCn.otf);
 }
 
-.collapse {
-	width: 100%;
-	padding-top: 60px;
-	left: 0;
+.navbar-brand > img {
+	width: 175px;
+	margin-top: -6px;
 }
-.collapse img{
-	width:200px;
-}
-.collapse.navbar-custom {
-	padding-left: 5%;
-	padding-right: 5%;
-	position:absolute;
-	transform:translateY(-45%);
-	margin-left: 0;
-	margin-right: 0;
-}
-.logo-link {
-	cursor: pointer;
-	float: left;
-}
-.logo-link img:hover {
+
+.navbar-brand > img:hover {
 	opacity: 0.5;
-}
-.navbar-toggle-custom {
-	margin-right: 0;
 }
 
 .main{
 	width: 100%;
 }
 
-@media only screen and (max-width:1024px) {
-	.collapse img{
-		width: 170px;
-		margin-top: 5px;
-	}
-	.collapse ul li {
-		font-size: 0.8em;
-	}
-	.collapse ul li a {
-		padding-left: 5px;
-		padding-right: 5px;
-	}
-}
-
 @media only screen and (max-width:767px) {
-	.collapse.navbar-custom {
-		margin-top: 10px;
-		transform: none;
-	}
-	.navbar-collapse{
-		width:100%;
-		padding:0;
-		border:none;
-		display:block;
-		position:absolute;
-		top:-10px;
-		left:0;
-	}
-	.collapse ul{
-		width:100%;
-		position:relative;
-		display:none;
-	}
-	.collapse ul a{
-		padding-left:0;
-		padding-right:0;
-	}
-	.collapse ul li{
-		width:33%;
-		float:left;
-		text-align:center;
-		font-size:0.8em;
-		background-color:#f8f8f8;
-	}
-	.collapse ul li.first{
-		display:none;
-	}
-	.collapse ul li.last{
-		width:34%;
-	}
 	footer .container{
 		width:80%;
 		margin:0 auto;
