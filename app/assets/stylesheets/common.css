@@ -12,9 +12,6 @@
     src:url(../fonts/univers_lt_std_59_ultra_condensed/UniversLTStd-UltraCn.otf);
 }
 
-.container {
-	width: 100%;
-}
 .collapse {
 	width: 100%;
 	padding-top: 60px;
@@ -27,7 +24,9 @@
 	padding-left: 5%;
 	padding-right: 5%;
 	position:absolute;
-	transform:translateY(-45%)
+	transform:translateY(-45%);
+	margin-left: 0;
+	margin-right: 0;
 }
 .logo-link {
 	cursor: pointer;
@@ -35,6 +34,9 @@
 }
 .logo-link img:hover {
 	opacity: 0.5;
+}
+.navbar-toggle-custom {
+	margin-right: 0;
 }
 
 .main{
@@ -56,9 +58,9 @@
 }
 
 @media only screen and (max-width:767px) {
-	.navbar .container{
-		width:100%;
-		position:relative;
+	.collapse.navbar-custom {
+		margin-top: 10px;
+		transform: none;
 	}
 	.navbar-collapse{
 		width:100%;
@@ -90,11 +92,6 @@
 	}
 	.collapse ul li.last{
 		width:34%;
-	}
-	#Image1{
-		position:absolute;
-		top:20px;
-		left:5%;
 	}
 	footer .container{
 		width:80%;

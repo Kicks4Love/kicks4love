@@ -25,47 +25,41 @@
 
   		<%= content_for :head %>
 
-  		<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" style="height: 70px;">
-		    <div class="container topnav">
-		        <!-- Brand and toggle get grouped for better mobile display -->
-		        <div class="navbar-header">
-		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		                <span class="sr-only">Toggle navigation</span>
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		            </button>
-		        </div>
-		        <!-- Collect the nav links, forms, and other content for toggling -->
-		        <div class="collapse navbar-collapse navbar-custom clearfix" id="bs-example-navbar-collapse-1">
-		            <%= link_to image_tag("logo.png"), :root, :class => "logo-link" %> 
-		            <ul class="nav navbar-nav navbar-right">
-		                <li class="first">
-		                	<%= link_to 'HOME', root_path %>
-		                </li>
-		                <li>
-		                    <%= link_to 'FEATURES', features_path %>
-		                </li>
-		                <li>
-		                    <a href="trend.html">TREND</a>
-		                </li>
-		                <li class="last">
-		                    <a href="upcoming.html">UPCOMING</a>
-		                </li>
-		                <li>
-		                    <a href="oncourt.html">ON-COURT</a>
-		                </li>
-		                <li>
-		                    <a href="streetsnap.html">STREET-SNAP</a>
-		                </li>
-		                <li class="last">
-		                    <a href="rumors.html">RUMORS</a>
-		                </li>
-		            </ul>
-		        </div>
-		        <!-- /.navbar-collapse -->
+  		<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse navbar-custom clearfix" id="bs-example-navbar-collapse-1">
+		        <%= link_to image_tag("logo.png"), :root, :class => "logo-link" %> 
+		        <ul class="nav navbar-nav navbar-right">
+		            <li class="first">
+		             <%= link_to 'HOME', root_path %>
+		            </li>
+		            <li>
+		                <%= link_to 'FEATURES', features_path %>
+		            </li>
+		            <li>
+		                <a href="trend.html">TREND</a>
+		            </li>
+		            <li class="last">
+		                <a href="upcoming.html">UPCOMING</a>
+		            </li>
+		            <li>
+		                <a href="oncourt.html">ON-COURT</a>
+		            </li>
+		            <li>
+		                <a href="streetsnap.html">STREET-SNAP</a>
+		            </li>
+		            <li class="last">
+		                <a href="rumors.html">RUMORS</a>
+		            </li>
+		        </ul>
+		        <button type="button" class="navbar-toggle navbar-toggle-custom hidden-md" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		        </button>
 		    </div>
-		    <!-- /.container -->
+		    <!-- /.navbar-collapse -->
 		</nav>
 
     	<%= yield %>
