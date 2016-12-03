@@ -2,6 +2,9 @@ var currentIndex = 0;
 var slideUl = null
 
 $(document).ready(function() {	
+	// set HOME menu selected
+	$('#navbar ul li').eq(0).addClass('active');
+
 	/*--轮播图-slidebar--*/
 	slideUl = $('.slide-bar-container ul li').length;
 	$('.slide-bar-container ol li').eq(0).addClass("active");

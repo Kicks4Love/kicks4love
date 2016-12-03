@@ -21,6 +21,15 @@
 	opacity: 0.5;
 }
 
+.search-bar-container {
+	width: calc(100% - 75px);
+    display: inline-block;
+}
+
+.search-go-btn {
+	margin-left: 10px;
+}
+
 .main{
 	width: 100%;
 }
