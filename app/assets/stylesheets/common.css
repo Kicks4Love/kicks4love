@@ -29,8 +29,12 @@
 	position:absolute;
 	transform:translateY(-45%)
 }
-.logo-link{
-	float:left;
+.logo-link {
+	cursor: pointer;
+	float: left;
+}
+.logo-link img:hover {
+	opacity: 0.5;
 }
 
 .main{
