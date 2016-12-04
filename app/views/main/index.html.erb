@@ -25,20 +25,20 @@
 <div class="main">
     <div class="banner-box clearfix">
         <div class="new-box" style="margin-right:5%;">
-            <%= image_tag "small-news1", :style => "width:100%" %>
+            <%= image_tag "small-news1" %>
         </div>
         <div class="new-box" style="margin-right:5%;">
-            <%= image_tag "small-news2", :style => "width:100%" %>
+            <%= image_tag "small-news2" %>
         </div>
         <div class="new-box">
-            <%= image_tag "small-news3", :style => "width:100%" %>
+            <%= image_tag "small-news3" %>
         </div>
     </div>
 
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @regular_posts.each_with_index do |post, index| %>
         <% next if index > 2 %>
-        <div class="kicks-box clearfix">
+        <div class="kicks-box clearfix<%=' last' if index == 2%>">
             <div class="kicks-pic">
                 <%= image_tag "post/#{post.image}", :style => "width:100%" %>
                 <div class="kicks-filter">

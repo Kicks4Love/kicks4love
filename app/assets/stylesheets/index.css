@@ -90,20 +90,25 @@
 
 .main .banner-box{
 	width:90%;
-	height:200px;
 	margin:0 auto;
 }
 .main .new-box{
 	width:30%;
-	height:200px;
 	float:left;
-	background:#FF0000;
+}
+.main .new-box img {
+	border: 5px dashed red;
+	border-radius: 10%;
+	width: 100%;
 }
 .main .kicks-box{
 	width:90%;
 	margin:30px auto;
 	padding:20px 0;
 	border-bottom:2px solid #999999;
+}
+.main .kicks-box.last {
+	margin-bottom: 0;
 }
 .main .kicks-pic{
 	width:30%;
@@ -176,7 +181,6 @@
 	}
 	.main .banner-box{
 		width:100%;
-		height:200px
 	}
 	.main .kicks-box{
 		width:90%;
@@ -198,8 +202,17 @@
 	.slide-bar-container ol{
 		padding:10px 33%;
 	}
-	.main .new-box{
-		height:100px;
+	.main .new-box {
+		width: 100%;
+	}
+	.main .new-box:nth-child(2) {
+		text-align: center;
+	}
+	.main .new-box:nth-child(3) {
+		text-align: right;
+	}
+	.main .new-box img {
+		width: 40%;
 	}
 	.main .kicks-pic, .main .kicks-intro{
 		width:90%;

@@ -89,18 +89,19 @@ function initLoadPostHandler() {
             dataType: "json",
             success: function(data) { 
             	var parent = target.parent('.main');
-            	for (post in data.posts) {
+            	$('.kicks-box.last').removeClass('last');
+            	for (var i = 0; i < data.posts.length; i++) {
             		parent.append(
-            			'<div class="kicks-box wait_load clearfix">' +
+            			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
             			'<div class="kicks-pic">' +
-                		'<img src="assets/post/' + data.posts[post].image + '" style="width:100%">' + 
+                		'<img src="assets/post/' + data.posts[i].image + '" style="width:100%">' + 
                 		'<div class="kicks-filter">' + 
                 		'</div><a href="#"><p>Placeholder</p></a><div class="kicks-title">' + 
                 		'</div></div>' +
             			'<div class="kicks-intro">' + 
-                		'<h2>' + data.posts[post].title + '</h2>' +
+                		'<h2>' + data.posts[i].title + '</h2>' +
                 		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.posts[post].content + '</span>' +
+                    	'<span>' + data.posts[i].content + '</span>' +
                 		'</div></div></div>'
             		);
             	}
