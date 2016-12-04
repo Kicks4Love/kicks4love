@@ -6,8 +6,8 @@
 <div class="header">
     <div class="slide-bar-container">
     	<ul class="clearfix">
-            <% @news_posts.each_with_index do |news_post, index| %>
-                <li><%= image_tag "post/#{news_post.image}" %><%= index %></li>
+            <% @news_posts.each do |news_post| %>
+                <li><%= image_tag "post/#{news_post.image}" %></li>
                 <div class="slide-filter"></div>
                 <a href="#"><p><%= news_post.title %></p></a>
             <% end %>
@@ -28,10 +28,10 @@
             <%= image_tag "small-news1", :style => "width:100%" %>
         </div>
         <div class="new-box" style="margin-right:5%;">
-            <%= image_tag "small-news1", :style => "width:100%" %>
+            <%= image_tag "small-news2", :style => "width:100%" %>
         </div>
         <div class="new-box">
-            <%= image_tag "small-news1", :style => "width:100%" %>
+            <%= image_tag "small-news3", :style => "width:100%" %>
         </div>
     </div>
 
