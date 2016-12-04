@@ -1,5 +1,5 @@
 var currentIndex = 0;
-var slideUl = null
+var slideUl = null;
 
 $(document).ready(function() {	
 	// set HOME menu selected
@@ -9,10 +9,9 @@ $(document).ready(function() {
 	slideUl = $('.slide-bar-container ul li').length;
 	$('.slide-bar-container ol li').eq(0).addClass("active");
 	
-	for(var i=1; i<slideUl; i++){
+	for(var i = 1; i < slideUl; i++)
 		$('.slide-bar-container ul li').eq(i).css('left','100%');
-	}
-	for(var i=0; i<slideUl; i++){
+	for(var i=0; i<slideUl; i++) {
 		$('.slide-bar-container ul li').eq(i).css('z-index',i);
 		$('.slide-bar-container ul p').eq(i).css('z-index',i+$('.slide-bar-container .slide-filter').css('z-index'));
 	}

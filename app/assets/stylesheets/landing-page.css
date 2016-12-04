@@ -149,6 +149,19 @@ body, h1, h2, h3, h4, h5, h6 {
     ul.banner-social-buttons > li:last-child {
         margin-bottom: 0;
     }
+
+    footer {
+    	padding: 20px 0 !important;
+    }
+
+    footer .footer-menu-divider {
+    	display: none;
+    }
+
+    p.copyright {
+    	margin: 0 !important;
+    	text-align: center;
+    }
 }
 
 footer {

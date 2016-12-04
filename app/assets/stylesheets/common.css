@@ -21,11 +21,6 @@
 	opacity: 0.5;
 }
 
-.search-bar-container {
-	width: calc(100% - 75px);
-    display: inline-block;
-}
-
 .search-go-btn {
 	margin-left: 10px;
 }
@@ -39,5 +34,12 @@
 		width:80%;
 		margin:0 auto;
 		padding:0;
+	}
+
+	footer ul li {
+		text-align: center;
+	    width: 33%;
+	    float: left;
+	    height: 2em;
 	}
 }
