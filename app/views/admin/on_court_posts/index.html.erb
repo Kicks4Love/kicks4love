@@ -1,0 +1,30 @@
+<h1>Admin On Court Posts</h1>
+
+<% if @on_court_posts.any? %>
+<%= link_to "New on court post", new_admin_on_court_post_path %>
+<table>
+  <tbody>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <!-- <th>Image</th> -->
+      <th></th>
+    </tr>
+    <% @on_court_posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td>
+        <%= link_to "Edit", edit_admin_on_court_post_path(post) %>
+        |
+        <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+  <h2>No posts yet</h2>
+  <%= link_to "Create a new on court post now", new_admin_on_court_post_path %>
+<% end %>

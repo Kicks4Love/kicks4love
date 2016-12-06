@@ -1,7 +1,6 @@
-class Admin::OnCourtPostsController < ApplicationController
-  before_action :get_on_court_post, :only => [:edit, :update]
+class Admin::OnCourtPostsController < Admin::AdminController
+  before_action :get_on_court_post, :only => [:edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:destroy]
-
   def index
     @page_title = "Kicks4Love Admin | On Court Posts"
 		@on_court_posts = OnCourtPost.latest
@@ -50,7 +49,7 @@ class Admin::OnCourtPostsController < ApplicationController
   private
 
   def on_court_post_params
-		params.require(:on_court_post).permit(:title, :content, :image)
+		params.require(:on_court_post).permit(:title, :content) # add other params later
 	end
 
 	def get_on_court_post
