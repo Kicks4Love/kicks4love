@@ -1,4 +1,5 @@
 # Temporary/log files #
 ###################
-log/*
-tmp/*
+*.log
+*.tmp
+*.cache
