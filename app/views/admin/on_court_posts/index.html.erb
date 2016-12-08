@@ -1,23 +1,32 @@
-<h1>Admin On Court Posts</h1>
+<h3>Admin On Court Posts</h3>
 
 <% if @on_court_posts.any? %>
-<%= link_to "New on court post", new_admin_on_court_post_path %>
-<table>
-  <tbody>
+<%= link_to "New on court post", new_admin_on_court_post_path, :class => "btn btn-primary" %>
+<br>
+<table class="table table-bordered" style="table-layout: fixed">
+  <thead>
     <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <!-- <th>Image</th> -->
+      <th>Title (English)</th>
+      <th>中文标题 </th>
+      <th>Content (English)</th>
+      <th>文章内容（中文）</th>
+      <th>Cover Image</th>
+      <th>Main Image</th>
       <th></th>
     </tr>
+  </thead>
+  <tbody>
     <% @on_court_posts.each do |post| %>
     <tr>
-      <td><%= post.title %></td>
-      <td><%= post.content %></td>
+      <td><%= post.title_en %></td>
+      <td><%= post.title_cn %></th>
+      <td><%= post.content_en %></td>
+      <td><%= post.content_cn %></td>
+      <td><%= image_tag "on_court_post/#{post.cover_image}", :height => "50px"%></td>
+      <td><%= image_tag "on_court_post/#{post.main_image}", :height => "50px"%></td>
       <td>
-        <%= link_to "Edit", edit_admin_on_court_post_path(post) %>
-        |
-        <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete %>
+        <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
+        <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>
       </td>
     </tr>
     <% end %>
@@ -26,5 +35,5 @@
 
 <% else %>
   <h2>No posts yet</h2>
-  <%= link_to "Create a new on court post now", new_admin_on_court_post_path %>
+  <%= link_to "Create a new on court post now", new_admin_on_court_post_path, :class => "btn btn-primary" %>
 <% end %>

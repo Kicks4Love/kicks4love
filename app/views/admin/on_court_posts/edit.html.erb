@@ -1,4 +1,4 @@
-<h1>Edit <%= @on_court_post.title %> </h1>
+<h1>Edit <%= @on_court_post.title_en %> </h1>
 <%= form_for @on_court_post, :url => admin_on_court_post_path(@on_court_post), :method => :PUT do |f| %>
 	<%= render :partial => "oncourtform", :locals => {:form => f} %>
 <% end %>

@@ -1,13 +1,19 @@
-<label>Title:</label>
-<%= form.text_field :title %>
-
+<label>Title (English): </label>
+<%= form.text_field :title_en %>
 <br>
-
-<label>Content:</label>
-<%= form.text_area :content %>
-
+<label>中文标题: </label>
+<%= form.text_field :title_cn %>
 <br>
-
-
-
+<label>Content (English): </label>
+<%= form.text_area :content_en %>
+<br>
+<label>文章内容（中文）: </label>
+<%= form.text_area :content_cn %>
+<br>
+<label>Cover Image: </label>
+<%= form.select :cover_image, @image_list %>
+<br>
+<label>Main Image: </label>
+<%= form.select :main_image, @image_list %>
+<br>
 <%= form.submit %>
