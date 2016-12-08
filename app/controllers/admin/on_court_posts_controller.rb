@@ -1,5 +1,6 @@
 class Admin::OnCourtPostsController < Admin::AdminController
   before_action :get_on_court_post, :only => [:edit, :update, :destroy]
+  before_action :get_image_list, :only => [:new, :edit]
   skip_before_filter :verify_authenticity_token, :only => [:destroy]
   def index
     @page_title = "Kicks4Love Admin | On Court Posts"
@@ -49,11 +50,17 @@ class Admin::OnCourtPostsController < Admin::AdminController
   private
 
   def on_court_post_params
-		params.require(:on_court_post).permit(:title, :content) # add other params later
+    params
+    .require(:on_court_post)
+    .permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, :main_image)
 	end
 
 	def get_on_court_post
 		@on_court_post = OnCourtPost.find_by_id(params[:id])
 	end
+
+  def get_image_list
+    @image_list = Dir.glob("#{Rails.root}/app/assets/images/on_court_post/*").map{|path| path.split('/').last}
+  end
 
 end
