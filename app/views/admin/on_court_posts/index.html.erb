@@ -1,8 +1,12 @@
-<h3>Admin On Court Posts</h3>
+<h1>Admin On Court Posts</h1>
+
+<br/>
 
 <% if @on_court_posts.any? %>
 <%= link_to "New on court post", new_admin_on_court_post_path, :class => "btn btn-primary" %>
-<br>
+
+<br/><br/>
+
 <table class="table table-bordered" style="table-layout: fixed">
   <thead>
     <tr>
@@ -37,3 +41,7 @@
   <h2>No posts yet</h2>
   <%= link_to "Create a new on court post now", new_admin_on_court_post_path, :class => "btn btn-primary" %>
 <% end %>
+
+<br/>
+
+<p><%= link_to "Back", admin_root_path %></p>
