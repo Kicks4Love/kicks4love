@@ -8,7 +8,7 @@ class MainController < ApplicationController
 
 	def features
 		@page_title = 'Kicks4Love | Features'
-		@all_feature_posts = FeaturePost.order(:created_at => :DESC).limit(4)
+		@feature_posts = FeaturePost.order(:created_at => :DESC).paginate(:page => 1)
 	end
 
 
@@ -19,7 +19,7 @@ class MainController < ApplicationController
 		when 'index'
 			@return_posts = Post.where(:post_type => :POST).paginate(:page => params[:next_page]).order(:created_at => :DESC)
 		when 'features'
-			@return_posts = FeaturePost.order(:created_at => :DESC)
+			@return_posts = FeaturePost.paginate(:page => params[:next_page]).order(:created_at => :DESC)
 		else
 			head :ok and return
 		end
