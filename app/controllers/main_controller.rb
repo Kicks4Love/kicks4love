@@ -3,7 +3,7 @@ class MainController < ApplicationController
 	def index
 		all_posts = Post.order(:created_at => :DESC)
 		@news_posts = all_posts.where(:post_type => :NEWS)
-		@regular_posts = all_posts.where(:post_type => :POST).limit(4)
+		@regular_posts = all_posts.where(:post_type => :POST).paginate(:page => 1)
 	end
 
 	def features
@@ -13,27 +13,18 @@ class MainController < ApplicationController
 
 
 	def get_posts
-		render :nothing => true and return unless params[:index].present?
+		head :ok and return unless params[:next_page].present?
 
 		case params[:source_page]
 		when 'index'
-			@all_posts = Post.where(:post_type => :POST).order(:created_at => :DESC)
+			@return_posts = Post.where(:post_type => :POST).paginate(:page => params[:next_page]).order(:created_at => :DESC)
 		when 'features'
-			@all_posts = FeaturePost.order(:created_at => :DESC)
+			@return_posts = FeaturePost.order(:created_at => :DESC)
 		else
-			render :nothing => true and return
+			head :ok and return
 		end
 
-		return_posts = []
-		no_more = false
-
-		@all_posts.each_with_index { |post, index| 
-			next if index < params[:index].to_i || index > params[:index].to_i + 2
-			no_more = @all_posts[index+1].nil?
-			return_posts << post
-		}
-
-		render :json => {:no_more => no_more, :posts => return_posts}.to_json, :layout => false
+		render :json => {:no_more => @return_posts.total_pages == @return_posts.current_page, :posts => @return_posts}.to_json, :layout => false
 	end
 
 end

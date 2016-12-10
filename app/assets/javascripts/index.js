@@ -81,15 +81,16 @@ $(document).ready(function() {
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
 	$('.to-view-more').click(function() {
-		var postIndex = $('#post_index');
+		var nextPage = $('#next_page');
 		var target = $(this);
 		target.find('span').text('Loading...');
 
 		$.ajax({
 			type: 'GET',
-            url: '/main/get_posts?index=' + postIndex.val() +'&source_page=index',
+            url: '/main/get_posts?next_page=' + nextPage.val() +'&source_page=index',
             dataType: "json",
             success: function(data) { 
+            	console.log(data);
             	var parent = target.parent('.main');
             	$('.kicks-box.last').removeClass('last');
             	for (var i = 0; i < data.posts.length; i++) {
@@ -109,7 +110,7 @@ function initLoadPostHandler() {
             	}
             	if (!data.no_more) {
 	            	parent.append('<div class="to-view-more"><span>Click To View More</span></div>');
-	            	postIndex.val(parseInt(postIndex.val()) + 3);
+	            	nextPage.val(parseInt(nextPage.val()) + 1);
 	            }
             	target.fadeOut();
             	$('.wait_load').fadeIn(1000);
