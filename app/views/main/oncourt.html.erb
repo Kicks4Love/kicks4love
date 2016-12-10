@@ -1,0 +1,56 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "oncourt.css" %>
+<% end %>
+
+    <a name="home"></a>
+    <div class="header">
+    </div>
+
+    <div class="main">
+    	<div class="on-court">
+        	On Court
+      </div>
+      <ul class="clearfix">
+          <% @all_on_court_posts.each_with_index do |post, index| %>
+            <% if (index + 1) % 3 == 0 %>
+              <li class="last">
+                  <a href="#">
+                      <%= image_tag "on_court_post/#{post.cover_image}" %>
+                      <p><%= post.title_en %></p>
+                  </a>
+              </li>
+            <% else %>
+              <li>
+                  <a href="#">
+                      <%= image_tag "on_court_post/#{post.cover_image}" %>
+                      <p><%= post.title_en %></p>
+                  </a>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <% if @all_on_court_posts.size > 6 %>
+            <div class="to-view-more">
+                <span>Click To View More</span>
+            </div>
+        <% end %>
+
+          <ul>
+            
+          <li class="wait_load">
+            <a href="#">
+                  <img src="images/e2a6dd5cjw1f8h8dmsivfj20m80xe7d0.jpg" />
+                  <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+              </a>
+          </li>
+          <li class="wait_load">
+            <a href="#">
+                  <img src="images/e2a6dd5cjw1f8h8dmsivfj20m80xe7d0.jpg" />
+                  <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+              </a>
+          </li>
+
+        </ul>
+
+    </div>

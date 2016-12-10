@@ -11,6 +11,11 @@ class MainController < ApplicationController
 		@feature_posts = FeaturePost.order(:created_at => :DESC).paginate(:page => 1)
 	end
 
+	def oncourt
+		@page_title = 'Kicks4Love | On Court'
+		@all_on_court_posts = OnCourtPost.latest.limit(6)
+	end
+
 
 	def get_posts
 		head :ok and return unless params[:next_page].present?
@@ -20,6 +25,8 @@ class MainController < ApplicationController
 			@return_posts = Post.where(:post_type => :POST).paginate(:page => params[:next_page]).order(:created_at => :DESC)
 		when 'features'
 			@return_posts = FeaturePost.paginate(:page => params[:next_page]).order(:created_at => :DESC)
+		when 'oncourt'
+			@regular_posts = OnCourtPost.latest.paginate(:page => params[:next_page])
 		else
 			head :ok and return
 		end
