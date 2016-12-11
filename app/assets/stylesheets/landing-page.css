@@ -1637,15 +1637,3 @@ p.product_descr {
     float: left;
     margin: 0% 0 0% 3.6%;
 }
-@media (max-width: 768px)
-.span_1_of_about1 {
-    width: 100%;
-}
-@media (max-width: 800px)
-.span_1_of_about1 {
-    width: 100%;
-}
-@media only screen and (max-width: 800px)
-.col {
-    margin: 1% 0 1% 0%;
-}
