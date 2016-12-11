@@ -6,19 +6,19 @@ $(document).ready(function() {
 	$('#navbar ul li').eq(0).addClass('active');
 
 	/*--轮播图-slidebar--*/
-	Slide.slideLength = $('.slide-bar-container ul li').length;
 	Slide.slideUnorderList = $('.slide-bar-container ul li');
+	Slide.slideLength = Slide.slideUnorderList.length;
 	Slide.slideOrderList = $('.slide-bar-container ol li');
 
 	Slide.slideOrderList.eq(0).addClass("active");
 	
 	for(var i = 1; i < Slide.slideLength; i++) Slide.slideUnorderList.eq(i).css('left','100%');
 	for(var i = 0; i < Slide.slideLength; i++) {
-		Slide.slideUnorderList.eq(i).css('z-index',i);
+		Slide.slideUnorderList.eq(i).css('z-index', i);
 		$('.slide-bar-container ul p').eq(i).css('z-index',i+$('.slide-bar-container .slide-filter').css('z-index'));
 	}
 	
-	var timer = setInterval(slide,2000);
+	var timer = setInterval(slide, 2000);
 	
 	$('.slide-bar-container ul').hover(function(){
 		$('.slide-bar-container .slide-filter').fadeIn();
@@ -27,32 +27,27 @@ $(document).ready(function() {
 	},function(){
 		$('.slide-bar-container .slide-filter').fadeOut();
 		$('.slide-bar-container ul p').eq(currentIndex).fadeOut();
-		timer=setInterval(slide,2000);
+		timer = setInterval(slide, 2000);
 	});
 	
-	$('.slide-bar-container ol li').each(function() {
+	Slide.slideOrderList.each(function() {
 		$(this).hover(function(){
 			clearInterval(timer);
-			if(currentIndex<$(this).index()){
-				$('.slide-bar-container ol li').eq(currentIndex).removeClass("active");
-				currentIndex=$(this).index();
-				$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-				$('.slide-bar-container ul li').eq(currentIndex).animate({
-					left:'0%'
-				})
-			}else if(currentIndex>$(this).index()){
-				$('.slide-bar-container ol li').eq(currentIndex).removeClass("active");
-				currentIndex=$(this).index();
-				$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-				$('.slide-bar-container ul li').eq(currentIndex).css('left',0);
-				for(var j=currentIndex+1; j<Slide.slideLength; j++){
-					$('.slide-bar-container ul li').eq(j).animate({
-						left:'100%'
-					})
-				}
+			if(currentIndex < $(this).index()){
+				Slide.slideOrderList.eq(currentIndex).removeClass("active");
+				currentIndex = $(this).index();
+				Slide.slideOrderList.eq(currentIndex).addClass("active");
+				Slide.slideUnorderList.eq(currentIndex).animate({ left:'0%' });
+			} else if (currentIndex > $(this).index()){
+				Slide.slideOrderList.eq(currentIndex).removeClass("active");
+				currentIndex = $(this).index();
+				Slide.slideOrderList.eq(currentIndex).addClass("active");
+				Slide.slideUnorderList.eq(currentIndex).css('left', 0);
+				for(var j = currentIndex+1; j < Slide.slideLength; j++)
+					Slide.slideUnorderList.eq(j).animate({ left:'100%' });
 			}		
 		}, function(){
-			timer = setInterval(slide,2000);
+			timer = setInterval(slide, 2000);
 		})
 	});
 	
