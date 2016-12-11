@@ -70,6 +70,11 @@ $(document).ready(function() {
 		title.fadeOut(1000);
 	});
 
+	setTimeout(function() { 
+		$('.header > img').fadeOut('slow'); 
+		$('.logo-pendant').slideDown('slow');
+	}, 2000);
+
 	initLoadPostHandler();
 });
 

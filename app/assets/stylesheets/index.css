@@ -1,12 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
 
-.header{
-	width:100%;
-	margin:80px auto 0;;
-	padding:360px 0 0 0;
-	background:url(../assets/logo1.png) no-repeat;
-	background-position:center -5px;
+.header {
+	width: 100%;
+	margin-top: 31px;
+	text-align: center;
+}
+.header img {
+	margin: 20px 0;
 }
 
 .slide-bar-container{
@@ -16,7 +17,6 @@
 	overflow:hidden;
 	position:relative;
 }
-
 .slide-bar-container ul{
 	display:block;
 	height:100%;
