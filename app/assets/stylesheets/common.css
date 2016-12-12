@@ -13,20 +13,19 @@
 }
 
 .navbar-brand > img {
-	width: 175px;
-	margin-top: -6px;
+	 width: 175px;
+	 margin-top: -6px;
 }
-
 .navbar-brand > img:hover {
-	opacity: 0.5;
+	 opacity: 0.5;
 }
 
 .search-go-btn {
-	margin-left: 10px;
+	 margin-left: 10px;
 }
 
 .main {
-	width: 100%;
+	 width: 100%;
 }
 
 .logo-pendant {

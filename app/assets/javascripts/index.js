@@ -71,8 +71,8 @@ $(document).ready(function() {
 	});
 
 	setTimeout(function() { 
-		$('.header > img').fadeOut('slow'); 
-		$('.logo-pendant').slideDown('slow');
+		$('.header > img').slideUp('slow'); 
+		$('.logo-pendant').fadeIn('slow');
 	}, 2000);
 
 	initLoadPostHandler();
