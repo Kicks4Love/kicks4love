@@ -13,7 +13,7 @@ class MainController < ApplicationController
 
 	def oncourt
 		@page_title = 'Kicks4Love | On Court'
-		@all_on_court_posts = OnCourtPost.latest.limit(6)
+		@all_on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 	end
 
 
@@ -25,8 +25,8 @@ class MainController < ApplicationController
 			@return_posts = Post.where(:post_type => :POST).paginate(:page => params[:next_page]).order(:created_at => :DESC)
 		when 'features'
 			@return_posts = FeaturePost.paginate(:page => params[:next_page]).order(:created_at => :DESC)
-		when 'oncourt'
-			@regular_posts = OnCourtPost.latest.paginate(:page => params[:next_page])
+		when 'on_court'
+			@return_posts = OnCourtPost.paginate(:page => params[:next_page]).latest
 		else
 			head :ok and return
 		end

@@ -28,29 +28,17 @@
               </li>
             <% end %>
           <% end %>
+          <% unless @all_on_court_posts.total_pages == @all_on_court_posts.current_page %>
+              <div class="to-view-more">
+                  <span>Click To View More</span>
+              </div>
+          <% end %>
         </ul>
 
-        <% if @all_on_court_posts.size > 6 %>
-            <div class="to-view-more">
-                <span>Click To View More</span>
-            </div>
-        <% end %>
-
-          <ul>
-            
-          <li class="wait_load">
-            <a href="#">
-                  <img src="images/e2a6dd5cjw1f8h8dmsivfj20m80xe7d0.jpg" />
-                  <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
-              </a>
-          </li>
-          <li class="wait_load">
-            <a href="#">
-                  <img src="images/e2a6dd5cjw1f8h8dmsivfj20m80xe7d0.jpg" />
-                  <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
-              </a>
-          </li>
-
-        </ul>
+        <%= hidden_field_tag "next_page", "2", :name => nil %>
 
     </div>
+
+    <% content_for :end_of_body do %>
+        <%= javascript_include_tag "oncourt.js" %>
+    <% end %>
