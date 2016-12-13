@@ -1,14 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
 
-.header{
-	width:100%;
-	padding:80px 0;
-}
-
 .main{
 	width:90%;
-	margin:0 auto;
+	margin:90px auto 0;
 }
 .on-court{
 	width:60%;
