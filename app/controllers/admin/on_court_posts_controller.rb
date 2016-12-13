@@ -20,10 +20,10 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def create
     new_post = OnCourtPost.new on_court_post_params
     if new_post.save
-			redirect_to admin_on_court_posts_path, :notice => "New On Court post successfully created"
-		else
-			redirect_to :back, :error => "Error creating new on court post"
-		end
+      redirect_to admin_on_court_posts_path, :notice => "New On Court post successfully created"
+    else
+      redirect_to :back, :error => "Error creating new on court post"
+    end
   end
 
   def edit
@@ -54,11 +54,11 @@ class Admin::OnCourtPostsController < Admin::AdminController
     params
     .require(:on_court_post)
     .permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, :main_image)
-	end
+  end
 
-	def get_on_court_post
-		@on_court_post = OnCourtPost.find_by_id(params[:id])
-	end
+  def get_on_court_post
+    @on_court_post = OnCourtPost.find_by_id(params[:id])
+  end
 
   def get_image_list
     @image_list = Dir.glob("#{Rails.root}/app/assets/images/on_court_post/*").map{|path| path.split('/').last}
