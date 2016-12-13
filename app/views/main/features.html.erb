@@ -8,8 +8,7 @@
     
 <div class="main clearfix">
     <!-- maximum should be three only (more will be loaded by ajax) -->
-    <% @all_feature_posts.each_with_index do |feature_post, index| %>
-        <% next if index > 2 %>
+    <% @feature_posts.each_with_index do |feature_post, index| %>
         <div class="kicks-box clearfix">
             <dl>
                 <dt>
@@ -32,12 +31,12 @@
             </div>
         </div>
     <% end %>
-    <% unless @all_feature_posts[3].nil? %>
+    <% unless @feature_posts.total_pages == @feature_posts.current_page %>
         <div class="to-view-more">
             <span>Click To View More</span>
         </div>
     <% end %>
-    <%= hidden_field_tag "feature_post_index", "3", :name => nil %>
+    <%= hidden_field_tag "next_page", "2", :name => nil %>
 </div>
 
 <% content_for :end_of_body do %>
