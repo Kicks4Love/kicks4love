@@ -37,4 +37,7 @@
 
 <% content_for :end_of_body do %>
     <%= javascript_include_tag "oncourt.js" %>
+    <script type="text/javascript">
+        window.onload = function() { setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000); }
+    </script>
 <% end %>

@@ -27,9 +27,8 @@ $(document).ready(function(){
 		title.fadeOut(1000);
 	});	
 
-	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
-
 	initLoadPostHandler();
+	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
 });
 
 function initLoadPostHandler() {

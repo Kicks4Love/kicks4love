@@ -70,12 +70,11 @@ $(document).ready(function() {
 		title.fadeOut(1000);
 	});
 
-	setTimeout(function() { 
-		$('.header > img').slideUp('slow'); 
-		$('.logo-pendant').fadeIn('slow');
-	}, 2000);
-
 	initLoadPostHandler();
+    setTimeout(function() { 
+        $('.header > img').slideUp('slow'); 
+        $('.logo-pendant').fadeIn('slow');
+    }, 2000);
 });
 
 function initLoadPostHandler() {
@@ -90,7 +89,6 @@ function initLoadPostHandler() {
             url: '/main/get_posts?next_page=' + nextPage.val() +'&source_page=index',
             dataType: "json",
             success: function(data) { 
-            	console.log(data);
             	var parent = target.parent('.main');
             	$('.kicks-box.last').removeClass('last');
             	for (var i = 0; i < data.posts.length; i++) {
