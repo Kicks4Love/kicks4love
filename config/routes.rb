@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  	
+
   	root :to => 'main#index'
 
     get '/features' => 'main#features'
+    get '/oncourt' => 'main#oncourt'
 
   	resources :main do
-  		collection do 
+  		collection do
   			get 'get_posts'
   		end
   	end
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   	namespace :admin do
   		resources :posts
       resources :feature_posts
+      resources :on_court_posts
   	end
 
 end

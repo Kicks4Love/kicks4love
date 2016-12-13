@@ -1,0 +1,40 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "oncourt.css" %>
+<% end %>
+
+<a name="home"></a>
+    <div class="header">
+</div>
+
+<div class="main">
+    <div class="on-court">On Court</div>
+    <ul class="clearfix">
+        <% @all_on_court_posts.each_with_index do |post, index| %>
+            <% if (index + 1) % 3 == 0 %>
+                <li class="last">
+                    <a href="#">
+                        <%= image_tag "on_court_post/#{post.cover_image}" %>
+                        <p><%= post.title_en %></p>
+                    </a>
+                </li>
+            <% else %>
+                <li>
+                    <a href="#">
+                        <%= image_tag "on_court_post/#{post.cover_image}" %>
+                        <p><%= post.title_en %></p>
+                    </a>
+                </li>
+            <% end %>
+        <% end %>
+        <% unless @all_on_court_posts.total_pages == @all_on_court_posts.current_page %>
+            <div class="to-view-more">
+                <span>Click To View More</span>
+            </div>
+        <% end %>
+    </ul>
+    <%= hidden_field_tag "next_page", "2", :name => nil %>
+</div>
+
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "oncourt.js" %>
+<% end %>
