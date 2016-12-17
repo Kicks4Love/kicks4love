@@ -14,11 +14,8 @@
 	    <%= content_for :head %>
 	</head>
   	<body>
-  		<% if flash[:notice] %>
-		    <p style="color:green"><%= flash[:notice] %></p>
-		<% elsif flash[:error] %>
-		    <p style="color:red"><%= flash[:error] %></p>
-		<% end %>
+  		<p class="notice"><%= notice %></p>
+       	<p class="alert"><%= alert %></p>
 
     	<%= yield %>
   	</body>
