@@ -17,13 +17,14 @@ Rails.application.routes.draw do
   devise_scope :admin_user do
     get 'admin/login' => 'admin/sessions#new', :as => :new_admin_user_session
     post 'admin/login' => 'admin/sessions#create', :as => :admin_user_session
-    get 'admin/logout' => 'admin/sessions#destroy', :as => :destroy_admin_user_session
+    delete 'admin/logout' => 'admin/sessions#destroy', :as => :destroy_admin_user_session
   end
 
   namespace :admin do
   	resources :posts
     resources :feature_posts
     resources :on_court_posts
+    resources :admin_users
   end
 
 end

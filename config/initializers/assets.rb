@@ -14,4 +14,5 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.css bootstrap.mi
 Rails.application.config.assets.precompile += %w( common.css landing-page.css )
 Rails.application.config.assets.precompile += %w( index.css feature.css oncourt.css)
 Rails.application.config.assets.precompile += %w( index.js feature.js oncourt.js)
+Rails.application.config.assets.precompile += %w( admin/admin.css )
 Rails.application.config.assets.precompile += %w( admin/posts.js )
