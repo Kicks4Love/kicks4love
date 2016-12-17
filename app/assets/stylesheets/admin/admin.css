@@ -1,0 +1,19 @@
+.bar-notice {
+	color: white;
+	background-color: green;
+}
+
+.bar-alert {
+	color: white;
+	background-color: red;
+}
+
+.current-admin-user-bar {
+	padding: 10px;
+    background-color: gray;
+    color: white;
+}
+
+.current-admin-user-bar a {
+	color: white;
+}

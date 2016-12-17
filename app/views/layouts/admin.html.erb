@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html>
   	<head>
-	    <title><%= @page_title || "Kicks4Love Admin" %></title>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <meta name="description" content="Kicks4Love Admin">
-	    <meta name="author" content="RHBoys">
+  	    <title><%= @page_title || "Kicks4Love Admin" %></title>
+  	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	    <meta name="description" content="Kicks4Love Admin">
+  	    <meta name="author" content="RHBoys">
 
-	    <!-- Bootstrap Core CSS -->
-	    <%= stylesheet_link_tag "bootstrap.min.css" %>
+  	    <!-- Bootstrap Core CSS -->
+  	    <%= stylesheet_link_tag "bootstrap.min.css" %>
 
-	    <%= content_for :head %>
-	</head>
+        <!-- Custom CSS -->
+        <%= stylesheet_link_tag "admin/admin.css" %>
+
+  	    <%= content_for :head %>
+	  </head>
   	<body>
-  		<% if notice %>
-  			<p class="notice"><%= notice %></p>
-  		<% end %>
-  		<% if alert %>
-       		<p class="alert"><%= alert %></p>
-       	<% end %>
+        <% if admin_user_signed_in? %>
+            <div class="row current-admin-user-bar">
+           		  <div class="col-xs-8">
+           			    <label>Login As</label> <%= current_admin_user.email %> 
+           		  </div>
+           		  <div class="col-xs-4 text-right">
+           			    <%= link_to "Logout", destroy_admin_user_session_path, :method => :delete %>
+           		  </div>
+           	</div>
+        <% end %>
 
-       	<div class="row">
-       		<div class="col-xs-8">
-       			<label>Login As</label><%= current_admin_user.email %> 
-       		</div>
-       		<div class="col-xs-4 text-right">
-       			Logout
-       		</div>
-       	</div>
+        <% if notice %>
+              <p class="alert bar-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+              <p class="alert bar-alert"><%= alert %></p>
+        <% end %>
 
-    	<%= yield %>
+        <div class="container">
+    	      <%= yield %>
+        </div>
   	</body>
   	<%= javascript_include_tag "application.js" %>
   	<%= content_for :end_of_body %>
