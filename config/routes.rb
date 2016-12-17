@@ -14,6 +14,13 @@ Rails.application.routes.draw do
 
   	get '/admin', :to => 'admin/dashboard#index', :as => :admin_root
 
+    devise_for :admin_users, :controllers => {:sessions => 'admin/sessions'}, :skip => [:sessions]
+    devise_scope :admin_user do
+      get 'admin/login' => 'admin/sessions#new'
+      post 'admin/login' => 'admin/sessions#create'
+      delete 'admin/logout' => 'admin/sessions#destroy'
+    end
+
   	namespace :admin do
   		resources :posts
       resources :feature_posts
