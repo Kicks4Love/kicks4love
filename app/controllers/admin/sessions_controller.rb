@@ -1,6 +1,7 @@
 class Admin::SessionsController < Devise::SessionsController
 
   layout 'admin'
+  skip_before_filter :verify_authenticity_token, :only => [:destroy]
 # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

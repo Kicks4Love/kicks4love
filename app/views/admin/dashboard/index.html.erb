@@ -8,3 +8,11 @@
 	<li><%= link_to "Features Page", admin_feature_posts_path %></li>
 	<li><%= link_to "On Court Page", admin_on_court_posts_path %></li>
 </ul>
+
+<br/>
+
+<h2>Admin users management</h2>
+<ul>
+	<li><%= link_to "List of Users", admin_admin_users_path %></li>
+	<li><%= link_to "My Account", admin_admin_users_path(current_admin_user) %></li>
+</ul>
