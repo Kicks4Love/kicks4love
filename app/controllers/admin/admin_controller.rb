@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
 
-	layout "admin"
+	layout 'admin'
 
 end
