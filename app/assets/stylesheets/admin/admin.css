@@ -2,7 +2,6 @@
 	color: white;
 	background-color: green;
 }
-
 .bar-alert {
 	color: white;
 	background-color: red;
@@ -13,7 +12,10 @@
     background-color: gray;
     color: white;
 }
-
 .current-admin-user-bar a {
 	color: white;
+}
+
+.table {
+	table-layout: fixed
 }
