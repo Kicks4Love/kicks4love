@@ -2,41 +2,51 @@
 
 <hr/>
 
-<% if @admin_users.any? %>
-<%= link_to "New on court post", new_admin_user_registration_path, :class => "btn btn-primary" %>
+<br/>
 
-<br/><br/>
-
+<h2>Root User:</h2>
 <table class="table table-bordered">
     <thead>
-        <tr>
-            <th>Title (English)</th>
-            <th>中文标题 </th>
-            <th>Content (English)</th>
-            <th>文章内容（中文）</th>
-            <th>Cover Image</th>
-            <th>Main Image</th>
-            <th></th>
-        </tr>
+        <th>Email</th>
+        <th>Login Count</th>
+        <th>Last Login Time</th>
+        <th>Last Sign In IP</th>
+        <th>Created Time</th>
+        <th></th>
     </thead>
-  <tbody>
-      <% @on_court_posts.each do |post| %>
+    <tbody style="<%= 'background-color:lightgreen' if current_admin_user.root_user? %>">
         <tr>
-            <td><%= post.title_en %></td>
-            <td><%= post.title_cn %></th>
-            <td><%= post.content_en %></td>
-            <td><%= post.content_cn %></td>
-            <td><%= image_tag "on_court_post/#{post.cover_image}", :height => "50px"%></td>
-            <td><%= image_tag "on_court_post/#{post.main_image}", :height => "50px"%></td>
+            <td><%= @root_user.email %></td>
+            <td><%= @root_user.sign_in_count %></td>
+            <td><%= @root_user.last_sign_in_at %></td>
+            <td><%= @root_user.last_sign_in_ip %></td>
+            <td><%= @root_user.created_at %></td>
             <td>
-                <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
-                <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>
+                <%= link_to "Edit", edit_admin_user_registration_path(@root_user), :class => "btn btn-primary" %>
             </td>
         </tr>
-      <% end %>
     </tbody>
 </table>
 
+<br/>
+
+<% if @admin_users.any? %>
+    <h2>Admin Users:</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title (English)</th>
+                <th>中文标题 </th>
+                <th>Content (English)</th>
+                <th>文章内容（中文）</th>
+                <th>Cover Image</th>
+                <th>Main Image</th>
+                <th></th>
+            </tr>
+        </thead>
+      <tbody>
+      </tbody>
+    </table>
 <% else %>
     <h2>No admin user exist</h2>
     <% if current_admin_user.root_user? %>
