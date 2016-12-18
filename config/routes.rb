@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     delete 'admin/logout' => 'admin/sessions#destroy', :as => :destroy_admin_user_session
     get 'admin/register' => 'admin/registrations#new', :as => :new_admin_user_registration
     post 'admin/register' => 'admin/registrations#create', :as => :admin_user_registration
+    get 'admin/register/edit' => 'admin/registrations#edit', :as => :edit_admin_user_registration
+    put 'admin/register' => 'admin/registrations#update'
   end
 
   namespace :admin do
