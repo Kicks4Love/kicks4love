@@ -1,7 +1,6 @@
 <h1>Admin Users</h1>
 
 <hr/>
-
 <br/>
 
 <h2>Root User:</h2>
@@ -21,9 +20,7 @@
             <td><%= @root_user.last_sign_in_at %></td>
             <td><%= @root_user.last_sign_in_ip %></td>
             <td><%= @root_user.created_at %></td>
-            <td>
-                <%= link_to "Edit", edit_admin_user_registration_path(@root_user), :class => "btn btn-primary" %>
-            </td>
+            <td><%= link_to "Detail", admin_admin_user_path(@root_user), :class => "btn btn-primary" %></td>
         </tr>
     </tbody>
 </table>
@@ -34,19 +31,27 @@
     <h2>Admin Users:</h2>
     <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>Title (English)</th>
-                <th>中文标题 </th>
-                <th>Content (English)</th>
-                <th>文章内容（中文）</th>
-                <th>Cover Image</th>
-                <th>Main Image</th>
-                <th></th>
-            </tr>
+            <th>Email</th>
+            <th>Login Count</th>
+            <th>Last Login Time</th>
+            <th>Last Sign In IP</th>
+            <th>Created Time</th>
+            <th></th>
         </thead>
-      <tbody>
-      </tbody>
+        <tbody>
+            <% @admin_users.each do |admin_user| %>
+                <tr  style="<%= 'background-color:lightgreen' if current_admin_user.email == admin_user.email %>">
+                    <td><%= admin_user.email %></td>
+                    <td><%= admin_user.sign_in_count %></td>
+                    <td><%= admin_user.last_sign_in_at %></td>
+                    <td><%= admin_user.last_sign_in_ip %></td>
+                    <td><%= admin_user.created_at %></td>
+                    <td><%= link_to "Detail", admin_admin_user_path(admin_user), :class => "btn btn-primary" %></td>
+                <tr/>
+            <% end %>
+        </tbody>
     </table>
+    <%= link_to "Create a new admin user", new_admin_user_registration_path, :class => "btn btn-primary" %>
 <% else %>
     <h2>No admin user exist</h2>
     <% if current_admin_user.root_user? %>
@@ -54,6 +59,6 @@
     <% end %>
 <% end %>
 
-<br/><br/>
+<br/><br/><br/>
 
 <p><%= link_to "Back", admin_root_path %></p>

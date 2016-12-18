@@ -20,7 +20,9 @@
         <% if admin_user_signed_in? %>
             <div class="row current-admin-user-bar">
            		  <div class="col-xs-8">
-           			    <label>Login As</label> <%= current_admin_user.email %> 
+                    <strong><%= link_to 'Admin Home', admin_root_path %></strong> |
+           			    <label>Login As</label>
+                    <%= link_to current_admin_user.email, admin_admin_user_path(current_admin_user) %>
            		  </div>
            		  <div class="col-xs-4 text-right">
            			    <%= link_to "Logout", destroy_admin_user_session_path, :method => :delete %>
