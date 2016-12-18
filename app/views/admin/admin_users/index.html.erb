@@ -1,6 +1,7 @@
 <h1>Admin Users</h1>
 
 <hr/>
+<<<<<<< 5d6aac12b73399a9e68f2f550c872760b8f0d42d
 <<<<<<< 17209feb87695d4a4a5d75a5c16ba59d311111f6
 
 <<<<<<< d7189f0eb0684601448d627ce33bcf03339353ee
@@ -9,6 +10,8 @@
 =======
 >>>>>>> more things adding to admin user pages
 <br/>
+=======
+>>>>>>> change some admin user access logic
 
 >>>>>>> more admin user registrations stuff
 <h2>Root User:</h2>
@@ -27,11 +30,7 @@
             <td><%= @root_user.sign_in_count %></td>
             <td><%= @root_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= @root_user.last_sign_in_ip %></td>
-<<<<<<< 17209feb87695d4a4a5d75a5c16ba59d311111f6
             <td><%= @root_user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-=======
-            <td><%= @root_user.created_at %></td>
->>>>>>> more things adding to admin user pages
             <td><%= link_to "Detail", admin_admin_user_path(@root_user), :class => "btn btn-primary" %></td>
         </tr>
     </tbody>
@@ -55,15 +54,9 @@
                 <tr  style="<%= 'background-color:lightgreen' if current_admin_user.email == admin_user.email %>">
                     <td><%= admin_user.email %></td>
                     <td><%= admin_user.sign_in_count %></td>
-<<<<<<< 17209feb87695d4a4a5d75a5c16ba59d311111f6
                     <td><%= admin_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></td>
                     <td><%= admin_user.last_sign_in_ip %></td>
                     <td><%= admin_user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-=======
-                    <td><%= admin_user.last_sign_in_at %></td>
-                    <td><%= admin_user.last_sign_in_ip %></td>
-                    <td><%= admin_user.created_at %></td>
->>>>>>> more things adding to admin user pages
                     <td><%= link_to "Detail", admin_admin_user_path(admin_user), :class => "btn btn-primary" %></td>
                 <tr/>
             <% end %>
