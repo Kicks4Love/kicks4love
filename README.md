@@ -2,27 +2,18 @@
 
 ## Set up instruction
 
-<ol>
-<li>
-<b>Ruby & Rails</b>
-<ul>
-<li>Make sure you have installed Ruby and Rails</li>
-<li>Otherwise it will not work properly</li>
-</ul>
-</li>
-<li>
-<b>My Sql</b>
-<ul>
-<li>We are using MySql</li>
-<li>Please install that as well</li>
-</ul>
-<li>
-<b>Developer Guide</b>
-<ul>
-<li>Please create a new branch any time modifying the code</li>
-<li>Unless being permitted to do so</li>
-</ul>
-</ol>
+1. **Ruby & Rails**
+  - Make sure you have installed Ruby and Rails
+  - Otherwise it will not work properly
+
+2. **MySql**
+  - We are using MySql
+  - Please install that as well
+
+3. **Developer Guide**
+  - Please create a new branch any time modifying the code
+  - Unless being permitted to do so
+
 Check out this [Link](https://gorails.com/setup/osx/10.12-sierra) for more information for setting up environment
 ```bash
 $ \curl -sSL https://get.rvm.io | bash -s stable    # get RVM
