@@ -38,7 +38,17 @@ class Admin::RegistrationsController < Devise::RegistrationsController
 
 	def create
 		super do |resource|
+			if resource.email.downcase.start_with?('root')
+				redirect_to :back, :alert => 'Email field cannot start with \'root\''
+				return
+			end
 		end
+	end
+
+	protected
+
+	def after_sign_up_path_for(resource)
+  		admin_admin_user_path(resource)
 	end
 
 end
