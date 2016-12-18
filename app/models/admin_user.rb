@@ -16,7 +16,7 @@ class AdminUser < ApplicationRecord
   protected
 
   def not_adding_root_user
-  	errors.add(:email, 'Cannot start with \'root\'') if email.downcase.start_with?('root')
+  	errors.add(:email, 'cannot start with \'root\'') if email.downcase.start_with?('root')
   end
 
 end
