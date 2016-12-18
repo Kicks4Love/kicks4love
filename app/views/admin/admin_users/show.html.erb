@@ -34,10 +34,10 @@
 	is_same_user = @admin_user.email == current_admin_user.email
 %>
 
-<% if current_admin_user.root_user? || is_same_user %>
+<% if is_same_user %>
 	<%= link_to "Edit", edit_admin_user_registration_path(@admin_user), :class => "btn btn-primary" %>
 <% end %>
 
-<% unless is_root_user %>
-	<%= link_to "Delete", admin_admin_user_path(@admin_user), :data => {:confirm => 'Are you sure to delete this admin user?'}, :method => :delete, :class => "btn btn-danger" %>
+<% if !is_root_user && is_same_user %>
+	<%= link_to "Delete", destroy_admin_user_registration_path(@admin_user), :data => {:confirm => 'Are you sure to delete this admin user?'}, :method => :delete, :class => "btn btn-danger" %>
 <% end %>
