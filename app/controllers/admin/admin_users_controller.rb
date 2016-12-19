@@ -1,5 +1,6 @@
 class Admin::AdminUsersController < Admin::AdminController
 
+	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_admin_user, :only => [:show, :destroy]
 
 	def index
@@ -12,10 +13,22 @@ class Admin::AdminUsersController < Admin::AdminController
 
 	def destroy
 		if @admin_user.root_user?
-			redirect_to :back, :alert => 'Root user cannot be deleted'
+			redirect_to :back, :alert => 'Root user cannot be deleted' and return
 		end
 
-		redirect_to new_admin_user_session_path, :notice => 'Your account deleted successfully'
+		is_root_user = current_admin_user.root_user?
+		sign_out @admin_user unless is_root_user
+
+		if @admin_user.destroy
+			if is_root_user
+				redirect_to admin_admin_users_path, :notice => "#{@admin_user.email} deleted successfully"
+			else
+				redirect_to new_admin_user_session_path, :notice => 'Account deleted successfully'
+			end
+			return
+		end
+			
+		redirect_to :back, :alert => 'Unable to destroy the admin user: ' << @admin_user.errors[:base].to_s
 	end
 
 	private
