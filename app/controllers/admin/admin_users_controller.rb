@@ -1,6 +1,6 @@
 class Admin::AdminUsersController < Admin::AdminController
 
-	before_action :get_admin_user, :only => [:show]
+	before_action :get_admin_user, :only => [:show, :destroy]
 
 	def index
 		@root_user = AdminUser.root_user
@@ -8,6 +8,14 @@ class Admin::AdminUsersController < Admin::AdminController
 	end
 
 	def show
+	end
+
+	def destroy
+		if @admin_user.root_user?
+			redirect_to :back, :alert => 'Root user cannot be deleted'
+		end
+
+		redirect_to new_admin_user_session_path, :notice => 'Your account deleted successfully'
 	end
 
 	private

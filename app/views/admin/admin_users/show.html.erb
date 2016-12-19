@@ -39,5 +39,9 @@
 <% end %>
 
 <% if !is_root_user && is_same_user %>
-	<%= link_to "Delete", destroy_admin_user_registration_path(@admin_user), :data => {:confirm => 'Are you sure to delete this admin user?'}, :method => :delete, :class => "btn btn-danger" %>
+	<%= link_to "Delete", admin_admin_user_path(@admin_user), :data => {:confirm => 'Are you sure to delete this admin user?'}, :method => :delete, :class => "btn btn-danger" %>
 <% end %>
+
+<br/><br/>
+
+<%= link_to 'Back', :back %>
