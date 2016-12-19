@@ -38,7 +38,6 @@
 	<%= link_to "Edit", edit_admin_user_registration_path(@admin_user), :class => "btn btn-primary" %>
 <% end %>
 
-<<<<<<< 5d6aac12b73399a9e68f2f550c872760b8f0d42d
 <% if !is_root_user && (is_same_user || current_admin_user.root_user?) %>
 	<%= link_to "Delete", admin_admin_user_path(@admin_user), :data => {:confirm => 'Are you sure to delete this admin user?'}, :method => :delete, :class => "btn btn-danger" %>
 <% end %>
@@ -46,8 +45,3 @@
 <br/><br/>
 
 <%= link_to 'Back', :back %>
-=======
-<% if !is_root_user && is_same_user %>
-	<%= link_to "Delete", destroy_admin_user_registration_path(@admin_user), :data => {:confirm => 'Are you sure to delete this admin user?'}, :method => :delete, :class => "btn btn-danger" %>
-<% end %>
->>>>>>> change some admin user access logic
