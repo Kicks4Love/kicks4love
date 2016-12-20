@@ -13,7 +13,7 @@
 <p><%= @admin_user.sign_in_count %></p>
 
 <label>Last Login Time:</label>
-<p><%= @admin_user.last_sign_in_at %></p>
+<p><%= @admin_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></p>
 
 <label>Last Login IP:</label>
 <p><%= @admin_user.last_sign_in_ip %></p>
@@ -22,10 +22,10 @@
 <p><%= @admin_user.current_sign_in_ip %></p>
 
 <label>Created Time:</label>
-<p><%= @admin_user.created_at %></p>
+<p><%= @admin_user.created_at.strftime("%Y-%m-%d %H:%M") %></p>
 
 <label>Last Update Time:</label>
-<p><%= @admin_user.updated_at %></p>
+<p><%= @admin_user.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
 
 <br/>
 

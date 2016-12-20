@@ -16,9 +16,9 @@
         <tr>
             <td><%= @root_user.email %></td>
             <td><%= @root_user.sign_in_count %></td>
-            <td><%= @root_user.last_sign_in_at %></td>
+            <td><%= @root_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= @root_user.last_sign_in_ip %></td>
-            <td><%= @root_user.created_at %></td>
+            <td><%= @root_user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= link_to "Detail", admin_admin_user_path(@root_user), :class => "btn btn-primary" %></td>
         </tr>
     </tbody>
@@ -42,9 +42,9 @@
                 <tr  style="<%= 'background-color:lightgreen' if current_admin_user.email == admin_user.email %>">
                     <td><%= admin_user.email %></td>
                     <td><%= admin_user.sign_in_count %></td>
-                    <td><%= admin_user.last_sign_in_at %></td>
+                    <td><%= admin_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></td>
                     <td><%= admin_user.last_sign_in_ip %></td>
-                    <td><%= admin_user.created_at %></td>
+                    <td><%= admin_user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
                     <td><%= link_to "Detail", admin_admin_user_path(admin_user), :class => "btn btn-primary" %></td>
                 <tr/>
             <% end %>
