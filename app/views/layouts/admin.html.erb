@@ -14,9 +14,12 @@
         <!-- Custom CSS -->
         <%= stylesheet_link_tag "admin/admin.css" %>
 
-  	    <%= content_for :head %>
+        <!-- Third Party JS -->
+        <%= javascript_include_tag "application.js" %>
 	  </head>
   	<body>
+        <%= content_for :head %>
+
         <% if admin_user_signed_in? %>
             <div class="row current-admin-user-bar">
            		  <div class="col-xs-8">
@@ -40,7 +43,7 @@
         <div class="container">
     	      <%= yield %>
         </div>
+
+        <%= content_for :end_of_body %>
   	</body>
-  	<%= javascript_include_tag "application.js" %>
-  	<%= content_for :end_of_body %>
 </html>
