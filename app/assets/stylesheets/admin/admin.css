@@ -21,3 +21,7 @@
 .table {
 	table-layout: fixed
 }
+
+.no-margin {
+	margin: 0;
+}
