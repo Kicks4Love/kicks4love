@@ -1,21 +1,21 @@
 <h1>Admin Post</h1>
 
-<br>
+<hr/>
 
-<%= link_to "New Post", new_admin_post_path %>
+<% if @posts.any? || params[:filter].present? %>
+	<%= link_to "Create new post", new_admin_post_path, :class => "btn btn-primary" %>
 
-<br><br>
+	<br/><br/>
 
-<%= form_for :filter, :url => admin_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
-    <label>Type</label>
-     <%= f.select :post_type, options_for_select(Post.post_types.keys, default = params[:filter].nil? ? '' : params[:filter][:type]), :include_blank => true %>
+	<%= form_for :filter, :url => admin_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
+	    <label>Type:</label>
+	     <%= f.select :post_type, options_for_select(Post.post_types.keys, default = params[:filter].nil? ? '' : params[:filter][:type]), :include_blank => true %>
 
-    <%= f.submit 'Filter'  %>
-    <%= link_to 'Clear Filter', admin_posts_path %>
-<% end %>
-
-<% if @posts.any? %>
-	<table border="1" style="width:100%">
+	    <%= f.submit 'Filter', :class => "btn btn-default"  %>
+	    <%= link_to 'Clear Filter', admin_posts_path %>
+	<% end %>
+	<br/>
+	<table class="table table-bordered">
 		<tbody>
 			<tr>
 				<th></th>
@@ -40,9 +40,13 @@
 		</tbody>
 	</table>
 <% else %>
-	<p>No Record</p>
+	<h2>No Record</h2>
+
+	<br/>
+
+	<%= link_to "Create a new post now", new_admin_post_path, :class => "btn btn-primary" %>
 <% end %>
 
 <br><br>
 
-<p><%= link_to "Back", admin_root_path %></p>
+<p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>
