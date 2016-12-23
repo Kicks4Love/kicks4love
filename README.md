@@ -1,6 +1,6 @@
 # kicks4love
 
-## Set up instruction
+## Setup instructions
 
 1. **Ruby & Rails**
   - Make sure you have installed Ruby and Rails
@@ -31,3 +31,13 @@ $ bundle config --delete bin                        # Re-configure
 $ rake rails:update:bin                             # version control
 $ git add bin
 ```
+
+--------
+
+## Post-Setup instructions
+
+Run this line of code in your Rails console first (*notice: you can create whatever password you like for your root user*)
+```Ruby
+AdminUser.new(:email => "root@kicks4love.com", :password => ‘"up to you", :password_confirmation => "up to you").save(:validate => false)
+```
+In order to predefine a root user so that you can login to `Kicks4Love Admin` with root user role.
