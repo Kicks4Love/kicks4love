@@ -40,7 +40,7 @@
         </thead>
         <tbody>
             <% @admin_users.each do |admin_user| %>
-                <tr  style="<%= 'background-color:lightgreen' if current_admin_user.email == admin_user.email %>">
+                <tr style="<%= 'background-color:lightgreen' if current_admin_user.email == admin_user.email %>">
                     <td><%= admin_user.email %></td>
                     <td><%= admin_user.sign_in_count %></td>
                     <td><%= admin_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></td>
@@ -51,7 +51,9 @@
             <% end %>
         </tbody>
     </table>
-    <%= link_to "Create a new admin user", new_admin_user_registration_path, :class => "btn btn-primary" %>
+    <% if current_admin_user.root_user? %>
+        <%= link_to "Create a new admin user", new_admin_user_registration_path, :class => "btn btn-primary" %>
+    <% end %>
 <% else %>
     <h2>No admin user exist</h2>
     <% if current_admin_user.root_user? %>

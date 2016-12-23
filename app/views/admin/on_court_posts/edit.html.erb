@@ -1,6 +1,11 @@
 <h1>Edit <%= @on_court_post.title_en %> </h1>
+
+<hr/><br/>
+
 <%= form_for @on_court_post, :url => admin_on_court_post_path(@on_court_post), :method => :PUT do |f| %>
 	<%= render :partial => "oncourtform", :locals => {:form => f} %>
 <% end %>
 
-<%= link_to "Back", admin_on_court_posts_path %>
+<br/>
+
+<%= link_to "Back", admin_on_court_posts_path, :class => "btn btn-default" %>
