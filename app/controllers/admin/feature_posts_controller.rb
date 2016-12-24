@@ -6,6 +6,12 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def index
 		@page_title = "Kicks4Love Admin | Feature Posts"
 		@feature_posts = FeaturePost.all.order(:created_at => :DESC)
+
+		if params[:filter].present?
+			session[:feature_post_per_page] = params[:filter][:per_page].to_i
+		end
+		@per_page = session[:feature_post_per_page] || 10
+		@feature_posts = @feature_posts.paginate(:page => params[:page] || 1, :per_page => session[:feature_post_per_page] || 10)
 	end
 
 	def new
