@@ -1,11 +1,11 @@
 .bar-notice {
 	color: white;
-	background-color: green;
+	background-color: lightgreen;
 }
 
 .bar-alert, #error_explanation {
 	color: white;
-	background-color: red;
+	background-color: pink;
 }
 
 .current-admin-user-bar {

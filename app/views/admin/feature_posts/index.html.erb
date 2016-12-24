@@ -1,13 +1,24 @@
 <h1>Admin Features Post</h1>
 
-<br>
-
-<%= link_to "New Feature Post", new_admin_feature_post_path %>
-
-<br><br>
+<hr/>
 
 <% if @feature_posts.any? %>
-	<table border="1" style="width:100%">
+	<%= link_to "Create new feature post", new_admin_feature_post_path, :class => "btn btn-primary" %>
+
+	<br><br>
+
+	<%= form_for :filter, :url => admin_feature_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
+	    <label>Per Page:</label>
+	    <%= f.radio_button :per_page, 5, :checked => @per_page == 5 %>
+	    <%= f.label :per_page, 5, :value => 5 %>
+	    <%= f.radio_button :per_page, 10, :checked => @per_page == 10 %>
+	    <%= f.label :per_page, 10, :value => 10  %>
+
+	    <%= f.submit 'Filter', :class => "btn btn-default"  %>
+	    <%= link_to 'Clear Filter', admin_feature_posts_path %>
+	<% end %>
+	<br/>
+	<table class="table table-bordered">
 		<tbody>
 			<tr>
 				<th></th>
@@ -32,9 +43,13 @@
 		</tbody>
 	</table>
 <% else %>
-	<p>No Record</p>
+	<h2>No Record</h2>
+
+	<br/>
+
+	<%= link_to "Create a new feature post now", new_admin_feature_post_path, :class => "btn btn-primary" %>
 <% end %>
 
 <br><br>
 
-<p><%= link_to "Back", admin_root_path %></p>
+<p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>

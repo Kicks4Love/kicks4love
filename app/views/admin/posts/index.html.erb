@@ -2,7 +2,7 @@
 
 <hr/>
 
-<% if @posts.any? || params[:filter].present? %>
+<% if @posts.any? %>
 	<%= link_to "Create new post", new_admin_post_path, :class => "btn btn-primary" %>
 
 	<br/><br/>
