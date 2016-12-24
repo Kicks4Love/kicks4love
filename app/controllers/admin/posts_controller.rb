@@ -9,9 +9,12 @@ class Admin::PostsController < Admin::AdminController
 
 		if params[:filter].present?
 			if params[:filter][:post_type].present?
-				@posts = @posts.where(:post_type => params[:filter][:post_type])
+				@posts = @posts.where(:post_type => params[:filter][:post_type]).order(:created_at => :DESC)
 			end
+			session[:post_per_page] = params[:filter][:per_page].to_i
 		end
+		@per_page = session[:post_per_page] || 10
+		@posts = @posts.paginate(:page => params[:page] || 1, :per_page => session[:post_per_page] || 10)
 	end
 
 	def new
@@ -26,7 +29,7 @@ class Admin::PostsController < Admin::AdminController
 		if post.save
 			redirect_to admin_posts_path, :notice => "New post successfully created"
 		else
-			redirect_to :back, :error => "Error creating new post"
+			redirect_to :back, :alert => "Error creating new post"
 		end
 	end
 
@@ -34,7 +37,7 @@ class Admin::PostsController < Admin::AdminController
 		if @post.update_attributes(post_params)
 			flash[:notice] = "The post has been successfully updated"
 		else
-			flash[:error] = "Error occurs while updating the post, please try again"
+			flash[:alert] = "Error occurs while updating the post, please try again"
 		end
 
 		redirect_to admin_posts_path
@@ -49,7 +52,7 @@ class Admin::PostsController < Admin::AdminController
 		if @post.destroy
 			flash[:notice] = "The post has been deleted successfully"
 		else
-			flash[:error] = "Error occurs while deleting the post, please try again"
+			flash[:alert] = "Error occurs while deleting the post, please try again"
 		end
 
 		redirect_to admin_posts_path
