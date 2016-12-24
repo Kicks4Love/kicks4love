@@ -5,7 +5,7 @@ class Admin::PostsController < Admin::AdminController
 
 	def index
 		@page_title = "Kicks4Love Admin | Posts"
-		@posts = Post.all.order(:created_at => :DESC)
+		@posts = Post.latest
 
 		if params[:filter].present?
 			if params[:filter][:post_type].present?

@@ -5,7 +5,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 	def index
 		@page_title = "Kicks4Love Admin | Feature Posts"
-		@feature_posts = FeaturePost.all.order(:created_at => :DESC)
+		@feature_posts = FeaturePost.latest
 
 		if params[:filter].present?
 			session[:feature_post_per_page] = params[:filter][:per_page].to_i

@@ -3,40 +3,51 @@
 <hr/>
 
 <% if @on_court_posts.any? %>
-<%= link_to "New on court post", new_admin_on_court_post_path, :class => "btn btn-primary" %>
+    <%= link_to "Create new on court post", new_admin_on_court_post_path, :class => "btn btn-primary" %>
 
-<br/><br/>
+    <br/><br/>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Title (English)</th>
-            <th>中文标题 </th>
-            <th>Content (English)</th>
-            <th>文章内容（中文）</th>
-            <th>Cover Image</th>
-            <th>Main Image</th>
-            <th></th>
-        </tr>
-    </thead>
-  <tbody>
-      <% @on_court_posts.each do |post| %>
-        <tr>
-            <td><%= post.title_en %></td>
-            <td><%= post.title_cn %></th>
-            <td><%= post.content_en %></td>
-            <td><%= post.content_cn %></td>
-            <td><%= image_tag "on_court_post/#{post.cover_image}", :height => "50px"%></td>
-            <td><%= image_tag "on_court_post/#{post.main_image}", :height => "50px"%></td>
-            <td>
-                <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
-                <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>
-            </td>
-        </tr>
-      <% end %>
-    </tbody>
-</table>
+    <%= form_for :filter, :url => admin_on_court_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
+        <label>Per Page:</label>
+        <%= f.radio_button :per_page, 5, :checked => @per_page == 5 %>
+        <%= f.label :per_page, 5, :value => 5 %>
+        <%= f.radio_button :per_page, 10, :checked => @per_page == 10 %>
+        <%= f.label :per_page, 10, :value => 10  %>
 
+        <%= f.submit 'Filter', :class => "btn btn-default"  %>
+        <%= link_to 'Clear Filter', admin_on_court_posts_path %>
+    <% end %>
+    <br/>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title (English)</th>
+                <th>中文标题 </th>
+                <th>Content (English)</th>
+                <th>文章内容（中文）</th>
+                <th>Cover Image</th>
+                <th>Main Image</th>
+                <th></th>
+            </tr>
+        </thead>
+      <tbody>
+          <% @on_court_posts.each do |post| %>
+            <tr>
+                <td><%= post.title_en %></td>
+                <td><%= post.title_cn %></th>
+                <td><%= post.content_en %></td>
+                <td><%= post.content_cn %></td>
+                <td><%= image_tag "on_court_post/#{post.cover_image}", :height => "50px"%></td>
+                <td><%= image_tag "on_court_post/#{post.main_image}", :height => "50px"%></td>
+                <td>
+                    <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
+                    <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+    <%= will_paginate @on_court_posts %>
 <% else %>
     <h2>No posts yet</h2>
 

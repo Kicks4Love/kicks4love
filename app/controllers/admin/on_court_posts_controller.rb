@@ -6,6 +6,12 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def index
     @page_title = "Kicks4Love Admin | On Court Posts"
 		@on_court_posts = OnCourtPost.latest
+
+    if params[:filter].present?
+      session[:on_court_post_per_page] = params[:filter][:per_page].to_i
+    end
+    @per_page = session[:on_court_post_per_page] || 10
+    @on_court_posts = @on_court_posts.paginate(:page => params[:page] || 1, :per_page => session[:on_court_post_per_page] || 10)
   end
 
   # def show
