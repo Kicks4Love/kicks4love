@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/features' => 'main#features'
   get '/oncourt' => 'main#oncourt'
+  get '/calendar' => 'main#calendar'
 
   resources :main do
   	collection do

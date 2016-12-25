@@ -11,11 +11,14 @@ class MainController < ApplicationController
 		@feature_posts = FeaturePost.order(:created_at => :DESC).paginate(:page => 1)
 	end
 
+	def calendar
+		@page_title = 'Kicks4Love | Calendar'
+	end
+
 	def oncourt
 		@page_title = 'Kicks4Love | On Court'
 		@all_on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 	end
-
 
 	def get_posts
 		head :ok and return unless params[:next_page].present?

@@ -1,0 +1,14 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "calendar.css" %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<% end %>
+
+<a name="home"></a>
+<div class="header">
+    Release Calender 
+</div>
+<div id="calendar"></div>
+
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "calendar.js" %>
+<% end %>
