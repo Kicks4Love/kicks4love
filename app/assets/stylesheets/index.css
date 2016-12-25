@@ -118,7 +118,7 @@
 	float:left;
 }
 .main .new-box img {
-	border: 5px dashed red;
+	border: 5px dashed #999999;
 	border-radius: 10%;
 	width: 100%;
 }
