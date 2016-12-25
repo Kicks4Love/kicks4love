@@ -60,7 +60,6 @@ body {
   	width: 420px;
   	text-align: center;
   	position:relative;
-  	z-index: 100;
 }
 
 .calendar-header h1 {
