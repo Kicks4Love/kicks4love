@@ -144,7 +144,6 @@ body {
   	cursor: pointer;
   	background: #4A4A4A;
   	position: relative;
-  	z-index: 100;
 }
 
 .day.other {
