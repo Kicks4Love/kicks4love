@@ -40,7 +40,7 @@ body {
     -moz-transform: translate3d(0, 0, 0);
   	transform: translate3d(0, 0, 0);
   	width: 420px;
-  	margin: 0 auto;
+  	margin: 0 auto 80px;
   	height: 600px;
   	overflow: hidden;
 }
