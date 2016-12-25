@@ -21,12 +21,22 @@ body {
 	line-height: 50px;
 }
 
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:420px) {
+	#calendar {
+		width: 100% !important;
+	}
 
-}
+	.calendar-header {
+		width: 100% !important;
+	}
 
-@media only screen and (max-width:767px) {
+	.week >.div {
+		text-align: center;
+	}
 
+	.day {
+		width: 14% !important;
+	}
 }
 
 *, *:before, *:after {
@@ -46,36 +56,36 @@ body {
 }
 
 .calendar-header {
-  height: 50px;
-  width: 420px;
-  text-align: center;
-  position:relative;
-  z-index: 100;
+  	height: 50px;
+  	width: 420px;
+  	text-align: center;
+  	position:relative;
+  	z-index: 100;
 }
 
 .calendar-header h1 {
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  line-height: 50px;
-  font-weight: 100;
-  letter-spacing: 1px;
+  	margin: 0;
+  	padding: 0;
+  	font-size: 20px;
+  	line-height: 50px;
+  	font-weight: 100;
+  	letter-spacing: 1px;
 }
 
 .left, .right {
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  top: 50%;
-  margin-top: -7.5px;
-  cursor: pointer;
+  	position: absolute;
+  	width: 0px;
+  	height: 0px;
+  	border-style: solid;
+  	top: 50%;
+  	margin-top: -7.5px;
+  	cursor: pointer;
 }
 
 .left {
-  border-width: 7.5px 10px 7.5px 0;
-  border-color: transparent rgba(160, 159, 160, 1) transparent transparent;
-  left: 20px;
+  	border-width: 7.5px 10px 7.5px 0;
+  	border-color: transparent rgba(160, 159, 160, 1) transparent transparent;
+  	left: 20px;
 }
 
 .right {
@@ -127,15 +137,15 @@ body {
 }
 
 .day {
-  display: inline-block;
-  width: 60px;
-  padding: 10px;
-  text-align: center;
-  vertical-align: top;
-  cursor: pointer;
-  background: #4A4A4A;
-  position: relative;
-  z-index: 100;
+  	display: inline-block;
+  	width: 60px;
+  	padding: 10px;
+  	text-align: center;
+  	vertical-align: top;
+  	cursor: pointer;
+  	background: #4A4A4A;
+  	position: relative;
+  	z-index: 100;
 }
 
 .day.other {
@@ -158,7 +168,6 @@ body {
   font-size: 24px;
   letter-spacing: 1.5px;
 }
-
 
 .day .day-events {
   list-style: none;
@@ -308,7 +317,6 @@ body {
 .entry.green:after { background: rgba(153, 198, 109, 1); }
 .entry.yellow:after { background: rgba(249, 233, 0, 1); }
 
-/* Animations are cool!  */
 @-webkit-keyframes moveFromTopFade {
   from { opacity: .3; height:0px; margin-top:0px; -webkit-transform: translateY(-100%); }
 }
