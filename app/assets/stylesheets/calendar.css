@@ -38,6 +38,10 @@ body {
 	.day {
 		width: 14% !important;
 	}
+
+  .details {
+    width: 100% !important;
+  }
 }
 
 *, *:before, *:after {
