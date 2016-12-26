@@ -53,7 +53,6 @@ $(document).ready(function() {
 	
 	/*--新鞋介绍-main--*/
 	$('.new-box').hover(function(){
-		console.log("hover");
 		var filter = $(this).find('.kicks-filter');
 		var title = $(this).find('p');
 		filter.animate({
@@ -62,7 +61,6 @@ $(document).ready(function() {
 		},1000);
 		title.fadeIn(1000);
 	},function(){
-		console.log("hover out");
 		var filter = $(this).find('.kicks-filter');
 		var title = $(this).find('p');
 		filter.animate({
