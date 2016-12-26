@@ -27,26 +27,28 @@
     <div class="banner-box clearfix">
         <div class="new-box" style="margin-right:5%;">
             <%= image_tag "small-news1" %>
+            <div class="kicks-filter">
+            <a href="#"><p>Placeholder</p></a>
+            </div>
         </div>
         <div class="new-box" style="margin-right:5%;">
             <%= image_tag "small-news2" %>
+            <div class="kicks-filter">
+                <a href="#"><p>Placeholder</p></a>
+            </div>
         </div>
         <div class="new-box">
             <%= image_tag "small-news3" %>
+            <div class="kicks-filter">
+                <a href="#"><p>Placeholder</p></a>
+            </div>
         </div>
     </div>
 
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @regular_posts.each_with_index do |post, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @regular_posts.size-1%>">
-            <div class="kicks-pic">
-                <%= image_tag "post/#{post.image}", :style => "width:100%" %>
-                <div class="kicks-filter">
-                </div>
-                <a href="#"><p>Placeholder</p></a>
-                <div class="kicks-title">
-                </div>
-            </div>
+            <%= image_tag "post/#{post.image}", :class => "kicks-pic" %>
             <div class="kicks-intro">
                 <h2><%= post.title %></h2>
                 <div class="kicks-intro-content">

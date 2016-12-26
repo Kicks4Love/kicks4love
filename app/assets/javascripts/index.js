@@ -52,17 +52,19 @@ $(document).ready(function() {
 	});
 	
 	/*--新鞋介绍-main--*/
-	$('.kicks-pic').hover(function(){
-		var filter=$(this).find('.kicks-filter');
-		var title=$(this).find('p');
+	$('.new-box').hover(function(){
+		console.log("hover");
+		var filter = $(this).find('.kicks-filter');
+		var title = $(this).find('p');
 		filter.animate({
 			opacity:0.8,
 			width:'100%'
 		},1000);
 		title.fadeIn(1000);
 	},function(){
-		var filter=$(this).find('.kicks-filter');
-		var title=$(this).find('p');
+		console.log("hover out");
+		var filter = $(this).find('.kicks-filter');
+		var title = $(this).find('p');
 		filter.animate({
 			opacity:0,
 			width:'0'
@@ -96,9 +98,7 @@ function initLoadPostHandler() {
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
             			'<div class="kicks-pic">' +
                 		'<img src="assets/post/' + data.posts[i].image + '" style="width:100%">' + 
-                		'<div class="kicks-filter">' + 
-                		'</div><a href="#"><p>Placeholder</p></a><div class="kicks-title">' + 
-                		'</div></div>' +
+                		'</div>' +
             			'<div class="kicks-intro">' + 
                 		'<h2>' + data.posts[i].title + '</h2>' +
                 		'<div class="kicks-intro-content">' + 
