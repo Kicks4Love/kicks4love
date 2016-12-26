@@ -21,11 +21,11 @@ $(document).ready(function() {
 	var timer = setInterval(slide, 2000);
 	
 	$('.slide-bar-container ul').hover(function(){
-		$('.slide-bar-container .slide-filter').fadeIn();
+		$('.slide-bar-container .slide-filter').eq(currentIndex).fadeIn();
 		$('.slide-bar-container ul p').eq(currentIndex).fadeIn();
 		clearInterval(timer);
 	},function(){
-		$('.slide-bar-container .slide-filter').fadeOut();
+		$('.slide-bar-container .slide-filter').eq(currentIndex).fadeOut();
 		$('.slide-bar-container ul p').eq(currentIndex).fadeOut();
 		timer = setInterval(slide, 2000);
 	});
