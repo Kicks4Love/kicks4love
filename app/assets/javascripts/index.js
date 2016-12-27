@@ -94,10 +94,8 @@ function initLoadPostHandler() {
             	for (var i = 0; i < data.posts.length; i++) {
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
-            			'<div class="kicks-pic">' +
-                		'<img src="assets/post/' + data.posts[i].image + '" style="width:100%">' + 
-                		'</div>' +
-            			'<div class="kicks-intro">' + 
+                		'<img src="assets/post/' + data.posts[i].image + '" class="col-xs-12 col-sm-4 kicks-pic">' + 
+            			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
                 		'<h2>' + data.posts[i].title + '</h2>' +
                 		'<div class="kicks-intro-content">' + 
                     	'<span>' + data.posts[i].content + '</span>' +
