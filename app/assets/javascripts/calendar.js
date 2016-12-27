@@ -325,5 +325,12 @@ function initCalendarData() {
 	    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
 	];
 
-  	var calendar = new Calendar('#calendar', data);
+	try {
+  		var calendar = new Calendar('#calendar', data);
+  	} catch(e) {
+  		$('#calendar').css('text-align', 'center').append($('<h3>', {
+  			style: 'color:#4A4A4A',
+  			text: 'Error occur while opening calendar. Please refresh the page.'
+  		}));
+  	}
 }
