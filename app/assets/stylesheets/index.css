@@ -56,7 +56,6 @@
 }
 .slide-bar-container ul .slide-filter{
 	width:100%;
-	height:550px;
 	bottom:0;
 	opacity:0.8;
 	background:#666;
@@ -71,39 +70,33 @@
 	left:-100%;
 }
 .slide-bar-container ul p{
-	display:block;
-	color:#FFFFFF;
+	color:white;
 	width:100%;
-	height:350px;
-	text-align:center;
 	position:absolute;
-	top:0;
-	padding-top:10%;
+	top:20%;
 	font-size:100px;
 	display:none;
 	font-family:"Univers-UltraCondensed";
 }
 .slide-bar-container ol{
-	width:100%;
-	height:50px;
-	position:absolute;
-	bottom:0;
-	margin:0;
-	padding:10px 40%;
-	z-index:10;
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+	z-index: 10;
 }
 .slide-bar-container ol li{
-	list-style:none;
-	float:left;
-	display:block;
-	padding:0;
-	margin:0 6%;
-	font-size:1.25em;
-	cursor:pointer;
-	color:#CCCCCC;
+	list-style: none;
+	display: inline-block;
+	margin: 0 2%;
+	font-size: 1.25em;
+	cursor: pointer;
+	color: white;
 }
 .slide-bar-container ol li.active {
-	color:#333333;
+	color:#4A4A4A;
 }
 
 .main .banner-box {
@@ -157,6 +150,7 @@
 	background: rgba(164, 164, 164, 1);
 }
 .main .kicks-intro h2 {
+	color: white;
 	margin: 0;
 	padding: 0 10px;
 	width: 100%;
@@ -176,15 +170,15 @@
 .main .wait_load{
 	display:none;
 }
-.main .to-view-more{
-	width:100%;
-	height:50px;
-	line-height:50px;
-	text-align:center;
-	background:#FF9;
-	cursor:pointer;
-	font-size:18px;
-	color:#666666;
+.main .to-view-more {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: #FF9;
+	cursor: pointer;
+	font-size: 18px;
+	color: #4A4A4A;
 }
 
 @media only screen and (max-width:1024px) {
@@ -200,11 +194,8 @@
 	}
 }
 @media only screen and (max-width:767px) {
-	.slide-bar-container{
+	.slide-bar-container {
 		height:300px;
-	}
-	.slide-bar-container ol{
-		padding:10px 30%;
 	}
 	.main .banner-box > div {
 		padding: 0;
