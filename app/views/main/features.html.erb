@@ -6,20 +6,17 @@
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feature_posts.each_with_index do |feature_post, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @feature_posts.size-1%>">
-            <dl>
+            <dl class="col-xs-12 col-sm-4">
                 <dt>
                     <a href="#">
-                        <%= image_tag "feature_post/#{feature_post.image}", :style => "width:100%" %>
-                        <div class="filter">
-                            <p>PlaceHolder</p>
-                        </div>
+                        <%= image_tag "feature_post/#{feature_post.image}", :class => "kicks-pic" %>
                     </a>
                 </dt>
                 <dd>
                     <a href="#">PlaceHolder</a>
                 </dd>
             </dl>
-            <div class="kicks-intro">
+            <div class="col-xs-12 col-sm-8 kicks-intro">
                 <h2><%= feature_post.title %></h2>
                 <div class="kicks-intro-content">
                     <span><%= feature_post.content %></span>
