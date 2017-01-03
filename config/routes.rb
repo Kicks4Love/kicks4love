@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root :to => 'main#index'
 
   get '/features' => 'main#features'
+  get '/trend' =>'main#trend'
   get '/oncourt' => 'main#oncourt'
   get '/calendar' => 'main#calendar'
 
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     resources :feature_posts
     resources :on_court_posts
     resources :admin_users
+    resources :trend_posts
   end
 
 end

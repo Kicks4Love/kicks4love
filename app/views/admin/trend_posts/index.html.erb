@@ -1,0 +1,38 @@
+<hi>Admin Trend Post</hi>
+<br>
+
+<% if @trend_posts.any? %>
+<%= link_to "New Trend Post", new_admin_trend_post_path, :class => "btn btn-primary" %>
+
+<br/><br/>
+
+<table class="table table-bordered" style="table-layout:fixed">
+  <thead>
+      <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Main Image</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @trend_posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= image_tag "trend_post/#{post.image}", :height => "50px"%></td>
+        <td>
+            <%= link_to "Edit", edit_admin_trend_post_path(post), :class => "btn btn-primary" %>
+            <%= link_to "Delete", admin_trend_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
+
+<% else %>
+    <h2>No posts yet</h2>
+    <%= link_to "Create a new on court post now", new_admin_trend_post_path, :class => "btn btn-primary" %>
+<% end %>
+
+<p><%= link_to "Back", admin_root_path %></p>

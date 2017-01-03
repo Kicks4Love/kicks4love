@@ -16,3 +16,4 @@ Rails.application.config.assets.precompile += %w( index.css feature.css calendar
 Rails.application.config.assets.precompile += %w( index.js feature.js calendar.js oncourt.js)
 Rails.application.config.assets.precompile += %w( admin/admin.css )
 Rails.application.config.assets.precompile += %w( admin/posts.js )
+Rails.application.config.assets.precompile += %w( trend.css trend.js)

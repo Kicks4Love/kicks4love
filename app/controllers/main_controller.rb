@@ -20,6 +20,11 @@ class MainController < ApplicationController
 		@all_on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 	end
 
+	def trend
+		@page_title= 'Kicks4Love | Trend'
+		@all_trend_posts = TrendPost.latest.paginate(:page =>1)
+	end
+
 	def get_posts
 		head :ok and return unless params[:next_page].present?
 
@@ -30,6 +35,8 @@ class MainController < ApplicationController
 			@return_posts = FeaturePost.paginate(:page => params[:next_page]).order(:created_at => :DESC)
 		when 'on_court'
 			@return_posts = OnCourtPost.paginate(:page => params[:next_page]).latest
+		when 'trend'
+			@return_posts = TrendPost.paginate(:page => params[:next_page]).latest
 		else
 			head :ok and return
 		end

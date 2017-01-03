@@ -1,0 +1,40 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "trend.css" %>
+<% end %>
+
+<a name="home"></a>
+<div class="header">
+</div>
+
+<div class="main clearfix">
+  <div class="trend">Trend<br />　For<br />　　Life</div>
+      <div class="photo">
+        <ul>
+          <% @all_trend_posts.each_with_index do |post, index| %>
+            <% if (index + 1) % 3 == 0 %>
+                <li>
+                    <a href="#">
+                        <%= image_tag "trend_post/#{post.image}" %>
+                        <span><%= post.title %></span>
+                    </a>
+                </li>
+            <% else %>
+                <li>
+                    <a href="#">
+                        <%= image_tag "trend_post/#{post.image}" %>
+                        <span><%= post.title %></span>
+                    </a>
+                </li>
+                  <% end %>
+            <% end %>
+            <% unless @all_trend_posts.total_pages == @all_trend_posts.current_page %>
+                <div class="to-view-more">
+                    <span>Click To View More</span>
+                </div>
+            <% end %>
+          </ul>
+            <%= hidden_field_tag "next_page", "2", :name => nil %>
+        </div>
+        <% content_for :end_of_body do %>
+            <%= javascript_include_tag "trend.js" %>
+        <% end %>
