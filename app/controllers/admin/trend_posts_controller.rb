@@ -5,7 +5,13 @@ class Admin::TrendPostsController < Admin::AdminController
 
 	def index
 		@page_title = "Kicks4Love Admin | Trend Posts"
-		@trend_posts = TrendPost.all.order(:created_at => :DESC)
+		@trend_posts = TrendPost.latest
+
+		if params[:filter].present?
+			session[:trend_post_per_page] = params[:filter][:per_page].to_i
+		end
+		@per_page = session[:trend_post_per_page] || 10
+		@trend_posts = @trend_posts.paginate(:page => params[:page] || 1, :per_page => session[:trend_post_per_page] || 10)
 	end
 
 	def new

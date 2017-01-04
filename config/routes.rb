@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root :to => 'main#index'
 
   get '/features' => 'main#features'
+  get '/calendar' => 'main#calendar'
   get '/trend' =>'main#trend'
   get '/oncourt' => 'main#oncourt'
-  get '/calendar' => 'main#calendar'
 
   resources :main do
   	collection do
@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   namespace :admin do
   	resources :posts
     resources :feature_posts
+    resources :trend_posts
     resources :on_court_posts
     resources :admin_users
-    resources :trend_posts
   end
 
 end

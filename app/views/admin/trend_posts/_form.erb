@@ -1,0 +1,28 @@
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Title:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.text_field :title %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Content:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.text_area :content %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Image:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.select :image, @image_list %>
+	</div>
+</div>
+<br>
+<%= form.submit "Submit", :class => "btn btn-primary" %>

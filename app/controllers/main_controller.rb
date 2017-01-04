@@ -22,7 +22,7 @@ class MainController < ApplicationController
 
 	def trend
 		@page_title= 'Kicks4Love | Trend'
-		@all_trend_posts = TrendPost.latest.paginate(:page =>1)
+		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
 	end
 
 	def get_posts
@@ -30,9 +30,9 @@ class MainController < ApplicationController
 
 		case params[:source_page]
 		when 'index'
-			@return_posts = Post.where(:post_type => :POST).paginate(:page => params[:next_page]).order(:created_at => :DESC)
+			@return_posts = Post.where(:post_type => :POST).paginate(:page => params[:next_page]).latest
 		when 'features'
-			@return_posts = FeaturePost.paginate(:page => params[:next_page]).order(:created_at => :DESC)
+			@return_posts = FeaturePost.paginate(:page => params[:next_page]).latest
 		when 'on_court'
 			@return_posts = OnCourtPost.paginate(:page => params[:next_page]).latest
 		when 'trend'

@@ -1,7 +1,11 @@
-<h1><%= @trend_post.title %></h1>
+<h1>Edit Trend Post</h1>
 
-  <%= form_for @trend_post, :url =>admin_trend_post_path(@trend_post), :method => :PUT do |f| %>
-    <%= render :partial => "trendform", :locals => {:form => f} %>
-  <% end %>
+<hr/><br/>
 
-    <%= link_to "Back", admin_trend_posts_path %>
+<%= form_for @trend_post, :url => admin_trend_post_path(@trend_post), :method => :PUT do |f| %>
+	<%= render :partial => "form", :locals => {:form => f} %>
+<% end %>
+
+<br/>
+
+<%= link_to "Back", admin_trend_posts_path, :class => "btn btn-default" %>
