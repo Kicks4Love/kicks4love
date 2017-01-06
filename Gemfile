@@ -29,6 +29,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'will_paginate', '~> 3.1.0'
 gem 'devise'
 
+# Image Upload
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
+gem "fog-aws"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
