@@ -41,7 +41,7 @@
 					<td><%= post.post_type %></td>
 					<td><%= post.title %></td>
 					<td><%= post.content %></td>
-					<td><%= image_tag "post/#{post.image}", :height => "20px" %></td>
+					<td><img src="<%= post.image.url %>" height="20px" /></td>
 				</tr>
 			<% end %>
 		</tbody>
