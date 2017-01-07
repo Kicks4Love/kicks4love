@@ -19,7 +19,6 @@ class Admin::PostsController < Admin::AdminController
 
 	def new
 		@post = Post.new
-		@image_list = Dir.glob("#{Rails.root}/app/assets/images/post/*").map{|path| path.split('/').last}
 		@page_title = "Kicks4Love Admin | New Post"
 	end
 
@@ -44,7 +43,6 @@ class Admin::PostsController < Admin::AdminController
 	end
 
 	def edit
-		@image_list = Dir.glob("#{Rails.root}/app/assets/images/post/*").map{|path| path.split('/').last}
 		@page_title = "Kicks4Love Admin | Edit Post"
 	end
 
@@ -58,7 +56,7 @@ class Admin::PostsController < Admin::AdminController
 		redirect_to admin_posts_path
 	end
 
-	private 
+	private
 
 	def post_params
 		params.require(:post).permit(:title, :content, :post_type, :image)
@@ -67,5 +65,5 @@ class Admin::PostsController < Admin::AdminController
 	def get_post
 		@post = Post.find_by_id(params[:id])
 	end
-	
+
 end
