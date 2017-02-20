@@ -6,7 +6,7 @@ set :repo_url, "https://github.com/Kicks4Love/kicks4love.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch "deploy"
+set :branch, "deploy"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/alidata/www/kicks4love"
