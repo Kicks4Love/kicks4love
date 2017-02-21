@@ -9,14 +9,14 @@
             <% if (index + 1) % 3 == 0 %>
                 <li class="last">
                     <a href="#">
-                        <%= image_tag "on_court_post/#{post.cover_image}" %>
+                        <%= image_tag "#{post.cover_image.cover}" %>
                         <p><%= post.title_en %></p>
                     </a>
                 </li>
             <% else %>
                 <li>
                     <a href="#">
-                        <%= image_tag "on_court_post/#{post.cover_image}" %>
+                        <%= image_tag "#{post.cover_image.cover}" %>
                         <p><%= post.title_en %></p>
                     </a>
                 </li>

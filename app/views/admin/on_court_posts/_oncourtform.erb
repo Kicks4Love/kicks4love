@@ -39,7 +39,7 @@
 		<label>Cover Image: </label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.select :cover_image, @image_list %>
+		<%= form.file_field :cover_image %>
 	</div>
 </div>
 <br/>
@@ -48,7 +48,7 @@
 		<label>Main Image: </label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.select :main_image, @image_list %>
+		<%= form.file_field :main_image %>
 	</div>
 </div>
 <br/>

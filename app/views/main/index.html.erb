@@ -8,7 +8,7 @@
     <div class="slide-bar-container">
     	<ul class="clearfix">
             <% @news_posts.each do |news_post| %>
-                <li><%= image_tag "post/#{news_post.image}" %></li>
+                <li><%= image_tag "#{news_post.image.news}" %></li>
                 <div class="slide-filter"></div>
                 <a href="#"><p><%= news_post.title %></p></a>
             <% end %>
@@ -54,7 +54,7 @@
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @regular_posts.each_with_index do |post, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @regular_posts.size-1%>">
-            <%= image_tag "post/#{post.image}", :class => "col-xs-12 col-sm-4 kicks-pic" %>
+            <%= image_tag "#{post.image.news}", :class => "col-xs-12 col-sm-4 kicks-pic" %>
             <div class="col-xs-12 col-sm-8 kicks-intro">
                 <h2><%= post.title %></h2>
                 <div class="kicks-intro-content">
