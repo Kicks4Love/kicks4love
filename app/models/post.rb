@@ -7,4 +7,5 @@ class Post < ApplicationRecord
 	self.per_page = 3
 
 	mount_uploader :image, PostUploader
+
 end
