@@ -27,7 +27,6 @@ class Admin::OnCourtPostsController < Admin::AdminController
     if new_post.save
       redirect_to admin_on_court_posts_path, :notice => "New On Court post successfully created"
     else
-      Rails.logger.debug("\n\n\n#{new_post.errors.full_messages}\n\n\n")
       redirect_to :back, :alert => "Error creating new on court post"
     end
   end
