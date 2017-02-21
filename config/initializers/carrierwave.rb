@@ -6,5 +6,5 @@ CarrierWave.configure do |config|
     aws_secret_access_key: Rails.application.secrets.amazon_secret_access_key,
     region:                'us-west-2',
   }
-  config.fog_directory  = 'kicks4love-test'
+  config.fog_directory  = 'leon-test'
 end
