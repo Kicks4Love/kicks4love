@@ -16,7 +16,6 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 	def new
 		@feature_post = FeaturePost.new
-		@image_list = Dir.glob("#{Rails.root}/app/assets/images/feature_post/*").map{|path| path.split('/').last}
 		@page_title = "Kicks4Love Admin | New Feature Post"
 	end
 
@@ -41,7 +40,6 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def edit
-		@image_list = Dir.glob("#{Rails.root}/app/assets/images/feature_post/*").map{|path| path.split('/').last}
 		@page_title = "Kicks4Love Admin | Edit Feature Post"
 	end
 

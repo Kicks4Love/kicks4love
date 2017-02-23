@@ -37,7 +37,7 @@
 					</td>
 					<td><%= feature_post.title %></td>
 					<td><%= feature_post.content %></td>
-					<td><%= image_tag "feature_post/#{feature_post.image}", :height => "20px" %></td>
+					<td><img src="<%= feature_post.image %>" height="20px" /></td>
 				</tr>
 			<% end %>
 		</tbody>

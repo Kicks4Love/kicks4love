@@ -54,7 +54,7 @@
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @regular_posts.each_with_index do |post, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @regular_posts.size-1%>">
-            <%= image_tag "#{post.image.news}", :class => "col-xs-12 col-sm-4 kicks-pic" %>
+            <%= image_tag "#{post.image.general}", :class => "col-xs-12 col-sm-4 kicks-pic" %>
             <div class="col-xs-12 col-sm-8 kicks-intro">
                 <h2><%= post.title %></h2>
                 <div class="kicks-intro-content">

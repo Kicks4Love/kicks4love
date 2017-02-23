@@ -16,7 +16,6 @@ class Admin::TrendPostsController < Admin::AdminController
 
 	def new
 		@trend_post = TrendPost.new
-		@image_list = Dir.glob("#{Rails.root}/app/assets/images/trend_post/*").map{|path| path.split('/').last}
 		@page_title = "Kicks4Love Admin | New Trend Post"
 	end
 
@@ -41,7 +40,6 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def edit
-		@image_list = Dir.glob("#{Rails.root}/app/assets/images/trend_post/*").map{|path| path.split('/').last}
 		@page_title = "Kicks4Love Admin | Edit Trend Post"
 	end
 
