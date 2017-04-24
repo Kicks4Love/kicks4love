@@ -21,6 +21,7 @@
   	<body>
 
   		<%= content_for :head %>
+  		<%= hidden_field_tag "language", session[:language] || nil %>
 
       	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         	<div class="container-fluid">
@@ -79,13 +80,33 @@
         			</a>
       			</li>
       			<li>
-        			<a href='#'>
+        			<a href='#' data-toggle="modal" data-target="#language-modal">
           				<i class="fa fa-language"></i>
           				<span>Language</span>
         			</a>
       			</li>
     		</ul>
-  
+		</div>
+
+		<div id="language-modal" class="modal fade" role="dialog">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<h4 class="modal-title">请选择您的语言</h4>
+        				<h4 class="modal-title">Please choose your language</h4>
+      				</div>
+      				<div class="modal-body">
+        				<%= form_tag url_for(:controller => "main", :action => "change_language"), :method => "post" do %>
+        					<%= submit_tag '中文', :class => "btn chinese-option", :name => "language[chinese]" %>
+							<%= submit_tag 'English', :class => "btn english-option", :name => "language[english]" %>
+        				<% end %>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      				</div>
+    			</div>
+  			</div>
 		</div>
 
     	<%= yield %>

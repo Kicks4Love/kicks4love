@@ -44,4 +44,12 @@ class MainController < ApplicationController
 		render :json => {:no_more => @return_posts.total_pages == @return_posts.current_page, :posts => @return_posts}.to_json, :layout => false
 	end
 
+	def change_language 
+		redirect_to :back and return unless params[:language].present?
+
+		session[:language] = params[:language][:english].present? ? "english" : "chinese"
+
+		redirect_to :back
+	end
+
 end

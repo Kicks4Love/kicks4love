@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :main do
   	collection do
   		get 'get_posts'
+      post 'change_language'
   	end
   end
 

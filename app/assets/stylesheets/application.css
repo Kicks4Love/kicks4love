@@ -14,7 +14,7 @@
  *= require bootstrap.min.css
  */
 
- @charset "utf-8";
+@charset "utf-8";
 /* CSS Document */
 
 @font-face {
@@ -189,8 +189,32 @@ body, h1, h2, h3, h4, h5, h6 {
     background-color: lightgreen;
 }
 
-@media(max-width:767px) {
-    .topnav {
+#language-modal {
+	text-align: center;
+}
+#language-modal input[type=submit] {
+	color: white;
+	width: 100px;
+}
+#language-modal .chinese-option {
+	background-color: red;
+}
+#language-modal .english-option {
+	background-color: #4c7cc9;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+p.copyright {
+    margin: 15px 0 0;
+}
+
+@media only screen and (max-width:767px) {
+	.topnav {
         height: auto;
     }
 
@@ -215,35 +239,24 @@ body, h1, h2, h3, h4, h5, h6 {
     }
 
     footer .footer-menu-divider {
-        display: none;
+        display: none !important;
     }
 
     p.copyright {
         margin: 0 !important;
         text-align: center;
     }
-}
 
-footer {
-    margin-top: 20px;
-    padding: 50px 0;
-    background-color: #f8f8f8;
-}
-p.copyright {
-    margin: 15px 0 0;
-}
+  	footer .container{
+    	width:80%;
+    	margin:0 auto;
+    	padding:0;
+  	}
 
-@media only screen and (max-width:767px) {
-  footer .container{
-    width:80%;
-    margin:0 auto;
-    padding:0;
-  }
-
-  footer ul li {
-    text-align: center;
-      width: 33%;
-      float: left;
-      height: 2em;
-  }
+  	footer ul li {
+    	text-align: center;
+      	width: 33%;
+      	float: left;
+      	height: 2em;
+  	}
 }

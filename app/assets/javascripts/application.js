@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min.js
+
+$(document).ready(function() {
+	if (!$('#language').val().length)
+		$('#language-modal').modal('show');
+});
