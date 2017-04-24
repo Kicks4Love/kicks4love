@@ -47,7 +47,8 @@ class MainController < ApplicationController
 	def change_language 
 		redirect_to :back and return unless params[:language].present?
 
-		session[:language] = params[:language][:english].present? ? "english" : "chinese"
+		I18n.locale = params[:language][:chinese].present? ? :cn : :en
+		session[:language_set] = true
 
 		redirect_to :back
 	end

@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  HOME: "HOME"
+  FEATURES: "FEATURES"
+  CALENDAR: "CALENDAR"
+  MORE: "MORE"
+  TREND: "TREND"
+  ON_COURT: "ON_COURT"
+  LEISURE_ENTERTAINMENT: "LEISURE/ENTERTAINMENT"
+  STREET_SNAP: "STREET-SNAP"
+  RUMORS: "RUMORS"
+  
