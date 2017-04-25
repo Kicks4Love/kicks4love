@@ -21,7 +21,7 @@
   	<body>
 
   		<%= content_for :head %>
-  		<%= hidden_field_tag "language", session[:language_set] %>
+  		<%= hidden_field_tag "language", session[:language] %>
 
       	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         	<div class="container-fluid">
@@ -69,13 +69,13 @@
 		<div id='side-nav'>
     		<ul>
       			<li>
-        			<a href='#'>
+        			<a href='#' class="not-work">
           				<i class="fa fa-user"></i>
           				<span><%= t("My_Account") %></span>
         			</a>
       			</li>
       			<li>
-        			<a href='#'>
+        			<a href='#' class="not-work">
           				<i class="fa fa-shopping-cart"></i>
           				<span><%= t("My_Cart") %></span>
         			</a>
@@ -98,9 +98,9 @@
         				<h4 class="modal-title">Please choose your language</h4>
       				</div>
       				<div class="modal-body">
-        				<%= form_tag url_for(:controller => "main", :action => "change_language"), :method => "post" do %>
-        					<%= submit_tag '中文', :class => "btn chinese-option", :name => "language[chinese]" %>
-							<%= submit_tag 'English', :class => "btn english-option", :name => "language[english]" %>
+        				<%= form_tag url_for(:controller => "main", :action => "change_language"), :id => "language-form", :method => "post" do %>
+        					<%= submit_tag '中文', :onclick => "this.form.submited=this.name;", :class => "btn chinese-option", :name => "language[chinese]" %>
+							<%= submit_tag 'English', :onclick => "this.form.submited=this.name;", :class => "btn english-option", :name => "language[english]" %>
         				<% end %>
       				</div>
       				<div class="modal-footer">
@@ -118,39 +118,39 @@
 		            <div class="col-lg-12">
 		                <ul class="list-inline">
 		                    <li>
-		    					<%= link_to 'Home', root_path %>
+		    					<%= link_to t("Home"), root_path %>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		    					<%= link_to 'Features', features_path %>
+		    					<%= link_to t("Features"), features_path %>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		 					<li>
-		   						<%= link_to 'Calendar', calendar_path %>
+		   						<%= link_to t("Calendar"), calendar_path %>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		                        <a href="#">Trend</a>
+		                        <a href="#"><%= t("Trend") %></a>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		                        <%= link_to 'On court', oncourt_path %>
+		                        <%= link_to t("On_court"), oncourt_path %>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		                        <a href="streetsnap.html">Street-Snap</a>
+		                        <a href="streetsnap.html"><%= t("Street_snap") %></a>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		                        <a href="rumors.html">Rumors</a>
+		                        <a href="rumors.html"><%= t("Rumors") %></a>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		                        <a href="aboutus.html">About Us</a>
+		                        <a href="aboutus.html"><%= t("About_us") %></a>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
-		                        <a href="contact.html">Contact us</a>
+		                        <a href="contact.html"><%= t("Contact_us") %></a>
 		                    </li>
 		                </ul>
 		                <p class="copyright text-muted small">Copyright &copy; Kicks4love <%= Date.today.year %>. All Rights Reserved</p>

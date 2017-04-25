@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+	before_action :set_locale
 
 	def index
 		all_posts = Post.order(:created_at => :DESC)
@@ -48,9 +49,15 @@ class MainController < ApplicationController
 		redirect_to :back and return unless params[:language].present?
 
 		I18n.locale = params[:language][:chinese].present? ? :cn : :en
-		session[:language_set] = true
+		session[:language] = I18n.locale
 
 		redirect_to :back
 	end
+
+	private
+
+	def set_locale
+  		I18n.locale = session[:language] || I18n.default_locale
+	end 
 
 end
