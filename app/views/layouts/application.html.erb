@@ -53,9 +53,10 @@
             		</ul>
             		<form class="navbar-form navbar-right" role="search">
 			  			<div class="input-group">
-					      	<input type="text" class="form-control" placeholder="What are you looking for?">
+			  				<% search_term = t("What_are_you_looking_for") %>
+					      	<input type="text" class="form-control" <%= raw "placeholder=\"#{search_term}\"" %>>
 					      	<span class="input-group-btn">
-					        	<button class="btn btn-secondary" type="button">GO</button>
+					        	<button class="btn btn-secondary" type="button"><%= t("Go") %></button>
 					      	</span>
 					    </div>
 					</form>
@@ -70,19 +71,19 @@
       			<li>
         			<a href='#'>
           				<i class="fa fa-user"></i>
-          				<span>My Account</span>
+          				<span><%= t("My_Account") %></span>
         			</a>
       			</li>
       			<li>
         			<a href='#'>
           				<i class="fa fa-shopping-cart"></i>
-          				<span>My Cart</span>
+          				<span><%= t("My_Cart") %></span>
         			</a>
       			</li>
       			<li>
         			<a href='#' data-toggle="modal" data-target="#language-modal">
           				<i class="fa fa-language"></i>
-          				<span>Language</span>
+          				<span><%= t("Language") %></span>
         			</a>
       			</li>
     		</ul>
