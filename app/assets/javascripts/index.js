@@ -75,6 +75,23 @@ $(document).ready(function() {
         $('.header > img').slideUp('slow'); 
         $('.logo-pendant').fadeIn('slow');
     }, 2000);
+
+    if (!$('#language').val().length)
+		$('#language-modal').modal('show');
+
+	$('#language-form').submit(function(){
+    	var current_language = $('#language').val();
+    	
+    	if (current_language == 'cn' && this.submited.includes('chinese'))
+    		return false;
+    	if (current_language == 'en' && this.submited.includes('english'))
+    		return false;
+	});
+
+    $('.not-work').click(function(event) {
+        event.preventDefault();
+        alert("即将来临\nComing soon");
+    });
 });
 
 function initLoadPostHandler() {
