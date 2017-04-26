@@ -5,16 +5,8 @@ class Admin::PostsController < Admin::AdminController
 
 	def index
 		@page_title = "Kicks4Love Admin | Posts"
-		@posts = Post.latest
-
-		if params[:filter].present?
-			if params[:filter][:post_type].present?
-				@posts = @posts.where(:post_type => params[:filter][:post_type]).order(:created_at => :DESC)
-			end
-			session[:post_per_page] = params[:filter][:per_page].to_i
-		end
-		@per_page = session[:post_per_page] || 10
-		@posts = @posts.paginate(:page => params[:page] || 1, :per_page => session[:post_per_page] || 10)
+		@posts = Post.posts
+		@news = Post.news
 	end
 
 	def new

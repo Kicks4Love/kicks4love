@@ -3,22 +3,14 @@
 <hr/>
 
 <% if @posts.any? %>
-	<%= link_to "Create new post", new_admin_post_path, :class => "btn btn-primary" %>
+	<% if @posts.count == 5 %>
+		<h2>Maximum 5 Posts</h2>
+	<% else %>
+		<%= link_to "Create new post", new_admin_post_path, :class => "btn btn-primary" %>
+	<% end %>
 
 	<br/><br/>
 
-	<%= form_for :filter, :url => admin_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
-	    <label>Type:</label>
-	    <%= f.select :post_type, options_for_select(Post.post_types.keys, params[:filter].nil? ? '' : params[:filter][:post_type]), :include_blank => true %>
-	    <label>Per Page:</label>
-	    <%= f.radio_button :per_page, 5, :checked => @per_page == 5 %>
-	    <%= f.label :per_page, 5, :value => 5 %>
-	    <%= f.radio_button :per_page, 10, :checked => @per_page == 10 %>
-	    <%= f.label :per_page, 10, :value => 10  %>
-
-	    <%= f.submit 'Filter', :class => "btn btn-default"  %>
-	    <%= link_to 'Clear Filter', admin_posts_path %>
-	<% end %>
 	<br/>
 	<table class="table table-bordered">
 		<tbody>
@@ -46,7 +38,6 @@
 			<% end %>
 		</tbody>
 	</table>
-	<%= will_paginate @posts %>
 <% else %>
 	<h2>No Record</h2>
 
@@ -55,6 +46,52 @@
 	<%= link_to "Create a new post now", new_admin_post_path, :class => "btn btn-primary" %>
 <% end %>
 
-<br><br>
+<hr/>
+
+<% if @news.any? %>
+	<% if @news.count == 3 %>
+		<h2>Maximum 3 Posts</h2>
+	<% else %>
+		<%= link_to "Create new news", new_admin_post_path, :class => "btn btn-primary" %>
+	<% end %>
+
+	<br/><br/>
+
+	<br/>
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<th></th>
+				<th>Type</th>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Image</th>
+			</tr>
+		</tbody>
+		<tbody>
+			<% @news.each do |news| %>
+				<tr>
+					<td>
+						<%= link_to "Edit", edit_admin_post_path(news) %>
+						|
+						<%= link_to "Delete", admin_post_path(news), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+					</td>
+					<td><%= news.post_type %></td>
+					<td><%= news.title %></td>
+					<td><%= news.content %></td>
+					<td><img src="<%= news.image.url %>" height="20px" /></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<h2>No Record</h2>
+
+	<br/>
+
+	<%= link_to "Create a new news now", new_admin_post_path, :class => "btn btn-primary" %>
+<% end %>
+
+<br/><br/>
 
 <p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>

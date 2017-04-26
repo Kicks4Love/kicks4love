@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217022116) do
+ActiveRecord::Schema.define(version: 20170426163608) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",               default: "", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20161217022116) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  end
+
+  create_table "calendar_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date     "post_date"
+    t.string   "event_name"
+    t.integer  "post_type"
+    t.integer  "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feature_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -46,12 +55,13 @@ ActiveRecord::Schema.define(version: 20161217022116) do
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "post_type",                default: 0, null: false
+    t.integer  "post_type",    default: 0, null: false
     t.string   "title"
-    t.text     "content",    limit: 65535
     t.string   "image"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "pointer_type", default: 0, null: false
+    t.integer  "pointer_id"
   end
 
   create_table "trend_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
