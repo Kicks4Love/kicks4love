@@ -48,6 +48,9 @@ class Admin::PostsController < Admin::AdminController
 		redirect_to admin_posts_path
 	end
 
+	def get_posts
+	end
+		
 	private
 
 	def post_params

@@ -17,6 +17,7 @@
 			<tr>
 				<th></th>
 				<th>Type</th>
+				<th>Pointer Type</th>
 				<th>Title</th>
 				<th>Content</th>
 				<th>Image</th>
@@ -31,6 +32,7 @@
 						<%= link_to "Delete", admin_post_path(post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
 					</td>
 					<td><%= post.post_type %></td>
+					<td><%= post.pointer_type %></td>
 					<td><%= post.title %></td>
 					<td><%= post.content %></td>
 					<td><img src="<%= post.image.url %>" height="20px" /></td>
@@ -52,7 +54,7 @@
 	<% if @news.count == 3 %>
 		<h2>Maximum 3 Posts</h2>
 	<% else %>
-		<%= link_to "Create new news", new_admin_post_path, :class => "btn btn-primary" %>
+		<%= link_to "Create new news", new_admin_post_path(:type => :NEWS), :class => "btn btn-primary" %>
 	<% end %>
 
 	<br/><br/>
@@ -63,6 +65,7 @@
 			<tr>
 				<th></th>
 				<th>Type</th>
+				<th>Pointer Type</th>
 				<th>Title</th>
 				<th>Content</th>
 				<th>Image</th>
@@ -77,6 +80,7 @@
 						<%= link_to "Delete", admin_post_path(news), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
 					</td>
 					<td><%= news.post_type %></td>
+					<td><%= news.pointer_type %></td>
 					<td><%= news.title %></td>
 					<td><%= news.content %></td>
 					<td><img src="<%= news.image.url %>" height="20px" /></td>
@@ -89,7 +93,7 @@
 
 	<br/>
 
-	<%= link_to "Create a new news now", new_admin_post_path, :class => "btn btn-primary" %>
+	<%= link_to "Create a new news now", new_admin_post_path(:type => :NEWS), :class => "btn btn-primary" %>
 <% end %>
 
 <br/><br/>
