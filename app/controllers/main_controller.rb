@@ -3,8 +3,11 @@ class MainController < ApplicationController
 
 	def index
 		all_posts = Post.order(:created_at => :DESC)
-		@news_posts = all_posts.where(:post_type => :NEWS)
-		@regular_posts = all_posts.where(:post_type => :POST).paginate(:page => 1)
+		@news = all_posts.news
+		@posts = all_posts.posts 
+		all_feeds = Post.get_posts
+		@no_more = 3 > all_feeds.count
+		@feeds = all_feeds[0..2]
 	end
 
 	def features
@@ -31,7 +34,10 @@ class MainController < ApplicationController
 
 		case params[:source_page]
 		when 'index'
-			@return_posts = Post.where(:post_type => :POST).paginate(:page => params[:next_page]).latest
+			page_index = 3 * params[:next_page].to_i
+			feeds = Post.get_posts
+			@no_more = page_index > feeds.count
+			@return_posts = feeds[page_index - 3.. page_index - 1]
 		when 'features'
 			@return_posts = FeaturePost.paginate(:page => params[:next_page]).latest
 		when 'on_court'
@@ -42,7 +48,7 @@ class MainController < ApplicationController
 			head :ok and return
 		end
 
-		render :json => {:no_more => @return_posts.total_pages == @return_posts.current_page, :posts => @return_posts}.to_json, :layout => false
+		render :json => {:no_more => no_more || @return_posts.total_pages == @return_posts.current_page, :posts => @return_posts}.to_json, :layout => false
 	end
 
 	def change_language 
