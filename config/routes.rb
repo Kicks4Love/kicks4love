@@ -28,7 +28,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-  	resources :posts
+  	resources :posts do
+      collection do
+        get 'get_posts'
+      end
+    end
     resources :feature_posts
     resources :trend_posts
     resources :on_court_posts

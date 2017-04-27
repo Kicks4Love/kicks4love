@@ -1,4 +1,4 @@
-<h1>Edit Post</h1>
+<h1>Edit <%= params[:type].titleize %></h1>
 
 <hr/><br/>
 
@@ -9,3 +9,7 @@
 <br/>
 
 <%= link_to "Back", admin_posts_path, :class => "btn btn-default" %> 
+
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "admin/posts.js" %>
+<% end %>

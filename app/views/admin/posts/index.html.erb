@@ -6,7 +6,7 @@
 	<% if @posts.count == 5 %>
 		<h2>Maximum 5 Posts</h2>
 	<% else %>
-		<%= link_to "Create new post", new_admin_post_path, :class => "btn btn-primary" %>
+		<%= link_to "Create new post", new_admin_post_path(:type => :POST), :class => "btn btn-primary" %>
 	<% end %>
 
 	<br/><br/>
@@ -35,7 +35,7 @@
 					<td><%= post.pointer_type %></td>
 					<td><%= post.title %></td>
 					<td><%= post.content %></td>
-					<td><img src="<%= post.image.url %>" height="20px" /></td>
+					<td><img src="<%= post.image.url %>" height="20px"/></td>
 				</tr>
 			<% end %>
 		</tbody>
@@ -45,7 +45,7 @@
 
 	<br/>
 
-	<%= link_to "Create a new post now", new_admin_post_path, :class => "btn btn-primary" %>
+	<%= link_to "Create a new post now", new_admin_post_path(:type => :POST), :class => "btn btn-primary" %>
 <% end %>
 
 <hr/>
@@ -83,7 +83,7 @@
 					<td><%= news.pointer_type %></td>
 					<td><%= news.title %></td>
 					<td><%= news.content %></td>
-					<td><img src="<%= news.image.url %>" height="20px" /></td>
+					<td><img src="<%= news.image.url %>" height="20px"/></td>
 				</tr>
 			<% end %>
 		</tbody>

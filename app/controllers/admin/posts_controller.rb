@@ -48,7 +48,18 @@ class Admin::PostsController < Admin::AdminController
 		redirect_to admin_posts_path
 	end
 
+	# JSON API getting lastest posts
 	def get_posts
+		head :ok and return unless params[:type].present?
+
+		case params[:type].downcase
+		when "features"
+			posts = FeaturePost.select(:id, :title).latest
+		when "on_court"
+			posts = OnCourtPost.select("id, title_en AS title").latest
+		end
+
+		render :json => posts.to_json, :layout => false
 	end
 		
 	private
