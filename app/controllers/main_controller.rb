@@ -48,7 +48,7 @@ class MainController < ApplicationController
 			head :ok and return
 		end
 
-		render :json => {:no_more => no_more || @return_posts.total_pages == @return_posts.current_page, :posts => @return_posts}.to_json, :layout => false
+		render :json => {:no_more => (defined? @no_more) ? @no_more : @return_posts.total_pages == @return_posts.current_page, :posts => @return_posts}.to_json, :layout => false
 	end
 
 	def change_language 
