@@ -28,19 +28,22 @@ ActiveRecord::Schema.define(version: 20170426163608) do
 
   create_table "calendar_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date     "post_date"
-    t.string   "event_name"
+    t.string   "event_name_en"
     t.integer  "post_type"
-    t.integer  "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "event_name_cn"
   end
 
   create_table "feature_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.text     "content",    limit: 65535
-    t.string   "image"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "title_en"
+    t.text     "content_en",  limit: 65535
+    t.string   "main_image"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "title_cn"
+    t.string   "cover_image"
+    t.text     "content_cn",  limit: 65535
   end
 
   create_table "on_court_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,11 +68,14 @@ ActiveRecord::Schema.define(version: 20170426163608) do
   end
 
   create_table "trend_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.text     "content",    limit: 65535
-    t.string   "image"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "title_en"
+    t.text     "content_en",  limit: 65535
+    t.string   "main_image"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "title_cn"
+    t.string   "cover_image"
+    t.text     "content_cn",  limit: 65535
   end
 
 end
