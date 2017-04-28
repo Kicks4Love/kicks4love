@@ -8,7 +8,7 @@
     <div class="slide-bar-container">
     	<ul class="clearfix">
             <% @posts.each do |post| %>
-                <li><%= image_tag "#{post.image.post}" %></li>
+                <li><%= image_tag post.image.post.url %></li>
                 <div class="slide-filter"></div>
                 <a href="#"><p><%= post.title %></p></a>
             <% end %>
@@ -28,7 +28,7 @@
         <% @news.each do |news| %>
             <div class="col-xs-12 col-sm-4">
                 <div class="new-box">
-                    <%= image_tag "small-news1.jpg" %>
+                    <%= image_tag news.image.news.url %>
                     <div class="kicks-filter">
                         <a href="#"><p><%= news.title %></p></a>
                     </div>
@@ -40,9 +40,7 @@
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feeds.each_with_index do |feed, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @feeds.size-1%>">
-            <!-- TODO: consistent the image -->
-            <% image = (defined? feed.image) ? feed.image : feed.main_image %>
-            <%= image_tag "#{image.main}", :class => "col-xs-12 col-sm-4 kicks-pic" %>
+            <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
             <div class="col-xs-12 col-sm-8 kicks-intro">
                 <h2><%= feed.title %></h2>
                 <div class="kicks-intro-content">

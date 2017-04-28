@@ -10,8 +10,8 @@ class Admin::FeaturePostsController < Admin::AdminController
 		if params[:filter].present?
 			session[:feature_post_per_page] = params[:filter][:per_page].to_i
 		end
-		@per_page = session[:feature_post_per_page] || 10
-		@feature_posts = @feature_posts.paginate(:page => params[:page] || 1, :per_page => session[:feature_post_per_page] || 10)
+		@per_page = session[:feature_post_per_page] || 5
+		@feature_posts = @feature_posts.paginate(:page => params[:page] || 1, :per_page => session[:feature_post_per_page] || 5)
 	end
 
 	def new

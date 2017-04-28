@@ -1,18 +1,27 @@
 class MainController < ApplicationController
-	before_action :set_locale
+	before_action :set_locale, :except => [:get_posts, :change_language]
 
 	def index
 		all_posts = Post.order(:created_at => :DESC)
 		@news = all_posts.news
 		@posts = all_posts.posts 
-		all_feeds = Post.get_posts
+
+		if @chinese
+			@news = @news.select("title_cn AS title, image, pointer_id")
+			@posts = @posts.select("title_cn AS title, image, pointer_id")
+		else
+			@news = @news.select("title_en AS title, image, pointer_id")
+			@posts = @posts.select("title_en AS title, image, pointer_id")
+		end
+
+		all_feeds = Post.get_posts(@chinese)
 		@no_more = 3 > all_feeds.count
 		@feeds = all_feeds[0..2]
 	end
 
 	def features
 		@page_title = 'Kicks4Love | Features'
-		@feature_posts = FeaturePost.order(:created_at => :DESC).paginate(:page => 1)
+		@feature_posts = FeaturePost.latest.paginate(:page => 1)
 	end
 
 	def calendar
@@ -35,7 +44,7 @@ class MainController < ApplicationController
 		case params[:source_page]
 		when 'index'
 			page_index = 3 * params[:next_page].to_i
-			feeds = Post.get_posts
+			feeds = Post.get_posts(session[:language] == :cn)
 			@no_more = page_index > feeds.count
 			@return_posts = feeds[page_index - 3.. page_index - 1]
 		when 'features'
@@ -64,6 +73,7 @@ class MainController < ApplicationController
 
 	def set_locale
   		I18n.locale = session[:language] || I18n.default_locale
+  		@chinese = session[:language] == "cn"
 	end 
 
 end
