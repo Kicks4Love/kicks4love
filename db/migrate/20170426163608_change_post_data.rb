@@ -1,6 +1,8 @@
 class ChangePostData < ActiveRecord::Migration[5.0]
   def change
   	remove_column :posts, :content
+    rename_column :posts, :title, :title_en
+    add_column :posts, :title_cn, :string
   	add_column :posts, :pointer_type, :integer, :default => 0, :null => false
   	add_column :posts, :pointer_id, :integer
   	rename_column :feature_posts, :title, :title_en

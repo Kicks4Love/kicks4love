@@ -65,7 +65,7 @@ class Admin::PostsController < Admin::AdminController
 	private
 
 	def post_params
-		params.require(:post).permit(:title, :post_type, :pointer_type, :pointer_id, :image)
+		params.require(:post).permit(:title_en, :title_cn, :post_type, :pointer_type, :pointer_id, :image)
 	end
 
 	def get_post

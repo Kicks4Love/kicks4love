@@ -59,12 +59,13 @@ ActiveRecord::Schema.define(version: 20170426163608) do
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_type",    default: 0, null: false
-    t.string   "title"
+    t.string   "title_en"
     t.string   "image"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "pointer_type", default: 0, null: false
     t.integer  "pointer_id"
+    t.string   "title_cn"
   end
 
   create_table "trend_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

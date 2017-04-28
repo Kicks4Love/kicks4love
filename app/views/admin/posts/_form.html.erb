@@ -1,9 +1,19 @@
+<% is_new_record = @post.new_record? %>
 <div class="row no-margin">
 	<div class="col-sm-2">
-		<label>Title:</label>
+		<label>Title (English):</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_field :title %>
+		<%= form.text_field :title_en %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>中文标题:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.text_field :title_cn %>
 	</div>
 </div>
 <br>
@@ -15,7 +25,7 @@
 		<%= form.select :pointer_type, Post.pointer_types.keys %>
 	</div>
 	<div class="col-sm-2">
-		<%= form.select :pointer_id, [] %>
+		<%= form.select :pointer_id, is_new_record ? [] : @post.pointer_type %>
 	</div>
 </div>
 <br>
@@ -24,7 +34,7 @@
 		<label>Post Type:</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_field :post_type, :value => @post.new_record? ? params[:type] : @post.post_type, :readonly => true %>
+		<%= form.text_field :post_type, :value => is_new_record ? params[:type] : @post.post_type, :readonly => true %>
 	</div>
 </div>
 <br>
