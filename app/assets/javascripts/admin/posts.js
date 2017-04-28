@@ -16,7 +16,7 @@ function refreshPosts(postType) {
            	data.forEach(function(entry) {
            		targetSelect.append($("<option/>", {
         			value: entry.id,
-        			text: entry.title
+        			text: entry.title_en
     			}));
            	});
         }

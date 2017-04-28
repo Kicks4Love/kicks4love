@@ -4,6 +4,7 @@ class FeaturePost < ApplicationRecord
 
 	self.per_page = 3
 
-	mount_uploader :image, FeatureUploader
+	mount_uploader :main_image, FeatureUploader
+	mount_uploader :cover_image, FeatureUploader
 	
 end

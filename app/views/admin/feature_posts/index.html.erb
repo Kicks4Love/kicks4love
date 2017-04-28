@@ -22,9 +22,12 @@
 		<tbody>
 			<tr>
 				<th></th>
-				<th>Title</th>
-				<th>Content</th>
-				<th>Image</th>
+				<th>Title (English)</th>
+				<th>中文标题</th>
+				<th>Content (English)</th>
+				<th>文章内容 （中文)</th>
+				<th>Cover Image</th>
+				<th>Main Image</th>
 			</tr>
 		</tbody>
 		<tbody>
@@ -35,9 +38,12 @@
 						|
 						<%= link_to "Delete", admin_feature_post_path(feature_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
 					</td>
-					<td><%= feature_post.title %></td>
-					<td><%= feature_post.content %></td>
-					<td><img src="<%= feature_post.image %>" height="20px" /></td>
+					<td><%= feature_post.title_en %></td>
+					<td><%= feature_post.title_cn %></td>
+					<td><%= feature_post.content_en %></td>
+					<td><%= feature_post.content_cn %></td>
+					<td><img src="<%= feature_post.cover_image.main.url %>" height="20px" /></td>
+					<td><img src="<%= feature_post.main_image.main.url %>" height="20px" /></td>
 				</tr>
 			<% end %>
 		</tbody>

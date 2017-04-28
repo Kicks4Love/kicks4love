@@ -54,9 +54,9 @@ class Admin::PostsController < Admin::AdminController
 
 		case params[:type].downcase
 		when "features"
-			posts = FeaturePost.select(:id, :title).latest
+			posts = FeaturePost.select(:id, :title_en).latest
 		when "on_court"
-			posts = OnCourtPost.select("id, title_en AS title").latest
+			posts = OnCourtPost.select(:id, :title_en).latest
 		end
 
 		render :json => posts.to_json, :layout => false
