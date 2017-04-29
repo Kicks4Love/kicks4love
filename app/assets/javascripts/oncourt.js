@@ -14,6 +14,8 @@ $(document).ready(function() {
     		return false;
 	});
 
+	
+
     $('.not-work').click(function(event) {
         event.preventDefault();
         alert("即将来临\nComing soon");

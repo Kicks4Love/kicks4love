@@ -61,9 +61,9 @@ class MainController < ApplicationController
 			feeds = FeaturePost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
 			if @chinese
-				feeds.select("id, title_cn AS title, content_cn AS content, cover_image")
+				feeds = feeds.select("id, title_cn AS title, content_cn AS content, cover_image")
 			else
-				feeds.select("id, title_en AS title, content_en AS content, cover_image")
+				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image")
 			end
 		when 'on_court'
 			@return_posts = OnCourtPost.paginate(:page => params[:next_page]).latest

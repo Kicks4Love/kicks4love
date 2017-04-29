@@ -3,10 +3,10 @@
 <% end %>
 
 <div class="main">
-    <div class="on-court"><%= t("On_court") %></div>
+    <div class="on-court"><%= t("On_Court") %></div>
     <ul class="clearfix">
         <% @on_court_posts.each_with_index do |post, index| %>
-            <li <%= raw (index + 1) % 3 == 0 ? "class=\"last\"" : "" %>>
+            <li class="col-xs-12 col-sm-6 col-lg-4<%= " last" if index == @on_court_posts.size-1 %>">
                 <a href="#">
                     <%= image_tag post.cover_image.main.url %>
                     <p><%= post.title %></p>
@@ -14,7 +14,7 @@
             </li>
         <% end %>
         <% unless @on_court_posts.total_pages == @on_court_posts.current_page %>
-            <div class="to-view-more">
+            <div class="to-view-more col-sm-6">
                 <span>Click To View More</span>
             </div>
         <% end %>
