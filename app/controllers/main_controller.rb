@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-	before_action :set_locale, :except => [:get_posts, :change_language]
+	before_action :set_locale, :except => [:change_language]
 
 	def index
 		all_posts = Post.order(:created_at => :DESC)
@@ -22,6 +22,11 @@ class MainController < ApplicationController
 	def features
 		@page_title = 'Kicks4Love | Features'
 		@feature_posts = FeaturePost.latest.paginate(:page => 1)
+		if @chinese
+			@feature_posts = @feature_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+		else
+			@feature_posts = @feature_posts.select("title_en AS title, content_en AS content, cover_image, id")
+		end
 	end
 
 	def calendar
@@ -30,7 +35,12 @@ class MainController < ApplicationController
 
 	def oncourt
 		@page_title = 'Kicks4Love | On Court'
-		@all_on_court_posts = OnCourtPost.latest.paginate(:page => 1)
+		@on_court_posts = OnCourtPost.latest.paginate(:page => 1)
+		if @chinese
+			@on_court_posts = @on_court_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+		else
+			@on_court_posts = @on_court_posts.select("title_en AS title, content_en AS content, cover_image, id")
+		end
 	end
 
 	def trend
@@ -44,11 +54,17 @@ class MainController < ApplicationController
 		case params[:source_page]
 		when 'index'
 			page_index = 3 * params[:next_page].to_i
-			feeds = Post.get_posts(session[:language] == :cn)
+			feeds = Post.get_posts(@chinese)
 			@no_more = page_index > feeds.count
-			@return_posts = feeds[page_index - 3.. page_index - 1]
+			feeds = feeds[page_index - 3.. page_index - 1]
 		when 'features'
-			@return_posts = FeaturePost.paginate(:page => params[:next_page]).latest
+			feeds = FeaturePost.paginate(:page => params[:next_page]).latest
+			@no_more = feeds.total_pages == feeds.current_page
+			if @chinese
+				feeds.select("id, title_cn AS title, content_cn AS content, cover_image")
+			else
+				feeds.select("id, title_en AS title, content_en AS content, cover_image")
+			end
 		when 'on_court'
 			@return_posts = OnCourtPost.paginate(:page => params[:next_page]).latest
 		when 'trend'
@@ -57,7 +73,13 @@ class MainController < ApplicationController
 			head :ok and return
 		end
 
-		render :json => {:no_more => (defined? @no_more) ? @no_more : @return_posts.total_pages == @return_posts.current_page, :posts => @return_posts}.to_json, :layout => false
+		@return_posts = []
+		feeds.each do |post|
+			post_hash = {:post => post, :image_url => post.cover_image.main.url}
+			@return_posts.push(post_hash)
+		end
+
+		render :json => {:no_more => @no_more, :posts => @return_posts}.to_json, :layout => false
 	end
 
 	def change_language 
