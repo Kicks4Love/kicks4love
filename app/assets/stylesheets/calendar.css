@@ -31,21 +31,9 @@ h1, h4 {
 		width: 100% !important;
 	}
 
-	.calendar-header {
-		width: 100% !important;
-	}
-
 	.week >.div {
 		text-align: center;
 	}
-
-	.day {
-		width: 14% !important;
-	}
-
-  .details {
-    width: 100% !important;
-  }
 }
 
 *, *:before, *:after {
@@ -58,7 +46,8 @@ h1, h4 {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
   	transform: translate3d(0, 0, 0);
-  	width: 420px;
+  	width: 70%;
+    max-width: 800px;
   	margin: 0 auto 80px;
   	height: 600px;
   	overflow: hidden;
@@ -66,11 +55,10 @@ h1, h4 {
 
 .calendar-header {
   	height: 50px;
-  	width: 420px;
+  	width: 100%;
   	text-align: center;
   	position:relative;
 }
-
 .calendar-header h1 {
   	margin: 0;
   	padding: 0;
@@ -89,13 +77,11 @@ h1, h4 {
   	margin-top: -7.5px;
   	cursor: pointer;
 }
-
 .left {
   	border-width: 7.5px 10px 7.5px 0;
   	border-color: transparent rgba(160, 159, 160, 1) transparent transparent;
   	left: 20px;
 }
-
 .right {
   border-width: 7.5px 0 7.5px 10px;
   border-color: transparent transparent transparent rgba(160, 159, 160, 1);
@@ -103,10 +89,8 @@ h1, h4 {
 }
 
 .month {
-  /*overflow: hidden;*/
   opacity: 0;
 }
-
 .month.new {
   -webkit-animation: fadeIn 1s ease-out;
   opacity: 1;
@@ -118,21 +102,18 @@ h1, h4 {
   animation: moveFromTopFadeMonth .4s ease-out;
   opacity: 1;
 }
-
 .month.out.next {
   -webkit-animation: moveToTopFadeMonth .4s ease-in;
   -moz-animation: moveToTopFadeMonth .4s ease-in;
   animation: moveToTopFadeMonth .4s ease-in;
   opacity: 1;
 }
-
 .month.in.prev {
   -webkit-animation: moveFromBottomFadeMonth .4s ease-out;
   -moz-animation: moveFromBottomFadeMonth .4s ease-out;
   animation: moveFromBottomFadeMonth .4s ease-out;
   opacity: 1;
 }
-
 .month.out.prev {
   -webkit-animation: moveToBottomFadeMonth .4s ease-in;
   -moz-animation: moveToBottomFadeMonth .4s ease-in;
@@ -146,7 +127,7 @@ h1, h4 {
 
 .day {
   	display: inline-block;
-  	width: 60px;
+  	width: 14.28%;
   	padding: 10px;
   	text-align: center;
   	vertical-align: top;
@@ -154,15 +135,12 @@ h1, h4 {
   	background: #4A4A4A;
   	position: relative;
 }
-
 .day.other {
- color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .3);
 }
-
 .day.today {
   color: rgba(156, 202, 235, 1);
 }
-
 .day-name {
   font-size: 9px;
   text-transform: uppercase;
@@ -170,12 +148,10 @@ h1, h4 {
   color: rgba(255, 255, 255, .5);
   letter-spacing: .7px;
 }
-
 .day-number {
   font-size: 24px;
   letter-spacing: 1.5px;
 }
-
 .day .day-events {
   list-style: none;
   margin-top: 3px;
@@ -184,7 +160,6 @@ h1, h4 {
   line-height: 6px;
   overflow: hidden;
 }
-
 .day .day-events span {
   vertical-align: top;
   display: inline-block;
@@ -203,19 +178,17 @@ h1, h4 {
 
 .details {
   position: relative;
-  width: 420px;
+  width: 100%;
   height: 75px;
   background: rgba(164, 164, 164, 1);
   margin-top: 5px;
   border-radius: 4px;
 }
-
 .details.in {
   -webkit-animation: moveFromTopFade .5s ease both;
   -moz-animation: moveFromTopFade .5s ease both;
   animation: moveFromTopFade .5s ease both;
 }
-
 .details.out {
   -webkit-animation: moveToTopFade .5s ease both;
   -moz-animation: moveToTopFade .5s ease both;
@@ -241,31 +214,26 @@ h1, h4 {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
 .events.in {
   -webkit-animation: fadeIn .3s ease both;
   -moz-animation: fadeIn .3s ease both;
   animation: fadeIn .3s ease both;
 }
-
 .events.in {
   -webkit-animation-delay: .3s;
   -moz-animation-delay: .3s;
   animation-delay: .3s;
 }
-
 .details.out .events {
   -webkit-animation: fadeOutShrink .4s ease both;
   -moz-animation: fadeOutShink .4s ease both;
   animation: fadeOutShink .4s ease both;
 }
-
 .events.out {
   -webkit-animation: fadeOut .3s ease both;
   -moz-animation: fadeOut .3s ease both;
   animation: fadeOut .3s ease both;
 }
-
 .event {
   font-size: 16px;
   line-height: 22px;
@@ -273,11 +241,9 @@ h1, h4 {
   padding: 2px 16px;
   vertical-align: top;
 }
-
 .event.empty {
   color: #eee;
 }
-
 .event-category {
   height: 10px;
   width: 10px;
@@ -285,7 +251,6 @@ h1, h4 {
   margin: 6px 0 0;
   vertical-align: top;
 }
-
 .event span {
   display: inline-block;
   padding: 0 0 0 7px;
@@ -309,7 +274,6 @@ h1, h4 {
   line-height: 30px;
   background: transparent;
 }
-
 .entry:after {
   position: absolute;
   content: '';

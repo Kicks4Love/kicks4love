@@ -208,7 +208,8 @@
 		}, []);
 
 		this.renderEvents(todaysEvents, details);
-		arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
+		console.log(el.parentNode);
+		arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + (el.parentNode.clientWidth/15.6) + 'px';
 	}
 
 	Calendar.prototype.renderEvents = function(events, ele) {
@@ -300,23 +301,7 @@
 $(document).ready(function() {
 	initCalendarData();
 	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
-
-	if (!$('#language').val().length)
-		$('#language-modal').modal('show');
-
-	$('#language-form').submit(function(){
-    	var current_language = $('#language').val();
-    	
-    	if (current_language == 'cn' && this.submited.includes('chinese'))
-    		return false;
-    	if (current_language == 'en' && this.submited.includes('english'))
-    		return false;
-	});
-
-    $('.not-work').click(function(event) {
-        event.preventDefault();
-        alert("即将来临\nComing soon");
-    });
+	initLanguageFormHandler();
 });
 
 function initCalendarData() {
