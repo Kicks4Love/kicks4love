@@ -7,7 +7,7 @@
     <ul class="clearfix">
         <% @on_court_posts.each_with_index do |post, index| %>
             <li class="col-xs-12 col-sm-6 col-lg-4<%= " last" if index == @on_court_posts.size-1 %>">
-                <a href="#">
+                <a href="/oncourt/<%= post.id %>"><%= post.title %>>
                     <%= image_tag post.cover_image.main.url %>
                     <p><%= post.title %></p>
                 </a>

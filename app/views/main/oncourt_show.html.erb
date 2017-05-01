@@ -1,0 +1,17 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "oncourt.css" %>
+<% end %>
+<div class="main">
+  <h2><%= @oncourt_post.title_en%> </h2>
+  <dl class="col-xs-12 col-sm-4">
+      <dt>
+          <img src="<%= @oncourt_post.main_image.url %>" class="kicks-pic"/>
+      </dt>
+  </dl>
+  <div class="col-xs-12 col-sm-8">
+      <h2><%= @oncourt_post.title_en %></h2>
+      <div>
+          <span><%= @oncourt_post.content_en %></span>
+      </div>
+  </div>
+</div>
