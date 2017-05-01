@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       end
     end
     resources :feature_posts
+    resources :calendar_posts
     resources :trend_posts
     resources :on_court_posts
     resources :admin_users

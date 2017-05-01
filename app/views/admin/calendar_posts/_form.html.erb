@@ -1,0 +1,46 @@
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Title (English):</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.text_field :title_en %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>中文标题:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.text_field :title_cn %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Release Date:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.text_field :release_date, :value => Date.today %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Release Type:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.select :release_type, CalendarPost.release_types.keys %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Image:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.file_field :image %>
+	</div>
+</div>
+<br>
+<%= form.submit "Submit", :class => "btn btn-primary" %>

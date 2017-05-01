@@ -1,0 +1,62 @@
+<h1>Admin Calendar Post</h1>
+
+<hr/>
+
+<% if @calendar_posts.any? || params[:filter].present? %>
+	<%= link_to "Create new calendar post", new_admin_calendar_post_path, :class => "btn btn-primary" %>
+
+	<br><br>
+
+	<%= form_for :filter, :url => admin_calendar_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
+		<label>Type:</label>
+		<%= f.select :release_type, options_for_select(CalendarPost.release_types.keys, params[:filter].nil? ? '' : params[:filter][:release_type]), :include_blank => true %>
+	    <label>Per Page:</label>
+	    <%= f.radio_button :per_page, 5, :checked => @per_page == 5 %>
+	    <%= f.label :per_page, 5, :value => 5 %>
+	    <%= f.radio_button :per_page, 10, :checked => @per_page == 10 %>
+	    <%= f.label :per_page, 10, :value => 10  %>
+
+	    <%= f.submit 'Filter', :class => "btn btn-default"  %>
+	    <%= link_to 'Clear Filter', admin_calendar_posts_path %>
+	<% end %>
+	<br/>
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<th></th>
+				<th>Title (English)</th>
+				<th>中文标题</th>
+				<th>Release Date</th>
+				<th>Release Type</th>
+				<th>Image</th>
+			</tr>
+		</tbody>
+		<tbody>
+			<% @calendar_posts.each do |calendar_post| %>
+				<tr>
+					<td>
+						<%= link_to "Edit", edit_admin_calendar_post_path(calendar_post) %>
+						|
+						<%= link_to "Delete", admin_calendar_post_path(calendar_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+					</td>
+					<td><%= calendar_post.title_en %></td>
+					<td><%= calendar_post.title_cn %></td>
+					<td><%= calendar_post.release_date %></td>
+					<td><%= calendar_post.release_type %></td>
+					<td><img src="<%= calendar_post.image.main.url %>" height="50px" /></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= will_paginate @calendar_post %>
+<% else %>
+	<h2>No Record</h2>
+
+	<br/>
+
+	<%= link_to "Create a new calendar post now", new_admin_calendar_post_path, :class => "btn btn-primary" %>
+<% end %>
+
+<br><br>
+
+<p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>

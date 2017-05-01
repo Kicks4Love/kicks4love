@@ -1,4 +1,4 @@
-class FeatureUploader < ImageUploader
+class CalendarUploader < ImageUploader
 
   version :main do
     process resize_to_limit: [300, 220]

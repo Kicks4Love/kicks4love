@@ -8,7 +8,7 @@ class CreateTrendPosts < ActiveRecord::Migration[5.0]
     end
   end
 
-    def down
-      drop_table :trend_posts
-    end
+  def down
+    drop_table :trend_posts
+  end
 end
