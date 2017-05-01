@@ -30,8 +30,12 @@ class MainController < ApplicationController
 	end
 
 	def feature_show
-		@page_title = 'Showing feaure page'
 		@feature_post = FeaturePost.find(params[:id])
+		if @chinese
+			@page_title = @feature_post.title_cn
+		else
+			@page_title = @feature_post.title_en
+		end
 	end
 
 	def calendar
@@ -49,8 +53,12 @@ class MainController < ApplicationController
 	end
 
 	def oncourt_show
-		@page_title = 'Showing on court page'
 		@oncourt_post = OnCourtPost.find(params[:id])
+		if @chinese
+			@page_title = @oncourt_post.title_cn
+		else
+			@page_title = @oncourt_post.title_en
+		end
 	end
 
 	def trend
