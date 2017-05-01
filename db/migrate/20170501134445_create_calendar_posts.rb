@@ -4,7 +4,7 @@ class CreateCalendarPosts < ActiveRecord::Migration[5.0]
       t.string :title_en
       t.string :title_cn
       t.date :release_date
-      t.string :image
+      t.string :cover_image
       t.integer :release_type, :default => 0, :null => false
       t.timestamps
     end

@@ -59,7 +59,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 	private 
 
 	def calendar_post_params
-		params.require(:calendar_post).permit(:title_en, :title_cn, :content_en, :release_date, :release_type, :image)
+		params.require(:calendar_post).permit(:title_en, :title_cn, :content_en, :release_date, :release_type, :cover_image)
 	end
 
 	def get_calendar_post

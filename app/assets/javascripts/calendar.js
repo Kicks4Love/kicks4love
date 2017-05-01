@@ -10,7 +10,7 @@
 	    this.draw();
 	    var current = document.querySelector('.today');
 	    if (current) {
-	     	 var self = this;
+	     	var self = this;
 	      	window.setTimeout(function() {
 	        	self.openDay(current);
 	      	}, 500);
@@ -19,6 +19,7 @@
 
 	Calendar.prototype.draw = function() {
 	    this.drawHeader();
+	    this.getEvents();
 	    this.drawMonth();
 	    if (this.initial) {
 	    	this.drawLegend();
@@ -208,8 +209,14 @@
 		}, []);
 
 		this.renderEvents(todaysEvents, details);
-		console.log(el.parentNode);
 		arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + (el.parentNode.clientWidth/15.6) + 'px';
+
+		var description;
+		if (todaysEvents.length)
+			description = todaysEvents.length > 1 ? todaysEvents.length + ' releases' : '1 release';
+		else
+			description = 'no release';
+		$('.header').text(day.format('YYYY-MM-DD') + ' has ' + description);
 	}
 
 	Calendar.prototype.renderEvents = function(events, ele) {
@@ -256,6 +263,45 @@
 		} else {
 	  		ele.appendChild(wrapper);
 		}
+	}
+
+	Calendar.prototype.getEvents = function() {
+		console.log(this.current);
+		$.ajax({
+			type: 'GET',
+            url: '/main/get_posts?next_page=1&source_page=calendar&month=' + (this.current.month() + 1) + "&year=" + this.current.year(),
+            dataType: "json",
+            success: function(data) { 
+            	this.events = new Array();
+            	data.forEach(function(ev) {
+            		this.events.push({
+            			
+            		});
+            	});
+            	console.log(data);
+
+            	/*var parent = target.parent('.main');
+            	$('.kicks-box.last').removeClass('last');
+            	for (var i = 0; i < data.posts.length; i++) {
+            		parent.append(
+            			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
+                		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic">' + 
+            			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
+                		'<h2>' + data.posts[i].post.title + '</h2>' +
+                		'<div class="kicks-intro-content">' + 
+                    	'<span>' + data.posts[i].post.content + '</span>' +
+                		'</div></div></div>'
+            		);
+            	}
+            	if (!data.no_more) {
+	            	parent.append('<div class="to-view-more"><span>Click To View More</span></div>');
+	            	nextPage.val(parseInt(nextPage.val()) + 1);
+	            }
+            	target.fadeOut();
+            	$('.wait_load').fadeIn(1000);
+            	initLoadPostHandler();*/
+            }
+		});
 	}
 
 	Calendar.prototype.drawLegend = function() {

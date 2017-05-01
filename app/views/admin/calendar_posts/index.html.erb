@@ -43,7 +43,7 @@
 					<td><%= calendar_post.title_cn %></td>
 					<td><%= calendar_post.release_date %></td>
 					<td><%= calendar_post.release_type %></td>
-					<td><img src="<%= calendar_post.image.main.url %>" height="50px" /></td>
+					<td><img src="<%= calendar_post.cover_image.main.url if calendar_post.cover_image %>" height="50px" /></td>
 				</tr>
 			<% end %>
 		</tbody>

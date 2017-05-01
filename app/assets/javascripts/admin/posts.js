@@ -8,17 +8,17 @@ $(document).ready(function() {
 function refreshPosts(postType) {
 	$.ajax({
 		type: 'GET',
-        url: '/admin/posts/get_posts?type=' + postType,
-        dataType: "json",
-        success: function(data) { 
-           	var targetSelect = $('#post_pointer_id');
-           	targetSelect.empty();
-           	data.forEach(function(entry) {
-           		targetSelect.append($("<option/>", {
-        			value: entry.id,
-        			text: entry.title_en
-    			}));
-           	});
-        }
+      url: '/admin/posts/get_posts?type=' + postType,
+      dataType: "json",
+      success: function(data) { 
+         var targetSelect = $('#post_pointer_id');
+         targetSelect.empty();
+         data.forEach(function(entry) {
+         	targetSelect.append($("<option/>", {
+            value: entry.id,
+            text: entry.title_en
+    		   }));
+        });
+      å}
 	});
 }

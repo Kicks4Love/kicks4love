@@ -65,6 +65,14 @@ class MainController < ApplicationController
 			else
 				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image")
 			end
+		when 'calendar'
+			feeds = CalendarPost.where('extract(year from release_date) = ? AND extract(month from release_date) = ?', params[:year], params[:month])
+			@no_more = false
+			if @chinese
+				feeds = feeds.select("id, title_cn AS title, release_date, release_type, cover_image")
+			else
+				feeds = feeds.select("id, title_en AS title, release_date, release_type, cover_image")
+			end
 		when 'on_court'
 			feeds = OnCourtPost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page

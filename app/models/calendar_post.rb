@@ -4,6 +4,6 @@ class CalendarPost < ApplicationRecord
 
 	scope :latest, -> {order(:created_at => :DESC)}
 
-	mount_uploader :image, CalendarUploader
+	mount_uploader :cover_image, CalendarUploader
 
 end
