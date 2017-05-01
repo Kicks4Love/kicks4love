@@ -4,7 +4,7 @@ class MainController < ApplicationController
 	def index
 		all_posts = Post.order(:created_at => :DESC)
 		@news = all_posts.news
-		@posts = all_posts.posts 
+		@posts = all_posts.posts
 
 		if @chinese
 			@news = @news.select("title_cn AS title, image, pointer_id")
@@ -29,6 +29,11 @@ class MainController < ApplicationController
 		end
 	end
 
+	def feature_show
+		@page_title = 'Showing feaure page'
+		@feature_post = FeaturePost.find(params[:id])
+	end
+
 	def calendar
 		@page_title = 'Kicks4Love | Calendar'
 	end
@@ -43,9 +48,19 @@ class MainController < ApplicationController
 		end
 	end
 
+	def oncourt_show
+		@page_title = 'Showing on court page'
+		@oncourt_post = OnCourtPost.find(params[:id])
+	end
+
 	def trend
 		@page_title= 'Kicks4Love | Trend'
 		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
+	end
+
+	def trend_show
+		@page_title = 'Showing trend page'
+		@trend_post = TrendPost.find(params[:id])
 	end
 
 	def get_posts
@@ -88,7 +103,7 @@ class MainController < ApplicationController
 		render :json => {:no_more => @no_more, :posts => @return_posts}.to_json, :layout => false
 	end
 
-	def change_language 
+	def change_language
 		redirect_to :back and return unless params[:language].present?
 
 		I18n.locale = params[:language][:chinese].present? ? :cn : :en
@@ -102,6 +117,6 @@ class MainController < ApplicationController
 	def set_locale
   		I18n.locale = session[:language] || I18n.default_locale
   		@chinese = session[:language] == "cn"
-	end 
+	end
 
 end
