@@ -1,7 +1,7 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "feature.css" %>
 <% end %>
-    
+
 <div class="main clearfix">
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feature_posts.each_with_index do |feature_post, index| %>
@@ -11,7 +11,7 @@
                     <img src="<%= feature_post.cover_image.url %>" class="kicks-pic"/>
                 </dt>
                 <dd>
-                    <a href="#">PlaceHolder</a>
+                    <a href="/features/<%= feature_post.id %>"><%= feature_post.title %></a>
                 </dd>
             </dl>
             <div class="col-xs-12 col-sm-8 kicks-intro">
