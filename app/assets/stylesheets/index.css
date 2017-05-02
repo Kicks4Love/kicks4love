@@ -153,10 +153,6 @@ hr.title-divider {
 	cursor:pointer;
 }
 
-.main .kicks-intro{
-	color: black;
-	
-}
 .main .kicks-intro .feed-title {
 	color: rgb(38, 38, 38);
 	margin: 0;
@@ -165,7 +161,6 @@ hr.title-divider {
 	font-size: 2.0em;
 	font-weight: 900;
 	text-align: center;
-	
 }
 .main .kicks-intro .kicks-intro-content {
 	margin-top: 30px;

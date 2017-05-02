@@ -47,7 +47,7 @@
           <% end %>
         </tbody>
     </table>
-    <%= will_paginate @on_court_posts %>
+    <%= will_paginate @on_court_posts, :previous_label => 'Prev', :next_label => 'Next' %>
 <% else %>
     <h2>No posts yet</h2>
 

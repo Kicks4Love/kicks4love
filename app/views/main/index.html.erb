@@ -42,7 +42,7 @@
         <div class="kicks-box clearfix<%=' last' if index == @feeds.size-1%>">
             <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
             <div class="col-xs-12 col-sm-8 kicks-intro">
-                <div class="feed-title"><%= feed.title %></div>
+                <div class="feed-title"><h3><%= feed.title %></h3></div>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
                     <span><%= feed.content[0..300] %>...</span>

@@ -15,7 +15,7 @@ class MainController < ApplicationController
 		end
 
 		all_feeds = Post.get_posts(@chinese)
-		@no_more = 3 > all_feeds.count
+		@no_more = 3 >= all_feeds.count
 		@feeds = all_feeds[0..2]
 	end
 
@@ -70,7 +70,7 @@ class MainController < ApplicationController
 		when 'index'
 			page_index = 3 * params[:next_page].to_i
 			feeds = Post.get_posts(@chinese)
-			@no_more = page_index > feeds.count
+			@no_more = page_index >= feeds.count
 			feeds = feeds[page_index - 3.. page_index - 1]
 		when 'features'
 			feeds = FeaturePost.paginate(:page => params[:next_page]).latest

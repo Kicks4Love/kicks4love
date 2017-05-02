@@ -48,7 +48,7 @@
 			<% end %>
 		</tbody>
 	</table>
-	<%= will_paginate @calendar_post %>
+	<%= will_paginate @calendar_post, :previous_label => 'Prev', :next_label => 'Next' %>
 <% else %>
 	<h2>No Record</h2>
 
