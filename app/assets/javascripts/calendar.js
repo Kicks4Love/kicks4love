@@ -2,11 +2,12 @@
  * Class for Calendar
  */
 !function() {
-	function Calendar(selector, events) {
+	function Calendar(selector) {
 	    this.el = document.querySelector(selector);
-	    this.events = events;
+	    this.events = new Array();
 	    this.current = moment().date(1);
 	    this.initial = true;
+	    this.chinese = $('#language').val() == 'cn';
 	    this.draw();
 	    var current = document.querySelector('.today');
 	    if (current) {
@@ -52,11 +53,6 @@
 
 	Calendar.prototype.drawMonth = function() {
 	    var self = this;
-	    
-	    this.events.forEach(function(ev) {
-	     	ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
-	    });
-	    
 	    if (this.month) {
 	      	this.oldMonth = this.month;
 	      	this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
@@ -212,11 +208,14 @@
 		arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + (el.parentNode.clientWidth/15.6) + 'px';
 
 		var description;
-		if (todaysEvents.length)
-			description = todaysEvents.length > 1 ? todaysEvents.length + ' releases' : '1 release';
-		else
-			description = 'no release';
-		$('.header').text(day.format('YYYY-MM-DD') + ' has ' + description);
+		if (todaysEvents.length) {
+			if (this.chinese)
+				description = '有 ' + todaysEvents.length + '件物品发售';
+			else
+				description = 'has ' + todaysEvents.length > 1 ? todaysEvents.length + ' releases' : '1 release';
+		} else
+			description = this.chinese ? '没有发售活动' : 'has no release';
+		$('.header').text(day.format('YYYY-MM-DD') + ' ' + description);
 	}
 
 	Calendar.prototype.renderEvents = function(events, ele) {
@@ -266,57 +265,44 @@
 	}
 
 	Calendar.prototype.getEvents = function() {
-		console.log(this.current);
+		var self = this;
 		$.ajax({
 			type: 'GET',
+			async : false,
             url: '/main/get_posts?next_page=1&source_page=calendar&month=' + (this.current.month() + 1) + "&year=" + this.current.year(),
             dataType: "json",
             success: function(data) { 
-            	this.events = new Array();
-            	data.forEach(function(ev) {
-            		this.events.push({
-            			
+            	self.events = new Array();
+            	data.posts.forEach(function(ev) {
+            		self.events.push({
+            			eventName: ev.post.title,
+            			calendar: ev.post.release_type,
+            			color: self.setColor(ev.post.release_type),
+            			date: moment(ev.post.release_date)
             		});
             	});
-            	console.log(data);
-
-            	/*var parent = target.parent('.main');
-            	$('.kicks-box.last').removeClass('last');
-            	for (var i = 0; i < data.posts.length; i++) {
-            		parent.append(
-            			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
-                		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic">' + 
-            			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
-                		'<h2>' + data.posts[i].post.title + '</h2>' +
-                		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.posts[i].post.content + '</span>' +
-                		'</div></div></div>'
-            		);
-            	}
-            	if (!data.no_more) {
-	            	parent.append('<div class="to-view-more"><span>Click To View More</span></div>');
-	            	nextPage.val(parseInt(nextPage.val()) + 1);
-	            }
-            	target.fadeOut();
-            	$('.wait_load').fadeIn(1000);
-            	initLoadPostHandler();*/
             }
 		});
 	}
 
+	Calendar.prototype.setColor = function(calendar) {
+		switch(calendar) {
+			case 'SNEAKER':
+				return 'orange';
+			case 'CLOTH':
+				return 'blue';
+			case 'ACCESSORY':
+				return 'yellow';
+			default:
+				return 'green'
+		}
+	}
+
 	Calendar.prototype.drawLegend = function() {
 		var legend = createElement('div', 'legend');
-		var calendars = this.events.map(function(e) {
-	  		return e.calendar + '|' + e.color;
-		}).reduce(function(memo, e) {
-	  		if (memo.indexOf(e) === -1) memo.push(e);
-	  		return memo;
-		}, []).forEach(function(e) {
-	  		var parts = e.split('|');
-	  		var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
-	  		legend.appendChild(entry);
-		});
-		this.el.appendChild(legend);
+		legend.appendChild(createElement('span', 'entry orange', this.chinese ? '鞋子' : 'Sneaker'));
+		legend.appendChild(createElement('span', 'entry blue', this.chinese ? '服饰' : 'Cloth'));
+		this.el.appendChild(legend)
 	}
 
 	Calendar.prototype.nextMonth = function() {
@@ -351,34 +337,13 @@ $(document).ready(function() {
 });
 
 function initCalendarData() {
-  	var data = [
-	    { eventName: 'Lunch Meeting w/ Mark', calendar: 'Work', color: 'orange' },
-	    { eventName: 'Interview - Jr. Web Developer', calendar: 'Work', color: 'orange' },
-	    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
-	    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
-
-	    { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
-	    { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
-	    { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
-	    { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
-
-	    { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
-	    { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
-	    { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
-	    { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
-
-	    { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
-	    { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
-	    { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
-	    { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
-	];
-
 	try {
-  		var calendar = new Calendar('#calendar', data);
+  		var calendar = new Calendar('#calendar');
   	} catch(e) {
+  		var errorDescription = this.chinese ? '错误发生当开启日历，清刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
   		$('#calendar').css('text-align', 'center').append($('<h3>', {
   			style: 'color:#4A4A4A',
-  			text: 'Error occur while opening calendar. Please refresh the page.'
+  			text: errorDescription
   		}));
   	}
 }
