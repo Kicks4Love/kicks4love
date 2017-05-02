@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   root :to => 'main#index'
 
   get '/features' => 'main#features'
+  get '/features/:id' => 'main#feature_show'
   get '/calendar' => 'main#calendar'
   get '/trend' =>'main#trend'
+  get '/trend/:id' => 'main#trend_show'
   get '/oncourt' => 'main#oncourt'
+  get '/oncourt/:id' => 'main#oncourt_show'
 
   resources :main do
   	collection do
