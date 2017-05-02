@@ -4,59 +4,61 @@
 
 <a name="home"></a>
 <div class="header">
-    <%= image_tag "logo1.png", :class => "logo-shake" %>
-    <div class="slide-bar-container">
-    	<ul class="clearfix">
-            <% @posts.each do |post| %>
-                <li><%= image_tag post.image.post.url %></li>
-                <div class="slide-filter"></div>
-                <a href="#"><p><%= post.title %></p></a>
-            <% end %>
-        </ul>
-        <ol class="clearfix">
-        	<li>&#8226;</li>
-            <li>&#8226;</li>
-            <li>&#8226;</li>
-            <li>&#8226;</li>
-            <li>&#8226;</li>
-        </ol>
-    </div>
+   <%= image_tag "logo1.png", :class => "logo-shake" %>
+   <div class="slide-bar-container">
+       <ul class="clearfix">
+           <% @posts.each do |post| %>
+               <li><%= image_tag post.image.post.url %></li>
+               <div class="slide-filter"></div>
+               <a href="#"><p><%= post.title %></p></a>
+           <% end %>
+       </ul>
+       <ol class="clearfix">
+           <li>&#8226;</li>
+           <li>&#8226;</li>
+           <li>&#8226;</li>
+           <li>&#8226;</li>
+           <li>&#8226;</li>
+       </ol>
+   </div>
 </div>
 
 <div class="main">
-    <div class="col-xs-12 banner-box clearfix">
-        <% @news.each do |news| %>
-            <div class="col-xs-12 col-sm-4">
-                <div class="new-box">
-                    <%= image_tag news.image.news.url %>
-                    <div class="kicks-filter">
-                        <a href="#"><p><%= news.title %></p></a>
-                    </div>
-                </div>
-            </div>
-        <% end %>
-    </div>
+   <div class="col-xs-12 banner-box clearfix">
+       <% @news.each do |news| %>
+           <div class="col-xs-12 col-sm-4">
+               <div class="new-box">
+                   <%= image_tag news.image.news.url %>
+                   <div class="kicks-filter">
+                       <a href="#"><p><%= news.title %></p></a>
+                   </div>
+               </div>
+           </div>
+       <% end %>
+   </div>
 
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feeds.each_with_index do |feed, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @feeds.size-1%>">
             <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
             <div class="col-xs-12 col-sm-8 kicks-intro">
-                <h2><%= feed.title %></h2>
+                <div class="feed-title"><%= feed.title %></div>
+                <hr class="title-divider">
                 <div class="kicks-intro-content">
-                    <span><%= feed.content %></span>
-                </div>
+                    <span><%= feed.content[0..300] %>...</span>
+                    <a class="more_link" target="_blank">(more)</a>
+                </div>  
             </div>
         </div>
     <% end %>
     <% unless @no_more  %>
         <div class="to-view-more">
             <span>Click To View More</span>
-        </div>
+            </div>
     <% end %>
     <%= hidden_field_tag "next_page", "2", :name => nil %>
 </div>
 
 <% content_for :end_of_body do %>
-    <%= javascript_include_tag "index.js" %>
+   <%= javascript_include_tag "index.js" %>
 <% end %>

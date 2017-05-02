@@ -7,6 +7,12 @@
 	text-align: center;
 }
 
+hr.title-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
 .logo-shake {
     -webkit-animation-name: spaceboots;
     -webkit-animation-duration: 0.8s;
@@ -146,24 +152,26 @@
 	max-height: 350px;
 	cursor:pointer;
 }
+
 .main .kicks-intro{
-	color: white;
-	background: rgba(164, 164, 164, 1);
+	color: black;
+	
 }
-.main .kicks-intro h2 {
-	color: white;
+.main .kicks-intro .feed-title {
+	color: rgb(38, 38, 38);
 	margin: 0;
 	padding: 0 10px;
 	line-height: 50px;
-	font-size: 30px;
-	background: #4A4A4A;
+	font-size: 2.0em;
+	font-weight: 900;
+	text-align: center;
+	
 }
 .main .kicks-intro .kicks-intro-content {
-	height: 270px;
 	margin-top: 30px;
 	padding: 0 10px;
-	font-size: 24px;
-	background: #4A4A4A;
+	font-size: 14px;
+	font-weight: lighter;
 }
 
 .main .wait_load{
