@@ -5,13 +5,13 @@
   <div class="kicks-box clearfix">
       <dl class="col-xs-12 col-sm-4">
           <dt>
-              <img src="<%= @feature_post.cover_image.url %>" class="kicks-pic"/>
+              <img src="<%= @feature_post.main_image.url %>" class="kicks-pic"/>
           </dt>
       </dl>
       <div class="col-xs-12 col-sm-8 kicks-intro">
-          <h2><%= @feature_post.title_en %></h2>
+          <h2><%= @chinese ? @feature_post.title_cn : @feature_post.title_en %></h2>
           <div class="kicks-intro-content">
-              <span><%= @feature_post.content_en %></span>
+              <span><%= @chinese ? @feature_post.content_cn : @feature_post.content_en %></span>
           </div>
       </div>
   </div>

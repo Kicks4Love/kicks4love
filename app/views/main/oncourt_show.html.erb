@@ -9,9 +9,9 @@
       </dt>
   </dl>
   <div class="col-xs-12 col-sm-8">
-      <h2><%= @oncourt_post.title_en %></h2>
+      <h2><%= @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en %></h2>
       <div>
-          <span><%= @oncourt_post.content_en %></span>
+          <span><%= @chinese ? @oncourt_post.content_cn : @oncourt_post.content_en %></span>
       </div>
   </div>
 </div>

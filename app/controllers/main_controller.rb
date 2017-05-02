@@ -31,11 +31,7 @@ class MainController < ApplicationController
 
 	def feature_show
 		@feature_post = FeaturePost.find(params[:id])
-		if @chinese
-			@page_title = @feature_post.title_cn
-		else
-			@page_title = @feature_post.title_en
-		end
+		@page_title = @chinese ? @feature_post.title_cn : @feature_post.title_en
 	end
 
 	def calendar
@@ -54,11 +50,7 @@ class MainController < ApplicationController
 
 	def oncourt_show
 		@oncourt_post = OnCourtPost.find(params[:id])
-		if @chinese
-			@page_title = @oncourt_post.title_cn
-		else
-			@page_title = @oncourt_post.title_en
-		end
+		@page_title = @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en
 	end
 
 	def trend
