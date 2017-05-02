@@ -22,9 +22,12 @@
     <thead>
         <tr>
             <th></th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Main Image</th>
+            <th>Title (English)</th>
+          <th>中文标题</th>
+          <th>Content (English)</th>
+          <th>文章内容 （中文)</th>
+          <th>Cover Image</th>
+          <th>Main Image</th>
         </tr>
     </thead>
     <tbody>
@@ -35,9 +38,12 @@
             |
             <%= link_to "Delete", admin_trend_post_path(trend_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
           </td>
-          <td><%= trend_post.title %></td>
-          <td><%= trend_post.content %></td>
-          <td><%= image_tag "trend_post/#{trend_post.image}", :height => "50px"%></td>
+          <td><%= trend_post.title_en %></td>
+          <td><%= trend_post.title_cn %></td>
+          <td><%= trend_post.content_en %></td>
+          <td><%= trend_post.content_cn %></td>
+          <td><img src="<%= trend_post.cover_image.main.url %>" height = "50px" /></td>
+          <td><img src="<%= trend_post.main_image.main.url %>" height="50px" /></td>
         </tr>
       <% end %>
     </tbody>
