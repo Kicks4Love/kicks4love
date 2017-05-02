@@ -2,7 +2,7 @@
     <%= stylesheet_link_tag "feature.css" %>
 <% end %>
 
-<div class="main clearfix">
+<div class="main container clearfix">
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feature_posts.each_with_index do |feature_post, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @feature_posts.size-1%>">

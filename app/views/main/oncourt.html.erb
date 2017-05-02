@@ -2,7 +2,7 @@
     <%= stylesheet_link_tag "oncourt.css" %>
 <% end %>
 
-<div class="main">
+<div class="main container">
     <div class="on-court"><%= t("On_Court") %></div>
     <ul class="clearfix">
         <% @on_court_posts.each_with_index do |post, index| %>

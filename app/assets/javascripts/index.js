@@ -98,8 +98,10 @@ function initLoadPostHandler() {
                 		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic">' + 
             			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
                 		'<h2>' + data.posts[i].post.title + '</h2>' +
+                		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.posts[i].post.content + '</span>' +
+                    	'<span>' + data.posts[i].post.content + '...</span>' +
+                    	'<a target="_blank">(more)</a>' +
                 		'</div></div></div>'
             		);
             	}
