@@ -235,7 +235,7 @@
 
 		if (!events.length) {
 	  		var div = createElement('div', 'event empty');
-	  		var span = createElement('span', '', 'No Events');
+	  		var span = createElement('span', '', this.chinese ? '没有发售活动' : 'No Release');
 
 	  		div.appendChild(span);
 	  		wrapper.appendChild(div);
@@ -302,6 +302,8 @@
 		var legend = createElement('div', 'legend');
 		legend.appendChild(createElement('span', 'entry orange', this.chinese ? '鞋子' : 'Sneaker'));
 		legend.appendChild(createElement('span', 'entry blue', this.chinese ? '服饰' : 'Cloth'));
+		legend.appendChild(createElement('span', 'entry yellow', this.chinese ? '配件' : 'Accessory'));
+		legend.appendChild(createElement('span', 'entry green', this.chinese ? '其它' : 'Other'));
 		this.el.appendChild(legend)
 	}
 
