@@ -28,7 +28,7 @@ function initLanguageFormHandler() {
     		return false;
 	});
 
-    $('.not-work').click(function(event) {
+    $('.not-work').on('click submit' ,function(event) {
         event.preventDefault();
         alert("即将来临\nComing soon");
     });

@@ -6,7 +6,7 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="Kicks4Love">
-	    <meta name="author" content="RH Boys">
+	    <meta name="author" content="RHBoys">
 
 	    <!-- Common CSS -->
 	    <%= stylesheet_link_tag "application.css" %>
@@ -46,12 +46,12 @@
 		                  		<li><%= link_to t("ON_COURT"), oncourt_path %></li>
 		                  		<li role="separator" class="divider"></li>
 		                  		<li class="dropdown-header"><%= t("LEISURE_ENTERTAINMENT") %></li>
-		                  		<li><a href="#"><%= t("STREET_SNAP") %></a></li>
-		                  		<li><a href="#"><%= t("RUMORS") %></a></li>
+		                  		<li><a href="#" class="not-work"><%= t("STREET_SNAP") %></a></li>
+		                  		<li><a href="#" class="not-work"><%= t("RUMORS") %></a></li>
                			 	</ul>
               			</li>
             		</ul>
-            		<form class="navbar-form navbar-right" role="search">
+            		<form class="navbar-form navbar-right not-work" role="search">
 			  			<div class="input-group">
 			  				<% search_term = t("What_are_you_looking_for") %>
 					      	<input type="text" class="form-control" <%= raw "placeholder=\"#{search_term}\"" %>>

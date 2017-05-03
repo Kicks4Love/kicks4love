@@ -81,6 +81,7 @@ $(document).ready(function() {
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
 	$('.to-view-more').click(function() {
+		var chinese = $('#language').val() == 'cn';
 		var nextPage = $('#next_page');
 		var target = $(this);
 		target.find('span').text('Loading...');
@@ -101,7 +102,7 @@ function initLoadPostHandler() {
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
                     	'<span>' + data.posts[i].post.content + '...</span>' +
-                    	'<a target="_blank">(more)</a>' +
+                    	'<a target="_blank">(' + (chinese ? '更多' : 'more') + ')</a>' +
                 		'</div></div></div>'
             		);
             	}
