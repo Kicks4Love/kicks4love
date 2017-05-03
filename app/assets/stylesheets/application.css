@@ -207,8 +207,24 @@ a {
 	background-color: #4c7cc9;
 }
 
-footer {
+.social-media {
+    text-align: center;
     margin-top: 20px;
+}
+.social-media a:nth-child(1) {
+    color: #3b5998;
+}
+.social-media a:nth-child(2) {
+    color: #ce2f00;
+}
+.social-media a:nth-child(3) {
+    color: #af0eaa
+}
+.social-media a:nth-child(1):hover, .social-media a:nth-child(2):hover, .social-media a:nth-child(3):hover {
+    opacity: 0.5;
+}
+
+footer {
     padding: 50px 0;
     background-color: #f8f8f8;
 }

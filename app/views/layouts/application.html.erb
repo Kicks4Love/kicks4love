@@ -111,6 +111,20 @@
 
     	<%= yield %>
 
+    	<div class="social-media">
+    		<a href="<%= Rails.application.config.social_media[:facebook] %>" target="_blank" class="fa-stack fa-lg">
+  				<i class="fa fa-circle-thin fa-stack-2x"></i>
+  				<i class="fa fa-facebook fa-stack-1x"></i>
+			</a>
+			<a href="<%= Rails.application.config.social_media[:weibo] %>" target="_blank" class="fa-stack fa-lg">
+  				<i class="fa fa-circle-thin fa-stack-2x"></i>
+  				<i class="fa fa-weibo fa-stack-1x"></i>
+			</a>
+			<a href="<%= Rails.application.config.social_media[:instagram] %>" target="_blank" class="fa-stack fa-lg">
+  				<i class="fa fa-circle-thin fa-stack-2x"></i>
+  				<i class="fa fa-instagram fa-stack-1x"></i>
+			</a>
+    	</div>
     	<footer>
 		    <div class="container">
 		        <div class="row">
