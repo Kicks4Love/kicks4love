@@ -7,11 +7,11 @@ class MainController < ApplicationController
 		@posts = all_posts.posts
 
 		if @chinese
-			@news = @news.select("title_cn AS title, image, pointer_id")
-			@posts = @posts.select("title_cn AS title, image, pointer_id")
+			@news = @news.select("title_cn AS title, image, pointer_id, pointer_type")
+			@posts = @posts.select("title_cn AS title, image, pointer_id, pointer_type")
 		else
-			@news = @news.select("title_en AS title, image, pointer_id")
-			@posts = @posts.select("title_en AS title, image, pointer_id")
+			@news = @news.select("title_en AS title, image, pointer_id, pointer_type")
+			@posts = @posts.select("title_en AS title, image, pointer_id, pointer_type")
 		end
 
 		all_feeds = Post.get_posts(@chinese)
@@ -72,6 +72,14 @@ class MainController < ApplicationController
 			feeds = Post.get_posts(@chinese)
 			@no_more = page_index >= feeds.count
 			feeds = feeds[page_index - 3.. page_index - 1]
+			feeds.each do |feed|
+				case feed.class.name
+                when "FeaturePost"
+                  feed.post_link = "/features/#{feed.id}"
+                when "OnCourtPost"
+                  feed.post_link = "/oncourt/#{feed.id}"
+                end
+			end
 		when 'features'
 			feeds = FeaturePost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
@@ -105,6 +113,7 @@ class MainController < ApplicationController
 		@return_posts = []
 		feeds.each do |post|
 			post_hash = {:post => post, :image_url => post.cover_image.main.url}
+			post_hash[:post_link] = post.post_link if (defined? post.post_link)
 			@return_posts.push(post_hash)
 		end
 
