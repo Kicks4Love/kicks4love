@@ -91,18 +91,20 @@ function initLoadPostHandler() {
             url: '/main/get_posts?next_page=' + nextPage.val() +'&source_page=index',
             dataType: "json",
             success: function(data) { 
+            	console.log(data);
             	var parent = target.parent('.main');
             	$('.kicks-box.last').removeClass('last');
             	for (var i = 0; i < data.posts.length; i++) {
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
-                		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic">' + 
+            			'<a href="' + data.posts[i].post_link + '">' +
+                		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic"></a>' + 
             			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
                 		'<h2>' + data.posts[i].post.title + '</h2>' +
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
                     	'<span>' + data.posts[i].post.content + '...</span>' +
-                    	'<a target="_blank">(' + (chinese ? '更多' : 'more') + ')</a>' +
+                    	'<a href="' + data.posts[i].post_link + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
                 		'</div></div></div>'
             		);
             	}
