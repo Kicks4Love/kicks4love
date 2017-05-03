@@ -6,7 +6,7 @@ class OnCourtPost < ApplicationRecord
 
 	self.per_page = 3
 
-	mount_uploader :cover_image, OnCourtUploader
-	mount_uploader :main_image, OnCourtUploader
+	mount_uploader :cover_image, ImageUploader
+	mount_uploader :main_image, ImageUploader
 
 end

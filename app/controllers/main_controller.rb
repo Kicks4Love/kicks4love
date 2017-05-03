@@ -112,7 +112,7 @@ class MainController < ApplicationController
 
 		@return_posts = []
 		feeds.each do |post|
-			post_hash = {:post => post, :image_url => post.cover_image.main.url}
+			post_hash = {:post => post, :image_url => post.cover_image.url}
 			post_hash[:post_link] = post.post_link if (defined? post.post_link)
 			@return_posts.push(post_hash)
 		end

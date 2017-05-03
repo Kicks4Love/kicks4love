@@ -37,8 +37,8 @@
                 <td><%= post.title_cn %></th>
                 <td><%= post.content_en %></td>
                 <td><%= post.content_cn %></td>
-                <td><%= image_tag "#{post.cover_image.cover}", :height => "50px"%></td>
-                <td><%= image_tag "#{post.main_image.main}", :height => "50px"%></td>
+                <td><%= image_tag "#{post.cover_image}", :height => "50px"%></td>
+                <td><%= image_tag "#{post.main_image}", :height => "50px"%></td>
                 <td>
                     <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
                     <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>

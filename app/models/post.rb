@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 	scope :posts, -> {where(:post_type => :POST)}
 	scope :news, -> {where(:post_type => :NEWS)}
 
-	mount_uploader :image, PostUploader
+	mount_uploader :image, ImageUploader
 
 	def self.get_posts(chinese)
 		if chinese

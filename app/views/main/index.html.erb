@@ -18,7 +18,7 @@
                         end
                     %>
                     <a href="<%= url %>">
-                        <%= image_tag post.image.post.url %>
+                        <%= image_tag post.image.url %>
                         <div class="slide-filter">
                             <p><%= post.title %></p>
                         </div>
@@ -50,7 +50,7 @@
                         end
                     %>
                     <a href="<%= url %>">
-                        <%= image_tag news.image.news.url %>
+                        <%= image_tag news.image.url %>
                         <div class="kicks-filter">
                             <p><%= news.title %></p>
                         </div>
@@ -72,10 +72,10 @@
                 end
             %>
             <a href="<%= link %>">
-              <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
+              <%= image_tag feed.cover_image.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
             </a>
             <div class="col-xs-12 col-sm-8 kicks-intro">
-                <h3><%= feed.title %></h3>
+                <div class="feed-title"><h3><%= feed.title %></h3></div>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
                     <span><%= feed.content[0..300] %>...</span>
