@@ -5,6 +5,22 @@
 <a name="home"></a>
 <div class="header"></div>
 <div id="calendar"></div>
+<div id="release-modal" class="modal fade" role="dialog">
+  	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		<h4 class="modal-title"></h4>
+      		</div>
+      		<div class="modal-body">
+        		<img src=""/>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    	</div>
+  	</div>
+</div>
 
 <% content_for :end_of_body do %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>

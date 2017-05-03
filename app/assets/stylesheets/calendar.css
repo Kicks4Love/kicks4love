@@ -15,6 +15,10 @@ h1, h4 {
   color: #4A4A4A;
 }
 
+#release-modal {
+  text-align: center;
+}
+
 .header {
 	width: 80%;
 	margin:	80px auto;
@@ -40,6 +44,16 @@ h1, h4 {
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box; 
     box-sizing: border-box;
+}
+
+#release-modal .modal-body {
+  background-color: black;
+}
+#release-modal .modal-header, #release-modal .modal-footer {
+  border-left: pink solid 15px;
+}
+#release-modal .modal-body {
+  border-left: #999999 solid 15px;
 }
 
 #calendar {
@@ -251,9 +265,10 @@ h1, h4 {
   margin: 6px 0 0;
   vertical-align: top;
 }
-.event span {
+.event a {
   display: inline-block;
   padding: 0 0 0 7px;
+  color: white;
 }
 
 .legend {

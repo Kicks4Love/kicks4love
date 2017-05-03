@@ -210,7 +210,7 @@
 		var description;
 		if (todaysEvents.length) {
 			if (this.chinese)
-				description = '有 ' + todaysEvents.length + '件物品发售';
+				description = '有' + todaysEvents.length + '件物品发售';
 			else
 				description = 'has ' + todaysEvents.length > 1 ? todaysEvents.length + ' releases' : '1 release';
 		} else
@@ -226,11 +226,22 @@
 		events.forEach(function(ev) {
 	  		var div = createElement('div', 'event');
 	  		var square = createElement('div', 'event-category ' + ev.color);
-	  		var span = createElement('span', '', ev.eventName);
+	  		var link = createElement('a', '', ev.eventName);
+	  		link.setAttribute('data-toggle', 'modal');
+	  		link.setAttribute('data-target', '#release-modal');
+	  		link.setAttribute('data-title', ev.eventName);
+	  		link.setAttribute('data-image', ev.image);
 
 	      	div.appendChild(square);
-	      	div.appendChild(span);
+	      	div.appendChild(link);
 	      	wrapper.appendChild(div);
+
+	      	link.addEventListener('click', function() {
+	      		var data = this.dataset;
+	      		var modal = document.getElementById('release-modal');
+	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
+	      		modal.querySelector('.modal-body > img').setAttribute('src', data.image);
+	      	});
 		});
 
 		if (!events.length) {
@@ -278,7 +289,8 @@
             			eventName: ev.post.title,
             			calendar: ev.post.release_type,
             			color: self.setColor(ev.post.release_type),
-            			date: moment(ev.post.release_date)
+            			date: moment(ev.post.release_date),
+            			image: ev.image_url
             		});
             	});
             }
@@ -342,7 +354,7 @@ function initCalendarData() {
 	try {
   		var calendar = new Calendar('#calendar');
   	} catch(e) {
-  		var errorDescription = this.chinese ? '错误发生当开启日历，清刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
+  		var errorDescription = $('#language').val() == 'cn' ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
   		$('#calendar').css('text-align', 'center').append($('<h3>', {
   			style: 'color:#4A4A4A',
   			text: errorDescription
