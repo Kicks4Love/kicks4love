@@ -6,27 +6,28 @@
 <div class="header">
     <%= image_tag "logo1.png", :class => "logo-shake" %>
     <div class="slide-bar-container">
-    	<ul class="clearfix">
+    	  <ul class="clearfix">
             <% @posts.each do |post| %>
                 <li>
-                  <% case post.pointer_type
-                     when "FEATURES"
-                       url = "/features/#{post.pointer_id}"
-                     when
-                       url = "/oncourt/#{post.pointer_id}"
-                     end
-                  %>
-                  <a href="<%= url %>">
-                    <%= image_tag post.image.post.url %>
-                    <div class="slide-filter">
-                      <p><%= post.title %></p>
-                    </div>
-                  </a>
+                    <%  
+                        case post.pointer_type
+                        when "FEATURES"
+                            url = "/features/#{post.pointer_id}"
+                        when
+                            url = "/oncourt/#{post.pointer_id}"
+                        end
+                    %>
+                    <a href="<%= url %>">
+                        <%= image_tag post.image.post.url %>
+                        <div class="slide-filter">
+                            <p><%= post.title %></p>
+                        </div>
+                    </a>
                 </li>
             <% end %>
         </ul>
         <ol class="clearfix">
-        	<li>&#8226;</li>
+        	  <li>&#8226;</li>
             <li>&#8226;</li>
             <li>&#8226;</li>
             <li>&#8226;</li>
@@ -40,18 +41,19 @@
         <% @news.each do |news| %>
             <div class="col-xs-12 col-sm-4">
                 <div class="new-box">
-                    <% case news.pointer_type
-                       when "FEATURES"
-                         url = "/features/#{news.pointer_id}"
-                       when
-                         url = "/oncourt/#{news.pointer_id}"
-                       end
+                    <%  
+                        case news.pointer_type
+                        when "FEATURES"
+                            url = "/features/#{news.pointer_id}"
+                        when
+                            url = "/oncourt/#{news.pointer_id}"
+                        end
                     %>
                     <a href="<%= url %>">
-                      <%= image_tag news.image.news.url %>
-                      <div class="kicks-filter">
-                          <p><%= news.title %></p>
-                      </div>
+                        <%= image_tag news.image.news.url %>
+                        <div class="kicks-filter">
+                            <p><%= news.title %></p>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -68,16 +70,16 @@
                 when "OnCourtPost"
                   link = "/oncourt/#{feed.id}"
                 end
-              %>
-              <a href="<%= link %>">
-                <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
-              </a>
+            %>
+            <a href="<%= link %>">
+              <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
+            </a>
             <div class="col-xs-12 col-sm-8 kicks-intro">
                 <h3><%= feed.title %></h3>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
                     <span><%= feed.content[0..300] %>...</span>
-                    <a target="_blank">(<%= t("more") %>)</a>
+                    <a href="<%= link %>">(<%= t("more") %>)</a>
                 </div>
             </div>
         </div>
@@ -85,7 +87,7 @@
     <% unless @no_more  %>
         <div class="to-view-more">
             <span>Click To View More</span>
-            </div>
+        </div>
     <% end %>
     <%= hidden_field_tag "next_page", "2", :name => nil %>
 </div>
