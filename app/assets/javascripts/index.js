@@ -91,7 +91,6 @@ function initLoadPostHandler() {
             url: '/main/get_posts?next_page=' + nextPage.val() +'&source_page=index',
             dataType: "json",
             success: function(data) { 
-            	console.log(data);
             	var parent = target.parent('.main');
             	$('.kicks-box.last').removeClass('last');
             	for (var i = 0; i < data.posts.length; i++) {
