@@ -80,7 +80,7 @@
                 <div class="kicks-intro-content">
                     <span><%= feed.content[0..300] %>...</span>
                     <a href="<%= link %>">(<%= t("more") %>)</a>
-                    <span><%= feed.created_at %></span>
+                    <span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span>
                 </div>
             </div>
         </div>
