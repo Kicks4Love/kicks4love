@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 20170501134445) do
     t.string   "title_cn"
     t.date     "release_date"
     t.string   "cover_image"
-    t.integer  "release_type", default: 0, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.decimal  "usd",          precision: 10
+    t.decimal  "rmb",          precision: 10
+    t.integer  "release_type",                default: 0, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "feature_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -222,6 +222,7 @@
 		// Remove any events in the current details element
 		var currentWrapper = ele.querySelector('.events');
 		var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
+		var dollarSign = this.chinese ? '¥' : '$';
 
 		events.forEach(function(ev) {
 	  		var div = createElement('div', 'event');
@@ -230,6 +231,7 @@
 	  		link.setAttribute('data-toggle', 'modal');
 	  		link.setAttribute('data-target', '#release-modal');
 	  		link.setAttribute('data-title', ev.eventName);
+	  		link.setAttribute('data-price', ev.price);
 	  		link.setAttribute('data-image', ev.image);
 
 	      	div.appendChild(square);
@@ -239,8 +241,10 @@
 	      	link.addEventListener('click', function() {
 	      		var data = this.dataset;
 	      		var modal = document.getElementById('release-modal');
+	      		var span = createElement('span', '', dollarSign + ' ' + parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
 	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
 	      		modal.querySelector('.modal-body > img').setAttribute('src', data.image);
+	      		modal.getElementsByClassName('modal-footer')[0].appendChild(span);
 	      	});
 		});
 
@@ -290,6 +294,7 @@
             			calendar: ev.post.release_type,
             			color: self.setColor(ev.post.release_type),
             			date: moment(ev.post.release_date),
+            			price: ev.post.price,
             			image: ev.image_url
             		});
             	});

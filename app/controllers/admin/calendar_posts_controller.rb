@@ -28,7 +28,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 		if calendar_post.save
 			redirect_to admin_calendar_posts_path, :notice => "New calendar post successfully created"
 		else
-			redirect_to :back, :error => "Error creating new calendar post"
+			redirect_to :back, :alert => "Error creating new calendar post"
 		end
 	end
 
@@ -36,7 +36,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 		if @calendar_post.update_attributes(calendar_post_params)
 			flash[:notice] = "The calendar post has been successfully updated"
 		else
-			flash[:error] = "Error occurs while updating the calendar post, please try again"
+			flash[:alert] = "Error occurs while updating the calendar post, please try again"
 		end
 
 		redirect_to admin_calendar_posts_path
@@ -50,7 +50,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 		if @calendar_post.destroy
 			flash[:notice] = "The calendar post has been deleted successfully"
 		else
-			flash[:error] = "Error occurs while deleting the calendar post, please try again"
+			flash[:alert] = "Error occurs while deleting the calendar post, please try again"
 		end
 
 		redirect_to admin_calendar_posts_path
@@ -59,7 +59,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 	private 
 
 	def calendar_post_params
-		params.require(:calendar_post).permit(:title_en, :title_cn, :content_en, :release_date, :release_type, :cover_image)
+		params.require(:calendar_post).permit(:title_en, :title_cn, :content_en, :release_date, :release_type, :usd, :rmb, :cover_image)
 	end
 
 	def get_calendar_post

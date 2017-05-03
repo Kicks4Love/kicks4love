@@ -25,7 +25,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 		if feature_post.save
 			redirect_to admin_feature_posts_path, :notice => "New feature post successfully created"
 		else
-			redirect_to :back, :error => "Error creating new feature post"
+			redirect_to :back, :alert => "Error creating new feature post"
 		end
 	end
 
@@ -33,7 +33,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 		if @feature_post.update_attributes(feature_post_params)
 			flash[:notice] = "The feature post has been successfully updated"
 		else
-			flash[:error] = "Error occurs while updating the feature post, please try again"
+			flash[:alert] = "Error occurs while updating the feature post, please try again"
 		end
 
 		redirect_to admin_feature_posts_path
@@ -47,7 +47,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 		if @feature_post.destroy
 			flash[:notice] = "The feature_post has been deleted successfully"
 		else
-			flash[:error] = "Error occurs while deleting the featire post, please try again"
+			flash[:alert] = "Error occurs while deleting the featire post, please try again"
 		end
 
 		redirect_to admin_feature_posts_path

@@ -25,7 +25,7 @@ class Admin::TrendPostsController < Admin::AdminController
 		if trend_post.save
 			redirect_to admin_trend_posts_path, :notice => "New trend post successfully created"
 		else
-			redirect_to :back, :error => "Error creating new trend post"
+			redirect_to :back, :alert => "Error creating new trend post"
 		end
 	end
 
@@ -33,7 +33,7 @@ class Admin::TrendPostsController < Admin::AdminController
 		if @trend_post.update_attributes(trend_post_params)
 			flash[:notice] = "The trend post has been successfully updated"
 		else
-			flash[:error] = "Error occurs while updating the trend post, please try again"
+			flash[:alert] = "Error occurs while updating the trend post, please try again"
 		end
 
 		redirect_to admin_trend_posts_path
@@ -47,7 +47,7 @@ class Admin::TrendPostsController < Admin::AdminController
 		if @trend_post.destroy
 			flash[:notice] = "The feature_post has been deleted successfully"
 		else
-			flash[:error] = "Error occurs while deleting the featire post, please try again"
+			flash[:alert] = "Error occurs while deleting the featire post, please try again"
 		end
 
 		redirect_to admin_trend_posts_path

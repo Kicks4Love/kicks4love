@@ -18,6 +18,11 @@ h1, h4 {
 #release-modal {
   text-align: center;
 }
+#release-modal .modal-footer > span {
+  color: black;
+  float: left;
+  font-size: 20px;
+}
 
 .header {
 	width: 80%;

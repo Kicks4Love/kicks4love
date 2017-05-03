@@ -36,6 +36,24 @@
 <br>
 <div class="row no-margin">
 	<div class="col-sm-2">
+		<label>Price USD:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.number_field :usd, :min => 0, :step => 0.01, :value => 100.00 %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Price RMB:</label>
+	</div>
+	<div class="col-sm-2">
+		<%= form.number_field :rmb, :min => 0, :step => 0.01, :value => 800.00 %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
 		<label>Image:</label>
 	</div>
 	<div class="col-sm-2">

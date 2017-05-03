@@ -28,6 +28,7 @@
 				<th>中文标题</th>
 				<th>Release Date</th>
 				<th>Release Type</th>
+				<th>Price</th>
 				<th>Image</th>
 			</tr>
 		</tbody>
@@ -43,6 +44,7 @@
 					<td><%= calendar_post.title_cn %></td>
 					<td><%= calendar_post.release_date %></td>
 					<td><%= calendar_post.release_type %></td>
+					<td><%= "#{number_to_currency(calendar_post.usd, :unit => '$')} / #{number_to_currency(calendar_post.rmb, :unit => '¥')}" %></td>
 					<td><img src="<%= calendar_post.cover_image.main.url if calendar_post.cover_image %>" height="50px" /></td>
 				</tr>
 			<% end %>

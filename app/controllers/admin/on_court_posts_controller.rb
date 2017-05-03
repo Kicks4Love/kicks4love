@@ -39,7 +39,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
     if @on_court_post.update_attributes(on_court_post_params)
       flash[:notice] = "The on court post has been successfully updated"
 		else
-			flash[:error] = "Error occurs while updating the on court post, please try again"
+			flash[:alert] = "Error occurs while updating the on court post, please try again"
     end
     redirect_to admin_on_court_posts_path
   end
@@ -48,7 +48,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
     if @on_court_post.destroy
       flash[:notice] = "successfully deleted on court post"
     else
-      flash[:error] = "Something went wrong when deleting the post, please try again"
+      flash[:alert] = "Something went wrong when deleting the post, please try again"
     end
     redirect_to admin_on_court_posts_path
   end
