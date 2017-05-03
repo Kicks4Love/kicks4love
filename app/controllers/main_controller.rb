@@ -7,11 +7,11 @@ class MainController < ApplicationController
 		@posts = all_posts.posts
 
 		if @chinese
-			@news = @news.select("title_cn AS title, image, pointer_id")
-			@posts = @posts.select("title_cn AS title, image, pointer_id")
+			@news = @news.select("title_cn AS title, image, pointer_id, pointer_type")
+			@posts = @posts.select("title_cn AS title, image, pointer_id, pointer_type")
 		else
-			@news = @news.select("title_en AS title, image, pointer_id")
-			@posts = @posts.select("title_en AS title, image, pointer_id")
+			@news = @news.select("title_en AS title, image, pointer_id, pointer_type")
+			@posts = @posts.select("title_en AS title, image, pointer_id, pointer_type")
 		end
 
 		all_feeds = Post.get_posts(@chinese)
