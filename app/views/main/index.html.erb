@@ -4,50 +4,81 @@
 
 <a name="home"></a>
 <div class="header">
-   <%= image_tag "logo1.png", :class => "logo-shake" %>
-   <div class="slide-bar-container">
-       <ul class="clearfix">
-           <% @posts.each do |post| %>
-               <li><%= image_tag post.image.post.url %></li>
-               <div class="slide-filter"></div>
-               <a href="#"><p><%= post.title %></p></a>
-           <% end %>
-       </ul>
-       <ol class="clearfix">
-           <li>&#8226;</li>
-           <li>&#8226;</li>
-           <li>&#8226;</li>
-           <li>&#8226;</li>
-           <li>&#8226;</li>
-       </ol>
-   </div>
+    <%= image_tag "logo1.png", :class => "logo-shake" %>
+    <div class="slide-bar-container">
+    	<ul class="clearfix">
+            <% @posts.each do |post| %>
+                <li>
+                  <% case post.pointer_type
+                     when "FEATURES"
+                       url = "/features/#{post.pointer_id}"
+                     when
+                       url = "/oncourt/#{post.pointer_id}"
+                     end
+                  %>
+                  <a href="<%= url %>">
+                    <%= image_tag post.image.post.url %>
+                    <div class="slide-filter">
+                      <p><%= post.title %></p>
+                    </div>
+                  </a>
+                </li>
+            <% end %>
+        </ul>
+        <ol class="clearfix">
+        	<li>&#8226;</li>
+            <li>&#8226;</li>
+            <li>&#8226;</li>
+            <li>&#8226;</li>
+            <li>&#8226;</li>
+        </ol>
+    </div>
 </div>
 
 <div class="main container">
-   <div class="col-xs-12 banner-box clearfix">
-       <% @news.each do |news| %>
-           <div class="col-xs-12 col-sm-4">
-               <div class="new-box">
-                   <%= image_tag news.image.news.url %>
-                   <div class="kicks-filter">
-                       <a href="#"><p><%= news.title %></p></a>
-                   </div>
-               </div>
-           </div>
-       <% end %>
-   </div>
-
+    <div class="col-xs-12 banner-box clearfix">
+        <% @news.each do |news| %>
+            <div class="col-xs-12 col-sm-4">
+                <div class="new-box">
+                    <% case news.pointer_type
+                       when "FEATURES"
+                         url = "/features/#{news.pointer_id}"
+                       when
+                         url = "/oncourt/#{news.pointer_id}"
+                       end
+                    %>
+                    <a href="<%= url %>">
+                      <%= image_tag news.image.news.url %>
+                      <div class="kicks-filter">
+                          <p><%= news.title %></p>
+                      </div>
+                    </a>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feeds.each_with_index do |feed, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @feeds.size-1%>">
-            <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
+            <%
+                case feed.class.name
+                when "FeaturePost"
+                  link = "/features/#{feed.id}"
+                when "OnCourtPost"
+                  link = "/oncourt/#{feed.id}"
+                end
+              %>
+              <a href="<%= link %>">
+                <%= image_tag feed.cover_image.main.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
+              </a>
             <div class="col-xs-12 col-sm-8 kicks-intro">
-                <div class="feed-title"><h3><%= feed.title %></h3></div>
+                <h3><%= feed.title %></h3>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
                     <span><%= feed.content[0..300] %>...</span>
                     <a target="_blank">(<%= t("more") %>)</a>
-                </div>  
+                </div>
             </div>
         </div>
     <% end %>
