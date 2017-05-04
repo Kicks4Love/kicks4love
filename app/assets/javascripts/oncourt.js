@@ -1,10 +1,15 @@
 $(document).ready(function() {	
+<<<<<<< 22119e9b203bf88a36237b8e2335de321165fdb0
 	if (getSourcePage() !== 'oncourt') return;
 
 	// set HOME menu selected
 	$('#navbar .dropdown ul li').eq(1).addClass('active');
 	console.log("on court");
 
+=======
+	// set ONCOURT menu selected
+	$('#navbar .dropdown ul li').eq(1).addClass('active');
+>>>>>>> adding menu selected active and fix ajax call data post missing
 	initLoadPostHandler();
 	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
 	initLanguageFormHandler();
