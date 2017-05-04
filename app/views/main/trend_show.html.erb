@@ -1,0 +1,19 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "trend.css" %>
+<% end %>
+
+<div class="main container clearfix">
+  <div class="kicks-box clearfix">
+      <dl class="col-xs-12 col-sm-4">
+          <dt>
+              <img src="<%= @trend_post.main_image.url %>" class="kicks-pic"/>
+          </dt>
+      </dl>
+      <div class="col-xs-12 col-sm-8 kicks-intro">
+          <h2><%= @chinese ? @trend_post.title_cn : @trend_post.title_en %></h2>
+          <div class="kicks-intro-content">
+              <span><%= @chinese ? @trend_post.content_cn : @trend_post.content_en %></span>
+          </div>
+      </div>
+  </div>
+</div>

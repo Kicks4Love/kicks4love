@@ -6,4 +6,5 @@ class TrendPost < ApplicationRecord
 
 	mount_uploader :main_image, ImageUploader
 	mount_uploader :cover_image, ImageUploader
+	
   end

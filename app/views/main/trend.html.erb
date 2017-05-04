@@ -5,20 +5,20 @@
 
 <div class="main container clearfix">
     <!-- maximum should be three only (more will be loaded by ajax) -->
-    <% @all_trend_posts.each_with_index do |feature_post, index| %>
+    <% @all_trend_posts.each_with_index do |trend_post, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @all_trend_posts.size-1%>">
             <dl class="col-xs-12 col-sm-4">
                 <dt>
-                    <img src="<%= feature_post.cover_image.url %>" class="kicks-pic"/>
+                    <img src="<%= trend_post.cover_image.url %>" class="kicks-pic"/>
                 </dt>
                 <dd>
-                    <a href="/features/<%= feature_post.id %>"><%= feature_post.title %></a>
+                    <a href="/trend/<%= trend_post.id %>"><%= trend_post.title %></a>
                 </dd>
             </dl>
             <div class="col-xs-12 col-sm-8 kicks-intro">
-                <h2><%= feature_post.title %></h2>
+                <h2><%= trend_post.title %></h2>
                 <div class="kicks-intro-content">
-                    <span><%= feature_post.content %></span>
+                    <span><%= trend_post.content %></span>
                 </div>
             </div>
         </div>
@@ -31,7 +31,6 @@
     <%= hidden_field_tag "next_page", "2", :name => nil %>
 </div>
 
-
-        <% content_for :end_of_body do %>
-            <%= javascript_include_tag "trend.js" %>
-        <% end %>
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "trend.js" %>
+<% end %>
