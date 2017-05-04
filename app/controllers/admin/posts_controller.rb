@@ -55,6 +55,8 @@ class Admin::PostsController < Admin::AdminController
 		case params[:type].downcase
 		when "features"
 			posts = FeaturePost.select(:id, :title_en).latest
+		when "trend"
+			posts = TrendPost.select(:id, :title_en).latest
 		when "on_court"
 			posts = OnCourtPost.select(:id, :title_en).latest
 		end

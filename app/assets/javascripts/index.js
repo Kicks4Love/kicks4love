@@ -110,6 +110,7 @@ function initLoadPostHandler() {
                 		'<div class="kicks-intro-content">' + 
                     	'<span>' + data.posts[i].post.content + '...</span>' +
                     	'<a href="' + data.posts[i].post_link + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
+                    	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
                 		'</div></div></div>'
             		);
             	}

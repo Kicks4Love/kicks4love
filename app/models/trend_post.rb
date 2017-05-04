@@ -1,5 +1,7 @@
 class TrendPost < ApplicationRecord
 
+	attr_accessor :post_link
+
     scope :latest, -> {order( :created_at => :DESC)}
 
     self.per_page = 3

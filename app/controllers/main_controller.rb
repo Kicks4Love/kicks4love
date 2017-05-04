@@ -44,7 +44,7 @@ class MainController < ApplicationController
 		if @chinese
 			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
 		else 
-			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+			@all_trend_posts = @all_trend_posts.select("title_en AS title, content_en AS content, cover_image, id")
 		end
 	end
 
@@ -80,9 +80,11 @@ class MainController < ApplicationController
 			feeds.each do |feed|
 				case feed.class.name
                 when "FeaturePost"
-                  feed.post_link = "/features/#{feed.id}"
+                  	feed.post_link = "/features/#{feed.id}"
+              	when "TrendPost"
+              		feed.post_link = "/trend/#{feed.id}"
                 when "OnCourtPost"
-                  feed.post_link = "/oncourt/#{feed.id}"
+                  	feed.post_link = "/oncourt/#{feed.id}"
                 end
 			end
 		when 'features'
@@ -110,7 +112,13 @@ class MainController < ApplicationController
 				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image")
 			end
 		when 'trend'
-			@return_posts = TrendPost.paginate(:page => params[:next_page]).latest
+			feeds = TrendPost.paginate(:page => params[:next_page]).latest
+			@no_more = feeds.total_pages == feeds.current_page
+			if @chinese
+				feeds = feeds.select("id, title_cn AS title, content_cn AS content, cover_image")
+			else
+				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image")
+			end
 		else
 			head :ok and return
 		end

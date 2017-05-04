@@ -2,33 +2,8 @@ $(document).ready(function() {
 	if (getSourcePage() !== 'trend') return;
 
 	// set FEATURES menu selected
-	$('#navbar ul li').eq(1).addClass('active');
+	$('#navbar .dropdown ul li').eq(0).addClass('active');
 	console.log("trend");
-	
-	$('.main dl').hover(function(){
-		$(this).find('.filter').fadeIn();
-	},function(){
-		$(this).find('.filter').fadeOut();
-	});
-	
-	/*--新鞋介绍-main--*/
-	$('.kicks-pic').hover(function(){
-		var filter=$(this).find('.kicks-filter');
-		var title=$(this).find('p');
-		filter.animate({
-			opacity:0.8,
-			width:'100%'
-		},1000);
-		title.fadeIn(1000);
-	},function(){
-		var filter=$(this).find('.kicks-filter');
-		var title=$(this).find('p');
-		filter.animate({
-			opacity:0,
-			width:'0'
-		},1000);
-		title.fadeOut(1000);
-	});	
 
 	initLoadPostHandler();
 	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
@@ -44,7 +19,7 @@ function initLoadPostHandler() {
 
 		$.ajax({
 			type: 'GET',
-            url: '/main/get_posts?next_page=' + nextPage.val() + '&source_page=features',
+            url: '/main/get_posts?next_page=' + nextPage.val() + '&source_page=trend',
             dataType: "json",
             success: function(data) { 
             	var parent = target.parent('.main');
@@ -53,7 +28,7 @@ function initLoadPostHandler() {
             			'<div class="kicks-box wait_load clearfix' + (i+1 === data.posts.length ? ' last' : '') + '">' +
             			'<dl class="col-xs-12 col-sm-4"><dt>' +
                 		'<img src="' + data.posts[i].image_url + '" class="kicks-pic">' + 
-                		'</dt><dd><a href="#">PlaceHolder</a></dd></dl>' +
+                		'</dt><dd><a href="/trend/' + data.posts[i].post.id + '">' + data.posts[i].post.title + '</a></dd></dl>' +
             			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
                 		'<h2>' + data.posts[i].post.title + '</h2>' +
                 		'<div class="kicks-intro-content">' + 

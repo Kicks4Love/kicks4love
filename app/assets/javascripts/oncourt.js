@@ -27,7 +27,7 @@ function initLoadPostHandler() {
 					if ((i + 1) % 3 == 0) {
 						parent.append(
 							'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load last">' +
-							'<a href="#">' +
+							'<a href="/oncourt/' + data.posts[i].post.id + '">' +
 							'<img src="' + data.posts[i].image_url + '\" />' +
 							'<p>' + data.posts[i].post.title + '</p>' +
 							'</a>' +
@@ -36,7 +36,7 @@ function initLoadPostHandler() {
 					} else {
 						parent.append(
 							'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load">' +
-							'<a href="#">' +
+							'<a href="/oncourt/' + data.posts[i].post.id + '">' +
 							'<img src="' + data.posts[i].image_url + '\" />' +
 							'<p>' + data.posts[i].post.title + '</p>' +
 							'</a>' +

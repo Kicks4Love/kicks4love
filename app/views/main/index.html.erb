@@ -16,7 +16,9 @@
                             case post.pointer_type
                             when "FEATURES"
                                 url = "/features/#{post.pointer_id}"
-                            when
+                            when "TREND"
+                                url = "/trend/#{post.pointer_id}"
+                            when "ON_COURT"
                                 url = "/oncourt/#{post.pointer_id}"
                             end
                             case index
@@ -61,7 +63,9 @@
                         case news.pointer_type
                         when "FEATURES"
                             url = "/features/#{news.pointer_id}"
-                        when
+                        when "TREND"
+                            url = "/trend/#{news.pointer_id}"
+                        when "ON_COURT"
                             url = "/oncourt/#{news.pointer_id}"
                         end
                     %>
@@ -83,6 +87,8 @@
                 case feed.class.name
                 when "FeaturePost"
                   link = "/features/#{feed.id}"
+                when "TrendPost"
+                    link = "/trend/#{feed.id}"
                 when "OnCourtPost"
                   link = "/oncourt/#{feed.id}"
                 end

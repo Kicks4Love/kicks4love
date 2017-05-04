@@ -4,31 +4,6 @@ $(document).ready(function() {
 	// set FEATURES menu selected
 	$('#navbar ul li').eq(1).addClass('active');
 	console.log("feature");
-	
-	$('.main dl').hover(function(){
-		$(this).find('.filter').fadeIn();
-	},function(){
-		$(this).find('.filter').fadeOut();
-	});
-	
-	/*--新鞋介绍-main--*/
-	$('.kicks-pic').hover(function(){
-		var filter=$(this).find('.kicks-filter');
-		var title=$(this).find('p');
-		filter.animate({
-			opacity:0.8,
-			width:'100%'
-		},1000);
-		title.fadeIn(1000);
-	},function(){
-		var filter=$(this).find('.kicks-filter');
-		var title=$(this).find('p');
-		filter.animate({
-			opacity:0,
-			width:'0'
-		},1000);
-		title.fadeOut(1000);
-	});	
 
 	initLoadPostHandler();
 	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
@@ -53,7 +28,7 @@ function initLoadPostHandler() {
             			'<div class="kicks-box wait_load clearfix' + (i+1 === data.posts.length ? ' last' : '') + '">' +
             			'<dl class="col-xs-12 col-sm-4"><dt>' +
                 		'<img src="' + data.posts[i].image_url + '" class="kicks-pic">' + 
-                		'</dt><dd><a href="#">PlaceHolder</a></dd></dl>' +
+                		'</dt><dd><a href="/features/' + data.posts[i].post.id + '">' + data.posts[i].post.title + '</a></dd></dl>' +
             			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
                 		'<h2>' + data.posts[i].post.title + '</h2>' +
                 		'<div class="kicks-intro-content">' + 
