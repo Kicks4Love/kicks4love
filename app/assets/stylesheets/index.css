@@ -1,5 +1,6 @@
 @charset "utf-8";
-/* CSS Document */
+
+*{margin:0; padding:0; list-style:none;}
 
 .header {
 	width: 100%;
@@ -28,75 +29,123 @@
     100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-.slide-bar-container{
-	width:100%;
-	height:550px;
-	margin:0 auto 40px;
-	overflow:hidden;
-	position:relative;
+.slide-container {
+	height: 400px;
+	margin-bottom: 40px;
 }
-.slide-bar-container ul{
-	display:block;
-	height:100%;
-	margin:0;
-	padding:0;
-	list-style:none;
-	cursor:pointer;
-}
-.slide-bar-container ul li{
-	display:block;
-	width:100%;
-	height:100%;
-	position:absolute;
-	top:0;
-	cursor:pointer;
-}
-.slide-bar-container ul li img{
-	height:100%;
-}
-.slide-bar-container ul .slide-filter{
-	width:100%;
-	bottom:0;
-	opacity:0.8;
-	background:#666;
-	position:absolute;
-	top:0;
-	left:0;
-	display:none;
-	cursor:pointer;
-	z-index:10;
-}
-.slide-bar-container ul li.active{
-	left:-100%;
-}
-.slide-bar-container ul p{
-	color:white;
-	width:100%;
-	position:absolute;
-	top:20%;
-	font-size:100px;
-	display:none;
-	font-family:"Univers-UltraCondensed";
-}
-.slide-bar-container ol{
-	width: 100%;
-	height: 50px;
-	position: absolute;
-	bottom: 0;
-	margin: 0;
-	padding: 0;
-	z-index: 10;
-}
-.slide-bar-container ol li{
-	list-style: none;
-	display: inline-block;
-	margin: 0 2%;
-	font-size: 1.25em;
-	cursor: pointer;
+
+#wrapper {
+	width: 80%;
+	margin: 50px auto;
+	height: 400px;
+	position: relative;
 	color: white;
+	text-shadow: rgba(0,0,0,0.1) 2px 2px 0px;	
 }
-.slide-bar-container ol li.active {
-	color:#4A4A4A;
+#slider-wrap {
+	width: 100%;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+}
+#slider-wrap ul#slider {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;		
+}
+#slider-wrap ul#slider li {
+	float: left;
+	position: relative;
+	width: 600px;
+	height: 400px;	
+}
+#slider-wrap ul#slider li > div {
+	position:absolute;
+	top: 20px;
+	left: 35px;	
+}
+#slider-wrap ul#slider li > div h3 {
+	font-size: 36px;	
+}
+#slider-wrap ul#slider li i {
+	text-align: center;
+	line-height: 400px;
+	display: block;
+	width: 100%;
+	font-size: 90px;	
+}
+
+.slide-btns {
+	position: absolute;
+	width: 50px;
+	height: 60px;
+	top: 50%;
+	margin-top: -25px;
+	line-height: 57px;
+	text-align: center;
+	cursor: pointer;	
+	background: rgba(0,0,0,0.1);
+	z-index: 100;
+	
+	-webkit-user-select: none;  
+	-moz-user-select: none; 
+	-khtml-user-select: none; 
+	-ms-user-select: none;
+	
+	-webkit-transition: all 0.1s ease;
+	-moz-transition: all 0.1s ease;
+	-o-transition: all 0.1s ease;
+	-ms-transition: all 0.1s ease;
+	transition: all 0.1s ease;
+}
+.slide-btns:hover {
+	background:rgba(0,0,0,0.3);	
+}
+
+#next {right:-50px; border-radius:7px 0px 0px 7px;}
+#previous {left:-50px; border-radius:0px 7px 7px 7px;}
+
+#slider-wrap.active #next {right:0px;}
+#slider-wrap.active #previous {left:0px;}
+
+#pagination-wrap {
+	min-width: 20px;
+	margin-top: 350px;
+	margin-left: auto; 
+	margin-right: auto;
+	height: 15px;
+	position: relative;
+	text-align: center;
+}
+#pagination-wrap ul {
+	width:100%;
+}
+#pagination-wrap ul li{
+	margin: 0 4px;
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: white;
+	opacity: 0.5;
+	position: relative;
+  	top:0;
+}
+#pagination-wrap ul li.active {
+  	width:12px;
+  	height:12px;
+  	top:3px;
+	opacity:1;
+	box-shadow:rgba(0,0,0,0.1) 1px 1px 0px;	
+}
+#slider-wrap ul, #pagination-wrap ul li {
+	-webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	transition: all 0.3s cubic-bezier(1,.01,.32,1);	
 }
 
 .main .banner-box {
@@ -187,10 +236,6 @@
 }
 
 @media only screen and (max-width:1024px) {
-	.slide-bar-container{
-		width:100%;
-		height:500px;
-	}
 	.main .kicks-box{
 		width:90%;
 		margin:30px auto;
@@ -199,9 +244,6 @@
 	}
 }
 @media only screen and (max-width:767px) {
-	.slide-bar-container {
-		height:300px;
-	}
 	.main .banner-box > div {
 		padding: 0;
 	}

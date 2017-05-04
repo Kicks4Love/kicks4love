@@ -1,6 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function() {
+	if (getSourcePage() !== 'feature') return;
+
 	// set FEATURES menu selected
 	$('#navbar ul li').eq(1).addClass('active');
+	console.log("feature");
 	
 	$('.main dl').hover(function(){
 		$(this).find('.filter').fadeIn();

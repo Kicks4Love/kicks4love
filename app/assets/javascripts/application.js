@@ -33,3 +33,7 @@ function initLanguageFormHandler() {
         alert("即将来临\nComing soon");
     });
 }
+
+function getSourcePage() {
+    return $('#page_source').val();
+}

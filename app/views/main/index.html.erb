@@ -2,11 +2,13 @@
     <%= stylesheet_link_tag "index.css" %>
 <% end %>
 
+<%= hidden_field_tag "page_source", "index" %>
+
 <a name="home"></a>
 <div class="header">
     <%= image_tag "main_logo.png", :class => "logo-shake" %>
-    <div class="slide-bar-container">
-    	  <ul class="clearfix">
+    <div class="slide-container">
+    	<!--<ul class="clearfix">
             <% @posts.each do |post| %>
                 <li>
                     <%  
@@ -25,14 +27,48 @@
                     </a>
                 </li>
             <% end %>
-        </ul>
-        <ol class="clearfix">
-        	  <li>&#8226;</li>
-            <li>&#8226;</li>
-            <li>&#8226;</li>
-            <li>&#8226;</li>
-            <li>&#8226;</li>
-        </ol>
+        </ul>-->
+        <div id="wrapper">
+            <div id="slider-wrap">
+                <ul id="slider">
+                    <li data-color="#1abc9c">
+                        <div>
+                            <h3>Slide #1 <%= index_load %></h3>
+                        </div>                
+                        <i class="fa fa-image"></i>
+                    </li>
+                    <li data-color="#3498db">
+                        <div>
+                            <h3>Slide #2</h3>
+                        </div>
+                        <i class="fa fa-gears"></i>
+                    </li>
+                    <li data-color="#9b59b6">
+                        <div>
+                            <h3>Slide #3</h3>
+                        </div>
+                        <i class="fa fa-sliders"></i>
+                    </li>   
+                    <li data-color="#34495e">
+                        <div>
+                            <h3>Slide #4</h3>
+                        </div>
+                        <i class="fa fa-code"></i>
+                    </li>
+                    <li data-color="#e74c3c">
+                        <div>
+                            <h3>Slide #5</h3>
+                        </div>
+                        <i class="fa fa-microphone-slash"></i>
+                    </li> 
+                </ul>
+                <div class="slide-btns" id="next"><i class="fa fa-arrow-right"></i></div>
+                <div class="slide-btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+                <div id="pagination-wrap">
+                    <ul></ul>
+                </div> 
+            </div>
+        </div>
     </div>
 </div>
 

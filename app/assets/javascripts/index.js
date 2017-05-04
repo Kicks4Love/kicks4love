@@ -1,55 +1,11 @@
-var currentIndex = 0;
-var Slide = {};
+$(document).ready(function() {
+	if (getSourcePage() !== 'index') return;
 
-$(document).ready(function() {	
 	// set HOME menu selected
 	$('#navbar ul li').eq(0).addClass('active');
 
-	/*--轮播图-slidebar--*/
-	Slide.slideUnorderList = $('.slide-bar-container ul li');
-	Slide.slideLength = Slide.slideUnorderList.length;
-	Slide.slideOrderList = $('.slide-bar-container ol li');
-
-	Slide.slideOrderList.eq(0).addClass("active");
-	
-	for(var i = 1; i < Slide.slideLength; i++) Slide.slideUnorderList.eq(i).css('left','100%');
-	for(var i = 0; i < Slide.slideLength; i++) {
-		Slide.slideUnorderList.eq(i).css('z-index', i);
-		$('.slide-bar-container ul p').eq(i).css('z-index',i+$('.slide-bar-container .slide-filter').css('z-index'));
-	}
-	
-	var timer = setInterval(slide, 2000);
-	
-	$('.slide-bar-container ul').hover(function(){
-		$('.slide-bar-container .slide-filter').eq(currentIndex).fadeIn();
-		$('.slide-bar-container ul p').eq(currentIndex).fadeIn();
-		clearInterval(timer);
-	},function(){
-		$('.slide-bar-container .slide-filter').eq(currentIndex).fadeOut();
-		$('.slide-bar-container ul p').eq(currentIndex).fadeOut();
-		timer = setInterval(slide, 2000);
-	});
-	
-	Slide.slideOrderList.each(function() {
-		$(this).hover(function(){
-			clearInterval(timer);
-			if(currentIndex < $(this).index()){
-				Slide.slideOrderList.eq(currentIndex).removeClass("active");
-				currentIndex = $(this).index();
-				Slide.slideOrderList.eq(currentIndex).addClass("active");
-				Slide.slideUnorderList.eq(currentIndex).animate({ left:'0%' });
-			} else if (currentIndex > $(this).index()){
-				Slide.slideOrderList.eq(currentIndex).removeClass("active");
-				currentIndex = $(this).index();
-				Slide.slideOrderList.eq(currentIndex).addClass("active");
-				Slide.slideUnorderList.eq(currentIndex).css('left', 0);
-				for(var j = currentIndex+1; j < Slide.slideLength; j++)
-					Slide.slideUnorderList.eq(j).animate({ left:'100%' });
-			}		
-		}, function(){
-			timer = setInterval(slide, 2000);
-		})
-	});
+	initImageSlider();
+	console.log('index');
 	
 	/*--新鞋介绍-main--*/
 	$('.new-box').hover(function(){
@@ -77,6 +33,56 @@ $(document).ready(function() {
     }, 2000);
     initLanguageFormHandler();
 });
+
+function initImageSlider() {
+	var pos = 0;
+	var totalSlides = $('#slider-wrap ul li').length;	
+	
+	$(window).resize(function() {
+		var width = $('#slider-wrap').width();
+		$('#slider-wrap ul#slider li').width(width);
+		$('#slider-wrap ul#slider').width(width*totalSlides);
+	});
+	$(window).trigger('resize');
+	 	
+	$('#next').click(function(){ slideRight();});
+	$('#previous').click(function(){slideLeft();});
+	
+	var autoSlider = setInterval(slideRight, 3000);
+	
+	$.each($('#slider-wrap ul li'), function() { 
+	   var c = $(this).attr("data-color");
+	   $(this).css("background",c);
+	   
+	   var li = document.createElement('li');
+	   $('#pagination-wrap ul').append(li);	   
+	});
+	pagination();
+
+	$('#slider-wrap').hover(
+	  function(){ $(this).addClass('active'); clearInterval(autoSlider); }, 
+	  function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
+	);
+
+	function slideLeft(){
+		pos--;
+		if(pos==-1){ pos = totalSlides-1; }
+		$('#slider-wrap ul#slider').css('left', -($('#slider-wrap').width()*pos)); 	
+		pagination();
+	}
+
+	function slideRight(){
+		pos++;
+		if(pos==totalSlides){ pos = 0; }
+		$('#slider-wrap ul#slider').css('left', -($('#slider-wrap').width()*pos)); 
+		pagination();
+	}
+
+	function pagination(){
+		$('#pagination-wrap ul li').removeClass('active');
+		$('#pagination-wrap ul li:eq('+pos+')').addClass('active');
+	}
+}
 
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
@@ -117,18 +123,4 @@ function initLoadPostHandler() {
             }
 		});
 	});
-}
-
-function slide() {
-	$('.slide-bar-container ol li').eq(currentIndex).removeClass("active");
-	currentIndex++;
-		
-	$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-	$('.slide-bar-container ul li').eq(currentIndex).animate({left:'0%'});
-	if(currentIndex == Slide.slideLength) {
-		currentIndex=0;
-		$('.slide-bar-container ol li').eq(currentIndex).addClass("active");
-		for(var j=currentIndex+1; j<Slide.slideLength; j++)
-			$('.slide-bar-container ul li').eq(j).animate({left:'100%'});
-	}
 }

@@ -1,4 +1,10 @@
 $(document).ready(function() {	
+	if (getSourcePage() !== 'oncourt') return;
+
+	// set HOME menu selected
+	$('#navbar .dropdown ul li').eq(1).addClass('active');
+	console.log("on court");
+
 	initLoadPostHandler();
 	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
 	initLanguageFormHandler();

@@ -350,6 +350,12 @@
 
 // Move document ready down here before Calendar class to ensure Calendar initialize successfully
 $(document).ready(function() {
+	if (getSourcePage() !== 'calendar') return;
+
+	// set CALENDAR menu selected
+	$('#navbar ul li').eq(2).addClass('active');
+	console.log("calendar");
+	
 	initCalendarData();
 	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
 	initLanguageFormHandler();
