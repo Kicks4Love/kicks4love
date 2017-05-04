@@ -61,20 +61,16 @@
 	width: 600px;
 	height: 400px;	
 }
-#slider-wrap ul#slider li > div {
+#slider-wrap ul#slider li a {
+	color: white;
+}
+#slider-wrap ul#slider li a > div {
 	position:absolute;
 	top: 20px;
 	left: 35px;	
 }
-#slider-wrap ul#slider li > div h3 {
+#slider-wrap ul#slider li a > div h3 {
 	font-size: 36px;	
-}
-#slider-wrap ul#slider li i {
-	text-align: center;
-	line-height: 400px;
-	display: block;
-	width: 100%;
-	font-size: 90px;	
 }
 
 .slide-btns {
@@ -120,9 +116,9 @@
 	text-align: center;
 }
 #pagination-wrap ul {
-	width:100%;
+	width: 100%;
 }
-#pagination-wrap ul li{
+#pagination-wrap ul li {
 	margin: 0 4px;
 	display: inline-block;
 	width: 5px;
@@ -131,14 +127,14 @@
 	background: white;
 	opacity: 0.5;
 	position: relative;
-  	top:0;
+  	top: 0;
 }
 #pagination-wrap ul li.active {
-  	width:12px;
-  	height:12px;
-  	top:3px;
-	opacity:1;
-	box-shadow:rgba(0,0,0,0.1) 1px 1px 0px;	
+  	width: 12px;
+  	height: 12px;
+  	top: 3px;
+	opacity: 1;
+	box-shadow: rgba(0,0,0,0.1) 1px 1px 0px;	
 }
 #slider-wrap ul, #pagination-wrap ul li {
 	-webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);

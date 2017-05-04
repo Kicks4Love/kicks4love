@@ -45,14 +45,14 @@ function initImageSlider() {
 	});
 	$(window).trigger('resize');
 	 	
-	$('#next').click(function(){ slideRight();});
+	$('#next').click(function(){slideRight();});
 	$('#previous').click(function(){slideLeft();});
 	
 	var autoSlider = setInterval(slideRight, 3000);
 	
 	$.each($('#slider-wrap ul li'), function() { 
-	   var c = $(this).attr("data-color");
-	   $(this).css("background",c);
+	   var color = $(this).attr("data-color");
+	   $(this).css("background-color", color);
 	   
 	   var li = document.createElement('li');
 	   $('#pagination-wrap ul').append(li);	   
@@ -60,8 +60,8 @@ function initImageSlider() {
 	pagination();
 
 	$('#slider-wrap').hover(
-	  function(){ $(this).addClass('active'); clearInterval(autoSlider); }, 
-	  function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
+	  	function(){ $(this).addClass('active'); clearInterval(autoSlider); }, 
+	  	function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
 	);
 
 	function slideLeft(){
