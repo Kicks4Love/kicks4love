@@ -43,7 +43,7 @@
 			            <li class="dropdown">
                 			<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t("MORE") %><span class="caret"></span></a>
                 			<ul class="dropdown-menu">
-		                  		<li><a href="#"><%= t("TREND") %></a></li>
+		                  		<li><%= link_to t("TREND"), trend_path %></li>
 		                  		<li><%= link_to t("ON_COURT"), oncourt_path %></li>
 		                  		<li role="separator" class="divider"></li>
 		                  		<li class="dropdown-header"><%= t("LEISURE_ENTERTAINMENT") %></li>
@@ -143,8 +143,8 @@
 		   						<%= link_to t("Calendar"), calendar_path %>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li>
-		                        <a href="#"><%= t("Trend") %></a>
+		                    <li> 
+		                        <%= link_to t("Trend"), trend_path %>
 		                    </li>
 		                    <li class="footer-menu-divider">&sdot;</li>
 		                    <li>
