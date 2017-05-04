@@ -45,9 +45,9 @@ class Admin::TrendPostsController < Admin::AdminController
 
 	def destroy
 		if @trend_post.destroy
-			flash[:notice] = "The feature_post has been deleted successfully"
+			flash[:notice] = "The trend post has been deleted successfully"
 		else
-			flash[:alert] = "Error occurs while deleting the featire post, please try again"
+			flash[:error] = "Error occurs while deleting the trend post, please try again"
 		end
 
 		redirect_to admin_trend_posts_path
@@ -56,7 +56,7 @@ class Admin::TrendPostsController < Admin::AdminController
 	private
 
 	def trend_post_params
-		params.require(:trend_post).permit(:title, :content, :image)
+		params.require(:trend_post).permit(:title_en, :title_cn, :content_en, :content_cn, :main_image, :cover_image)
 	end
 
 	def get_trend_post

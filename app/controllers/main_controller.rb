@@ -34,6 +34,21 @@ class MainController < ApplicationController
 		@page_title = @chinese ? @feature_post.title_cn : @feature_post.title_en
 	end
 
+	def trend
+		@page_title= 'Kicks4Love | Trend'
+		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
+		if @chinese
+			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+		else 
+			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+		end
+	end
+
+	def trend_show
+		@page_title = @chinese ? @feature_posts.title_cn : @feature_post.title_en
+		@trend_post = TrendPost.find(params[:id])
+	end
+
 	def calendar
 		@page_title = 'Kicks4Love | Calendar'
 	end
@@ -53,15 +68,7 @@ class MainController < ApplicationController
 		@page_title = @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en
 	end
 
-	def trend
-		@page_title= 'Kicks4Love | Trend'
-		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
-	end
 
-	def trend_show
-		@page_title = 'Showing trend page'
-		@trend_post = TrendPost.find(params[:id])
-	end
 
 	def get_posts
 		head :ok and return unless params[:next_page].present?
