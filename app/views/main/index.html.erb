@@ -9,7 +9,7 @@
     <%= image_tag "main_logo.png", :class => "logo-shake" %>
     <div class="slide-container">
         <div id="wrapper">
-            <div id="slider-wrap">
+            <div id="slider-wrap" class="active">
                 <ul id="slider">
                     <% @posts.each_with_index do |post, index| %>
                         <%  
@@ -37,8 +37,8 @@
                                 <div class="slide-filter">
                                     <h3><%= post.title %></h3>
                                 </div>
-                                <%= image_tag post.image.url %>
                             </a>
+                            <%= image_tag post.image.url %>
                         </li>
                     <% end %> 
                 </ul>

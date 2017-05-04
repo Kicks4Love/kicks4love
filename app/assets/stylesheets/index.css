@@ -101,8 +101,9 @@
 }
 
 #next {right:-50px; border-radius:7px 0px 0px 7px;}
-#previous {left:-50px; border-radius:0px 7px 7px 7px;}
-
+#previous {left:-50px; border-radius:0px 7px 7px 0px;}
+#next i, #previous i {margin-top:40%;}
+ 
 #slider-wrap.active #next {right:0px;}
 #slider-wrap.active #previous {left:0px;}
 
