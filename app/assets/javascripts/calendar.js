@@ -239,11 +239,14 @@
 	      	wrapper.appendChild(div);
 
 	      	link.addEventListener('click', function() {
+	      		var priceList = document.querySelectorAll('#release-modal .modal-footer span');
+	      		Array.prototype.forEach.call(priceList, function(node) {node.remove();});
+
 	      		var data = this.dataset;
 	      		var modal = document.getElementById('release-modal');
-	      		var span = createElement('span', '', dollarSign + ' ' + parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
 	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
 	      		modal.querySelector('.modal-body > img').setAttribute('src', data.image);
+	      		var span = createElement('span', '', dollarSign + ' ' + parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
 	      		modal.getElementsByClassName('modal-footer')[0].appendChild(span);
 	      	});
 		});
@@ -355,7 +358,7 @@ $(document).ready(function() {
 	// set CALENDAR menu selected
 	$('#navbar ul li').eq(2).addClass('active');
 	console.log("calendar");
-	
+
 	initCalendarData();
 	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
 	initLanguageFormHandler();

@@ -39,7 +39,7 @@
 		<label>Price USD:</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.number_field :usd, :min => 0, :step => 0.01, :value => 100.00 %>
+		<%= form.number_field :usd, :min => 0, :step => 0.01, :value => @calendar_post.usd || 100.00 %>
 	</div>
 </div>
 <br>
@@ -48,7 +48,7 @@
 		<label>Price RMB:</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.number_field :rmb, :min => 0, :step => 0.01, :value => 800.00 %>
+		<%= form.number_field :rmb, :min => 0, :step => 0.01, :value => @calendar_post.rmb || 800.00 %>
 	</div>
 </div>
 <br>
