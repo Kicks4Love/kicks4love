@@ -26,7 +26,7 @@
     <% end %>
     <% unless @feature_posts.total_pages == @feature_posts.current_page %>
         <div class="to-view-more">
-            <span>Click To View More</span>
+            <span><%= t("Click_to_view_more") %></span>
         </div>
     <% end %>
     <%= hidden_field_tag "next_page", "2", :name => nil %>

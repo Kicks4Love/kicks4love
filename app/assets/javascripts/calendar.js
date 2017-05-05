@@ -7,7 +7,7 @@
 	    this.events = new Array();
 	    this.current = moment().date(1);
 	    this.initial = true;
-	    this.chinese = $('#language').val() == 'cn';
+	    this.chinese = isChinese();
 	    this.draw();
 	    var current = document.querySelector('.today');
 	    if (current) {
@@ -365,7 +365,7 @@ function initCalendarData() {
 	try {
   		var calendar = new Calendar('#calendar');
   	} catch(e) {
-  		var errorDescription = $('#language').val() == 'cn' ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
+  		var errorDescription = isChinese() ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
   		$('#calendar').css('text-align', 'center').append($('<h3>', {
   			style: 'color:#4A4A4A',
   			text: errorDescription

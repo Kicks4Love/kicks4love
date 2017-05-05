@@ -20,11 +20,11 @@ function initLanguageFormHandler() {
 		$('#language-modal').modal('show');
 
 	$('#language-form').submit(function(){
-    	var current_language = $('#language').val();
+    	var chinese = isChinese();
     	
-    	if (current_language == 'cn' && this.submited.includes('chinese'))
+    	if (chinese && this.submited.includes('chinese'))
     		return false;
-    	if (current_language == 'en' && this.submited.includes('english'))
+    	if (!chinese && this.submited.includes('english'))
     		return false;
 	});
 
@@ -32,6 +32,10 @@ function initLanguageFormHandler() {
         event.preventDefault();
         alert("即将来临\nComing soon");
     });
+}
+
+function isChinese() {
+    return $('#language').val() == 'cn';
 }
 
 function getSourcePage() {

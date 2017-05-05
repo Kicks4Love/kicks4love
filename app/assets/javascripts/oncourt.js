@@ -13,9 +13,10 @@ $(document).ready(function() {
 /*--点击加载-lazyload--*/
 function initLoadPostHandler() {
 	$('.to-view-more').click(function(){
+		var chinese = isChinese();
 		var nextPage = $('#next_page');
 		var target = $(this);
-		target.find('span').text('Loading...');
+		target.find('span').text(chinese ? '加载中...' : 'Loading...');
 
 		$.ajax({
 			type: 'GET',
@@ -45,7 +46,7 @@ function initLoadPostHandler() {
 					}
 				}
 				if (!data.no_more) {
-					parent.append('<div class="to-view-more"><span>Click To View More</span></div>');
+					parent.append('<div class="to-view-more"><span>' + (chinese ? '点击加载更多' : 'Click To View More') + '</span></div>');
 					nextPage.val(parseInt(nextPage.val()) + 1);
 				}
 				target.fadeOut();
