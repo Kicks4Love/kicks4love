@@ -352,7 +352,6 @@
 }();
 
 $(document).ready(function() {
-	console.log(initialized);
 	if (getSourcePage() !== 'calendar') return;
 
 	// set CALENDAR menu selected
