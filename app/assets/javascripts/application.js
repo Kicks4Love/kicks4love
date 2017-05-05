@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require bootstrap.min.js
 
+var autoSlider = null;
+
 function initLanguageFormHandler() {
 	if (!$('#language').val().length)
 		$('#language-modal').modal('show');

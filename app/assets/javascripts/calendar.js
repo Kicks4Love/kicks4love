@@ -348,8 +348,8 @@
 	}
 }();
 
-// Move document ready down here before Calendar class to ensure Calendar initialize successfully
 $(document).ready(function() {
+	console.log(initialized);
 	if (getSourcePage() !== 'calendar') return;
 
 	// set CALENDAR menu selected

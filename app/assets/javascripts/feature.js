@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	if (getSourcePage() !== 'feature') return;
+      if (getSourcePage() !== 'feature') return;
 
 	// set FEATURES menu selected
 	$('#navbar ul li').eq(1).addClass('active');

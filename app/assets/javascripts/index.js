@@ -1,15 +1,11 @@
-var autoSlider = null;
-
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
 	if (getSourcePage() !== 'index') return;
 
 	// set HOME menu selected
 	$('#navbar ul li').eq(0).addClass('active');
-	deinitilize();
-
-	initImageSlider();
 	console.log('index');
 
+	initImageSlider();
 	initLoadPostHandler();
     setTimeout(function() { 
         $('.header > img').slideUp('slow'); 
@@ -18,20 +14,10 @@ $(document).on('turbolinks:load', function() {
     initLanguageFormHandler();
 });
 
-function deinitilize() {
-	console.log(autoSlider);
-	$('#next').off('click');
-	$('#previous').off('click');
-	$('#slider-wrap').off('hover');
-	$('.to-view-more').off('click');
-	$('#pagination-wrap ul').empty();
-	if (autoSlider != null) clearInterval(autoSlider);
-	autoSlider = null;
-}
-
 function initImageSlider() {
 	var pos = 0;
-	var totalSlides = $('#slider-wrap ul li').length;	
+	var totalSlides = $('#slider-wrap ul#slider li').length;
+	console.log(totalSlides);	
 	
 	$(window).resize(function() {
 		var width = $('#slider-wrap').width();
@@ -42,9 +28,8 @@ function initImageSlider() {
 	 	
 	$('#next').click(function(){slideRight();});
 	$('#previous').click(function(){slideLeft();});
-	
-	autoSlider = setInterval(slideRight, 3000);
-	
+		
+	$('#pagination-wrap ul').empty();
 	$.each($('#slider-wrap ul li'), function() { 
 	   var color = $(this).attr("data-color");
 	   $(this).css("background-color", color);
@@ -54,6 +39,7 @@ function initImageSlider() {
 	});
 	pagination();
 
+	if (autoSlider == null) autoSlider = setInterval(slideRight, 3000);
 	$('#slider-wrap').hover(
 	  	function(){ $(this).addClass('active'); console.log('hover'); clearInterval(autoSlider); }, 
 	  	function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
@@ -82,7 +68,6 @@ function initImageSlider() {
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
 	$('.to-view-more').click(function() {
-		console.log('click');
 		var chinese = isChinese();
 		var nextPage = $('#next_page');
 		var target = $(this);

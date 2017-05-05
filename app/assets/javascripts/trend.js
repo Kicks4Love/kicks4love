@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	if (getSourcePage() !== 'trend') return;
+    if (getSourcePage() !== 'trend') return;
 
-	// set FEATURES menu selected
+    // set FEATURES menu selected
 	$('#navbar .dropdown ul li').eq(0).addClass('active');
 	console.log("trend");
 
