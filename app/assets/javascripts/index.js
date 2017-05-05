@@ -123,7 +123,7 @@ function initLoadPostHandler() {
                 		'<h2>' + data.posts[i].post.title + '</h2>' +
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.posts[i].post.content + '...</span>' +
+                    	'<span>' + data.posts[i].post.content.slice(0, 300) + '...</span>' +
                     	'<a href="' + data.posts[i].post_link + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
                 		'</div></div></div>'
