@@ -7,20 +7,14 @@
 <div class="main container clearfix">
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feature_posts.each_with_index do |feature_post, index| %>
-        <div class="kicks-box clearfix<%=' last' if index == @feature_posts.size-1%>">
-            <dl class="col-xs-12 col-sm-4">
-                <dt>
-                    <img src="<%= feature_post.cover_image.url %>" class="kicks-pic"/>
-                </dt>
-                <dd>
-                    <a href="/features/<%= feature_post.id %>"><%= feature_post.title %></a>
-                </dd>
-            </dl>
-            <div class="col-xs-12 col-sm-8 kicks-intro">
-                <h2><%= feature_post.title %></h2>
-                <div class="kicks-intro-content">
-                    <span><%= feature_post.content %></span>
-                </div>
+        <% left = (index%2 == 0) %>
+        <div class="kicks-post <%= ' alt' unless left %>">
+            <div class="photo<%= left ? ' photo-left' : ' photo-right' %>" style="background:url('<%= feature_post.cover_image.url %>');background-size:cover"></div>
+                <div class="kicks-post-content">
+                    <h1><%= feature_post.title %></h1>
+                    <h2><%= feature_post.created_at.strftime("%Y-%m-%d") %></h2>
+                    <p><%= feature_post.content[0..300] %></p>
+                    <a href="/features/<%= feature_post.id %>"><%= t("more") %></a>
             </div>
         </div>
     <% end %>

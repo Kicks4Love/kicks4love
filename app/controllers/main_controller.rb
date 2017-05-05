@@ -23,9 +23,9 @@ class MainController < ApplicationController
 		@page_title = 'Kicks4Love | Features'
 		@feature_posts = FeaturePost.latest.paginate(:page => 1)
 		if @chinese
-			@feature_posts = @feature_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+			@feature_posts = @feature_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
 		else
-			@feature_posts = @feature_posts.select("title_en AS title, content_en AS content, cover_image, id")
+			@feature_posts = @feature_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
 	end
 

@@ -1,8 +1,11 @@
-$(document).ready(function() {
+var autoSlider = null;
+
+$(document).on('turbolinks:load', function() {
 	if (getSourcePage() !== 'index') return;
 
 	// set HOME menu selected
 	$('#navbar ul li').eq(0).addClass('active');
+	deinitilize();
 
 	initImageSlider();
 	console.log('index');
@@ -34,6 +37,17 @@ $(document).ready(function() {
     initLanguageFormHandler();
 });
 
+function deinitilize() {
+	console.log(autoSlider);
+	$('#next').off('click');
+	$('#previous').off('click');
+	$('#slider-wrap').off('hover');
+	$('.to-view-more').off('click');
+	$('#pagination-wrap ul').empty();
+	if (autoSlider != null) clearInterval(autoSlider);
+	autoSlider = null;
+}
+
 function initImageSlider() {
 	var pos = 0;
 	var totalSlides = $('#slider-wrap ul li').length;	
@@ -48,7 +62,7 @@ function initImageSlider() {
 	$('#next').click(function(){slideRight();});
 	$('#previous').click(function(){slideLeft();});
 	
-	var autoSlider = setInterval(slideRight, 3000);
+	autoSlider = setInterval(slideRight, 3000);
 	
 	$.each($('#slider-wrap ul li'), function() { 
 	   var color = $(this).attr("data-color");
@@ -60,7 +74,7 @@ function initImageSlider() {
 	pagination();
 
 	$('#slider-wrap').hover(
-	  	function(){ $(this).addClass('active'); clearInterval(autoSlider); }, 
+	  	function(){ $(this).addClass('active'); console.log('hover'); clearInterval(autoSlider); }, 
 	  	function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }
 	);
 
@@ -87,6 +101,7 @@ function initImageSlider() {
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
 	$('.to-view-more').click(function() {
+		console.log('click');
 		var chinese = isChinese();
 		var nextPage = $('#next_page');
 		var target = $(this);
