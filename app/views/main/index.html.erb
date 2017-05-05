@@ -55,9 +55,9 @@
 </div>
 
 <div class="main container">
-    <div class="col-xs-12 banner-box clearfix">
+    <div class="row">
         <% @news.each do |news| %>
-            <div class="col-xs-12 col-sm-4">
+            <div class="banner-box col-xs-4">
                 <div class="new-box">
                     <%  
                         case news.pointer_type

@@ -25,10 +25,10 @@ function initLoadPostHandler() {
             success: function(data) { 
             	var parent = target.parent('.main');
             	for (var i = 0; i < data.posts.length; i++) {
-                    var left = i%2 == 0;
+                        var right = i%2 == 0;
             		parent.append(
-                        '<div class="kicks-post' + (left ? '' : ' alt') + '">' +
-                        '<div class="photo ' + (left ? 'photo-left' : 'photo-right') + '" style="background:url(' + data.posts[i].image_url + ');background-size:cover;background-position:center"></div>' +
+                        '<div class="kicks-post' + (right ? ' alt' : '') + '">' +
+                        '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background:url(' + data.posts[i].image_url + ');background-size:cover;background-position:center"></div>' +
                         '<div class="kicks-post-content">' +
                         '<h1>' + data.posts[i].post.title + '</h1>' + 
                         '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' + 

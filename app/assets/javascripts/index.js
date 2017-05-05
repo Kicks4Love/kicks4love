@@ -9,25 +9,6 @@ $(document).on('turbolinks:load', function() {
 
 	initImageSlider();
 	console.log('index');
-	
-	/*--新鞋介绍-main--*/
-	$('.new-box').hover(function(){
-		var filter = $(this).find('.kicks-filter');
-		var title = $(this).find('p');
-		filter.animate({
-			opacity:0.8,
-			width:'100%'
-		},1000);
-		title.fadeIn(1000);
-	},function(){
-		var filter = $(this).find('.kicks-filter');
-		var title = $(this).find('p');
-		filter.animate({
-			opacity:0,
-			width:'0'
-		},1000);
-		title.fadeOut(1000);
-	});
 
 	initLoadPostHandler();
     setTimeout(function() { 
