@@ -54,6 +54,9 @@ h1, h4 {
 #release-modal .modal-body {
   background-color: black;
 }
+#release-modal .modal-body img {
+  max-width: 90%;
+}
 #release-modal .modal-header, #release-modal .modal-footer {
   border-left: pink solid 15px;
 }
@@ -66,7 +69,7 @@ h1, h4 {
     -moz-transform: translate3d(0, 0, 0);
   	transform: translate3d(0, 0, 0);
   	width: 70%;
-    max-width: 800px;
+    max-width: 1020px;
   	margin: 0 auto 80px;
   	height: 600px;
   	overflow: hidden;

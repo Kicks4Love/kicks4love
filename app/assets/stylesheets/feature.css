@@ -27,6 +27,7 @@
   position: relative;
 }
 .main .kicks-post .kicks-post-content h1 {
+  font-size: 26px;
   line-height: 1em;
   margin: 0 0 10px 0;
 }
@@ -74,7 +75,7 @@
 @media screen and (min-width: 767px) {
   .main .kicks-post {
     height: 200px;
-    max-width: 900px;
+    max-width: 1020px;
   }
   .main .kicks-post:hover .photo {
     -webkit-transform: rotate(5deg) scale(1.3);

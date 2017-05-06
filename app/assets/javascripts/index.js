@@ -81,6 +81,13 @@ function initLoadPostHandler() {
             	var parent = target.parent('.main');
             	$('.kicks-box.last').removeClass('last');
             	for (var i = 0; i < data.posts.length; i++) {
+            		var tag = '';
+            		if (data.posts[i].post_link.includes('features')) 
+            			tag = chinese ? '专题' : 'Features';
+            		else if (data.posts[i].post_link.includes('trend'))
+            			tag = chinese ? '潮流趋势' : 'Trend';
+            		else if (data.posts[i].post_link.includes('oncourt'))
+            			tag = chinese ? '球场时装' : 'On Court';
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
             			'<a href="' + data.posts[i].post_link + '">' +
@@ -89,9 +96,11 @@ function initLoadPostHandler() {
                 		'<h2>' + data.posts[i].post.title + '</h2>' +
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.posts[i].post.content.slice(0, 300) + '...</span>' +
+                    	'<span>' + data.posts[i].post.content.slice(0, 200) + '...</span>' +
                     	'<a href="' + data.posts[i].post_link + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
+                    	'<br/><br/><i class="fa fa-tags" aria-hidden="true"></i>' +
+                    	'<span class="post-tag">' + tag + '</span>' +
                 		'</div></div></div>'
             		);
             	}

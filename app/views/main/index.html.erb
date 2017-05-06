@@ -87,10 +87,13 @@
                 case feed.class.name
                 when "FeaturePost"
                   link = "/features/#{feed.id}"
+                  tag = "Feature"
                 when "TrendPost"
                     link = "/trend/#{feed.id}"
+                    tag = "Trend"
                 when "OnCourtPost"
-                  link = "/oncourt/#{feed.id}"
+                    link = "/oncourt/#{feed.id}"
+                    tag = "On_Court"
                 end
             %>
             <a href="<%= link %>">
@@ -100,9 +103,11 @@
                 <div class="feed-title"><h3><%= feed.title %></h3></div>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
-                    <span><%= feed.content[0..300] %>...</span>
+                    <p><%= feed.content[0..200] %>...</p>
                     <a href="<%= link %>">(<%= t("more") %>)</a>
                     <span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span>
+                    <br/><br/>
+                    <i class="fa fa-tags" aria-hidden="true"></i><span class="post-tag"><%= t(tag) %></span>
                 </div>
             </div>
         </div>
