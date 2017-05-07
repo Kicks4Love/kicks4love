@@ -1,6 +1,6 @@
 class OnCourtPost < ApplicationRecord
 
-	attr_accessor :post_link
+	attr_accessor :post_type
 
 	scope :latest, -> {order("created_at DESC")}
 

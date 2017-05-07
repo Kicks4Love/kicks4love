@@ -80,11 +80,11 @@ class MainController < ApplicationController
 			feeds.each do |feed|
 				case feed.class.name
                 when "FeaturePost"
-                  	feed.post_link = "/features/#{feed.id}"
+                  	feed.post_type = "features"
               	when "TrendPost"
-              		feed.post_link = "/trend/#{feed.id}"
+              		feed.post_type = "trend"
                 when "OnCourtPost"
-                  	feed.post_link = "/oncourt/#{feed.id}"
+                  	feed.post_type = "oncourt"
                 end
 			end
 		when 'features'
@@ -126,7 +126,7 @@ class MainController < ApplicationController
 		@return_posts = []
 		feeds.each do |post|
 			post_hash = {:post => post, :image_url => post.cover_image.url}
-			post_hash[:post_link] = post.post_link if (defined? post.post_link)
+			post_hash[:post_type] = post.post_type if (defined? post.post_type)
 			@return_posts.push(post_hash)
 		end
 

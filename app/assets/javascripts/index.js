@@ -82,22 +82,26 @@ function initLoadPostHandler() {
             	$('.kicks-box.last').removeClass('last');
             	for (var i = 0; i < data.posts.length; i++) {
             		var tag = '';
-            		if (data.posts[i].post_link.includes('features')) 
-            			tag = chinese ? '专题' : 'Features';
-            		else if (data.posts[i].post_link.includes('trend'))
-            			tag = chinese ? '潮流趋势' : 'Trend';
-            		else if (data.posts[i].post_link.includes('oncourt'))
-            			tag = chinese ? '球场时装' : 'On Court';
+            		switch (data.posts[i].post_type) {
+            			case 'features':
+            				tag = chinese ? '专题' : 'Features';
+            				break;
+            			case 'trend':
+            				tag = chinese ? '潮流趋势' : 'Trend';
+            				break;
+            			case 'oncourt':
+            				tag = chinese ? '球场时装' : 'On Court';
+            		}
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
-            			'<a href="' + data.posts[i].post_link + '">' +
+            			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">' +
                 		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic"></a>' + 
             			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
                 		'<h2>' + data.posts[i].post.title + '</h2>' +
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
                     	'<span>' + data.posts[i].post.content.slice(0, 200) + '...</span>' +
-                    	'<a href="' + data.posts[i].post_link + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
+                    	'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
                     	'<br/><br/><i class="fa fa-tags" aria-hidden="true"></i>' +
                     	'<span class="post-tag">' + tag + '</span>' +
