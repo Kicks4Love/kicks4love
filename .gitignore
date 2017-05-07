@@ -3,6 +3,9 @@
 *.log
 *.tmp
 *.cache
+public/*
+tmp/*
 
 # ignore secret
 config/secrets.yml
+config/database.yml

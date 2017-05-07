@@ -5,11 +5,13 @@
 	function Calendar(selector) {
 	    this.el = document.querySelector(selector);
 	    this.events = new Array();
-	    this.current = moment().date(1);
+	    var date = getQueryParams().date;
+	    this.target = date ? moment(date) : null;
+	    this.current = this.target ? moment(this.target).date(1) : moment().date(1);
 	    this.initial = true;
 	    this.chinese = isChinese();
 	    this.draw();
-	    var current = document.querySelector('.today');
+	    var current = this.target ? document.querySelector('.target') : document.querySelector('.today');
 	    if (current) {
 	     	var self = this;
 	      	window.setTimeout(function() {
@@ -156,6 +158,8 @@
 	      	classes.push('other');
 	    else if (moment().isSame(day, 'day'))
 	      	classes.push('today');
+	    else if (this.target && this.target.isSame(day, 'day'))
+	    	classes.push('target');
 	    return classes.join(' ');
 	}
 
@@ -212,7 +216,7 @@
 			if (this.chinese)
 				description = '有' + todaysEvents.length + '件物品发售';
 			else
-				description = 'has ' + todaysEvents.length > 1 ? todaysEvents.length + ' releases' : '1 release';
+				description = 'has ' + (todaysEvents.length > 1 ? todaysEvents.length + ' releases' : '1 release');
 		} else
 			description = this.chinese ? '没有发售活动' : 'has no release';
 		$('.header').text(day.format('YYYY-MM-DD') + ' ' + description);
