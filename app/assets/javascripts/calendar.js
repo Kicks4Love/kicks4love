@@ -367,10 +367,18 @@ function initCalendarData() {
 	try {
   		var calendar = new Calendar('#calendar');
   	} catch(e) {
-  		var errorDescription = isChinese() ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
+  		var chinese = isChinese();
+  		var errorDescription = chinese ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
+  		var retryText = chinese ? '重试' : 'Retry'
   		$('#calendar').css('text-align', 'center').append($('<h3>', {
   			style: 'color:#4A4A4A',
   			text: errorDescription
+  		})).append($('<button>', {
+  			style: 'color:#4A4A4A',
+  			text: retryText,
+  			on: {
+  				click: function() {location.reload();}
+  			}
   		}));
   	}
 }

@@ -63,6 +63,9 @@
                         case news.pointer_type
                         when "FEATURES"
                             url = "/features/#{news.pointer_id}"
+                        when "CALENDAR"
+                            date = CalendarPost.find_by_id(news.pointer_id).release_date.strftime("%Y-%m-%d")
+                            url = "/calendar?date=#{date}"
                         when "TREND"
                             url = "/trend/#{news.pointer_id}"
                         when "ON_COURT"
