@@ -7,5 +7,5 @@ $(document).ready(function() {
 		var container = $('.container');
 		container.empty()
 		container.text('Error occur, please refresh page to continue');
-	} 
+	}
 });

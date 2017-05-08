@@ -10,7 +10,7 @@ function refreshPosts(postType) {
 		type: 'GET',
       url: '/admin/posts/get_posts?type=' + postType,
       dataType: "json",
-      success: function(data) { 
+      success: function(data) {
          var targetSelect = $('#post_pointer_id');
          targetSelect.empty();
          data.forEach(function(entry) {
@@ -19,6 +19,6 @@ function refreshPosts(postType) {
             text: entry.title_en
     		   }));
         });
-      å}
+      }
 	});
 }
