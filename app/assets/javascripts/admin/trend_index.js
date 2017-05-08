@@ -15,9 +15,7 @@ function initOldPostRemoval() {
             table.each(function() {
                 row = $(this).context;
                 for (var i = 0; i < data.length; i++) {
-                  console.log(data[i].title_en);
                   if (row.cells[1].textContent == data[i].title_en) {
-                    console.log(data[i].title_en);
                     $(this).fadeOut();
                     break;
                   }
