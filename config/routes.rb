@@ -36,7 +36,11 @@ Rails.application.routes.draw do
         get 'get_posts'
       end
     end
-    resources :feature_posts
+    resources :feature_posts do
+      collection do
+        delete 'remove_old'
+      end
+    end
     resources :calendar_posts
     resources :trend_posts
     resources :on_court_posts

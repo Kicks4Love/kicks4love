@@ -1,12 +1,19 @@
 class Admin::FeaturePostsController < Admin::AdminController
+	# expired_time = 7890000
 
-	skip_before_filter :verify_authenticity_token, :only => [:destroy]
+	skip_before_filter :verify_authenticity_token, :only => [:destroy, :remove_old]
 	before_action :get_feature_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
 		@page_title = "Kicks4Love Admin | Feature Posts"
 		@feature_posts = FeaturePost.latest
-
+		@expired_posts_count = 0;
+		time_now = Time.now
+		@feature_posts.each do |post|
+			if time_now.to_i - post.created_at.to_i > 259200 # more then 3 months old posts are marked 'expired'
+				@expired_posts_count+=1
+			end
+		end
 		if params[:filter].present?
 			session[:feature_post_per_page] = params[:filter][:per_page].to_i
 		end
@@ -47,13 +54,30 @@ class Admin::FeaturePostsController < Admin::AdminController
 		if @feature_post.destroy
 			flash[:notice] = "The feature_post has been deleted successfully"
 		else
-			flash[:alert] = "Error occurs while deleting the featire post, please try again"
+			flash[:alert] = "Error occurs while deleting the feature post, please try again"
 		end
 
 		redirect_to admin_feature_posts_path
 	end
 
-	private 
+	def remove_old
+		all_posts = FeaturePost.all
+		time_now = Time.now
+		all_done = true
+		all_posts.each do |post|
+			if time_now.to_i - post.created_at.to_i > 259200 # more then 3 months old posts are marked 'expired'
+				unless post.destroy
+					all_done = false
+					flash[:alert] = "Error occurs while deleting a featured post!"
+				end
+			end
+		end
+		if all_done
+			flash[:notice] = "All old posts removed successfully!"
+		end
+	end
+
+	private
 
 	def feature_post_params
 		params.require(:feature_post).permit(:title_en, :title_cn, :content_en, :content_cn, :main_image, :cover_image)
