@@ -8,7 +8,7 @@ class Admin::TrendPostsController < Admin::AdminController
 		@trend_posts = TrendPost.latest
 		@expired_posts_count = 0;
 		@trend_posts.each do |post|
-			if 3.hour.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+			if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
 				@expired_posts_count+=1
 			end
 		end
@@ -63,7 +63,7 @@ class Admin::TrendPostsController < Admin::AdminController
 		all_done = true
 		old_posts = []
 		all_posts.each do |post|
-			if 3.hour.ago.to_i > post.created_at.to_i
+			if 3.month.ago.to_i > post.created_at.to_i
 				old_posts.push(post)
 				unless post.destroy
 					all_done = false
