@@ -8,7 +8,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
 		@on_court_posts = OnCourtPost.latest
     @expired_posts_count = 0;
     @on_court_posts.each do |post|
-     if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+     if 3.hour.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
        @expired_posts_count+=1
      end
     end
@@ -62,8 +62,10 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def remove_old
     all_posts = OnCourtPost.all
     all_done = true
+    old_posts = []
     all_posts.each do |post|
-      if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+      if 3.hour.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+        old_posts.push(post)
         unless post.destroy
           all_done = false
           flash[:alert] = "Error occurs while deleting a featured post!"
@@ -73,6 +75,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
     if all_done
       flash[:notice] = "All old posts removed successfully!"
     end
+    render :json => old_posts.to_json, :layout => false
   end
   private
 

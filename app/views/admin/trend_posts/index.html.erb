@@ -5,7 +5,7 @@
 <% if @trend_posts.any? %>
   <%= link_to "New Trend Post", new_admin_trend_post_path, :class => "btn btn-primary" %>
   <% if @expired_posts_count > 0 %>
-  <%= link_to "Delete #{@expired_posts_count} old posts", remove_old_admin_trend_posts_path, :method => :delete, :class => "btn btn-danger"%>
+  <div class="btn btn-danger">Delete <%= @expired_posts_count %> old posts</div>
   <% end %>
   <br/><br/>
 
@@ -62,3 +62,7 @@
 <br/><br/>
 
 <p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>
+<% content_for :end_of_body do %>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <%= javascript_include_tag "admin/trend_index.js" %>
+<% end %>

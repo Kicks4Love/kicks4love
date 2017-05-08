@@ -64,8 +64,10 @@ class Admin::CalendarPostsController < Admin::AdminController
 	def remove_old
 		all_posts = CalendarPost.all
 		all_done = true
+		old_posts = []
 		all_posts.each do |post|
 			if 1.month.ago.to_i > post.release_date.to_time.to_i # more then 3 months old posts are marked 'expired'
+				old_posts.push(post)
 				unless post.destroy
 					all_done = false
 					flash[:alert] = "Error occurs while deleting a featured post!"
@@ -75,6 +77,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 		if all_done
 			flash[:notice] = "All old posts removed successfully!"
 		end
+		render :json => old_posts.to_json, :layout => false
 	end
 
 	private

@@ -38,22 +38,22 @@ Rails.application.routes.draw do
     end
     resources :feature_posts do
       collection do
-        delete 'remove_old'
+        get 'remove_old'
       end
     end
     resources :calendar_posts do
       collection do
-        delete 'remove_old'
+        get 'remove_old'
       end
     end
     resources :trend_posts do
       collection do
-        delete 'remove_old'
+        get 'remove_old'
       end
     end
     resources :on_court_posts do
       collection do
-        delete 'remove_old'
+        get 'remove_old'
       end
     end
     resources :admin_users

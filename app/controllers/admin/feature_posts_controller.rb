@@ -8,7 +8,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 		@feature_posts = FeaturePost.latest
 		@expired_posts_count = 0;
 		@feature_posts.each do |post|
-			if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+			if 1.second.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
 				@expired_posts_count+=1
 			end
 		end
@@ -61,8 +61,10 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def remove_old
 		all_posts = FeaturePost.all
 		all_done = true
+		old_posts = []
 		all_posts.each do |post|
-			if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+			if 3.second.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+				old_posts.push(post)
 				unless post.destroy
 					all_done = false
 					flash[:alert] = "Error occurs while deleting a featured post!"
@@ -72,6 +74,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 		if all_done
 			flash[:notice] = "All old posts removed successfully!"
 		end
+		render :json => old_posts.to_json, :layout => false
 	end
 
 	private
