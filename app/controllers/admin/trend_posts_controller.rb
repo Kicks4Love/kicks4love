@@ -1,12 +1,17 @@
 class Admin::TrendPostsController < Admin::AdminController
-
+	# expired_time = 7890000
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_trend_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
 		@page_title = "Kicks4Love Admin | Trend Posts"
 		@trend_posts = TrendPost.latest
-
+		@expired_posts_count = 0;
+		@trend_posts.each do |post|
+			if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+				@expired_posts_count+=1
+			end
+		end
 		if params[:filter].present?
 			session[:trend_post_per_page] = params[:filter][:per_page].to_i
 		end
@@ -51,6 +56,22 @@ class Admin::TrendPostsController < Admin::AdminController
 		end
 
 		redirect_to admin_trend_posts_path
+	end
+
+	def remove_old
+		all_posts = TrendPost.all
+		all_done = true
+		all_posts.each do |post|
+			if 3.month.ago.to_i > post.created_at.to_i
+				unless post.destroy
+					all_done = false
+					flash[:alert] = "Error occurs while deleting a featured post!"
+				end
+			end
+		end
+		if all_done
+			flash[:notice] = "All old posts removed successfully!"
+		end
 	end
 
 	private

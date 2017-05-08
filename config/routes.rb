@@ -41,9 +41,21 @@ Rails.application.routes.draw do
         delete 'remove_old'
       end
     end
-    resources :calendar_posts
-    resources :trend_posts
-    resources :on_court_posts
+    resources :calendar_posts do
+      collection do
+        delete 'remove_old'
+      end
+    end
+    resources :trend_posts do
+      collection do
+        delete 'remove_old'
+      end
+    end
+    resources :on_court_posts do
+      collection do
+        delete 'remove_old'
+      end
+    end
     resources :admin_users
   end
 

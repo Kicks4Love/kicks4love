@@ -5,7 +5,7 @@
 <% if @feature_posts.any? %>
 	<%= link_to "Create new feature post", new_admin_feature_post_path, :class => "btn btn-primary" %>
 	<% if @expired_posts_count > 0 %>
-	<%= link_to "Delete #{@expired_posts_count} old posts", remove_old_admin_feature_posts_path, :method => :delete, :class => "btn btn-danger"%>
+	<%= link_to "Delete #{@expired_posts_count} old posts", remove_old_admin_feature_posts_path, :method => :delete, :class => "btn btn-danger remove_old_post"%>
 	<% end %>
 	<br><br>
 

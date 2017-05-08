@@ -1,11 +1,16 @@
 class Admin::CalendarPostsController < Admin::AdminController
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_calendar_post, :only => [:edit, :destroy, :update, :show]
-
+# expired time is 1 month: 2630000 (seconds)
 	def index
 		@page_title = "Kicks4Love Admin | Calendar Posts"
 		@calendar_posts = CalendarPost.latest
- 
+		@expired_posts_count = 0;
+	  @calendar_posts.each do |post|
+	 	 if 1.month.ago.to_i > post.release_date.to_time.to_i # more then 1 month old posts are marked 'expired'
+	 		 @expired_posts_count+=1
+	 	 end
+	  end
  		if params[:filter].present?
  			if params[:filter][:release_type].present?
  				@calendar_posts = @calendar_posts.where(:release_type => params[:filter][:release_type]).latest
@@ -56,7 +61,23 @@ class Admin::CalendarPostsController < Admin::AdminController
 		redirect_to admin_calendar_posts_path
 	end
 
-	private 
+	def remove_old
+		all_posts = CalendarPost.all
+		all_done = true
+		all_posts.each do |post|
+			if 1.month.ago.to_i > post.release_date.to_time.to_i # more then 3 months old posts are marked 'expired'
+				unless post.destroy
+					all_done = false
+					flash[:alert] = "Error occurs while deleting a featured post!"
+				end
+			end
+		end
+		if all_done
+			flash[:notice] = "All old posts removed successfully!"
+		end
+	end
+
+	private
 
 	def calendar_post_params
 		params.require(:calendar_post).permit(:title_en, :title_cn, :content_en, :release_date, :release_type, :usd, :rmb, :cover_image)

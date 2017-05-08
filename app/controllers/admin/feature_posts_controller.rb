@@ -1,5 +1,4 @@
 class Admin::FeaturePostsController < Admin::AdminController
-	# expired_time = 7890000
 
 	skip_before_filter :verify_authenticity_token, :only => [:destroy, :remove_old]
 	before_action :get_feature_post, :only => [:edit, :destroy, :update, :show]
@@ -8,9 +7,8 @@ class Admin::FeaturePostsController < Admin::AdminController
 		@page_title = "Kicks4Love Admin | Feature Posts"
 		@feature_posts = FeaturePost.latest
 		@expired_posts_count = 0;
-		time_now = Time.now
 		@feature_posts.each do |post|
-			if time_now.to_i - post.created_at.to_i > 259200 # more then 3 months old posts are marked 'expired'
+			if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
 				@expired_posts_count+=1
 			end
 		end
@@ -62,10 +60,9 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 	def remove_old
 		all_posts = FeaturePost.all
-		time_now = Time.now
 		all_done = true
 		all_posts.each do |post|
-			if time_now.to_i - post.created_at.to_i > 259200 # more then 3 months old posts are marked 'expired'
+			if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
 				unless post.destroy
 					all_done = false
 					flash[:alert] = "Error occurs while deleting a featured post!"

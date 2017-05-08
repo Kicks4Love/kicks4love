@@ -4,7 +4,9 @@
 
 <% if @calendar_posts.any? || params[:filter].present? %>
 	<%= link_to "Create new calendar post", new_admin_calendar_post_path, :class => "btn btn-primary" %>
-
+	<% if @expired_posts_count > 0 %>
+	<%= link_to "Delete #{@expired_posts_count} old posts", remove_old_admin_calendar_posts_path, :method => :delete, :class => "btn btn-danger"%>
+	<% end %>
 	<br><br>
 
 	<%= form_for :filter, :url => admin_calendar_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>

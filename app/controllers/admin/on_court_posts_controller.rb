@@ -1,11 +1,17 @@
 class Admin::OnCourtPostsController < Admin::AdminController
   before_action :get_on_court_post, :only => [:edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:destroy]
+  # expired_time = 7890000
 
   def index
     @page_title = "Kicks4Love Admin | On Court Posts"
 		@on_court_posts = OnCourtPost.latest
-
+    @expired_posts_count = 0;
+    @on_court_posts.each do |post|
+     if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+       @expired_posts_count+=1
+     end
+    end
     if params[:filter].present?
       session[:on_court_post_per_page] = params[:filter][:per_page].to_i
     end
@@ -53,6 +59,21 @@ class Admin::OnCourtPostsController < Admin::AdminController
     redirect_to admin_on_court_posts_path
   end
 
+  def remove_old
+    all_posts = OnCourtPost.all
+    all_done = true
+    all_posts.each do |post|
+      if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
+        unless post.destroy
+          all_done = false
+          flash[:alert] = "Error occurs while deleting a featured post!"
+        end
+      end
+    end
+    if all_done
+      flash[:notice] = "All old posts removed successfully!"
+    end
+  end
   private
 
   def on_court_post_params
