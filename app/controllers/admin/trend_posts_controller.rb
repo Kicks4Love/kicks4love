@@ -1,5 +1,4 @@
 class Admin::TrendPostsController < Admin::AdminController
-	# expired_time = 7890000
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_trend_post, :only => [:edit, :destroy, :update, :show]
 

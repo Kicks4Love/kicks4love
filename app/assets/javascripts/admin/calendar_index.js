@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  initOldPostRemoval(this);
+  initOldPostRemoval();
 });
 function initOldPostRemoval() {
   var table =  $('table:visible > tbody > tr');

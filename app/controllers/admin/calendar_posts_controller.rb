@@ -1,7 +1,7 @@
 class Admin::CalendarPostsController < Admin::AdminController
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_calendar_post, :only => [:edit, :destroy, :update, :show]
-# expired time is 1 month: 2630000 (seconds)
+
 	def index
 		@page_title = "Kicks4Love Admin | Calendar Posts"
 		@calendar_posts = CalendarPost.latest

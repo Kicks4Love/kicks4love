@@ -1,7 +1,6 @@
 class Admin::OnCourtPostsController < Admin::AdminController
   before_action :get_on_court_post, :only => [:edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:destroy]
-  # expired_time = 7890000
 
   def index
     @page_title = "Kicks4Love Admin | On Court Posts"

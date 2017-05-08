@@ -1,6 +1,6 @@
 class Admin::FeaturePostsController < Admin::AdminController
 
-	skip_before_filter :verify_authenticity_token, :only => [:destroy, :remove_old]
+	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_feature_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
