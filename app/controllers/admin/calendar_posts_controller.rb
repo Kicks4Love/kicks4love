@@ -6,11 +6,11 @@ class Admin::CalendarPostsController < Admin::AdminController
 		@page_title = "Kicks4Love Admin | Calendar Posts"
 		@calendar_posts = CalendarPost.latest
 		@expired_posts_count = 0;
-	  @calendar_posts.each do |post|
-	 	 if 1.month.ago.to_i > post.release_date.to_time.to_i # more then 1 month old posts are marked 'expired'
-	 		 @expired_posts_count+=1
-	 	 end
-	  end
+	  	@calendar_posts.each do |post|
+	 	 	if 1.month.ago.to_i > post.release_date.to_time.to_i # more then 1 month old posts are marked 'expired'
+	 		 	@expired_posts_count += 1
+	 	 	end
+	  	end
  		if params[:filter].present?
  			if params[:filter][:release_type].present?
  				@calendar_posts = @calendar_posts.where(:release_type => params[:filter][:release_type]).latest
@@ -62,22 +62,13 @@ class Admin::CalendarPostsController < Admin::AdminController
 	end
 
 	def remove_old
-		all_posts = CalendarPost.all
-		all_done = true
-		old_posts = []
-		all_posts.each do |post|
-			if 1.month.ago.to_i > post.release_date.to_time.to_i # more then 3 months old posts are marked 'expired'
-				old_posts.push(post)
-				unless post.destroy
-					all_done = false
-					flash[:alert] = "Error occurs while deleting a featured post!"
-				end
-			end
+		old_posts = CalendarPost.where("release_date < ?", 1.month.ago)
+		return_posts = old_posts.to_a
+		if old_posts.destroy_all
+			render :json => return_posts.to_json, :layout => false
+		else 
+			head :ok, :status => 500
 		end
-		if all_done
-			flash[:notice] = "All old posts removed successfully!"
-		end
-		render :json => old_posts.to_json, :layout => false
 	end
 
 	private
