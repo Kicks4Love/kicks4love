@@ -6,11 +6,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 		@page_title = "Kicks4Love Admin | Calendar Posts"
 		@calendar_posts = CalendarPost.latest
 		@expired_posts_count = 0;
-	  	@calendar_posts.each do |post|
-	 	 	if 1.month.ago.to_i > post.release_date.to_time.to_i # more then 1 month old posts are marked 'expired'
-	 		 	@expired_posts_count += 1
-	 	 	end
-	  	end
+		@expired_posts_count = @calendar_posts.where("release_date < ?", 1.month.ago).size
  		if params[:filter].present?
  			if params[:filter][:release_type].present?
  				@calendar_posts = @calendar_posts.where(:release_type => params[:filter][:release_type]).latest
@@ -63,9 +59,8 @@ class Admin::CalendarPostsController < Admin::AdminController
 
 	def remove_old
 		old_posts = CalendarPost.where("release_date < ?", 1.month.ago)
-		return_posts = old_posts.to_a
-		if old_posts.destroy_all
-			render :json => return_posts.to_json, :layout => false
+		if old_posts.delete_all
+			render :json => old_posts.to_json, :layout => false
 		else 
 			head :ok, :status => 500
 		end
