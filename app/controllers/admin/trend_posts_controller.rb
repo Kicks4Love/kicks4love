@@ -5,12 +5,7 @@ class Admin::TrendPostsController < Admin::AdminController
 	def index
 		@page_title = "Kicks4Love Admin | Trend Posts"
 		@trend_posts = TrendPost.latest
-		@expired_posts_count = 0;
-		@trend_posts.each do |post|
-			if 3.month.ago.to_i > post.created_at.to_i # more then 3 months old posts are marked 'expired'
-				@expired_posts_count+=1
-			end
-		end
+		@expired_posts_count = TrendPost.old.size;
 		if params[:filter].present?
 			session[:trend_post_per_page] = params[:filter][:per_page].to_i
 		end
@@ -58,22 +53,13 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def remove_old
-		all_posts = TrendPost.all
-		all_done = true
-		old_posts = []
-		all_posts.each do |post|
-			if 3.month.ago.to_i > post.created_at.to_i
-				old_posts.push(post)
-				unless post.destroy
-					all_done = false
-					flash[:alert] = "Error occurs while deleting a featured post!"
-				end
-			end
+		old_posts = TrendPost.old
+		return_posts = old_posts.to_a
+		if old_posts.delete_all
+			render :json => return_posts.to_json, :layout => false
+		else
+			head :ok, :status => 500
 		end
-		if all_done
-			flash[:notice] = "All old posts removed successfully!"
-		end
-		render :json => old_posts.to_json, :layout => false
 	end
 
 	private

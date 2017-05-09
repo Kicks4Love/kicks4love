@@ -3,26 +3,27 @@ $(document).ready(function() {
 });
 function initOldPostRemoval() {
   var table =  $('table:visible > tbody > tr');
-  var btn = $(".btn-danger")
-  btn.click(function() {
+  $("#remove_old").click(function() {
+    var self = $(this);
     $.ajax({
       context: document.body,
 			type: 'GET',
             url: '/admin/on_court_posts/remove_old.json',
             dataType: "json",
             success: function(data) {
-            btn.addClass("disabled");
+            self.addClass("disabled");
             table.each(function() {
                 row = $(this).context;
                 for (var i = 0; i < data.length; i++) {
-                  if (row.cells[1].textContent == data[i].title_en) {
-                    $(this).fadeOut();
+                  if (row.cells[0].textContent == data[i].title_en) {
+                    $(row).fadeOut();
                     break;
                   }
                 }
               });
-            }
+            },
+            error: function() { alert('Something wrong while try to delete the old posts. Please try again'); }
           });
-    $(this).text('All old posts deleted!')
+    self.text('All old posts deleted!');
   })
 }

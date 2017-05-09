@@ -5,7 +5,7 @@
 <% if @trend_posts.any? %>
   <%= link_to "New Trend Post", new_admin_trend_post_path, :class => "btn btn-primary" %>
   <% if @expired_posts_count > 0 %>
-  <div class="btn btn-danger">Delete <%= @expired_posts_count %> old posts</div>
+  <div id="remove_old" class="btn btn-danger">Delete <%= @expired_posts_count %> old posts</div>
   <% end %>
   <br/><br/>
 
