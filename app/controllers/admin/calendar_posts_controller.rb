@@ -5,7 +5,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 	def index
 		@page_title = "Kicks4Love Admin | Calendar Posts"
 		@calendar_posts = CalendarPost.latest
- 
+		@expired_posts_count = CalendarPost.old.size
  		if params[:filter].present?
  			if params[:filter][:release_type].present?
  				@calendar_posts = @calendar_posts.where(:release_type => params[:filter][:release_type]).latest
@@ -56,7 +56,17 @@ class Admin::CalendarPostsController < Admin::AdminController
 		redirect_to admin_calendar_posts_path
 	end
 
-	private 
+	def remove_old
+		old_posts = CalendarPost.old
+		return_posts = old_posts.to_a
+		if old_posts.delete_all
+			render :json => return_posts.to_json, :layout => false
+		else
+			head :ok, :status => 500
+		end
+	end
+
+	private
 
 	def calendar_post_params
 		params.require(:calendar_post).permit(:title_en, :title_cn, :content_en, :release_date, :release_type, :usd, :rmb, :cover_image)

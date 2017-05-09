@@ -4,7 +4,9 @@
 
 <% if @feature_posts.any? %>
 	<%= link_to "Create new feature post", new_admin_feature_post_path, :class => "btn btn-primary" %>
-
+	<% if @expired_posts_count > 0 %>
+		<button id="remove-old" class="btn btn-danger">Delete <%= @expired_posts_count %> old posts</button>
+	<% end %>
 	<br><br>
 
 	<%= form_for :filter, :url => admin_feature_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
@@ -60,3 +62,6 @@
 <br><br>
 
 <p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "admin/features.js" %>
+<% end %>

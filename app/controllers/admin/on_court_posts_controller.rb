@@ -5,17 +5,13 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def index
     @page_title = "Kicks4Love Admin | On Court Posts"
 		@on_court_posts = OnCourtPost.latest
-
+    @expired_posts_count = OnCourtPost.old.size;
     if params[:filter].present?
       session[:on_court_post_per_page] = params[:filter][:per_page].to_i
     end
     @per_page = session[:on_court_post_per_page] || 5
     @on_court_posts = @on_court_posts.paginate(:page => params[:page] || 1, :per_page => session[:on_court_post_per_page] || 10)
   end
-
-  # def show
-  #
-  # end
 
   def new
     @page_title = "Kicks4Love Admin | Create a new On Court post"
@@ -53,6 +49,15 @@ class Admin::OnCourtPostsController < Admin::AdminController
     redirect_to admin_on_court_posts_path
   end
 
+  def remove_old
+    old_posts = OnCourtPost.old
+		return_posts = old_posts.to_a
+		if old_posts.delete_all
+			render :json => return_posts.to_json, :layout => false
+		else
+			head :ok, :status => 500
+		end
+  end
   private
 
   def on_court_post_params

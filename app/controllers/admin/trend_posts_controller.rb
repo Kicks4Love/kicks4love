@@ -1,12 +1,11 @@
 class Admin::TrendPostsController < Admin::AdminController
-
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_trend_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
 		@page_title = "Kicks4Love Admin | Trend Posts"
 		@trend_posts = TrendPost.latest
-
+		@expired_posts_count = TrendPost.old.size;
 		if params[:filter].present?
 			session[:trend_post_per_page] = params[:filter][:per_page].to_i
 		end
@@ -51,6 +50,16 @@ class Admin::TrendPostsController < Admin::AdminController
 		end
 
 		redirect_to admin_trend_posts_path
+	end
+
+	def remove_old
+		old_posts = TrendPost.old
+		return_posts = old_posts.to_a
+		if old_posts.delete_all
+			render :json => return_posts.to_json, :layout => false
+		else
+			head :ok, :status => 500
+		end
 	end
 
 	private

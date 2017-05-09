@@ -6,7 +6,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def index
 		@page_title = "Kicks4Love Admin | Feature Posts"
 		@feature_posts = FeaturePost.latest
-
+		@expired_posts_count = FeaturePost.old.size;
 		if params[:filter].present?
 			session[:feature_post_per_page] = params[:filter][:per_page].to_i
 		end
@@ -47,13 +47,23 @@ class Admin::FeaturePostsController < Admin::AdminController
 		if @feature_post.destroy
 			flash[:notice] = "The feature_post has been deleted successfully"
 		else
-			flash[:alert] = "Error occurs while deleting the featire post, please try again"
+			flash[:alert] = "Error occurs while deleting the feature post, please try again"
 		end
 
 		redirect_to admin_feature_posts_path
 	end
 
-	private 
+	def remove_old
+		old_posts = FeaturePost.old
+		return_posts = old_posts.to_a
+		if old_posts.delete_all
+			render :json => return_posts.to_json, :layout => false
+		else
+			head :ok, :status => 500
+		end
+	end
+
+	private
 
 	def feature_post_params
 		params.require(:feature_post).permit(:title_en, :title_cn, :content_en, :content_cn, :main_image, :cover_image)
