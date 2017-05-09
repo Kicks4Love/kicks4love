@@ -15,7 +15,7 @@ $(document).ready(function() {
 });
 
 function initOldPostRemoval() {
-  	$("#old-post-deletion").click(function() {
+  	$("#remove-old").click(function() {
   		var self = $(this);
     	$.ajax({
 			type: 'GET',

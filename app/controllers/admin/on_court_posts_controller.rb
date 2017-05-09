@@ -13,10 +13,6 @@ class Admin::OnCourtPostsController < Admin::AdminController
     @on_court_posts = @on_court_posts.paginate(:page => params[:page] || 1, :per_page => session[:on_court_post_per_page] || 10)
   end
 
-  # def show
-  #
-  # end
-
   def new
     @page_title = "Kicks4Love Admin | Create a new On Court post"
     @new_post = OnCourtPost.new
