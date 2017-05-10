@@ -29,7 +29,9 @@
 				<th>Content (English)</th>
 				<th>文章内容 （中文)</th>
 				<th>Cover Image</th>
-				<th>Main Image</th>
+				<th>Main Image 1</th>
+				<th>Main Image 2</th>
+				<th>Main Image 3</th>
 			</tr>
 		</tbody>
 		<tbody>
@@ -45,7 +47,9 @@
 					<td><%= feature_post.content_en %></td>
 					<td><%= feature_post.content_cn %></td>
 					<td><img src="<%= feature_post.cover_image.url %>" height="50px" /></td>
-					<td><img src="<%= feature_post.main_image.url %>" height="50px" /></td>
+					<td><img src="<%= feature_post.main_image_1.url %>" height="50px" /></td>
+					<td><img src="<%= feature_post.main_image_2.url %>" height="50px" /></td>
+					<td><img src="<%= feature_post.main_image_3.url %>" height="50px" /></td>
 				</tr>
 			<% end %>
 		</tbody>
