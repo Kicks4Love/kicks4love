@@ -21,12 +21,13 @@ function initLanguageFormHandler() {
 	if (!$('#language').val().length)
 		$('#language-modal').modal('show');
 
-	$('#language-form').submit(function(){
+	$('#language-form').submit(function() {
+        var languageSet = $('#language').val().length > 0;
     	var chinese = isChinese();
     	
-    	if (chinese && this.submited.includes('chinese'))
+    	if (languageSet && chinese && this.submited.includes('chinese'))
     		return false;
-    	if (!chinese && this.submited.includes('english'))
+    	if (languageSet && !chinese && this.submited.includes('english'))
     		return false;
 	});
 
