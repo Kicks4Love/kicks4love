@@ -180,7 +180,7 @@
  	text-shadow: 1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000,0px 1px 0 #000,0px -1px 0 #000,-1px 0px 0 #000,1px 0px 0 #000,2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0px 2px 0 #000,0px -2px 0 #000,-2px 0px 0 #000,2px 0px 0 #000,1px 2px 0 #000,-1px 2px 0 #000,1px -2px 0 #000,-1px -2px 0 #000,2px 1px 0 #000,-2px 1px 0 #000,2px -1px 0 #000,-2px -1px 0 #000;
 }
 
-.main .kicks-box{
+.main .kicks-box {
 	max-width: 1020px;
 	margin:30px auto;
 	padding:20px 0;
@@ -259,15 +259,19 @@
 	.main .row {
 		max-width: 500px;
 	}
-	.main .banner-box{
-		width: 100%;
-		margin-bottom: 20px;
-	}
 	.main .banner-box .new-box {
-		width: 40%;
-		width: 70%;
-		margin-left: auto;
-		margin-right: auto;
+		width: 50%;
+ 	}
+ 	.main .banner-box:nth-child(1) .new-box {
+ 		margin-left: 0;
+ 	}
+ 	.main .banner-box:nth-child(2) .new-box {
+ 		margin-left: auto;
+ 		margin-right: auto;
+ 	}
+ 	.main .banner-box:nth-child(3) .new-box {
+ 		margin-right: 0;
+ 		margin-left: auto;
  	}
 	.main .banner-box .new-box p {
 		font-size:16px;
