@@ -45,5 +45,8 @@ en:
   Contact_Us: "Contact Us"
   more: "more"
   Click_to_view_more: "Click to view more"
-
-  
+  Page_not_found: "Page not found"
+  Page_not_found_messege: "We're sorry, the page that you are looking for cannot be found"
+  Internal_server_error: "Internal server error"
+  Internal_server_error_messege: "We're sorry, but something went wrong"
+  Go_Back_Home: "Go Back Home"

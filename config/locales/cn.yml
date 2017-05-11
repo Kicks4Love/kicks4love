@@ -24,3 +24,8 @@ cn:
   Contact_Us: "联系我们"
   more: "更多"
   Click_to_view_more: "点击加载更多"
+  Page_not_found: "找不到网页"
+  Page_not_found_messege: "很抱歉，找不到您要查找的页面"
+  Internal_server_error: "内部服务器错误"
+  Internal_server_error_messege: "我们很抱歉，但是出现了一些问题"
+  Go_Back_Home: "回到主页"

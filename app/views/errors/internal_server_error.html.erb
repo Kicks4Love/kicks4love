@@ -21,8 +21,8 @@
 <div class="main container">
   <div class="error-code-block">
     <h1><strong>500</strong></h1>
-    <h2>Internal server error</h2>
+    <h2><%= t("Internal_server_error") %></h2>
   </div>
-  <p>We're sorry, but something went wrong.</p>
-  <p><%= link_to "Go Back Home", root_path %></p>
+  <p><%= t("Internal_server_error_messege") %></p>
+  <p><%= link_to t("Go_Back_Home"), root_path %></p>
 </div>
