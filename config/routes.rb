@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/oncourt' => 'main#oncourt'
   get '/oncourt/:id' => 'main#oncourt_show'
 
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
+  
   resources :main do
   	collection do
   		get 'get_posts'

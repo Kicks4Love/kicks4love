@@ -1,0 +1,28 @@
+<style>
+  .main {
+    margin-top: 80px;
+    text-align: center;
+  }
+  .main h1, .main h2 {
+    margin: 0;
+  }
+  .main h1 {
+    color: pink;
+    font-size: 100px;
+  }
+  .main h2 {
+    color: lightblue;
+  }
+  .main .error-code-block {
+    margin-bottom: 20px
+  }
+</style>
+
+<div class="main container">
+  <div class="error-code-block">
+    <h1><strong>500</strong></h1>
+    <h2><%= t("Internal_server_error") %></h2>
+  </div>
+  <p><%= t("Internal_server_error_messege") %></p>
+  <p><%= link_to t("Go_Back_Home"), root_path %></p>
+</div>
