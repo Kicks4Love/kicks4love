@@ -62,7 +62,7 @@
 	color: #4A4A4A;
 }
 
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:1200px) {
 	.main .kicks-intro .kicks-intro-content {
 		height: 220px;
 	}

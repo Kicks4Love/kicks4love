@@ -157,6 +157,11 @@
 	position: relative;
 	opacity: 0.7;
 }
+.main .banner-box .new-box p {
+	font-size: 20px;
+	font-weight: 12px;
+	top: 25%;
+}
 .main .banner-box .new-box img {
 	width: 100%;
 }
@@ -172,8 +177,6 @@
 	font-size:24px;
 	font-weight: 15px;
 	padding: 5px;
-	margin-left: auto;
- 	margin-right: auto;
  	top:36%;
  	margin: 10px;
  	color:white;
@@ -238,19 +241,19 @@
 	color: #4A4A4A;
 }
 
-@media only screen and (max-width:1024px) {
-	.main .banner-box .new-box p{
-		font-size: 20px;
-		font-weight: 12px;
-		top: 25%;
-	}
-}
 @media only screen and (max-width:767px) {
 	.slide-container {
 		height: 300px;
 	}
 	#wrapper {
 		height: 300px;
+	}
+	#slider-wrap ul#slider li a > div {
+		top: 0;
+		left: 0;	
+	}
+	#slider-wrap ul#slider li a > div h3 {
+		font-size: 25px;	
 	}
 	#pagination-wrap {
 		margin-top: 270px;
@@ -274,11 +277,11 @@
  		margin-left: auto;
  	}
 	.main .banner-box .new-box p {
-		font-size:16px;
+		font-size: 15px;
 		font-weight: 10px;
-		top:36%;
-		margin: 10px;
-		color:white;
+		color: white;
+		top: 20%;
+		margin: 0;
 	}
 
 	.main .kicks-intro .feed-title h3 {

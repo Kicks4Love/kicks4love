@@ -60,7 +60,7 @@
 	color:#FFFFFF;
 }
 
-@media only screen and (min-width:767) and (max-width:1024) {
+@media only screen and (min-width:767px) and (max-width:1200px) {
 	.main .to-view-more {
 		float:none;
 	}
