@@ -85,7 +85,7 @@ a {
     top: -55px;
     left: 50%;
     margin-left: -50px;
-    transform: rotateY(65deg) rotateZ(-45deg);;
+    transform: rotateY(-65deg) rotateZ(-45deg);
     border-radius: 0 5px 0 0;
     box-sizing: content-box;
 }
