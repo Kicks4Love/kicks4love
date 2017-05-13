@@ -82,6 +82,9 @@ GEM
       responders
       warden (~> 1.2.3)
     erubis (2.7.0)
+    exception_notification (4.2.1)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.7.0)
     ffi (1.9.14)
     globalid (0.3.7)
@@ -206,6 +209,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   devise
+  exception_notification
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -223,4 +227,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.13.6
+   1.14.6
