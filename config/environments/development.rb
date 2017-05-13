@@ -35,7 +35,7 @@ Rails.application.configure do
       :deliver_with => :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
       :email_prefix => "[Error] ",
       :sender_address => %{"error" <error@kicks4love.com>},
-      :exception_recipients => %w{leonma333@kicks4love.com},
+      :exception_recipients => %w{leonma333@kicks4love.com danielzhou@kicks4love.com jackiesun@kicks4love.com},
       :verbose_subject => true,
       :include_controller_and_action_names_in_subject => true,
       :delivery_method => :smtp,

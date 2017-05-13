@@ -2,8 +2,8 @@
 /* CSS Document */
 
 .main{
-	width:90%;
-	margin:90px auto 0;
+	max-width: 1020px;
+	margin: 90px auto 0;
 }
 .main ul{
 	width:100%;

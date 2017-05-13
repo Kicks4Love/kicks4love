@@ -228,13 +228,16 @@
 	border-bottom: 1px dashed #999;
 }
 
-.main .wait_load{
+.main .wait_load {
 	display:none;
 }
 .main .to-view-more {
 	width: 100%;
+	max-width: 1020px;
 	height: 50px;
 	line-height: 50px;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 	background: #FF9;
 	cursor: pointer;

@@ -124,15 +124,17 @@
   }
 }
 
-.main .wait_load{
+.main .wait_load {
 	display:none;
 }
 .main .to-view-more {
-	display: inline-block;
   width: 100%;
+  max-width: 1020px;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 	background: #FF9;
 	cursor: pointer;
 	color: #4A4A4A;
