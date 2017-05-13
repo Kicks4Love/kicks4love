@@ -29,28 +29,6 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.delivery_method = :smtp
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :deliver_with => :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
-      :email_prefix => "[Error] ",
-      :sender_address => %{"error" <error@kicks4love.com>},
-      :exception_recipients => %w{leonma333@kicks4love.com danielzhou@kicks4love.com jackiesun@kicks4love.com},
-      :verbose_subject => true,
-      :include_controller_and_action_names_in_subject => true,
-      :delivery_method => :smtp,
-      :smtp_settings => {
-      :address           =>     'smtp.zoho.com',  
-      :port              =>      465,  
-      :user_name         =>     'error@kicks4love.com',  
-      :domain            =>     'kicks4love.com',  
-      :password          =>     'nobuganymore',   
-      :authentication    =>     :plain,  
-      :ssl               =>     true,  
-      :tls               =>     true 
-    }
-  }
-
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.

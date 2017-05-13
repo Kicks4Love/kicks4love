@@ -1,3 +1,7 @@
+<% content_for :head do %>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<% end %>
+
 <h1>Edit <%= @on_court_post.title_en %> </h1>
 
 <hr/><br/>
@@ -9,3 +13,8 @@
 <br/>
 
 <%= link_to "Back", admin_on_court_posts_path, :class => "btn btn-default" %>
+
+<% content_for :end_of_body do %>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <%= javascript_include_tag "admin/oncourt.js" %>
+<% end %>

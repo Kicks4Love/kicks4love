@@ -1,5 +1,6 @@
 $(document).ready(function() {
   initOldPostRemoval();
+  initPlayerNameTooltip();
 });
 
 function initOldPostRemoval() {
@@ -26,4 +27,8 @@ function initOldPostRemoval() {
       error: function() { alert('Something wrong while try to delete the old posts. Please try again'); }
     });
   })
+}
+
+function initPlayerNameTooltip() {
+  $('#on_court_post_player_name_en').add('#on_court_post_player_name_cn').tooltip().off("mouseover mouseout");
 }

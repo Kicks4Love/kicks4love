@@ -6,7 +6,6 @@ class AddMoreStuffToOnCourt < ActiveRecord::Migration[5.0]
     add_column :on_court_posts, :title_cn, :string
     add_column :on_court_posts, :main_image, :string
     add_column :on_court_posts, :content_cn, :text
-
   end
 
   def down
@@ -16,6 +15,5 @@ class AddMoreStuffToOnCourt < ActiveRecord::Migration[5.0]
     remove_column :on_court_posts, :title_cn, :string
     remove_column :on_court_posts, :main_image, :string
     remove_column :on_court_posts, :content_cn, :text
-
   end
 end

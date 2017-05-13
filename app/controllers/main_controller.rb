@@ -57,9 +57,9 @@ class MainController < ApplicationController
 		@page_title = 'Kicks4Love鞋侣 | On Court球场'
 		@on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 		if @chinese
-			@on_court_posts = @on_court_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+			@on_court_posts = @on_court_posts.select("title_cn AS title, content_cn AS content, player_name_cn AS player_name, cover_image, id")
 		else
-			@on_court_posts = @on_court_posts.select("title_en AS title, content_en AS content, cover_image, id")
+			@on_court_posts = @on_court_posts.select("title_en AS title, content_en AS content, player_name_en AS player_name, cover_image, id")
 		end
 	end
 
@@ -107,9 +107,9 @@ class MainController < ApplicationController
 			feeds = OnCourtPost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
 			if @chinese
-				feeds = feeds.select("id, title_cn AS title, content_cn AS content, cover_image")
+				feeds = feeds.select("id, title_cn AS title, content_cn AS content, player_name_cn AS player_name, cover_image")
 			else
-				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image")
+				feeds = feeds.select("id, title_en AS title, content_en AS content, player_name_en AS player_name, cover_image")
 			end
 		when 'trend'
 			feeds = TrendPost.paginate(:page => params[:next_page]).latest

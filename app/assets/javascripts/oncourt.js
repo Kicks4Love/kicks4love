@@ -30,7 +30,7 @@ function initLoadPostHandler() {
                 		'<div class="player-card" style="background-image:url(' + data.posts[i].image_url + ');">' +
                     	'<a href="/oncourt/' + data.posts[i].post.id + '" class="flyout-button">' + (chinese ? '更多' : 'more') + '</a>' + 
                     	'<div class="player-card-inside">' + 
-                        '<div class="player-name"><span>James</span><br><b>Harden</b></div>' +
+                        '<div class="player-name"><span>' + data.posts[i].post.player_name.split(' ')[0] + '</span><br><b>' + data.posts[i].post.player_name.split(' ')[1] + '</b></div>' +
                         '<div class="player-info">' + data.posts[i].post.title + '</div>' +
                     	'</div></div></li>'
 					);
