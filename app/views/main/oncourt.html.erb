@@ -5,7 +5,9 @@
 <%= hidden_field_tag "page_source", "oncourt" %>
 
 <div class="main container">
-    <div class="on-court"><%= t("On_Court") %></div>
+    <div class="title">
+        <div><%= t("On_Court") %></div>
+    </div>
     <ul class="clearfix">
         <% @on_court_posts.each do |post| %>
             <li class="col-xs-12 col-sm-6 col-lg-4">

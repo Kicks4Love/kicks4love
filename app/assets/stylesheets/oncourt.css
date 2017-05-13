@@ -5,14 +5,31 @@
 	max-width: 1020px;
 	margin: 90px auto 0;
 }
-.main .on-court{
+.main .title {
 	width:60%;
 	font-size:60px;
-	min-width: 300px;
-	background:#000000;
-	padding-top:24px;
+	color: white;
 	text-indent:10px;
-	color:#FFFFFF;
+	background-color: #434343;
+   	background-image:linear-gradient(#666666, #e7e7e7);
+}
+.main .title > div {
+    background-color: transparent;
+    background-image: 
+    linear-gradient(0deg, transparent 9%, 
+        rgba(255, 255, 255, .2) 10%, rgba(255, 255, 255, .2) 12%, transparent 13%, transparent 29%, 
+        rgba(255, 255, 255, .1) 30%, rgba(255, 255, 255, .1) 31%, transparent 32%, transparent 49%, 
+        rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 51%, transparent 52%, transparent 69%, 
+        rgba(255, 255, 255, .1) 70%, rgba(255, 255, 255, .1) 71%, transparent 72%, transparent 89%,
+        rgba(255, 255, 255, .1) 90%, rgba(255, 255, 255, .1) 91%, transparent 92%, transparent),
+    linear-gradient(90deg, transparent 9%, 
+        rgba(255, 255, 255, .2) 10%, rgba(255, 255, 255, .2) 12%, transparent 13%, transparent 29%, 
+        rgba(255, 255, 255, .1) 30%, rgba(255, 255, 255, .1) 31%, transparent 32%, transparent 49%, 
+        rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, .1) 51%, transparent 52%, transparent 69%, 
+        rgba(255, 255, 255, .1) 70%, rgba(255, 255, 255, .1) 71%, transparent 72%, transparent 89%,
+        rgba(255, 255, 255, .1) 90%, rgba(255, 255, 255, .1) 91%, transparent 92%, transparent);
+    height:100%;
+  	background-size:50px 50px;
 }
 .main ul{
 	width:100%;
@@ -110,7 +127,7 @@
 	.main{
 		width:100%;
 	}
-	.on-court{
+	.main .title{
 		width:80%;
 		font-size:36px;
 	}
