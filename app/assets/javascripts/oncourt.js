@@ -25,25 +25,15 @@ function initLoadPostHandler() {
 			success: function(data) {
 				var parent = target.closest('ul');
 				for (var i = 0; i < data.posts.length; i++) {
-					if ((i + 1) % 3 == 0) {
-						parent.append(
-							'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load last">' +
-							'<a href="/oncourt/' + data.posts[i].post.id + '">' +
-							'<img src="' + data.posts[i].image_url + '\" />' +
-							'<p>' + data.posts[i].post.title + '</p>' +
-							'</a>' +
-							'</li>'
-						);
-					} else {
-						parent.append(
-							'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load">' +
-							'<a href="/oncourt/' + data.posts[i].post.id + '">' +
-							'<img src="' + data.posts[i].image_url + '\" />' +
-							'<p>' + data.posts[i].post.title + '</p>' +
-							'</a>' +
-							'</li>'
-						);
-					}
+					parent.append(
+						'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load">' +
+                		'<div class="player-card" style="background-image:url(' + data.posts[i].image_url + ');">' +
+                    	'<a href="/oncourt/' + data.posts[i].post.id + '" class="flyout-button">' + (chinese ? '更多' : 'more') + '</a>' + 
+                    	'<div class="player-card-inside">' + 
+                        '<div class="player-name"><span>James</span><br><b>Harden</b></div>' +
+                        '<div class="player-info">' + data.posts[i].post.title + '</div>' +
+                    	'</div></div></li>'
+					);
 				}
 				if (!data.no_more) {
 					parent.append('<div class="to-view-more"><span>' + (chinese ? '点击加载更多' : 'Click To View More') + '</span></div>');

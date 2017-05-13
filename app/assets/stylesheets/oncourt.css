@@ -5,6 +5,15 @@
 	max-width: 1020px;
 	margin: 90px auto 0;
 }
+.main .on-court{
+	width:60%;
+	font-size:60px;
+	min-width: 300px;
+	background:#000000;
+	padding-top:24px;
+	text-indent:10px;
+	color:#FFFFFF;
+}
 .main ul{
 	width:100%;
 	margin:0;
@@ -15,26 +24,62 @@
 	margin-top:20px;
 	margin-bottom:20px;
 }
-.main ul li img{
-	width:100%;
-	border-radius:20px;
+.main ul li .player-card {
+    color: white;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    width: 100%;
+    background-color: #333;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+ }
+.main ul li .player-card .flyout-button {
+	color: white;
+    width: 35px;
+    height: 35px;
+    margin: 10px;
+    float: right;
+    opacity: 0.7;
+    transition: all 0.5s ease;
 }
-.main ul li.last{
-	margin-right:0;
+.main ul li .player-card .flyout-button:hover {
+    opacity: 1;
 }
-.main ul li p{
-	position:absolute;
-	width:70%;
-	height:48px;
-	line-height:16px;
-	top:65%;
-	left:25%;
-	font-size:14px;
-	opacity:0.8;
-	alpha:filter(opacity=80);
-	background-color:#333;
-	color:#FFF;
+.main ul li .player-card .flyout-button:before {
+    margin-left: -40px;
+    margin-top: 9px;
+    display: block;
+   	font-size: 12px;
+    letter-spacing: 1px;
 }
+.main ul li .player-card .player-card-inside {
+    padding: 25px 40px;;
+    padding-top: 280px;
+}
+.main ul li .player-card .player-card-inside .player-name {
+    font-size: 50px;
+    line-height: 45px;
+    letter-spacing: -1px;
+    float: left;
+    margin-bottom: 25px;
+}
+.main ul li .player-card .player-card-inside .player-name span {
+    font-weight: lighter;
+}
+.main ul li .player-card .player-card-inside .player-name b {
+    font-weight: 800;
+}
+.main ul li .player-card .player-card-inside hr {
+    border: 1px solid #fff;
+    clear: both;
+}
+.main ul li .player-card .player-card-inside .player-info {
+    border-top: 2px solid #fff;
+    padding-top: 15px;
+    width: 92%;
+    clear: both;
+}
+
 .main .wait_load{
 	display:none;
 }
@@ -51,18 +96,10 @@
 	border-radius: 10px;
 }
 
-.on-court{
-	width:60%;
-	font-size:60px;
-	background:#000000;
-	padding-top:24px;
-	text-indent:10px;
-	color:#FFFFFF;
-}
-
-@media only screen and (min-width:767px) and (max-width:1200px) {
+@media only screen and (min-width:768px) and (max-width:1200px) {
 	.main .to-view-more {
-		float:none;
+		width: 50%;
+		margin-top:20px;
 	}
 }
 
