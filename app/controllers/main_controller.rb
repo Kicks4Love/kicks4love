@@ -20,7 +20,7 @@ class MainController < ApplicationController
 	end
 
 	def features
-		@page_title = 'Kicks4Love | Features'
+		@page_title = 'Kicks4Love鞋侣 | Features专题'
 		@feature_posts = FeaturePost.latest.paginate(:page => 1)
 		if @chinese
 			@feature_posts = @feature_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
@@ -35,11 +35,11 @@ class MainController < ApplicationController
 	end
 
 	def calendar
-		@page_title = 'Kicks4Love | Calendar'
+		@page_title = 'Kicks4Love鞋侣 | Calendar日历'
 	end
 
 	def trend
-		@page_title= 'Kicks4Love | Trend'
+		@page_title= 'Kicks4Love鞋侣 | Trend潮流'
 		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
 		if @chinese
 			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
@@ -54,7 +54,7 @@ class MainController < ApplicationController
 	end
 
 	def oncourt
-		@page_title = 'Kicks4Love | On Court'
+		@page_title = 'Kicks4Love鞋侣 | On Court球场'
 		@on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 		if @chinese
 			@on_court_posts = @on_court_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
