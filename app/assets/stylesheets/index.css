@@ -148,8 +148,10 @@
 	transition: all 0.3s cubic-bezier(1,.01,.32,1);	
 }
 
-.main .row {
+.main {
 	max-width: 1020px;
+}
+.main .row {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -184,7 +186,6 @@
 }
 
 .main .kicks-box {
-	max-width: 1020px;
 	margin:30px auto;
 	padding:20px 0;
 	border-bottom:2px solid #999999;
@@ -233,7 +234,6 @@
 }
 .main .to-view-more {
 	width: 100%;
-	max-width: 1020px;
 	height: 50px;
 	line-height: 50px;
 	margin-left: auto;

@@ -4,7 +4,10 @@
 
 <%= hidden_field_tag "page_source", "trend" %>
 
-<div class="main container clearfix">
+<div class="main container">
+    <div class="kicks-title">
+        <div><%= t("Trend") %></div>
+    </div>
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @all_trend_posts.each_with_index do |trend_post, index| %>
         <div class="kicks-box clearfix<%=' last' if index == @all_trend_posts.size-1%>">

@@ -1,7 +1,17 @@
 @charset "utf-8";
 
 .main {
-	margin-top: 40px;
+	max-width: 1020px;
+	margin-top: 90px;
+}
+.main .kicks-title {
+	width:60%;
+	font-size:60px;
+	color: white;
+	text-indent:10px;
+	background: 
+    -webkit-linear-gradient(rgba(135, 60, 255, 1), rgba(135, 60, 255, 0.0) 0%),
+    -webkit-linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 45%, rgba(55, 230, 235, 1) 0%);
 }
 .main .kicks-box {
 	width:90%;
@@ -75,5 +85,9 @@
 	}
 	.main .kicks-box dl dt {
 		height: auto;
+	}
+	.main .kicks-title{
+		width:80%;
+		font-size:36px;
 	}
 }

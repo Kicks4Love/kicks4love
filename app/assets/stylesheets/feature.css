@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 .main {
+  max-width: 1020px;
 	margin-top: 80px;
 }
 .main .kicks-post {
@@ -75,7 +76,6 @@
 @media screen and (min-width: 767px) {
   .main .kicks-post {
     height: 200px;
-    max-width: 1020px;
   }
   .main .kicks-post:hover .photo {
     -webkit-transform: rotate(5deg) scale(1.3);
@@ -129,12 +129,9 @@
 }
 .main .to-view-more {
   width: 100%;
-  max-width: 1020px;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 	background: #FF9;
 	cursor: pointer;
 	color: #4A4A4A;

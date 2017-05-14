@@ -28,6 +28,7 @@ function initLoadPostHandler() {
 					parent.append(
 						'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load">' +
                 		'<div class="player-card" style="background-image:url(' + data.posts[i].image_url + ');">' +
+                		'<span class="kicks-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
                     	'<a href="/oncourt/' + data.posts[i].post.id + '" class="flyout-button">' + (chinese ? '更多' : 'more') + '</a>' + 
                     	'<div class="player-card-inside">' + 
                         '<div class="player-name"><span>' + data.posts[i].post.player_name.split(' ')[0] + '</span><br><b>' + data.posts[i].post.player_name.split(' ')[1] + '</b></div>' +

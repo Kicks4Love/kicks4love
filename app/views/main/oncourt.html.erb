@@ -5,13 +5,14 @@
 <%= hidden_field_tag "page_source", "oncourt" %>
 
 <div class="main container">
-    <div class="title">
+    <div class="kicks-title">
         <div><%= t("On_Court") %></div>
     </div>
     <ul class="clearfix">
         <% @on_court_posts.each do |post| %>
             <li class="col-xs-12 col-sm-6 col-lg-4">
                 <div class="player-card" style="background-image:url('<%= post.cover_image.url %>');">
+                    <span class="kicks-date"><%= post.created_at.strftime("%Y-%m-%d") %></span>
                     <a href="/oncourt/<%= post.id %>" class="flyout-button"><%= t("more") %></a>
                     <div class="player-card-inside">
                         <div class="player-name"><span><%= post.player_name.split(" ")[0] if post.player_name %></span><br><b><%= post.player_name.split(" ")[1] if post.player_name %></b></div>
