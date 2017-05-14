@@ -24,7 +24,6 @@
     height: 500px;
     margin: 0;
     border: 3px solid #000;
-   	display: inline-block;
     background-size: cover;
    	background-position: center center;
     -webkit-transition:all 300ms ease-out;

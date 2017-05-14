@@ -1,7 +1,7 @@
 $(document).ready(function() {
     if (getSourcePage() !== 'trend') return;
 
-    // set FEATURES menu selected
+    // set TREND menu selected
 	$('#navbar .dropdown ul li').eq(0).addClass('active');
 	console.log("trend");
 
@@ -23,18 +23,15 @@ function initLoadPostHandler() {
             url: '/main/get_posts?next_page=' + nextPage.val() + '&source_page=trend',
             dataType: "json",
             success: function(data) { 
-            	var parent = target.parent('.main');
+                console.log(data);
+            	var parent = $('#kicks-posts');
+                console.log(parent);
             	for (var i = 0; i < data.posts.length; i++) {
             		parent.append(
-            			'<div class="kicks-box wait_load clearfix' + (i+1 === data.posts.length ? ' last' : '') + '">' +
-            			'<dl class="col-xs-12 col-sm-4"><dt>' +
-                		'<img src="' + data.posts[i].image_url + '" class="kicks-pic">' + 
-                		'</dt><dd><a href="/trend/' + data.posts[i].post.id + '">' + data.posts[i].post.title + '</a></dd></dl>' +
-            			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
-                		'<h2>' + data.posts[i].post.title + '</h2>' +
-                		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.posts[i].post.content + '</span>' +
-                		'</div></div></div>'
+                        '<a href="/trend/' + data.posts[i].post.id + '" class="kicks-post col-xs-12 col-sm-6 col-lg-4 wait_load" ' +
+                        'style="background-image:url(' + data.posts[i].image_url + ');">' +
+                        '<h3>' + data.posts[i].post.title + '</h3>' +
+                        '<span class="lead kicks-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span></a>'
             		);
             	}
             	if (!data.no_more) {
