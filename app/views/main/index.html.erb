@@ -37,7 +37,7 @@
                         <li data-color="<%= color %>">
                             <a href="<%= url %>">
                                 <div class="slide-filter">
-                                    <h3><%= post.title %></h3>
+                                    <u><h3><%= post.title %></h3></u>
                                 </div>
                             </a>
                             <%= image_tag post.image.url %>
@@ -100,10 +100,14 @@
                 end
             %>
             <a href="<%= link %>">
-              <%= image_tag feed.cover_image.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
+                <%= image_tag feed.cover_image.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
             </a>
             <div class="col-xs-12 col-sm-8 kicks-intro">
-                <div class="feed-title"><h3><%= feed.title %></h3></div>
+                <a href="<%= link %>">
+                    <div class="feed-title">
+                        <h3><%= feed.title %></h3>
+                    </div>
+                </a>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
                     <p><%= feed.content[0..200] %>...</p>

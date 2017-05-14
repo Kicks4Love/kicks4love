@@ -10,11 +10,11 @@
         <% left = (index%2 == 0) %>
         <div class="kicks-post <%= ' alt' unless left %>">
             <div class="photo<%= left ? ' photo-left' : ' photo-right' %>" style="background:url('<%= feature_post.cover_image.url %>');background-size:cover;background-position:center"></div>
-                <div class="kicks-post-content">
-                    <h1><%= feature_post.title %></h1>
-                    <h2><%= feature_post.created_at.strftime("%Y-%m-%d") %></h2>
-                    <p><%= feature_post.content[0..200] %>...</p>
-                    <a href="/features/<%= feature_post.id %>"><%= t("more") %></a>
+            <div class="kicks-post-content">
+                <a href="/features/<%= feature_post.id %>"><h1><%= feature_post.title %></h1></a>
+                <h2><%= feature_post.created_at.strftime("%Y-%m-%d") %></h2>
+                <p><%= feature_post.content[0..200] %>...</p>
+                <a href="/features/<%= feature_post.id %>" class="kicks-post-more"><%= t("more") %></a>
             </div>
         </div>
     <% end %>

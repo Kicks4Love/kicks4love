@@ -96,7 +96,8 @@ function initLoadPostHandler() {
             			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">' +
                 		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic"></a>' + 
             			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
-                		'<h2>' + data.posts[i].post.title + '</h2>' +
+            			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">' +
+                		'<div class="feed-title"><h2>' + data.posts[i].post.title + '</h2></div></a>' +
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
                     	'<span>' + data.posts[i].post.content.slice(0, 200) + '...</span>' +

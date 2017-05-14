@@ -28,6 +28,7 @@
   position: relative;
 }
 .main .kicks-post .kicks-post-content h1 {
+  color: #4A4A4A;
   font-size: 26px;
   line-height: 1em;
   margin: 0 0 10px 0;
@@ -54,12 +55,12 @@
   top: 6px;
   left: 0;
 }
-.main .kicks-post .kicks-post-content a {
+.main .kicks-post .kicks-post-content a.kicks-post-more {
   color: #4A4A4A;
   margin-bottom: 10px;
   float: right;
 }
-.main .kicks-post .kicks-post-content a:after {
+.main .kicks-post .kicks-post-content a.kicks-post-more:after {
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   content: "\f061";
@@ -68,7 +69,7 @@
   opacity: 0;
   vertical-align: middle;
 }
-.main .kicks-post .kicks-post-content a:hover:after {
+.main .kicks-post .kicks-post-content a.kicks-post-more:hover:after {
   margin-left: 5px;
   opacity: 1;
 }
