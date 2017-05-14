@@ -15,7 +15,9 @@
                     <span class="kicks-date"><%= post.created_at.strftime("%Y-%m-%d") %></span>
                     <a href="/oncourt/<%= post.id %>" class="flyout-button"><%= t("more") %></a>
                     <div class="player-card-inside">
-                        <div class="player-name"><span><%= post.player_name.split(" ")[0] if post.player_name %></span><br><b><%= post.player_name.split(" ")[1] if post.player_name %></b></div>
+                        <a href="/oncourt/<%= post.id %>">
+                            <div class="player-name"><span><%= post.player_name.split(" ")[0] if post.player_name %></span><br><b><%= post.player_name.split(" ")[1] if post.player_name %></b></div>
+                        </a>
                         <div class="player-info"><%= post.title %></div>
                     </div>
                 </div>

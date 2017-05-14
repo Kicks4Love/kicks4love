@@ -31,7 +31,8 @@ function initLoadPostHandler() {
                 		'<span class="kicks-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
                     	'<a href="/oncourt/' + data.posts[i].post.id + '" class="flyout-button">' + (chinese ? '更多' : 'more') + '</a>' + 
                     	'<div class="player-card-inside">' + 
-                        '<div class="player-name"><span>' + data.posts[i].post.player_name.split(' ')[0] + '</span><br><b>' + data.posts[i].post.player_name.split(' ')[1] + '</b></div>' +
+                    	'<a href="/oncourt/' + data.posts[i].post.id + '"">' + 
+                        '<div class="player-name"><span>' + data.posts[i].post.player_name.split(' ')[0] + '</span><br><b>' + data.posts[i].post.player_name.split(' ')[1] + '</b></div></a>' +
                         '<div class="player-info">' + data.posts[i].post.title + '</div>' +
                     	'</div></div></li>'
 					);

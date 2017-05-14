@@ -79,6 +79,7 @@
     padding-top: 280px;
 }
 .main ul li .player-card .player-card-inside .player-name {
+    color: #fff;
     font-size: 50px;
     line-height: 45px;
     letter-spacing: -1px;
