@@ -8,25 +8,14 @@
     <div class="kicks-title">
         <div><%= t("Trend") %></div>
     </div>
-    <!-- maximum should be three only (more will be loaded by ajax) -->
-    <% @all_trend_posts.each_with_index do |trend_post, index| %>
-        <div class="kicks-box clearfix<%=' last' if index == @all_trend_posts.size-1%>">
-            <dl class="col-xs-12 col-sm-4">
-                <dt>
-                    <img src="<%= trend_post.cover_image.url %>" class="kicks-pic"/>
-                </dt>
-                <dd>
-                    <a href="/trend/<%= trend_post.id %>"><%= trend_post.title %></a>
-                </dd>
-            </dl>
-            <div class="col-xs-12 col-sm-8 kicks-intro">
-                <h2><%= trend_post.title %></h2>
-                <div class="kicks-intro-content">
-                    <span><%= trend_post.content %></span>
-                </div>
-            </div>
-        </div>
-    <% end %>
+    <section id="kicks-posts">
+        <% @all_trend_posts.each do |trend_post| %>
+            <a href="/trend/<%= trend_post.id %>" class="kicks-post col-xs-12 col-sm-6 col-lg-4" style="background-image:url(<%= trend_post.cover_image.url %>);">
+                <h3><%= trend_post.title %></h3>
+                <span class="lead kicks-date"><%= trend_post.created_at.strftime("%Y-%m-%d") %></span>
+            </a>
+        <% end %>
+    </section>
     <% unless @all_trend_posts.total_pages == @all_trend_posts.current_page %>
         <div class="to-view-more">
             <span><%= t("Click_to_view_more") %></span>

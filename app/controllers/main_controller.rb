@@ -42,9 +42,9 @@ class MainController < ApplicationController
 		@page_title= 'Kicks4Love鞋侣 | Trend潮流'
 		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
 		if @chinese
-			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id")
+			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
 		else 
-			@all_trend_posts = @all_trend_posts.select("title_en AS title, content_en AS content, cover_image, id")
+			@all_trend_posts = @all_trend_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
 	end
 

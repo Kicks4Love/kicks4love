@@ -118,13 +118,6 @@
 	border-radius: 10px;
 }
 
-@media only screen and (min-width:768px) and (max-width:1200px) {
-	.main .to-view-more {
-		width: 50%;
-		margin-top:20px;
-	}
-}
-
 @media only screen and (max-width:767px) {
 	.main .kicks-title{
 		width:80%;

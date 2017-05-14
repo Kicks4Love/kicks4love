@@ -13,79 +13,85 @@
     -webkit-linear-gradient(rgba(135, 60, 255, 1), rgba(135, 60, 255, 0.0) 0%),
     -webkit-linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 45%, rgba(55, 230, 235, 1) 0%);
 }
-.main .kicks-box {
-	width:90%;
-	margin:30px 0 30px 10px;
-	padding:20px;
-	border-bottom:2px solid #999999;
+
+#kicks-posts {
+    text-align: left;
+    font-size: 0;
+    margin-top: 20px;
 }
-.main .kicks-box.last {
-	margin-bottom: 0;
+#kicks-posts .kicks-post {
+    position: relative;
+    height: 500px;
+    margin: 0;
+    border: 3px solid #000;
+   	display: inline-block;
+    background-size: cover;
+   	background-position: center center;
+    -webkit-transition:all 300ms ease-out;
+    transition: all 300ms ease-out;
 }
-.main .kicks-box dl {
-	height: 350px;
-	cursor:pointer;
+#kicks-posts .kicks-post h3 {
+    color:white;
+    position: absolute;
+    bottom: 80px;
+    margin: 0;
+    font-size: 45px;
+    line-height: 0.8;
+    text-transform: uppercase;
+    text-align: left;
+    z-index: 1;
 }
-.main .kicks-box dl dt {
-	width: 100%;
-	height: 310px;
+#kicks-posts .kicks-post .kicks-date {
+    color:#fff;
+    position: absolute;
+    bottom: 40px;
+    margin: 0;
+    font-size: 22px;
+    line-height: 0.8;
+    text-transform: capitalize;
+    text-align: left;
+    z-index: 1;
 }
-.main .kicks-box .kicks-pic {
-	max-height: 300px;
-	max-width: 100%;
+#kicks-posts .kicks-post:before {
+    position: absolute;
+   	top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #000;
+    opacity: 0.5;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+    filter: alpha(opacity=50);
+    -webkit-transition:all 300ms ease-out;
+    transition: all 300ms ease-out;
+    content: '';
+    z-index: 1;
 }
-.main .kicks-box dl dd {
-	font-size: 28px;
-	text-align: center;
-}
-.main .kicks-intro {
-	color: white;
-	background: rgba(164, 164, 164, 1);
-}
-.main .kicks-intro h2 {
-	margin: 0;
-	line-height: 50px;
-	font-size: 30px;
-	padding: 0 10px;
-	background: #4A4A4A;
-	color: white;
-}
-.main .kicks-intro .kicks-intro-content {
-	height: 270px;
-	margin-top: 30px;
-	font-size: 24px;
-	padding: 0 10px;
-	background: #4A4A4A;
+#kicks-posts .kicks-post:hover:before {
+    opacity: 0.2;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+    filter: alpha(opacity=20);
 }
 
 .main .wait_load{
 	display:none;
 }
 .main .to-view-more {
-	display: inline-block;
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-	background: #FF9;
-	cursor: pointer;
-	color: #4A4A4A;
-}
-
-@media only screen and (max-width:1200px) {
-	.main .kicks-intro .kicks-intro-content {
-		height: 220px;
-	}
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	cursor:pointer;
+	font-size:18px;
+	color:#666666;
+	float:left;
+	border:3px solid #666666;
+	border-radius: 10px;
+	margin-top: 20px;
 }
 
 @media only screen and (max-width:767px) {
-	.main .kicks-box dl {
-		height: auto;
-		text-align: center;
-	}
-	.main .kicks-box dl dt {
-		height: auto;
-	}
 	.main .kicks-title{
 		width:80%;
 		font-size:36px;
