@@ -30,10 +30,10 @@ function initLoadPostHandler() {
                         '<div class="kicks-post' + (right ? ' alt' : '') + '">' +
                         '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background:url(' + data.posts[i].image_url + ');background-size:cover;background-position:center"></div>' +
                         '<div class="kicks-post-content">' +
-                        '<h1>' + data.posts[i].post.title + '</h1>' + 
+                        '<a href="/features/' + data.posts[i].post.id + '"><h1>' + data.posts[i].post.title + '</h1></a>' + 
                         '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' + 
                         '<p>' + data.posts[i].post.content.slice(0, 200) + '...</p>' + 
-                        '<a href="/features/' + data.posts[i].post.id + '">' + (chinese ? '更多' : 'more') + '</a>' +
+                        '<a href="/features/' + data.posts[i].post.id + '" class="kicks-post-more">' + (chinese ? '更多' : 'more') + '</a>' +
                         '</div></div>'
             		);
             	}
