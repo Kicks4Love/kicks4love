@@ -30,8 +30,7 @@
                 <th>Player Name (English)</th>
                 <th>球员名称 （中文)</th>
                 <th>Cover Image</th>
-                <th>Main Image 1</th>
-                <th>Main Image 2</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -45,8 +44,7 @@
                 <td><%= post.player_name_en %></td>
                 <td><%= post.player_name_cn %></td>
                 <td><%= image_tag "#{post.cover_image}", :height => "50px"%></td>
-                <td><%= image_tag "#{post.main_image_1}", :height => "50px"%></td>
-                <td><%= image_tag "#{post.main_image_2}", :height => "50px"%></td>
+                <td><%= post.main_images.size %> main images</td>
                 <td>
                     <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
                     <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>

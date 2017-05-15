@@ -68,7 +68,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def feature_post_params
 		params
 		.require(:feature_post)
-		.permit(:title_en, :title_cn, :content_en, :content_cn, :main_image_1, :main_image_2, :main_image_3, :cover_image)
+		.permit(:title_en, :title_cn, :content_en, :content_cn, {main_images: []}, :cover_image)
 	end
 
 	def get_feature_post

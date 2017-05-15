@@ -45,16 +45,10 @@
 <br>
 <div class="row no-margin">
 	<div class="col-sm-2">
-		<label>Main Images (1 to 3):</label>
+		<label>Main Images:</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.file_field :main_image_1 %>
-	</div>
-	<div class="col-sm-2">
-		<%= form.file_field :main_image_2 %>
-	</div>
-	<div class="col-sm-2">
-		<%= form.file_field :main_image_3 %>
+		<%= form.file_field :main_images, multiple: true %>
 	</div>
 </div>
 <br>
