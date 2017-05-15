@@ -73,6 +73,35 @@ class MainController < ApplicationController
 
 	def contact
 		@page_title = 'Kicks4Love鞋侣 | Contact Us联系我们'
+		if @chinese 
+			@contact_placeholder = {
+				:first_name_label => "名字",
+				:first_name_placeholder => "冠希",
+				:last_name_label => "姓氏",
+				:last_name_placeholder => "陈",
+				:email_label => "邮件",
+				:email_placeholder => "edison.chen@hotmail.com",
+				:comments_label => "想法和评论",
+				:enter_message => "或按下 <strong>回车键</strong>"
+			}
+		else
+			@contact_placeholder = {
+				:first_name_label => "first name",
+				:first_name_placeholder => "Kim",
+				:last_name_label => "last name",
+				:last_name_placeholder => "Kardashian",
+				:email_label => "email",
+				:email_placeholder => "kim.kardashian@hotmail.com",
+				:comments_label => "comments",
+				:enter_message => "or press <strong>enter</strong>"
+			}
+		end
+	end
+
+	def send_contact_us
+		flash[:alert] = @chinese ? "错误发生当发送您的信息，请重试一遍" : "Error occurs while sending your message, please try again"
+
+		redirect_to :back
 	end
 
 	def get_posts

@@ -49,8 +49,9 @@ a {
    margin-left: 10px;
 }
 
-.main {
-   width: 100%;
+.alert {
+    margin-top: 50px;
+    margin-bottom: 0px;
 }
 
 .logo-pendant {

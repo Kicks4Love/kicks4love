@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   	collection do
   		get 'get_posts'
       post 'change_language'
+      post 'send_contact_us'
   	end
   end
 
