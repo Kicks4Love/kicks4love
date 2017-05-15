@@ -12,7 +12,6 @@ class ChangeImageForFeaturesAndOnCourt < ActiveRecord::Migration[5.0]
     add_column :on_court_posts, :main_images, :json
     remove_column :trend_posts, :main_image
     add_column :trend_posts, :main_images, :json
-
   end
 
   def down
