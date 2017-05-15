@@ -68,6 +68,13 @@ class MainController < ApplicationController
 		@page_title = @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en
 	end
 
+	def terms
+	end
+
+	def contact
+		@page_title = 'Kicks4Love鞋侣 | Contact Us联系我们'
+	end
+
 	def get_posts
 		head :ok and return unless params[:next_page].present?
 

@@ -12,7 +12,7 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( bootstrap.min.css bootstrap.min.js )
 Rails.application.config.assets.precompile += %w( common.css landing-page.css )
-Rails.application.config.assets.precompile += %w( index.css feature.css calendar.css trend.css oncourt.css)
-Rails.application.config.assets.precompile += %w( index.js feature.js calendar.js trend.js oncourt.js)
+Rails.application.config.assets.precompile += %w( index.css feature.css calendar.css trend.css oncourt.css contact.css)
+Rails.application.config.assets.precompile += %w( index.js feature.js calendar.js trend.js oncourt.js contact.js)
 Rails.application.config.assets.precompile += %w( admin/admin.css )
 Rails.application.config.assets.precompile += %w( admin/posts.js admin/calendar.js admin/features.js admin/oncourt.js admin/trend.js)
