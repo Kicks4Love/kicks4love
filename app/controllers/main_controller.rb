@@ -99,7 +99,18 @@ class MainController < ApplicationController
 	end
 
 	def send_contact_us
-		flash[:alert] = @chinese ? "错误发生当发送您的信息，请重试一遍" : "Error occurs while sending your message, please try again"
+		#begin
+			email_options = {
+				:first_name => params[:first_name],
+				:last_name => params[:last_name],
+				:chinese => @chinese, 
+				:comment => params[:comments]
+			}
+			CustomerServiceMailer.send_contact_email(params[:email], email_options).deliver_now
+			flash[:notice] = @chinese ? "信息发送成功" : "Your message sent successfully"
+		#rescue
+		#	flash[:alert] = @chinese ? "错误发生当发送您的信息，请重试一遍" : "Error occurs while sending your message, please try again"
+		#end
 
 		redirect_to :back
 	end
