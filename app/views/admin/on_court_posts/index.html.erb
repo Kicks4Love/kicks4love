@@ -31,6 +31,7 @@
                 <th>球员名称 （中文)</th>
                 <th>Cover Image</th>
                 <th>Main Images</th>
+                <th></th>
             </tr>
         </thead>
       <tbody>
@@ -67,9 +68,7 @@
     <%= will_paginate @on_court_posts, :previous_label => 'Prev', :next_label => 'Next' %>
 <% else %>
     <h2>No posts yet</h2>
-
     <br/>
-
     <%= link_to "Create a new on court post now", new_admin_on_court_post_path, :class => "btn btn-primary" %>
 <% end %>
 

@@ -29,6 +29,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 	      	redirect_to :back, :alert => "Maximum main image number is 12"
 	      	return
 	    end
+
 		if feature_post.save
 			redirect_to admin_feature_posts_path, :notice => "New feature post successfully created"
 		else
