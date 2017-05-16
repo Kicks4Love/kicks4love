@@ -20,8 +20,12 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def create
-		feature_post = FeaturePost.new feature_post_params
-
+		post_params = feature_post_params;
+		content_en = post_params[:content_en]
+		post_params[:content_en] = content_en.split("||")
+		content_cn = post_params[:content_cn]
+		post_params[:content_cn] = content_cn.split("||")
+		feature_post = FeaturePost.new post_params
 		if feature_post.save
 			redirect_to admin_feature_posts_path, :notice => "New feature post successfully created"
 		else
