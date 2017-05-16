@@ -46,7 +46,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
     if params[:content_en].count > 2 || params[:content_cn].count > 2
       redirect_to :back, :alert => "Maximum paragraph number is 2"
       return
-    elsif params[:main_images].count > 2
+    elsif params[:main_images].present? && params[:main_images].count > 2
       redirect_to :back, :alert => "Maximum main image number is 2"
       return
     end
