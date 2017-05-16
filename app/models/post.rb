@@ -11,13 +11,13 @@ class Post < ApplicationRecord
 
 	def self.get_posts(chinese)
 		if chinese
-			feature_posts = FeaturePost.select("id, title_cn AS title, content_cn AS content, main_image, cover_image, created_at")
-			trend_posts = TrendPost.select("id, title_cn AS title, content_cn AS content, main_image, cover_image, created_at")
-			on_court_posts = OnCourtPost.select("id, title_cn AS title, content_cn AS content, main_image, cover_image, created_at")
+			feature_posts = FeaturePost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
+			trend_posts = TrendPost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
+			on_court_posts = OnCourtPost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
 		else
-			feature_posts = FeaturePost.select("id, title_en AS title, content_en AS content, main_image, cover_image, created_at")
-			trend_posts = TrendPost.select("id, title_en AS title, content_en AS content, main_image, cover_image, created_at")
-			on_court_posts = OnCourtPost.select("id, title_en AS title, content_en AS content, main_image, cover_image, created_at")
+			feature_posts = FeaturePost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
+			trend_posts = TrendPost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
+			on_court_posts = OnCourtPost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
 		end
 		
 		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse
