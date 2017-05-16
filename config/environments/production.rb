@@ -56,9 +56,9 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
     :port                 => 465,
-    :user_name            => 'customerservice@kicks4love.com',
+    :user_name            => Rails.application.secrets.customer_service_email,
     :domain               => 'kicks4love.com',
-    :password             => 'customerisgod',
+    :password             => Rails.application.secrets.customer_service_email_password,
     :authentication       => 'plain',
     :ssl                  => true,  
     :tls                  => true 
@@ -75,9 +75,9 @@ Rails.application.configure do
       :smtp_settings => {
       :address           =>     'smtp.zoho.com',  
       :port              =>      465,  
-      :user_name         =>     'error@kicks4love.com',  
+      :user_name         =>     Rails.application.secrets.error_notification_email,  
       :domain            =>     'kicks4love.com',  
-      :password          =>     'nobuganymore',   
+      :password          =>     Rails.application.secrets.error_notification_email_password,   
       :authentication    =>     :plain,  
       :ssl               =>     true,  
       :tls               =>     true 
