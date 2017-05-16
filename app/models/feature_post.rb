@@ -13,4 +13,7 @@ class FeaturePost < ApplicationRecord
 	mount_uploaders :main_images, ImageUploader
 	mount_uploader :cover_image, ImageUploader
 
+	serialize :content_en, Array
+	serialize :content_cn, Array
+
 end
