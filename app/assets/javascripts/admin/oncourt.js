@@ -1,6 +1,6 @@
 $(document).ready(function() {
   initOldPostRemoval();
-  initPlayerNameTooltip();
+  initTooltip();
 });
 
 function initOldPostRemoval() {
@@ -29,6 +29,6 @@ function initOldPostRemoval() {
   })
 }
 
-function initPlayerNameTooltip() {
+function initTooltip() {
   $('#on_court_post_player_name_en').add('#on_court_post_player_name_cn').add('#on_court_post_content_en').add('#on_court_post_content_cn').tooltip().off("mouseover mouseout");
 }
