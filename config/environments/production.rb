@@ -74,7 +74,7 @@ Rails.application.configure do
       :delivery_method => :smtp,
       :smtp_settings => {
       :address           =>     'smtp.zoho.com',  
-      :port              =>      465,  
+      :port              =>     465,  
       :user_name         =>     Rails.application.config.email_list[:error_notification],  
       :domain            =>     'kicks4love.com',  
       :password          =>     Rails.application.secrets.error_notification_email_password,   

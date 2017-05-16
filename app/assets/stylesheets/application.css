@@ -193,6 +193,9 @@ a {
 #side-nav li:nth-child(10n+3) span, #side-nav li:nth-child(10n+3) a:hover .fa {
     background-color: lightgreen;
 }
+#side-nav li:nth-child(10n+4) span, #side-nav li:nth-child(10n+4) a:hover .fa {
+    background-color: violet;
+}
 
 #language-modal {
 	text-align: center;
