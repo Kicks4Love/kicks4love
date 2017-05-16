@@ -15,11 +15,20 @@ class Admin::OnCourtPostsController < Admin::AdminController
 
   def new
     @page_title = "Kicks4Love Admin | Create a new On Court post"
-    @new_post = OnCourtPost.new
+    @on_court_post = OnCourtPost.new
   end
 
   def create
     new_post = OnCourtPost.new process_content(on_court_post_params)
+
+    if new_post.content_en.count > 2 || new_post.content_cn.count > 2
+      redirect_to :back, :alert => "Maximum paragraph number is 2"
+      return
+    elsif new_post.main_images.count > 2
+      redirect_to :back, :alert => "Maximum main image number is 2"
+      return
+    end
+
     if new_post.save
       redirect_to admin_on_court_posts_path, :notice => "New On Court post successfully created"
     else
@@ -33,6 +42,15 @@ class Admin::OnCourtPostsController < Admin::AdminController
 
   def update
     params = process_content(on_court_post_params)
+
+    if params[:content_en].count > 2 || params[:content_cn].count > 2
+      redirect_to :back, :alert => "Maximum paragraph number is 2"
+      return
+    elsif params[:main_images].count > 2
+      redirect_to :back, :alert => "Maximum main image number is 2"
+      return
+    end
+
     if @on_court_post.update_attributes(params)
       flash[:notice] = "The on court post has been successfully updated"
 		else
@@ -59,7 +77,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
 			head :ok, :status => 500
 		end
   end
-  
+
   private
 
   def on_court_post_params
@@ -70,9 +88,9 @@ class Admin::OnCourtPostsController < Admin::AdminController
 
   def process_content(params)
 		content_en = params[:content_en]
-		params[:content_en] = content_en.split("||")
+		params[:content_en] = content_en.split(/\r?\n/)
 		content_cn = params[:content_cn]
-		params[:content_cn] = content_cn.split("||")
+		params[:content_cn] = content_cn.split(/\r?\n/)
     return params
   end
 

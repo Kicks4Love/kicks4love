@@ -30,5 +30,5 @@ function initOldPostRemoval() {
 }
 
 function initPlayerNameTooltip() {
-  $('#on_court_post_player_name_en').add('#on_court_post_player_name_cn').tooltip().off("mouseover mouseout");
+  $('#on_court_post_player_name_en').add('#on_court_post_player_name_cn').add('#on_court_post_content_en').add('#on_court_post_content_cn').tooltip().off("mouseover mouseout");
 }
