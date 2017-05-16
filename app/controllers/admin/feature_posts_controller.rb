@@ -20,12 +20,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def create
-		post_params = feature_post_params;
-		content_en = post_params[:content_en]
-		post_params[:content_en] = content_en.split("||")
-		content_cn = post_params[:content_cn]
-		post_params[:content_cn] = content_cn.split("||")
-		feature_post = FeaturePost.new post_params
+		feature_post = FeaturePost.new process_content(feature_post_params)
 		if feature_post.save
 			redirect_to admin_feature_posts_path, :notice => "New feature post successfully created"
 		else
@@ -34,7 +29,8 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def update
-		if @feature_post.update_attributes(feature_post_params)
+		params = process_content(feature_post_params)
+		if @feature_post.update_attributes(params)
 			flash[:notice] = "The feature post has been successfully updated"
 		else
 			flash[:alert] = "Error occurs while updating the feature post, please try again"
@@ -74,6 +70,14 @@ class Admin::FeaturePostsController < Admin::AdminController
 		.require(:feature_post)
 		.permit(:title_en, :title_cn, :content_en, :content_cn, {main_images: []}, :cover_image)
 	end
+
+	def process_content(params)
+		content_en = params[:content_en]
+		params[:content_en] = content_en.split("||")
+		content_cn = params[:content_cn]
+		params[:content_cn] = content_cn.split("||")
+    return params
+  end
 
 	def get_feature_post
 		@feature_post = FeaturePost.find_by_id(params[:id])

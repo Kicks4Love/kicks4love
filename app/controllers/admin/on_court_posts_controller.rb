@@ -19,7 +19,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
   end
 
   def create
-    new_post = OnCourtPost.new on_court_post_params
+    new_post = OnCourtPost.new process_content(on_court_post_params)
     if new_post.save
       redirect_to admin_on_court_posts_path, :notice => "New On Court post successfully created"
     else
@@ -32,7 +32,8 @@ class Admin::OnCourtPostsController < Admin::AdminController
   end
 
   def update
-    if @on_court_post.update_attributes(on_court_post_params)
+    params = process_content(on_court_post_params)
+    if @on_court_post.update_attributes(params)
       flash[:notice] = "The on court post has been successfully updated"
 		else
 			flash[:alert] = "Error occurs while updating the on court post, please try again"
@@ -63,7 +64,15 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def on_court_post_params
     params
     .require(:on_court_post)
-    .permit(:title_en, :title_cn, :content_en, :content_cn, :player_name_en, :player_name_cn, :cover_image, :{main_images: []})
+    .permit(:title_en, :title_cn, :content_en, :content_cn, :player_name_en, :player_name_cn, :cover_image, {main_images: []})
+  end
+
+  def process_content(params)
+		content_en = params[:content_en]
+		params[:content_en] = content_en.split("||")
+		content_cn = params[:content_cn]
+		params[:content_cn] = content_cn.split("||")
+    return params
   end
 
   def get_on_court_post
