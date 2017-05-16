@@ -59,6 +59,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
 			head :ok, :status => 500
 		end
   end
+  
   private
 
   def on_court_post_params
