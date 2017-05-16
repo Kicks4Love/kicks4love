@@ -67,6 +67,8 @@ class MainController < ApplicationController
 	def oncourt_show
 		@oncourt_post = OnCourtPost.find(params[:id])
 		@page_title = @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en
+		@article = @chinese ? @oncourt_post.content_cn : @oncourt_post.content_en
+		@times = [@article.size, @oncourt_post.main_images.size].max
 	end
 
 	def terms
@@ -74,7 +76,7 @@ class MainController < ApplicationController
 
 	def contact
 		@page_title = 'Kicks4Love鞋侣 | Contact Us联系我们'
-		if @chinese 
+		if @chinese
 			@contact_placeholder = {
 				:first_name_label => "名字",
 				:first_name_placeholder => "冠希",
@@ -104,7 +106,7 @@ class MainController < ApplicationController
 			email_options = {
 				:first_name => params[:first_name],
 				:last_name => params[:last_name],
-				:chinese => @chinese, 
+				:chinese => @chinese,
 				:comment => params[:comments]
 			}
 			CustomerServiceMailer.send_contact_email(params[:email], email_options).deliver_now
