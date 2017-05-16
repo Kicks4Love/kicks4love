@@ -35,9 +35,9 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
     :port                 => 465,
-    :user_name            => Rails.application.secrets.customer_service_email,
+    :user_name            => Rails.application.config.email_list[:customer_service],
     :domain               => 'kicks4love.com',
-    :password             => Rails.application.secrets.customer_service_password,
+    :password             => Rails.application.secrets.customer_service_email_password,
     :authentication       => 'plain',
     :ssl                  => true,  
     :tls                  => true 

@@ -1,1 +1,23 @@
-Hi, <%= @contact_information[:first_name] %>
+<% if @contact_information[:chinese] %>
+	你好, <%= @contact_information[:first_name] %>
+
+	感谢您联系我们有关于您的问题
+
+	"<%= @contact_information[:comment] %>"
+
+	我们会看您发的内容并且尽快回复您。
+
+	万岁,
+	Kicks4Love鞋侣 客户服务团队
+<% else %>
+	Hi, <%= @contact_information[:first_name] %>
+
+	Thank you for contacting us for your concern
+
+	"<%= @contact_information[:comment] %>"
+
+	We will take a look at it and reply to you as soon as possible.
+
+	Cheers,
+	Kicks4Love鞋侣 Customer Service Team
+<% end %>
