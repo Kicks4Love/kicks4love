@@ -30,7 +30,7 @@
                 <th>Player Name (English)</th>
                 <th>球员名称 （中文)</th>
                 <th>Cover Image</th>
-                <th></th>
+                <th>Main Images</th>
                 <th></th>
             </tr>
         </thead>
@@ -39,8 +39,20 @@
             <tr>
                 <td><%= post.title_en %></td>
                 <td><%= post.title_cn %></th>
-                <td><%= post.content_en %></td>
-                <td><%= post.content_cn %></td>
+                <% if post.content_en.any?%>
+      						<td>
+      						<%= post.content_en.size %> paragraphs
+      						</td>
+      					<% else %>
+      						<td>No content in English</td>
+      					<% end %>
+      					<% if post.content_cn.any?%>
+      						<td>
+      						<%= post.content_cn.size %> 段
+      						</td>
+      					<% else %>
+      						<td>暂无中文内容</td>
+      					<% end %>
                 <td><%= post.player_name_en %></td>
                 <td><%= post.player_name_cn %></td>
                 <td><%= image_tag "#{post.cover_image}", :height => "50px"%></td>
