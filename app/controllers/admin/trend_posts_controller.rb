@@ -47,7 +47,7 @@ class Admin::TrendPostsController < Admin::AdminController
       		return
     	end
 
-		if @trend_post.update_attributes(trend_post_params)
+		if @trend_post.update_attributes(params)
 			flash[:notice] = "The trend post has been successfully updated"
 		else
 			flash[:alert] = "Error occurs while updating the trend post, please try again"
