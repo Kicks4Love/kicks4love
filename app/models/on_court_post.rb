@@ -13,7 +13,4 @@ class OnCourtPost < ApplicationRecord
 	mount_uploader :cover_image, ImageUploader
 	mount_uploaders :main_images, ImageUploader
 
-	serialize :content_en, Array
-	serialize :content_cn, Array
-
 end
