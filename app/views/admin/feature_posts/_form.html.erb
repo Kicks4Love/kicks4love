@@ -36,6 +36,13 @@
 <br>
 <div class="row no-margin">
 	<div class="col-sm-2">
+		<label>Number of Paragraphs (En/Cn):</label>
+	</div>
+	<div id="number-paragraph" class="col-sm-2"></div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
 		<label>Cover Image:</label>
 	</div>
 	<div class="col-sm-2">
@@ -50,6 +57,20 @@
 	<div class="col-sm-2">
 		<%= form.file_field :main_images, multiple: true %>
 	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Main Images Number:</label>
+	</div>
+	<div id="number-image" class="col-sm-2"><%= @feature_post.main_images.count %></div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Post Composition:</label>
+	</div>
+	<div id="post-composition" class="col-sm-2"></div>
 </div>
 <br>
 <%= form.submit "Submit", :class => "btn btn-primary" %>

@@ -145,6 +145,7 @@ class MainController < ApplicationController
 			else
 				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image, created_at")
 			end
+			feeds.each {|feed| feed.content = helpers.serialized_array_string_to_array(feed.content)}
 		when 'calendar'
 			feeds = CalendarPost.where('extract(year from release_date) = ? AND extract(month from release_date) = ?', params[:year], params[:month])
 			@no_more = false
@@ -157,17 +158,17 @@ class MainController < ApplicationController
 			feeds = OnCourtPost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
 			if @chinese
-				feeds = feeds.select("id, title_cn AS title, content_cn AS content, player_name_cn AS player_name, cover_image, created_at")
+				feeds = feeds.select("id, title_cn AS title, player_name_cn AS player_name, cover_image, created_at")
 			else
-				feeds = feeds.select("id, title_en AS title, content_en AS content, player_name_en AS player_name, cover_image, created_at")
+				feeds = feeds.select("id, title_en AS title, player_name_en AS player_name, cover_image, created_at")
 			end
 		when 'trend'
 			feeds = TrendPost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
 			if @chinese
-				feeds = feeds.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
+				feeds = feeds.select("id, title_cn AS title, cover_image, created_at")
 			else
-				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image, created_at")
+				feeds = feeds.select("id, title_en AS title, cover_image, created_at")
 			end
 		else
 			head :ok and return
