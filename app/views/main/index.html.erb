@@ -89,8 +89,8 @@
             <%
                 case feed.class.name
                 when "FeaturePost"
-                  link = "/features/#{feed.id}"
-                  tag = "Features"
+                    link = "/features/#{feed.id}"
+                    tag = "Features"
                 when "TrendPost"
                     link = "/trend/#{feed.id}"
                     tag = "Trend"
@@ -110,7 +110,7 @@
                 </a>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
-                    <p><%= feed.content[0..200] %>...</p>
+                    <p><%= feed.content[0][0..200] %>...</p>
                     <a href="<%= link %>">(<%= t("more") %>)</a>
                     <span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span>
                     <br/><br/>

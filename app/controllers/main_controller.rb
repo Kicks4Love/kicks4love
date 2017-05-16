@@ -27,6 +27,7 @@ class MainController < ApplicationController
 		else
 			@feature_posts = @feature_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
+		@feature_posts.each {|feature_post| feature_post.content = helpers.serialized_array_string_to_array(feature_post.content)}
 	end
 
 	def feature_show
@@ -42,9 +43,9 @@ class MainController < ApplicationController
 		@page_title= 'Kicks4Love鞋侣 | Trend潮流'
 		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
 		if @chinese
-			@all_trend_posts = @all_trend_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
+			@all_trend_posts = @all_trend_posts.select("title_cn AS title, cover_image, id, created_at")
 		else 
-			@all_trend_posts = @all_trend_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
+			@all_trend_posts = @all_trend_posts.select("title_en AS title, cover_image, id, created_at")
 		end
 	end
 
@@ -57,9 +58,9 @@ class MainController < ApplicationController
 		@page_title = 'Kicks4Love鞋侣 | On Court球场'
 		@on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 		if @chinese
-			@on_court_posts = @on_court_posts.select("title_cn AS title, content_cn AS content, player_name_cn AS player_name, cover_image, id, created_at")
+			@on_court_posts = @on_court_posts.select("title_cn AS title, player_name_cn AS player_name, cover_image, id, created_at")
 		else
-			@on_court_posts = @on_court_posts.select("title_en AS title, content_en AS content, player_name_en AS player_name, cover_image, id, created_at")
+			@on_court_posts = @on_court_posts.select("title_en AS title, player_name_en AS player_name, cover_image, id, created_at")
 		end
 	end
 

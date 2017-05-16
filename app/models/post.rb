@@ -20,7 +20,9 @@ class Post < ApplicationRecord
 			on_court_posts = OnCourtPost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
 		end
 		
-		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse
+		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse.each {|post| 
+			post.content = ApplicationController.helpers.serialized_array_string_to_array(post.content)
+		}
 	end
 
 end
