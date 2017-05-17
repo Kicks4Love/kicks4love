@@ -33,6 +33,7 @@ class MainController < ApplicationController
 	def feature_show
 		@feature_post = FeaturePost.find(params[:id])
 		@page_title = @chinese ? @feature_post.title_cn : @feature_post.title_en
+		@content = @chinese ? @feature_post.content_cn : @feature_post.content_en
 	end
 
 	def calendar
@@ -53,7 +54,6 @@ class MainController < ApplicationController
 		@trend_post = TrendPost.find(params[:id])
 		@page_title = @chinese ? @trend_post.title_cn : @trend_post.title_en
 		@content = @chinese ? @trend_post.content_cn : @trend_post.content_en
-		#if(@content.size > @trend_post.main_images.size)
 		@times = [@content.size, @trend_post.main_images.size].max
 	end
 
@@ -70,8 +70,8 @@ class MainController < ApplicationController
 	def oncourt_show
 		@oncourt_post = OnCourtPost.find(params[:id])
 		@page_title = @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en
-		@article = @chinese ? @oncourt_post.content_cn : @oncourt_post.content_en
-		@times = [@article.size, @oncourt_post.main_images.size].max
+		@content = @chinese ? @oncourt_post.content_cn : @oncourt_post.content_en
+		@times = [@content.size, @oncourt_post.main_images.size].max
 	end
 
 	def terms

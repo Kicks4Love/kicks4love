@@ -2,17 +2,17 @@
 <div class="main container">
   <h2><%= @page_title %></h2>
   <% @times.times do |i|%>
-    <% if !@oncourt_post.main_images[i].nil? %>
+    <% unless @oncourt_post.main_images[i].nil? %>
       <dl class="col-xs-12" style="width: 80%; text-align:center">
           <dt>
               <img src="<%= @oncourt_post.main_images[i].url %>" class="kicks-pic"/>
           </dt>
       </dl>
     <% end %>
-    <% if !@article[i].nil? %>
+    <% unless @content[i].empty? %>
       <div class="col-xs-12" style="width: 80%">
           <div style="margin-bottom: 10px">
-              <span><%= @article[i] %></span>
+              <span><%= @content[i] %></span>
           </div>
       </div>
     <% end %>

@@ -1,19 +1,15 @@
-<% content_for :head do %>
-    <%= stylesheet_link_tag "feature.css" %>
-<% end %>
-
-<div class="main container clearfix">
-  <div class="kicks-box clearfix">
-      <dl class="col-xs-12 col-sm-4">
-          <dt>
-              <img src="<%= @feature_post.main_image_1.url %>" class="kicks-pic"/>
-          </dt>
-      </dl>
-      <div class="col-xs-12 col-sm-8 kicks-intro">
-          <h2><%= @chinese ? @feature_post.title_cn : @feature_post.title_en %></h2>
-          <div class="kicks-intro-content">
-              <span><%= @chinese ? @feature_post.content_cn : @feature_post.content_en %></span>
-          </div>
-      </div>
-  </div>
+<div class="main container">
+	<% 
+		image_index = 0
+		paragraph_index = 0
+	%>
+    <% @feature_post.post_composition.each do |index, hash| %>
+    	<% if hash['type'] == 'image' %>
+    		<%= image_tag @feature_post.main_images[image_index].url %>
+    		<% image_index += 1 %>
+    	<% else %>
+    		<p><%= @content[paragraph_index] %></p>
+    		<% paragraph_index += 1 %>
+    	<% end %>
+    <% end %>
 </div>

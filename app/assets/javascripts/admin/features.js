@@ -87,9 +87,7 @@ function initPostComposition() {
 }
 
 function initFormSubmit() {
-  $('.new_feature_post, .edit_feature_post').submit(function(event) {
-    event.preventDefault();
-
+  $('.new_feature_post, .edit_feature_post').submit(function() {
     var postCompositionData = {};
     var table = document.querySelector('#post-composition table');
     for (var i = 0; i < table.rows.length; i++) {
@@ -98,10 +96,11 @@ function initFormSubmit() {
         type: $(row).data('type')
       }
     }
-
-    console.log(postCompositionData);
-
-    return false;
+    $('<input>').attr({
+      type: 'hidden',
+      name: 'feature_post[post_composition]',
+      value: JSON.stringify(postCompositionData)
+    }).appendTo(this);
   });
 }
 

@@ -1,18 +1,12 @@
-<% content_for :head do %>
-    <%= stylesheet_link_tag "trend.css" %>
-<% end %>
-
-
 <div class="main container">
   <h2><%= @page_title %></h2>
-  <% @times.times do |i|%>
-    <% if !@trend_post.main_images[i].nil? %>
+  <% @times.times do |i| %>
+    <% unless @trend_post.main_images[i].nil? %>
       <div class="row">
         <div class="col-md-8"><img src="<%= @trend_post.main_images[i].url %>" class="kicks-pic"/></div>
-        <div class="col-md-4">.col-md-4</div>
       </div>
     <% end %>
-    <% if !@content[i].nil? %>
+    <% unless @content[i].empty? %>
       <div class="col-xs-12" style="width: 80%">
           <div style="margin-bottom: 10px">
               <span><%= @content[i] %></span>

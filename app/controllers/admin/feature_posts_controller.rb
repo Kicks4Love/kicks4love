@@ -86,14 +86,13 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def feature_post_params
 		params
 		.require(:feature_post)
-		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []})
+		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []}, :post_composition)
 	end
 
 	def process_content(params)
-		content_en = params[:content_en]
-		params[:content_en] = content_en.split(/\r?\n/)
-		content_cn = params[:content_cn]
-		params[:content_cn] = content_cn.split(/\r?\n/)
+		params[:content_en] = params[:content_en].split(/\r?\n/)
+		params[:content_cn] = params[:content_cn].split(/\r?\n/)
+		params[:post_composition] = JSON.parse params[:post_composition]
     	return params
   	end
 
