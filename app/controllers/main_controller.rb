@@ -69,6 +69,7 @@ class MainController < ApplicationController
 	end
 
 	def terms
+		@page_title = 'Kicks4Love鞋侣 | Terms条款'
 	end
 
 	def contact
