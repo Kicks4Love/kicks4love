@@ -6,7 +6,7 @@
         <div class="col-md-8"><img src="<%= @trend_post.main_images[i].url %>" class="kicks-pic"/></div>
       </div>
     <% end %>
-    <% unless @content[i].empty? %>
+    <% unless @content[i].nil? %>
       <div class="col-xs-12" style="width: 80%">
           <div style="margin-bottom: 10px">
               <span><%= @content[i] %></span>
