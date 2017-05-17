@@ -19,7 +19,15 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def create
-		trend_post = TrendPost.new trend_post_params
+		trend_post = TrendPost.new process_content(trend_post_params)
+
+		if trend_post.content_en.count > 6 || trend_post.content_cn.count > 6
+	      redirect_to :back, :alert => "Maximum paragraph number is 6"
+	      return
+	    elsif trend_post.main_images.count > 6
+	      redirect_to :back, :alert => "Maximum main image number is 6"
+	      return
+	    end
 
 		if trend_post.save
 			redirect_to admin_trend_posts_path, :notice => "New trend post successfully created"
@@ -29,7 +37,17 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def update
-		if @trend_post.update_attributes(trend_post_params)
+		params = process_content(trend_post_params)
+
+		if params[:content_en].count > 6 || params[:content_cn].count > 6
+      		redirect_to :back, :alert => "Maximum paragraph number is 6"
+      		return
+    	elsif params[:main_images].present? && params[:main_images].count > 6
+      		redirect_to :back, :alert => "Maximum main image number is 6"
+      		return
+    	end
+
+		if @trend_post.update_attributes(params)
 			flash[:notice] = "The trend post has been successfully updated"
 		else
 			flash[:alert] = "Error occurs while updating the trend post, please try again"
@@ -65,8 +83,17 @@ class Admin::TrendPostsController < Admin::AdminController
 	private
 
 	def trend_post_params
-		params.require(:trend_post).permit(:title_en, :title_cn, :content_en, :content_cn, :main_image, :cover_image)
+		params.require(:trend_post)
+		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []})
 	end
+
+	def process_content(params)
+		content_en = params[:content_en]
+		params[:content_en] = content_en.split(/\r?\n/)
+		content_cn = params[:content_cn]
+		params[:content_cn] = content_cn.split(/\r?\n/)
+    	return params
+  	end
 
 	def get_trend_post
 		@trend_post = TrendPost.find_by_id(params[:id])

@@ -20,7 +20,15 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def create
-		feature_post = FeaturePost.new feature_post_params
+		feature_post = FeaturePost.new process_content(feature_post_params)
+
+		if feature_post.content_en.count > 12 || feature_post.content_cn.count > 12
+	      	redirect_to :back, :alert => "Maximum paragraph number is 12"
+	      	return
+	    elsif feature_post.main_images.count > 12
+	      	redirect_to :back, :alert => "Maximum main image number is 12"
+	      	return
+	    end
 
 		if feature_post.save
 			redirect_to admin_feature_posts_path, :notice => "New feature post successfully created"
@@ -30,7 +38,17 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def update
-		if @feature_post.update_attributes(feature_post_params)
+		params = process_content(feature_post_params)
+
+		if params[:content_en].count > 12 || params[:content_cn].count > 12
+      		redirect_to :back, :alert => "Maximum paragraph number is 12"
+      		return
+    	elsif params[:main_images].present? && params[:main_images].count > 12
+      		redirect_to :back, :alert => "Maximum main image number is 12"
+      		return
+    	end
+
+		if @feature_post.update_attributes(params)
 			flash[:notice] = "The feature post has been successfully updated"
 		else
 			flash[:alert] = "Error occurs while updating the feature post, please try again"
@@ -66,8 +84,17 @@ class Admin::FeaturePostsController < Admin::AdminController
 	private
 
 	def feature_post_params
-		params.require(:feature_post).permit(:title_en, :title_cn, :content_en, :content_cn, :main_image, :cover_image)
+		params
+		.require(:feature_post)
+		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []}, :post_composition)
 	end
+
+	def process_content(params)
+		params[:content_en] = params[:content_en].split(/\r?\n/)
+		params[:content_cn] = params[:content_cn].split(/\r?\n/)
+		params[:post_composition] = JSON.parse params[:post_composition]
+    	return params
+  	end
 
 	def get_feature_post
 		@feature_post = FeaturePost.find_by_id(params[:id])

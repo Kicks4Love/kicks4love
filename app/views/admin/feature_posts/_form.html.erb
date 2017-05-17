@@ -21,7 +21,7 @@
 		<label>Content (English):</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_area :content_en %>
+		<%= form.text_area :content_en, :value => @feature_post.content_en.join("\n"), :title => "Different paragraph in different line" %>
 	</div>
 </div>
 <br>
@@ -30,8 +30,15 @@
 		<label>文章内容 (中文):</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_area :content_cn %>
+		<%= form.text_area :content_cn, :value => @feature_post.content_en.join("\n"), :title => "Different paragraph in different line" %>
 	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Number of Paragraphs (En/Cn):</label>
+	</div>
+	<div id="number-paragraph" class="col-sm-2"></div>
 </div>
 <br>
 <div class="row no-margin">
@@ -45,10 +52,30 @@
 <br>
 <div class="row no-margin">
 	<div class="col-sm-2">
-		<label>Main Image:</label>
+		<label>Main Images:</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.file_field :main_image %>
+		<%= form.file_field :main_images, multiple: true %>
+	</div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Main Images Number:</label>
+	</div>
+	<div id="number-image" class="col-sm-2"><%= @feature_post.main_images.count %></div>
+</div>
+<br>
+<div class="row no-margin">
+	<div class="col-sm-2">
+		<label>Post Composition:</label>
+	</div>
+	<div id="post-composition" class="col-sm-2">
+		<% @feature_post.main_images.each do |main_image| %>
+			<%= hidden_field_tag nil, main_image.file.identifier, {:class => "main-images", :'data-type' => "image"} %>
+		<% end %>
+		<table>
+		</table>
 	</div>
 </div>
 <br>

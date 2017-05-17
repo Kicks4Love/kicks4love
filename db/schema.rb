@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20170513192311) do
   create_table "feature_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title_en"
     t.text     "content_en",  limit: 65535
-    t.string   "main_image"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "title_cn"
     t.string   "cover_image"
     t.text     "content_cn",  limit: 65535
+    t.json     "main_images"
   end
 
   create_table "on_court_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20170513192311) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "title_cn"
-    t.string   "main_image"
     t.text     "content_cn",     limit: 65535
     t.string   "player_name_en"
     t.string   "player_name_cn"
+    t.json     "main_images"
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -76,12 +76,12 @@ ActiveRecord::Schema.define(version: 20170513192311) do
   create_table "trend_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title_en"
     t.text     "content_en",  limit: 65535
-    t.string   "main_image"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "title_cn"
     t.string   "cover_image"
     t.text     "content_cn",  limit: 65535
+    t.json     "main_images"
   end
 
 end

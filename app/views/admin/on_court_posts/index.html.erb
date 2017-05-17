@@ -30,7 +30,7 @@
                 <th>Player Name (English)</th>
                 <th>球员名称 （中文)</th>
                 <th>Cover Image</th>
-                <th>Main Image</th>
+                <th>Main Images</th>
                 <th></th>
             </tr>
         </thead>
@@ -39,12 +39,24 @@
             <tr>
                 <td><%= post.title_en %></td>
                 <td><%= post.title_cn %></th>
-                <td><%= post.content_en %></td>
-                <td><%= post.content_cn %></td>
+                <% if post.content_en.any?%>
+      						<td>
+      						<%= post.content_en.size %> paragraphs
+      						</td>
+      					<% else %>
+      						<td>No content in English</td>
+      					<% end %>
+      					<% if post.content_cn.any?%>
+      						<td>
+      						<%= post.content_cn.size %> 段
+      						</td>
+      					<% else %>
+      						<td>暂无中文内容</td>
+      					<% end %>
                 <td><%= post.player_name_en %></td>
                 <td><%= post.player_name_cn %></td>
                 <td><%= image_tag "#{post.cover_image}", :height => "50px"%></td>
-                <td><%= image_tag "#{post.main_image}", :height => "50px"%></td>
+                <td><%= post.main_images.size %> main images</td>
                 <td>
                     <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
                     <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>
@@ -56,9 +68,7 @@
     <%= will_paginate @on_court_posts, :previous_label => 'Prev', :next_label => 'Next' %>
 <% else %>
     <h2>No posts yet</h2>
-
     <br/>
-
     <%= link_to "Create a new on court post now", new_admin_on_court_post_path, :class => "btn btn-primary" %>
 <% end %>
 

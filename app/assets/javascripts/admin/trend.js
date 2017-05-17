@@ -1,5 +1,6 @@
 $(document).ready(function() {
   initOldPostRemoval();
+  initTooltip();
 });
 
 function initOldPostRemoval() {
@@ -26,4 +27,8 @@ function initOldPostRemoval() {
       error: function() { alert('Something wrong while try to delete the old posts. Please try again'); }
     });
   })
+}
+
+function initTooltip() {
+  $('#trend_post_content_en').add('#trend_post_content_cn').tooltip().off("mouseover mouseout");
 }

@@ -2,13 +2,16 @@ class TrendPost < ApplicationRecord
 
 	attr_accessor :post_type
 
-  scope :latest, -> {order( :created_at => :DESC)}
+	serialize :content_en, Array
+	serialize :content_cn, Array
+	serialize :main_images, JSON
 
-	scope :old, -> {where("created_at < ?", 3.month.ago)}	
+  	scope :latest, -> {order(:created_at => :DESC)}
+	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
-  self.per_page = 3
+  	self.per_page = 3
 
-	mount_uploader :main_image, ImageUploader
 	mount_uploader :cover_image, ImageUploader
+	mount_uploaders :main_images, ImageUploader
 
   end

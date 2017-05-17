@@ -1,17 +1,20 @@
-<% content_for :head do %>
-    <%= stylesheet_link_tag "oncourt.css" %>
-<% end %>
+
 <div class="main container">
-  <h2><%= @oncourt_post.title_en%> </h2>
-  <dl class="col-xs-12 col-sm-4">
-      <dt>
-          <img src="<%= @oncourt_post.main_image.url %>" class="kicks-pic"/>
-      </dt>
-  </dl>
-  <div class="col-xs-12 col-sm-8">
-      <h2><%= @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en %></h2>
-      <div>
-          <span><%= @chinese ? @oncourt_post.content_cn : @oncourt_post.content_en %></span>
+  <h2><%= @page_title %></h2>
+  <% @times.times do |i|%>
+    <% unless @oncourt_post.main_images[i].nil? %>
+      <dl class="col-xs-12" style="width: 80%; text-align:center">
+          <dt>
+              <img src="<%= @oncourt_post.main_images[i].url %>" class="kicks-pic"/>
+          </dt>
+      </dl>
+    <% end %>
+    <% unless @content[i].empty? %>
+      <div class="col-xs-12" style="width: 80%">
+          <div style="margin-bottom: 10px">
+              <span><%= @content[i] %></span>
+          </div>
       </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>

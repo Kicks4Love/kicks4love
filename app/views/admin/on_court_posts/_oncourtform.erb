@@ -21,16 +21,16 @@
 		<label>Content (English): </label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_area :content_en %>
+		<%= form.text_area :content_en, :value => @on_court_post.content_en.join("\n"), :title => "Different paragraph in different line" %>
 	</div>
 </div>
 <br/>
 <div class="row no-margin">
 	<div class="col-sm-2">
-		<label>文章内容（中文）: </label>
+		<label>文章内容（中文): </label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_area :content_cn %>
+		<%= form.text_area :content_cn, :value => @on_court_post.content_cn.join("\n"), :title => "Different paragraph in different line" %>
 	</div>
 </div>
 <br/>
@@ -63,10 +63,10 @@
 <br/>
 <div class="row no-margin">
 	<div class="col-sm-2">
-		<label>Main Image: </label>
+		<label>Main Images: </label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.file_field :main_image %>
+		<%= form.file_field :main_images, multiple: true %>
 	</div>
 </div>
 <br/>
