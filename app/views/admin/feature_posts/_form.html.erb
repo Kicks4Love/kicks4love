@@ -70,7 +70,13 @@
 	<div class="col-sm-2">
 		<label>Post Composition:</label>
 	</div>
-	<div id="post-composition" class="col-sm-2"></div>
+	<div id="post-composition" class="col-sm-2">
+		<% @feature_post.main_images.each do |main_image| %>
+			<%= hidden_field_tag nil, main_image.file.identifier, {:class => "main-images", :'data-type' => "image"} %>
+		<% end %>
+		<table>
+		</table>
+	</div>
 </div>
 <br>
 <%= form.submit "Submit", :class => "btn btn-primary" %>
