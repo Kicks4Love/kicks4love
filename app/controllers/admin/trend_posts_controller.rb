@@ -88,10 +88,8 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def process_content(params)
-		content_en = params[:content_en]
-		params[:content_en] = content_en.split(/\r?\n/)
-		content_cn = params[:content_cn]
-		params[:content_cn] = content_cn.split(/\r?\n/)
+		params[:content_en] = params[:content_en].split(/\r?\n/)
+		params[:content_cn] = params[:content_cn].split(/\r?\n/)
     	return params
   	end
 

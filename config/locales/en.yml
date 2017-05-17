@@ -53,4 +53,10 @@ en:
   Internal_server_error_messege: "We're sorry, but something went wrong"
   Go_Back_Home: "Go Back Home"
 
+  Terms_and_Conditions: "Terms and Conditions"
+  terms_intro: "Hi this is <strong><i>Kicks4Love鞋侣</i></strong> team, we are a group of sneaker enthusiasts aiming to provide users with the latest sneaker release date as well as posts regarding the most popular trend. Currently we are still under development stage, which means there could still be some defects and errors which we are not aware of. If that ever happens, feel free to <a href='/contact_us'>get in touch with us</a> and tell us what you think about our website. Any suggestions would be greatly appreciated : )"
+  Our_Plan: "Our Plan"
+  terms_our_plan: "<p>In addition to the current web pages we provide, we will also introduce a series of features which will significantly boost our user experience. First, we will set up the user account for each of the unique user, and we will also provide them login options including <a href=\"https://facebook.com\" target=\"_blank\">Facebook</a> and <a href=\"https://weibo.com\" target=\"_blank\">Weibo</a> account authentication. With identification included, users will be able to leave a comment in each our posts so that we can answer their doubts or discuss our interests together. Moreover, we will also construct seamless communication to allows users to share their ideas or discuss their opinions.</p><p>In our current stage, our primary concern would be accumulating hit-rate for our website across all the social media platforms, and when the time comes, we will also set up E-Commerce marketplace to propagate and sell the latest sneakers series. Cheers!!!</p>"
+  What_We_Provided_So_Far: "What We Provided So Far"
+  terms_provided_so_far: "So far there are 5 different pages in our website, and each of which concludes the unique aspects of sneaker news."
   contact_us_email_subject: "Kicks4Love鞋侣 contact us email confirmation"

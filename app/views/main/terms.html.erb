@@ -2,10 +2,10 @@
   .term-block {
     margin: 20px;
   }
-  .main-title h1 {
+  .main-title {
     font-size: 2.2em;
   }
-  .sub-title h2 {
+  .sub-title {
     font-size: 1.8em;
     font-weight: normal;
   }
@@ -19,37 +19,29 @@
 <div class="main container">
   <div class="term-block">
     <div class="row">
-      <div class="main-title">
-        <h1>Terms and Conditions</h1>
-      </div>
+      <h1 class="main-title"><%= t("Terms_and_Conditions") %></h1>
     </div>
     <div class="row intro">
-      <p class="intro-content">Hi this is <strong><i>Kicks4Love鞋侣</i></strong> team, we are a group of sneaker enthusiasts aiming to provide users with the latest sneaker release date as well as posts regarding the most popular trend. Currently we are still under development stage, which means there could still be some defects and errors which we are not aware of. If that ever happens, feel free to <%= link_to "get in touch with us", contact_us_path %> and tell us what you think about our website. Any suggestions would be greatly appreciated.
+      <p class="intro-content"><%= raw t("terms_intro") %>
       </p>
     </div>
   </div>
 
   <div class="term-block">
     <div class="row">
-      <div class="sub-title">
-        <h2>1. Our Plan</h2>
-      </div>
+      <h2 class="sub-title">1. <%= t("Our_Plan") %></h2>
     </div>
     <div class="row intro">
-      <p>In addition to the current web pages we provide, we will also introduce a series of features which will significantly boost our user experience. First, we will set up the user account for each of the unique user, and we will also provide them login options including Facebook and Weibo account authentication. With identification included, users will be able to leave a comment in each our posts so that we can answer their doubts or discuss our interests together. Moreover, we will also construct seamless communication to allows users to share their ideas or discuss their opinions. </p>
-
-      <p>In our current stage, our primary concern would be accumulating hit-rate for our website across all the social media platforms, and when the time comes, we will also set up E-Commerce marketplace to propagate and sell the latest sneakers series. Cheers.</p>
+      <p><%= raw t("terms_our_plan") %></p>
     </div>
   </div>
 
   <div class="term-block">
     <div class="row">
-      <div class="sub-title">
-        <h2>2. What We Provided So Far</h2>
-      </div>
+      <h2 class="sub-title">2. <%= t("What_We_Provided_So_Far") %></h2>
     </div>
     <div class="row intro">
-      <p class="intro-content">So far there are 5 different pages in our website, and each of which concludes the unique aspects of sneaker news.</p>
+      <p class="intro-content"><%= t("terms_provided_so_far") %></p>
     </div>
   </div>
 </div>
