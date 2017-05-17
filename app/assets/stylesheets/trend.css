@@ -11,7 +11,7 @@
 	text-indent:10px;
 	background: 
     -webkit-linear-gradient(rgba(135, 60, 255, 1), rgba(135, 60, 255, 0.0) 0%),
-    -webkit-linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 45%, rgba(55, 230, 235, 1) 0%);
+    -webkit-linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 50%, rgba(55, 230, 235, 1) 0%);
 }
 
 #kicks-posts {
@@ -83,11 +83,12 @@
 	text-align:center;
 	cursor:pointer;
 	font-size:18px;
-	color:#666666;
+	color:white;
 	float:left;
-	border:3px solid #666666;
-	border-radius: 10px;
 	margin-top: 20px;
+    background: 
+    -webkit-linear-gradient(rgba(135, 60, 255, 1), rgba(135, 60, 255, 0.0) 0%),
+    -webkit-linear-gradient(-45deg, rgba(120, 155, 255, 0.9) 50%, rgba(55, 230, 235, 1) 0%);
 }
 
 @media only screen and (max-width:767px) {

@@ -83,7 +83,8 @@ class Admin::TrendPostsController < Admin::AdminController
 	private
 
 	def trend_post_params
-		params.require(:trend_post).permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []})
+		params.require(:trend_post)
+		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []})
 	end
 
 	def process_content(params)

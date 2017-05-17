@@ -2,18 +2,22 @@
     <%= stylesheet_link_tag "trend.css" %>
 <% end %>
 
-<div class="main container clearfix">
-  <div class="kicks-box clearfix">
-      <dl class="col-xs-12 col-sm-4">
-          <dt>
-              <img src="<%= @trend_post.main_image.url %>" class="kicks-pic"/>
-          </dt>
-      </dl>
-      <div class="col-xs-12 col-sm-8 kicks-intro">
-          <h2><%= @chinese ? @trend_post.title_cn : @trend_post.title_en %></h2>
-          <div class="kicks-intro-content">
-              <span><%= @chinese ? @trend_post.content_cn : @trend_post.content_en %></span>
+
+<div class="main container">
+  <h2><%= @page_title %></h2>
+  <% @times.times do |i|%>
+    <% if !@trend_post.main_images[i].nil? %>
+      <div class="row">
+        <div class="col-md-8"><img src="<%= @trend_post.main_images[i].url %>" class="kicks-pic"/></div>
+        <div class="col-md-4">.col-md-4</div>
+      </div>
+    <% end %>
+    <% if !@content[i].nil? %>
+      <div class="col-xs-12" style="width: 80%">
+          <div style="margin-bottom: 10px">
+              <span><%= @content[i] %></span>
           </div>
       </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>

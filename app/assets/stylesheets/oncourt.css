@@ -10,8 +10,7 @@
 	font-size:60px;
 	color: white;
 	text-indent:10px;
-	background-color: #434343;
-   	background-image:linear-gradient(#666666, #e7e7e7);
+	background-color: #4A4A4A;
 }
 .main .kicks-title > div {
     background-color: transparent;
@@ -113,10 +112,9 @@
 	text-align:center;
 	cursor:pointer;
 	font-size:18px;
-	color:#666666;
+	color:white;
+    background-color:#4A4A4A;
 	float:left;
-	border:3px solid #666666;
-	border-radius: 10px;
 }
 
 @media only screen and (max-width:767px) {

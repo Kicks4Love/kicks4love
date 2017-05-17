@@ -52,6 +52,9 @@ class MainController < ApplicationController
 	def trend_show
 		@trend_post = TrendPost.find(params[:id])
 		@page_title = @chinese ? @trend_post.title_cn : @trend_post.title_en
+		@content = @chinese ? @trend_post.content_cn : @trend_post.content_en
+		#if(@content.size > @trend_post.main_images.size)
+		@times = [@content.size, @trend_post.main_images.size].max
 	end
 
 	def oncourt
@@ -67,6 +70,8 @@ class MainController < ApplicationController
 	def oncourt_show
 		@oncourt_post = OnCourtPost.find(params[:id])
 		@page_title = @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en
+		@article = @chinese ? @oncourt_post.content_cn : @oncourt_post.content_en
+		@times = [@article.size, @oncourt_post.main_images.size].max
 	end
 
 	def terms
@@ -74,7 +79,7 @@ class MainController < ApplicationController
 
 	def contact
 		@page_title = 'Kicks4Love鞋侣 | Contact Us联系我们'
-		if @chinese 
+		if @chinese
 			@contact_placeholder = {
 				:first_name_label => "名字",
 				:first_name_placeholder => "冠希",
@@ -104,7 +109,7 @@ class MainController < ApplicationController
 			email_options = {
 				:first_name => params[:first_name],
 				:last_name => params[:last_name],
-				:chinese => @chinese, 
+				:chinese => @chinese,
 				:comment => params[:comments]
 			}
 			CustomerServiceMailer.send_contact_email(params[:email], email_options).deliver_now
@@ -143,6 +148,7 @@ class MainController < ApplicationController
 			else
 				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image, created_at")
 			end
+			feeds.each {|feed| feed.content = helpers.serialized_array_string_to_array(feed.content)}
 		when 'calendar'
 			feeds = CalendarPost.where('extract(year from release_date) = ? AND extract(month from release_date) = ?', params[:year], params[:month])
 			@no_more = false
@@ -155,17 +161,17 @@ class MainController < ApplicationController
 			feeds = OnCourtPost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
 			if @chinese
-				feeds = feeds.select("id, title_cn AS title, content_cn AS content, player_name_cn AS player_name, cover_image, created_at")
+				feeds = feeds.select("id, title_cn AS title, player_name_cn AS player_name, cover_image, created_at")
 			else
-				feeds = feeds.select("id, title_en AS title, content_en AS content, player_name_en AS player_name, cover_image, created_at")
+				feeds = feeds.select("id, title_en AS title, player_name_en AS player_name, cover_image, created_at")
 			end
 		when 'trend'
 			feeds = TrendPost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
 			if @chinese
-				feeds = feeds.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
+				feeds = feeds.select("id, title_cn AS title, cover_image, created_at")
 			else
-				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image, created_at")
+				feeds = feeds.select("id, title_en AS title, cover_image, created_at")
 			end
 		else
 			head :ok and return

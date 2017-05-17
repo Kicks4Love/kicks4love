@@ -1,10 +1,11 @@
 $(document).ready(function() {
   initOldPostRemoval();
+  initPostComposition();
   initTooltip();
 });
 
 function initOldPostRemoval() {
-  $("#remove-old").click(function() {
+  $('#remove-old').click(function() {
     var self = $(this);
     $.ajax({
       type: 'GET',
@@ -27,6 +28,34 @@ function initOldPostRemoval() {
       error: function() { alert('Something wrong while try to delete the old posts. Please try again'); }
     });
   });
+}
+
+function initPostComposition() {
+  var enCount = cnCount = 0;
+  var displayParagraph = $('#number-paragraph');
+  var displayImage = $('#number-image');
+  var imageCount = parseInt($('#number-image').text());
+
+  $('#feature_post_content_en').keyup(function() {
+    enCount = $(this).val().split(/\r|\n/).length;
+    displayParagraph.text(enCount + ' / ' + cnCount);
+  });
+
+  $('#feature_post_content_cn').keyup(function() {
+    cnCount = $(this).val().split(/\r|\n/).length;
+    displayParagraph.text(enCount + ' / ' + cnCount);
+  });
+
+  $('#feature_post_content_en').add('#feature_post_content_cn').keyup();
+
+  $('#feature_post_main_images').change(function() {
+    imageCount = $(this).get(0).files.length;
+    displayImage.text(imageCount);
+  });
+
+  function updateCompositionTable() {
+
+  }
 }
 
 function initTooltip() {
