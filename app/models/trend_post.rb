@@ -4,9 +4,10 @@ class TrendPost < ApplicationRecord
 
 	serialize :content_en, Array
 	serialize :content_cn, Array
+	serialize :main_images, JSON
 
   	scope :latest, -> {order(:created_at => :DESC)}
-	scope :old, -> {where("created_at < ?", 3.month.ago)}	
+	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
   	self.per_page = 3
 
