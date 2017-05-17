@@ -211,6 +211,11 @@ a {
 	background-color: #4c7cc9;
 }
 
+.main {
+    margin-top: 50px;
+    max-width: 1020px;
+}
+
 .social-media {
     text-align: center;
     margin-top: 20px;

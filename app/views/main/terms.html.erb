@@ -1,30 +1,56 @@
 <style>
-  .main {
-    margin-top: 50px;
-    max-width: 1020px;
+  .term-block{
+    margin: 20px;
+  }
+  .main-title{
+    font-size: 2.2em;
+  }
+  .subtitle{
+    font-size: 1.8em;
+    font-weight: normal;
+  }
+  .intro{
+    background-color: rgb(248,248,248);
+    padding:10px;
+    border-radius:5px;
+  }
+  .intro-content{
+    font-weight: lighter;
   }
 </style>
-
 <div class="main container">
   <div class="term-block">
-    <h1><strong>Terms and Conditions</strong></h1>
-
-    <p>Hi this is RHBoys team, we are a group of sneaker enthusiasts aiming to provide users with the latest sneaker release date as well as posts regarding the most popular trend. Currently we are still under development stage, which means there could still be some defects and errors which we are not aware of. If that ever happens, feel free to <%= link_to "get in touch with us", contact_us_path %> and tell us what you think about our website. Any suggestions would be greatly appreciated.
+    <div class="row">
+      <div class="main-title">
+        <h1>Terms and Conditions</h1>
+      </div>
+    </div>
+    <div class="row intro">
+    <p class="intro-content">Hi this is RHBoys team, we are a group of sneaker enthusiasts aiming to provide users with the latest sneaker release date as well as posts regarding the most popular trend. Currently we are still under development stage, which means there could still be some defects and errors which we are not aware of. If that ever happens, feel free to <%= link_to "get in touch with us", contact_us_path %> and tell us what you think about our website. Any suggestions would be greatly appreciated.
   </p>
   </div>
-
-  <div class="term-block">
-    <h2>Our Plan</h2>
-
-    <p>In addition to the current web pages we provide, we will also introduce a series of features which will significantly boost our user experience. First, we will set up the user account for each of the unique user, and we will also provide them login options including Facebook and Weibo account authentication. With identification included, users will be able to leave a comment in each our posts so that we can answer their doubts or discuss our interests together. Moreover, we will also construct seamless communication to allows users to share their ideas or discuss their opinions. </p>
-
-    <p>In our current stage, our primary concern would be accumulating hit-rate for our website across all the social media platforms, and when the time comes, we will also set up E-Commerce marketplace to propagate and sell the latest sneakers series. Cheers.</p>
   </div>
 
-  <div class="term-block">
-    <h2>What We Provided So Far</h2>
+ <div class="term-block">
+    <div class="row">
+      <div class="sub-title">
+        <h2>1.Our Plan</h2>
+      </div>
+    </div>
+    <div class="row intro">
+    <p class="intro-content">In addition to the current web pages we provide, we will also introduce a series of features which will significantly boost our user experience. First, we will set up the user account for each of the unique user, and we will also provide them login options including Facebook and Weibo account authentication. With identification included, users will be able to leave a comment in each our posts so that we can answer their doubts or discuss our interests together. Moreover, we will also construct seamless communication to allows users to share their ideas or discuss their opinions. </p>
 
-    <p>So far there are 5 different pages in our website, and each of which concludes the unique aspects of sneaker news.</p>
+   <p class="intro-content">In our current stage, our primary concern would be accumulating hit-rate for our website across all the social media platforms, and when the time comes, we will also set up E-Commerce marketplace to propagate and sell the latest sneakers series. Cheers.</p>
+    </div>
+  </div>
+
+ <div class="term-block">
+    <div class="row">
+    <div class="title2">2.What We Provided So Far</div>
+   </div>
+   <div class="row intro">
+    <p class="intro-content">So far there are 5 different pages in our website, and each of which concludes the unique aspects of sneaker news.</p>
+    </div>
   </div>
 
 </div>

@@ -1,9 +1,7 @@
-@charset "utf-8";
-
 .main {
-  max-width: 1020px;
-	margin-top: 80px;
+  margin-top: 80px;
 }
+
 .main .kicks-post {
   	transition: height 0.3s ease;
     -webkit-transition: height 0.3s ease;
