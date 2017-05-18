@@ -34,7 +34,7 @@ function initLoadPostHandler() {
             		);
             	}
             	if (!data.no_more) {
-	            	parent.append('<div class="to-view-more"><span>' + (chinese ? '点击加载更多' : 'Click To View More') + '</span></div>');
+	            	parent.append('<div class="to-view-more"><span>' + (chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>');
 	            	nextPage.val(parseInt(nextPage.val()) + 1);
 	            }
             	target.fadeOut();

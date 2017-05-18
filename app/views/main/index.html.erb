@@ -120,7 +120,7 @@
     <% end %>
     <% unless @no_more  %>
         <div class="to-view-more">
-            <span><%= t("Click_to_view_more") %></span>
+            <span><%= t("Click_to_view_more") %> <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
         </div>
     <% end %>
     <%= hidden_field_tag "next_page", "2", :name => nil %>
