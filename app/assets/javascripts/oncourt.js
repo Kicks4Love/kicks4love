@@ -25,15 +25,16 @@ function initLoadPostHandler() {
 				var parent = target.closest('ul');
 				for (var i = 0; i < data.posts.length; i++) {
 					var playerName = data.posts[i].post.player_name.split(' ');
-					var hasLink = data.posts[i].post.main_images.length > 0 && (data.posts[i].post.content_en.length > 0 || data.posts[i].post.content_cn.length > 0)
+					var hasLink = data.posts[i].post.main_images.length > 0 && data.posts[i].post.content_en.length > 0 && data.posts[i].post.content_cn.length > 0;
 					parent.append(
 						'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load">' +
                 		'<div class="player-card" style="background-image:url(' + data.posts[i].image_url + ');">' +
                 		'<span class="kicks-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
-                    	'<a href="/oncourt/' + data.posts[i].post.id + '" class="flyout-button">' + (chinese ? '更多' : 'more') + '</a>' + 
+                    	(hasLink ? '<a href="/oncourt/' + data.posts[i].post.id + '" class="flyout-button">' + (chinese ? '更多' : 'more') + '</a>' : '') + 
                     	'<div class="player-card-inside">' + 
-                    	'<a href="/oncourt/' + data.posts[i].post.id + '"">' + 
-                        '<div class="player-name"><span>' + (playerName[0] === undefined ? '' : playerName[0]) + '</span><br><b>' + (playerName[1] === undefined ? '' : playerName[1]) + '</b></div></a>' +
+                    	(hasLink ? '<a href="/oncourt/' + data.posts[i].post.id + '"">' : '') + 
+                        '<div class="player-name"><span>' + (playerName[0] === undefined ? '' : playerName[0]) + '</span><br><b>' + (playerName[1] === undefined ? '' : playerName[1]) + '</b></div>' +
+                        (hasLink ? '</a>' : '') +
                         '<div class="player-info">' + data.posts[i].post.title + '</div>' +
                     	'</div></div></li>'
 					);

@@ -13,11 +13,11 @@ class Post < ApplicationRecord
 		if chinese
 			feature_posts = FeaturePost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
 			trend_posts = TrendPost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
-			on_court_posts = OnCourtPost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
+			on_court_posts = OnCourtPost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at").with_link
 		else
 			feature_posts = FeaturePost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
 			trend_posts = TrendPost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
-			on_court_posts = OnCourtPost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
+			on_court_posts = OnCourtPost.select("id, title_en AS title, content_en AS content, cover_image, created_at").with_link
 		end
 		
 		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse.each {|post| 
