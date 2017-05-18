@@ -1,6 +1,6 @@
 $(document).ready(function() {
   initOldPostRemoval();
-  initPostComposition();
+  if ($('#post-composition').length) initPostComposition();
   initTooltip();
   initFormSubmit();
 });
@@ -39,6 +39,7 @@ function initPostComposition() {
   var imageCount = parseInt($('#number-image').text());
   var postComposition = $('#post-composition');
   var table = postComposition.find('table');
+  var postCompositionJson = JSON.parse($('#post-composition-json').val());
 
   $('#feature_post_content_en').keyup(function() {
     enCount = $(this).val().split(/\r|\n/).length;
@@ -66,6 +67,19 @@ function initPostComposition() {
       }).appendTo(postComposition);
     updateCompositionTable();
   });
+
+  var imageRows = table.find('tr[data-type="image"]');
+  var paragraphRows = table.find('tr[data-type="paragraph"]');
+  var imageIndex = paragraphIndex = 0;
+  for (var item in postCompositionJson) {
+    if (postCompositionJson[item]['type'] == 'image') {
+      imageRows.get(imageIndex).querySelector('td select').value = item;
+      imageIndex++;
+    } else {
+      paragraphRows.get(paragraphIndex).querySelector('td select').value = item;
+      paragraphIndex++;
+    }
+  }
 
   function updateCompositionTable() {
     var total = enCount + imageCount;

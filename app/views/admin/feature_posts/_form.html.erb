@@ -82,6 +82,7 @@
 		<% @feature_post.main_images.each do |main_image| %>
 			<%= hidden_field_tag nil, main_image.file.identifier, {:class => "main-images", :'data-type' => "image"} %>
 		<% end %>
+		<%= hidden_field_tag nil, @feature_post.post_composition.to_json, {:id => "post-composition-json"} %>
 		<table>
 		</table>
 	</div>
