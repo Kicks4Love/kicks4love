@@ -14,4 +14,8 @@ class OnCourtPost < ApplicationRecord
 	mount_uploader :cover_image, ImageUploader
 	mount_uploaders :main_images, ImageUploader
 
+	def has_link
+		return self.main_images.count > 0 && (self.content_en.count > 0 || self.content_cn.count > 0)
+	end
+
 end

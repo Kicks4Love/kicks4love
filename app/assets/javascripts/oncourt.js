@@ -25,6 +25,7 @@ function initLoadPostHandler() {
 				var parent = target.closest('ul');
 				for (var i = 0; i < data.posts.length; i++) {
 					var playerName = data.posts[i].post.player_name.split(' ');
+					var hasLink = data.posts[i].post.main_images.length > 0 && (data.posts[i].post.content_en.length > 0 || data.posts[i].post.content_cn.length > 0)
 					parent.append(
 						'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load">' +
                 		'<div class="player-card" style="background-image:url(' + data.posts[i].image_url + ');">' +

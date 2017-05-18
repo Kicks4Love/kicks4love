@@ -162,9 +162,9 @@ class MainController < ApplicationController
 			feeds = OnCourtPost.paginate(:page => params[:next_page]).latest
 			@no_more = feeds.total_pages == feeds.current_page
 			if @chinese
-				feeds = feeds.select("id, title_cn AS title, player_name_cn AS player_name, cover_image, created_at")
+				feeds = feeds.select("id, title_cn AS title, player_name_cn AS player_name, content_en, content_cn, main_images, cover_image, created_at")
 			else
-				feeds = feeds.select("id, title_en AS title, player_name_en AS player_name, cover_image, created_at")
+				feeds = feeds.select("id, title_en AS title, player_name_en AS player_name, content_en, content_cn, main_images, cover_image, created_at")
 			end
 		when 'trend'
 			feeds = TrendPost.paginate(:page => params[:next_page]).latest
