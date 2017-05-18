@@ -61,9 +61,9 @@ class MainController < ApplicationController
 		@page_title = 'Kicks4Love鞋侣 | On Court球场'
 		@on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 		if @chinese
-			@on_court_posts = @on_court_posts.select("title_cn AS title, player_name_cn AS player_name, cover_image, id, created_at")
+			@on_court_posts = @on_court_posts.select("title_cn AS title, player_name_cn AS player_name, content_en, content_cn, main_images, cover_image, id, created_at")
 		else
-			@on_court_posts = @on_court_posts.select("title_en AS title, player_name_en AS player_name, cover_image, id, created_at")
+			@on_court_posts = @on_court_posts.select("title_en AS title, player_name_en AS player_name, content_en, content_cn, main_images, cover_image, id, created_at")
 		end
 	end
 
