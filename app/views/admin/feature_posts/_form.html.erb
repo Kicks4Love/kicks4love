@@ -60,6 +60,14 @@
 </div>
 <br>
 <div class="row no-margin">
+	<% if @feature_post.main_images.count > 0 %>
+		<label>
+    		<%= form.check_box :remove_main_images %> Remove current images
+		</label>
+	<% end %>
+</div>
+<br>
+<div class="row no-margin">
 	<div class="col-sm-2">
 		<label>Main Images Number:</label>
 	</div>

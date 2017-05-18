@@ -83,7 +83,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def on_court_post_params
     params
     .require(:on_court_post)
-    .permit(:title_en, :title_cn, :content_en, :content_cn, :player_name_en, :player_name_cn, :cover_image, {main_images: []})
+    .permit(:title_en, :title_cn, :content_en, :content_cn, :player_name_en, :player_name_cn, :cover_image, {main_images: []}, :remove_main_images)
   end
 
   def process_content(params)

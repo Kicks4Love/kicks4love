@@ -69,5 +69,12 @@
 		<%= form.file_field :main_images, multiple: true %>
 	</div>
 </div>
+<div class="row no-margin">
+	<% if @on_court_post.main_images.count > 0 %>
+		<label>
+    		<%= form.check_box :remove_main_images %> Remove current images
+		</label>
+	<% end %>
+</div>
 <br/>
 <%= form.submit "Submit", :class => "btn btn-primary" %>
