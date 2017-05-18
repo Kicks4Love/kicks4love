@@ -24,6 +24,7 @@ function initLoadPostHandler() {
 			success: function(data) {
 				var parent = target.closest('ul');
 				for (var i = 0; i < data.posts.length; i++) {
+					var playerName = data.posts[i].post.player_name.split(' ');
 					parent.append(
 						'<li class="col-xs-12 col-sm-6 col-lg-4 wait_load">' +
                 		'<div class="player-card" style="background-image:url(' + data.posts[i].image_url + ');">' +
@@ -31,7 +32,7 @@ function initLoadPostHandler() {
                     	'<a href="/oncourt/' + data.posts[i].post.id + '" class="flyout-button">' + (chinese ? '更多' : 'more') + '</a>' + 
                     	'<div class="player-card-inside">' + 
                     	'<a href="/oncourt/' + data.posts[i].post.id + '"">' + 
-                        '<div class="player-name"><span>' + data.posts[i].post.player_name.split(' ')[0] + '</span><br><b>' + data.posts[i].post.player_name.split(' ')[1] + '</b></div></a>' +
+                        '<div class="player-name"><span>' + (playerName[0] === undefined ? '' : playerName[0]) + '</span><br><b>' + (playerName[1] === undefined ? '' : playerName[1]) + '</b></div></a>' +
                         '<div class="player-info">' + data.posts[i].post.title + '</div>' +
                     	'</div></div></li>'
 					);
