@@ -1,13 +1,12 @@
 $(document).ready(function() {	
 	if (getSourcePage() !== 'oncourt') return;
+	console.log("on court");
 
 	// set HOME menu selected
 	$('#navbar .dropdown ul li').eq(1).addClass('active');
-	console.log("on court");
 
 	initLoadPostHandler();
-	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
-	initLanguageFormHandler();
+	initApplication();
 });
 
 /*--点击加载-lazyload--*/

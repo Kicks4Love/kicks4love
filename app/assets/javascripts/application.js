@@ -17,7 +17,7 @@
 
 var autoSlider = null;
 
-function initLanguageFormHandler() {
+function initApplication() {
 	if (!$('#language').val().length)
 		$('#language-modal').modal('show');
 
@@ -30,6 +30,8 @@ function initLanguageFormHandler() {
     	if (languageSet && !chinese && this.submited.includes('english'))
     		return false;
 	});
+
+    setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
 
     $('.not-work').on('click submit' ,function(event) {
         event.preventDefault();

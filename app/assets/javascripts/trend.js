@@ -1,13 +1,12 @@
 $(document).ready(function() {
     if (getSourcePage() !== 'trend') return;
+    console.log("trend");
 
     // set TREND menu selected
 	$('#navbar .dropdown ul li').eq(0).addClass('active');
-	console.log("trend");
 
 	initLoadPostHandler();
-	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
-	initLanguageFormHandler();
+	initApplication();
 });
 
 function initLoadPostHandler() {

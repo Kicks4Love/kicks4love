@@ -363,8 +363,7 @@ $(document).ready(function() {
 	console.log("calendar");
 
 	initCalendarData();
-	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
-	initLanguageFormHandler();
+	initApplication();
 });
 
 function initCalendarData() {

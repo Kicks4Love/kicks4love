@@ -1,13 +1,12 @@
 $(document).ready(function() {
       if (getSourcePage() !== 'feature') return;
+      console.log("feature");
 
 	// set FEATURES menu selected
 	$('#navbar ul li').eq(1).addClass('active');
-	console.log("feature");
 
 	initLoadPostHandler();
-	setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
-	initLanguageFormHandler();
+	initApplication();
 });
 
 function initLoadPostHandler() {

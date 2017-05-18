@@ -1,17 +1,13 @@
 $(document).ready(function() {
 	if (getSourcePage() !== 'index') return;
+	console.log('index');
 
 	// set HOME menu selected
 	$('#navbar ul li').eq(0).addClass('active');
-	console.log('index');
 
 	initImageSlider();
 	initLoadPostHandler();
-    setTimeout(function() { 
-        $('.header > img').slideUp('slow'); 
-        $('.logo-pendant').fadeIn('slow');
-    }, 2000);
-    initLanguageFormHandler();
+    initApplication();
 });
 
 function initImageSlider() {
