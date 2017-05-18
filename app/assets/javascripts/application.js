@@ -17,7 +17,7 @@
 
 var autoSlider = null;
 
-function initApplication() {
+function initApplication(showPendant) {
 	if (!$('#language').val().length)
 		$('#language-modal').modal('show');
 
@@ -31,7 +31,7 @@ function initApplication() {
     		return false;
 	});
 
-    setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
+    if (showPendant) setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
 
     $('.not-work').on('click submit' ,function(event) {
         event.preventDefault();

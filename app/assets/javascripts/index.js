@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 	initImageSlider();
 	initLoadPostHandler();
-    initApplication();
+    initApplication(true);
 });
 
 function initImageSlider() {

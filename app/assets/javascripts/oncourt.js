@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('#navbar .dropdown ul li').eq(1).addClass('active');
 
 	initLoadPostHandler();
-	initApplication();
+	initApplication(true);
 });
 
 /*--点击加载-lazyload--*/

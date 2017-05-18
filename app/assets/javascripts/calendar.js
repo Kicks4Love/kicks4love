@@ -363,7 +363,7 @@ $(document).ready(function() {
 	console.log("calendar");
 
 	initCalendarData();
-	initApplication();
+	initApplication(true);
 });
 
 function initCalendarData() {
