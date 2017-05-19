@@ -25,7 +25,6 @@
     color: white;
 }
 .main .kicks-contact-row.header h1 {
-    font-family: 'Lato', sans-serif;
     font-weight: 300;
     display: inline-block;
     font-weight: 100;
@@ -35,7 +34,6 @@
     padding: 0 0 0.4em 0;
 }
 .main .kicks-contact-row.header h3 {
-    font-family: 'Lato', sans-serif;
     font-weight: 400;
     font-size: 1.25em;
     margin: 1em 0 0.4em 0;
@@ -51,7 +49,6 @@
     border-width: 0 0 0 0;
     border-bottom: 5px solid;
     text-transform: uppercase;
-    font-family: 'Lato', sans-serif;
     font-weight: 300;
 }
 .main .kicks-contact .body .btn.btn-submit {
