@@ -28,6 +28,23 @@
 	    	this.drawLegend();
 	    	this.initial = false;
 	    }
+	    this.drawLargeMode();
+	}
+
+	Calendar.prototype.drawLargeMode = function() {
+		var self = this;
+		document.getElementsByClassName('switch-checkbox')[0].addEventListener('click', function() {
+	  		var mainParent = this.parentElement;
+	  		if(this.checked) {
+	    		mainParent.classList.add('active');
+	    		$(self.month).slideDown();
+	    		document.getElementsByClassName('legend')[0].removeAttribute('style');
+	  		} else {
+	    		mainParent.classList.remove('active');
+	    		$(self.month).slideUp();
+	    		document.getElementsByClassName('legend')[0].style.display = 'none';
+	  		}
+		});
 	}
 
 	Calendar.prototype.drawHeader = function() {
@@ -362,19 +379,11 @@ $(document).ready(function() {
 	$('#navbar ul li').eq(2).addClass('active');
 	console.log("calendar");
 
-	$('.switch-checkbox').click(function() {
-  		var mainParent = $(this).parent('.kicks-switch');
-  		if($(mainParent).find('input.switch-checkbox').is(':checked'))
-    		$(mainParent).addClass('active');
-  		else
-    		$(mainParent).removeClass('active');
-	});
-
-	initCalendarData();
+	initCalendar();
 	initApplication(true);
 });
 
-function initCalendarData() {
+function initCalendar() {
 	try {
   		var calendar = new Calendar('#calendar');
   	} catch(e) {
