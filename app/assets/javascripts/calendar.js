@@ -25,26 +25,9 @@
 	    this.getEvents();
 	    this.drawMonth();
 	    if (this.initial) {
-	    	this.drawLegend();
+	    	this.drawOthers();
 	    	this.initial = false;
 	    }
-	    this.drawLargeMode();
-	}
-
-	Calendar.prototype.drawLargeMode = function() {
-		var self = this;
-		document.getElementsByClassName('switch-checkbox')[0].addEventListener('click', function() {
-	  		var mainParent = this.parentElement;
-	  		if(this.checked) {
-	    		mainParent.classList.add('active');
-	    		$(self.month).slideDown();
-	    		document.getElementsByClassName('legend')[0].removeAttribute('style');
-	  		} else {
-	    		mainParent.classList.remove('active');
-	    		$(self.month).slideUp();
-	    		document.getElementsByClassName('legend')[0].style.display = 'none';
-	  		}
-		});
 	}
 
 	Calendar.prototype.drawHeader = function() {
@@ -339,13 +322,27 @@
 		}
 	}
 
-	Calendar.prototype.drawLegend = function() {
+	Calendar.prototype.drawOthers = function() {
 		var legend = createElement('div', 'legend');
 		legend.appendChild(createElement('span', 'entry orange', this.chinese ? '鞋子' : 'Sneaker'));
 		legend.appendChild(createElement('span', 'entry blue', this.chinese ? '服饰' : 'Cloth'));
 		legend.appendChild(createElement('span', 'entry yellow', this.chinese ? '配件' : 'Accessory'));
 		legend.appendChild(createElement('span', 'entry green', this.chinese ? '其它' : 'Other'));
-		this.el.appendChild(legend)
+		this.el.appendChild(legend);
+
+		var self = this;
+		document.getElementsByClassName('switch-checkbox')[0].addEventListener('click', function() {
+	  		var mainParent = this.parentElement;
+	  		if(this.checked) {
+	    		mainParent.classList.add('active');
+	    		$(self.month).slideDown();
+	    		legend.removeAttribute('style');
+	  		} else {
+	    		mainParent.classList.remove('active');
+	    		$(self.month).slideUp();
+	    		legend.style.display = 'none';
+	  		}
+		});
 	}
 
 	Calendar.prototype.nextMonth = function() {
