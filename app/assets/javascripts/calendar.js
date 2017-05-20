@@ -9,6 +9,7 @@
 	    this.target = date ? moment(date) : null;
 	    this.current = this.target ? moment(this.target).date(1) : moment().date(1);
 	    this.initial = true;
+	    this.calendarMode = true;
 	    this.chinese = isChinese();
 	    this.draw();
 	    var current = this.target ? document.querySelector('.target') : document.querySelector('.today');
@@ -69,9 +70,13 @@
 	          		self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
 	       	 	}, 16);
 	      	});
+	      	console.log(this.calendarMode);
+	      	if (!this.calendarMode) this.currentMonth();
 	    } else {
 		    this.month = createElement('div', 'month');
+		    this.monthAlt = createElement('div', 'month-alt');
 		    this.el.appendChild(this.month);
+		    this.el.appendChild(this.monthAlt);
 		    this.backFill();
 		    this.currentMonth();
 		    this.fowardFill();
@@ -107,6 +112,17 @@
 		while(clone.month() === this.current.month()) {
 		    this.drawDay(clone);
 		    clone.add('days', 1);
+		}
+
+		var dollarSign = this.chinese ? '¥' : '$';
+		this.monthAlt.innerHTML = '';
+		for (var i = 0; i < this.events.length; i++) {
+			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
+  										'<div class="kicks-box" style="background:url(' + this.events[i].image + ')">' +
+    									'<div class="cover top-left">' +
+      									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
+      									'<span class="date">' + dollarSign + ' ' + parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
+      									'</span></div></div></div></div>';
 		}
 	}
 
@@ -334,13 +350,17 @@
 		document.getElementsByClassName('switch-checkbox')[0].addEventListener('click', function() {
 	  		var mainParent = this.parentElement;
 	  		if(this.checked) {
+	  			$(self.monthAlt).fadeOut();
 	    		mainParent.classList.add('active');
 	    		$(self.month).slideDown();
 	    		legend.removeAttribute('style');
+	    		self.calendarMode = true;
 	  		} else {
-	    		mainParent.classList.remove('active');
 	    		$(self.month).slideUp();
 	    		legend.style.display = 'none';
+	    		mainParent.classList.remove('active');
+	    		$(self.monthAlt).fadeIn();
+	    		self.calendarMode = false;
 	  		}
 		});
 	}

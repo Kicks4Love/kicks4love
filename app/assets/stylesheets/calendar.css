@@ -428,3 +428,62 @@ h1, h4 {
 @keyframes fadeOutShink  {
   to { opacity: 0; padding: 0px; height: 0px; }
 }
+
+#calendar .month-alt {
+  display: none;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+#calendar .month-alt .product-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+#calendar .month-alt .product-container .kicks-box {
+  width: 250px;
+  height: 200px;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  overflow: hidden;
+  margin: 5px;
+}
+#calendar .month-alt .product-container .cover {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  position: relative;
+  -webkit-transition: all 0.4s cubic-bezier(.99,.99,0,.61);
+  padding: 1em;
+  color: #fff;
+  overflow: hidden;
+  text-shadow: 1px 1px 0px #000;
+}
+#calendar .month-alt .product-container .cover .title {
+  font-size: 16pt;
+  font-style: italic;
+}
+#calendar .month-alt .product-container .kicks-box .cover .intro {
+  line-height: 1.2em;
+  height: 4.8em;
+  width: 100%;
+  position: relative;
+  font-size: 10pt;
+  overflow: hidden;
+}
+#calendar .month-alt .product-container .cover .date {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  font-size: 15pt;
+      }
+#calendar .month-alt .product-container .kicks-box:hover .top-left, .product-container .kicks-box:active .top-left {
+  -webkit-transition: all 0.4s cubic-bezier(.99,.99,0,.61);
+  top: 0px;
+  left: 0px;
+}
+#calendar .month-alt .product-container .top-left {
+  top: -200px;
+  left: -250px;
+}
