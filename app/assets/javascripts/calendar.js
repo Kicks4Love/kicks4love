@@ -362,6 +362,14 @@ $(document).ready(function() {
 	$('#navbar ul li').eq(2).addClass('active');
 	console.log("calendar");
 
+	$('.switch-checkbox').click(function() {
+  		var mainParent = $(this).parent('.kicks-switch');
+  		if($(mainParent).find('input.switch-checkbox').is(':checked'))
+    		$(mainParent).addClass('active');
+  		else
+    		$(mainParent).removeClass('active');
+	});
+
 	initCalendarData();
 	initApplication(true);
 });

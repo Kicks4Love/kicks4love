@@ -4,8 +4,12 @@
 
 <%= hidden_field_tag "page_source", "calendar" %>
 
-<a name="home"></a>
+<div class="main container">
 <div class="header"></div>
+<div class="kicks-switch active">
+  <input type="checkbox" checked class="switch-checkbox"/>
+  <span class="switch-btn"></span>
+</div>
 <div id="calendar"></div>
 <div id="release-modal" class="modal fade" role="dialog">
   	<div class="modal-dialog">
@@ -22,6 +26,7 @@
       		</div>
     	</div>
   	</div>
+</div>
 </div>
 
 <% content_for :end_of_body do %>
