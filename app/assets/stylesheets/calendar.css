@@ -38,7 +38,7 @@ h1, h4 {
 .main .kicks-switch {
   width: 80px;
   height: 40px;
-  margin: 10px;
+  margin-top: 10px;
   border-radius: 50px;
   display: inline-block;
   position: relative;
@@ -81,6 +81,10 @@ h1, h4 {
   z-index: 1;
   cursor: pointer;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+.main .press-warning {
+  color: red;
+  font-weight: lighter;
 }
 
 *, *:before, *:after {
@@ -497,4 +501,5 @@ h1, h4 {
   cursor: pointer;
   color: #4A4A4A;
   float: left;
+  margin-top: 20px;
 }

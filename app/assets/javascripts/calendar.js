@@ -70,7 +70,7 @@
 	          		self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
 	       	 	}, 16);
 	      	});
-	      	if (!this.calendarMode) currentMonthLargeIcon(self);
+	      	this.currentMonthLargeIcon();
 	    } else {
 		    this.month = createElement('div', 'month');
 		    this.monthAlt = createElement('div', 'month-alt');
@@ -78,10 +78,11 @@
 		    this.el.appendChild(this.monthAlt);
 		    this.backFill();
 		    this.currentMonth();
-		    currentMonthLargeIcon(self);
+		    this.currentMonthLargeIcon();
 		    this.fowardFill();
 		    this.month.className = 'month new';
 	    }
+	    if (!this.calendarMode) updateHeader(this.chinese, this.current, this.events, this.calendarMode);
 	}
 
 	Calendar.prototype.backFill = function() {
@@ -112,6 +113,47 @@
 		while(clone.month() === this.current.month()) {
 		    this.drawDay(clone);
 		    clone.add('days', 1);
+		}
+	}
+
+	Calendar.prototype.currentMonthLargeIcon = function() {
+		var dollarSign = this.chinese ? '¥' : '$';
+		this.currentIndex = 0;
+		this.monthAlt.innerHTML = '';
+		for (var i = this.currentIndex; i < this.currentIndex + 3; i++) {
+			if (this.events[i] === undefined) break;
+			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
+  										'<div class="kicks-box" style="background:url(' + this.events[i].image + ')">' +
+    									'<div class="cover top-left">' +
+      									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
+      									'<span class="date">' + dollarSign + ' ' + parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
+      									'</span></div></div><span style="color:#4A4A4A;width:100%">' + this.events[i].date.format('MM/DD') + '</span></div></div>';
+		}
+		this.currentIndex += 3;
+		if (this.events[this.currentIndex] !== undefined)
+			this.monthAlt.innerHTML += '<div class="to-view-more"><span>' + (this.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>';
+
+
+		if (this.initial) {
+			var self = this;
+			 $('.month-alt').on('click', '.to-view-more' , function() {
+				this.remove();
+
+				// copy the function currentMonthLargeIcon code instead of calling it directly to prevent stack overflow
+				for (var i = self.currentIndex; i < self.currentIndex + 3; i++) {
+					if (self.events[i] === undefined) break;
+					self.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
+  										'<div class="kicks-box" style="background:url(' + self.events[i].image + ')">' +
+    									'<div class="cover top-left">' +
+      									'<h2 class="title">' + self.events[i].eventName + '</h2>' +
+      									'<span class="date">' + dollarSign + ' ' + parseFloat(self.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
+      									'</span></div></div><span style="color:#4A4A4A;width:100%">' + self.events[i].date.format('MM/DD') + '</span></div></div>';
+				}
+				self.currentIndex += 3;
+				if (self.events[self.currentIndex] !== undefined)
+					self.monthAlt.innerHTML += '<div class="to-view-more"><span>' + (self.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>';
+				this.remove();
+			});
 		}
 	}
 
@@ -215,16 +257,7 @@
 
 		this.renderEvents(todaysEvents, details);
 		arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + (el.parentNode.clientWidth/15.6) + 'px';
-
-		var description;
-		if (todaysEvents.length) {
-			if (this.chinese)
-				description = '有' + todaysEvents.length + '件物品发售';
-			else
-				description = 'has ' + (todaysEvents.length > 1 ? todaysEvents.length + ' releases' : '1 release');
-		} else
-			description = this.chinese ? '没有发售活动' : 'has no release';
-		$('.header').text(day.format('YYYY-MM-DD') + ' ' + description);
+		updateHeader(this.chinese, day, todaysEvents, this.calendarMode);
 	}
 
 	Calendar.prototype.renderEvents = function(events, ele) {
@@ -351,6 +384,7 @@
 	    		mainParent.classList.remove('active');
 	    		$(self.monthAlt).fadeIn();
 	    		self.calendarMode = false;
+	    		updateHeader(self.chinese, self.current, self.events, self.calendarMode);
 	  		}
 		});
 	}
@@ -369,23 +403,16 @@
 
 	window.Calendar = Calendar;
 
-	function currentMonthLargeIcon(obj) {
-		console.log(obj);
-		var dollarSign = obj.chinese ? '¥' : '$';
-		obj.currentIndex = 0;
-		obj.monthAlt.innerHTML = '';
-		for (var i = obj.currentIndex; i < obj.currentIndex + 6; i++) {
-			if (obj.events[i] === undefined) break;
-			obj.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
-  										'<div class="kicks-box" style="background:url(' + obj.events[i].image + ')">' +
-    									'<div class="cover top-left">' +
-      									'<h2 class="title">' + obj.events[i].eventName + '</h2>' +
-      									'<span class="date">' + dollarSign + ' ' + parseFloat(obj.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
-      									'</span></div></div><span style="color:#4A4A4A;width:100%">' + obj.events[i].date.format('MM/DD') + '</span></div></div>';
-		}
-		obj.currentIndex += 6;
-		if (obj.events[obj.currentIndex] !== undefined) 
-			obj.monthAlt.innerHTML += '<div class="to-view-more"><span>Click to view more <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>';
+	function updateHeader(chinese, date, events, calendarMode) {
+		var description;
+		if (events.length) {
+			if (chinese)
+				description = '有' + events.length + '件物品发售';
+			else
+				description = 'has ' + (events.length > 1 ? events.length + ' releases' : '1 release');
+		} else
+			description = chinese ? '没有发售活动' : 'has no release';
+		$('.header').text((calendarMode ? date.format('YYYY-MM-DD') : date.format('YYYY-MM')) + ' ' + description);
 	}
 
 	function createElement(tagName, className, innerText) {
@@ -413,7 +440,6 @@ function initCalendar() {
 	try {
   		var calendar = new Calendar('#calendar');
   	} catch(e) {
-  		console.log(e);
   		var chinese = isChinese();
   		var errorDescription = chinese ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
   		var retryText = chinese ? '重试' : 'Retry';

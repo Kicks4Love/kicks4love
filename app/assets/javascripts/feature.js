@@ -12,7 +12,7 @@ $(document).ready(function() {
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
 	$('.to-view-more').click(function() {
-        var chinese = isChinese();
+            var chinese = isChinese();
 		var nextPage = $('#next_page');
 		var target = $(this);
 		target.find('span').text(chinese ? '加载中...' : 'Loading...');
