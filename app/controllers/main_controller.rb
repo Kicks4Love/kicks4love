@@ -52,8 +52,15 @@ class MainController < ApplicationController
 
 	def trend_show
 		@trend_post = TrendPost.find(params[:id])
-		@page_title = @chinese ? @trend_post.title_cn : @trend_post.title_en
-		@content = @chinese ? @trend_post.content_cn : @trend_post.content_en
+		if @chinese 
+			@category = '潮流趋势'
+			@page_title = @trend_post.title_cn
+			@content = @trend_post.content_cn
+		else
+			@category = 'Trend'
+			@page_title = @trend_post.title_en
+			@content = @trend_post.content_en
+		end
 		@times = [@content.size, @trend_post.main_images.size].max
 	end
 

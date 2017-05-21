@@ -1,20 +1,27 @@
-<div class="main container">
-  <h2><%= @page_title %></h2>
-  <% @times.times do |i| %>
-    <% unless @trend_post.main_images[i].nil? %>
-      <div class="row">
-        <div class="col-md-8"><img src="<%= @trend_post.main_images[i].url %>" class="kicks-pic"/></div>
-      </div>
-    <% end %>
+<% content_for :head do %>
+    <%= stylesheet_link_tag "show.css" %>
+<% end %>
+
+<article class="main container">
+  <header>
+    <span class="category"><i class="fa fa-tags" aria-hidden="true"></i><%= @category %></span>
+    <h1><%= @page_title %></h1>
+    <div class="meta">
+      <span class="author"><%= t("by") %> <i class="author-name">Kicks4Love鞋侣</i></span>
+      <span class="pub-date"><%= "#{t("posted")} #{@trend_post.created_at.strftime("%Y-%m-%d")}" %></span>
+    </div>
+  </header>
+  <% @times.times do |i|%>
     <% unless @content[i].nil? %>
-      <div class="col-xs-12" style="width: 80%">
-          <div style="margin-bottom: 10px">
-              <span><%= @content[i] %></span>
-          </div>
-      </div>
+      <p><%= @content[i] %></p>
     <% end %>
+    <figure>
+      <% unless @trend_post.main_images[i].nil? %>
+        <%= image_tag @trend_post.main_images[i].url %>
+      <% end %>
+    </figure>
   <% end %>
-</div>
+</article>
 
 <script>
   setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
