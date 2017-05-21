@@ -122,7 +122,7 @@
     									'<div class="cover top-left">' +
       									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
       									'<span class="date">' + dollarSign + ' ' + parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
-      									'</span></div></div></div></div>';
+      									'</span></div><span>5/3</span></div></div></div>';
 		}
 	}
 

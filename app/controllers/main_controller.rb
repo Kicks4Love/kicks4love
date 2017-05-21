@@ -69,8 +69,15 @@ class MainController < ApplicationController
 
 	def oncourt_show
 		@oncourt_post = OnCourtPost.find(params[:id])
-		@page_title = @chinese ? @oncourt_post.title_cn : @oncourt_post.title_en
-		@content = @chinese ? @oncourt_post.content_cn : @oncourt_post.content_en
+		if @chinese 
+			@category = '球场时装'
+			@page_title = @oncourt_post.title_cn
+			@content = @oncourt_post.content_cn
+		else
+			@category = 'On Court'
+			@page_title = @oncourt_post.title_en
+			@content = @oncourt_post.content_en
+		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
 	end
 

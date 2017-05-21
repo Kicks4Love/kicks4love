@@ -32,6 +32,8 @@ cn:
   Internal_server_error: "内部服务器错误"
   Internal_server_error_messege: "我们很抱歉，但是出现了一些问题"
   Go_Back_Home: "回到主页"
+  by: "出自于"
+  posted: "发表于"
   
   Terms_and_Conditions: "条款及条件"
   terms_intro: "我们 <strong><i>Kicks4Love鞋侣</i></strong> 团队是一群旨在为用户提供最新发售信息以及潮流信息的球鞋爱好者。现在我们仍然处于开发阶段，如遇漏洞和故障，属于正常现象，敬请见谅。为了您的操作体验，一旦发现任何故障，请<a href='/contact_us'>告知</a>我们的开发团队。同时我们也欢迎您的反馈及意见 : )"
