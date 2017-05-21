@@ -107,7 +107,7 @@ h1, h4 {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
   	transform: translate3d(0, 0, 0);
-  	margin: 0 auto 80px;
+  	margin: 0 auto 50px;
   	height: 600px;
   	overflow: hidden;
 }
@@ -431,8 +431,9 @@ h1, h4 {
 
 #calendar .month-alt {
   display: none;
-  height: 100%;
+  height: 550px;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 #calendar .month-alt .product-container {
@@ -477,7 +478,7 @@ h1, h4 {
   bottom: 1em;
   right: 1em;
   font-size: 15pt;
-      }
+}
 #calendar .month-alt .product-container .kicks-box:hover .top-left, .product-container .kicks-box:active .top-left {
   -webkit-transition: all 0.4s cubic-bezier(.99,.99,0,.61);
   top: 0px;
@@ -486,4 +487,14 @@ h1, h4 {
 #calendar .month-alt .product-container .top-left {
   top: -200px;
   left: -250px;
+}
+#calendar .month-alt .to-view-more {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #FF9;
+  cursor: pointer;
+  color: #4A4A4A;
+  float: left;
 }

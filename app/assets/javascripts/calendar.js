@@ -70,8 +70,7 @@
 	          		self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
 	       	 	}, 16);
 	      	});
-	      	console.log(this.calendarMode);
-	      	if (!this.calendarMode) this.currentMonth();
+	      	if (!this.calendarMode) currentMonthLargeIcon(self);
 	    } else {
 		    this.month = createElement('div', 'month');
 		    this.monthAlt = createElement('div', 'month-alt');
@@ -79,6 +78,7 @@
 		    this.el.appendChild(this.monthAlt);
 		    this.backFill();
 		    this.currentMonth();
+		    currentMonthLargeIcon(self);
 		    this.fowardFill();
 		    this.month.className = 'month new';
 	    }
@@ -112,17 +112,6 @@
 		while(clone.month() === this.current.month()) {
 		    this.drawDay(clone);
 		    clone.add('days', 1);
-		}
-
-		var dollarSign = this.chinese ? '¥' : '$';
-		this.monthAlt.innerHTML = '';
-		for (var i = 0; i < this.events.length; i++) {
-			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
-  										'<div class="kicks-box" style="background:url(' + this.events[i].image + ')">' +
-    									'<div class="cover top-left">' +
-      									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
-      									'<span class="date">' + dollarSign + ' ' + parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
-      									'</span></div><span>5/3</span></div></div></div>';
 		}
 	}
 
@@ -323,6 +312,7 @@
             	});
             }
 		});
+		this.events.sort(function(a,b) { return a.date - b.date; });
 	}
 
 	Calendar.prototype.setColor = function(calendar) {
@@ -379,6 +369,25 @@
 
 	window.Calendar = Calendar;
 
+	function currentMonthLargeIcon(obj) {
+		console.log(obj);
+		var dollarSign = obj.chinese ? '¥' : '$';
+		obj.currentIndex = 0;
+		obj.monthAlt.innerHTML = '';
+		for (var i = obj.currentIndex; i < obj.currentIndex + 6; i++) {
+			if (obj.events[i] === undefined) break;
+			obj.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
+  										'<div class="kicks-box" style="background:url(' + obj.events[i].image + ')">' +
+    									'<div class="cover top-left">' +
+      									'<h2 class="title">' + obj.events[i].eventName + '</h2>' +
+      									'<span class="date">' + dollarSign + ' ' + parseFloat(obj.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
+      									'</span></div></div><span style="color:#4A4A4A;width:100%">' + obj.events[i].date.format('MM/DD') + '</span></div></div>';
+		}
+		obj.currentIndex += 6;
+		if (obj.events[obj.currentIndex] !== undefined) 
+			obj.monthAlt.innerHTML += '<div class="to-view-more"><span>Click to view more <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>';
+	}
+
 	function createElement(tagName, className, innerText) {
 		var ele = document.createElement(tagName);
 		if (className)
@@ -404,10 +413,11 @@ function initCalendar() {
 	try {
   		var calendar = new Calendar('#calendar');
   	} catch(e) {
+  		console.log(e);
   		var chinese = isChinese();
   		var errorDescription = chinese ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
-  		var retryText = chinese ? '重试' : 'Retry'
-  		$('#calendar').css('text-align', 'center').append($('<h3>', {
+  		var retryText = chinese ? '重试' : 'Retry';
+  		$('#calendar').empty().css('text-align', 'center').append($('<h3>', {
   			style: 'color:#4A4A4A',
   			text: errorDescription
   		})).append($('<button>', {
