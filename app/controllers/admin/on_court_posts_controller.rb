@@ -21,6 +21,11 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def create
     new_post = OnCourtPost.new process_content(on_court_post_params)
 
+    if current_admin_user.nil? || !admin_user_signed_in?
+      redirect_to new_admin_user_session_path, :alert => 'You need to login before continue' and return
+    end
+    new_post.author = current_admin_user
+
     if new_post.content_en.count > 2 || new_post.content_cn.count > 2
       redirect_to :back, :alert => "Maximum paragraph number is 2"
       return
@@ -50,7 +55,9 @@ class Admin::OnCourtPostsController < Admin::AdminController
       redirect_to :back, :alert => "Maximum main image number is 2"
       return
     end
-
+    if @on_court_post.author.nil?
+      @on_court_post.author = current_admin_user
+    end
     if @on_court_post.update_attributes(params)
       flash[:notice] = "The on court post has been successfully updated"
 		else

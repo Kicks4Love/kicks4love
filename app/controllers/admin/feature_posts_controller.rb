@@ -22,6 +22,11 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def create
 		feature_post = FeaturePost.new process_content(feature_post_params)
 
+		if current_admin_user.nil? || !admin_user_signed_in?
+			redirect_to new_admin_user_session_path, :alert => 'You need to login before continue' and return
+		end
+		feature_post.author = current_admin_user
+		
 		if feature_post.content_en.count > 12 || feature_post.content_cn.count > 12
 	      	redirect_to :back, :alert => "Maximum paragraph number is 12"
 	      	return
@@ -47,7 +52,9 @@ class Admin::FeaturePostsController < Admin::AdminController
       		redirect_to :back, :alert => "Maximum main image number is 12"
       		return
     	end
-
+		if @feature_post.author.nil?
+			@feature_post.author = current_admin_user
+		end
 		if @feature_post.update_attributes(params)
 			flash[:notice] = "The feature post has been successfully updated"
 		else
