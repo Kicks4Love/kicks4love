@@ -21,9 +21,6 @@ class Admin::TrendPostsController < Admin::AdminController
 	def create
 		trend_post = TrendPost.new process_content(trend_post_params)
 
-		if current_admin_user.nil? || !admin_user_signed_in?
-			redirect_to new_admin_user_session_path, :alert => 'You need to login before continue' and return
-		end
 		trend_post.author = current_admin_user
 
 		if trend_post.content_en.count > 6 || trend_post.content_cn.count > 6
