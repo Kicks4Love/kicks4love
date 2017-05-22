@@ -43,7 +43,7 @@
             <%= link_to "Delete", admin_trend_post_path(trend_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
           </td>
           <td>
-            <% if trend_post.author.nil?%>
+            <% if trend_post.author.nil? %>
               No author
             <% else %>
               <%= trend_post.author.username.empty? ? trend_post.author.email : trend_post.author.username %>

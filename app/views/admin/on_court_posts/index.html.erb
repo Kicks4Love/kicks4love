@@ -39,7 +39,7 @@
           <% @on_court_posts.each do |post| %>
             <tr>
                 <td>
-                  <% if post.author.nil?%>
+                  <% if post.author.nil? %>
                     No author
                   <% else %>
                     <%= post.author.username.empty? ? post.author.email : post.author.username %>
