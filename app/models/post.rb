@@ -17,12 +17,20 @@ class Post < ApplicationRecord
     	indexes :id, index: :not_analyzed
     	indexes :title_en
     	indexes :title_cn
-    	indexes :image
+    	indexes :updated_at, index: :no
+    	indexes :created_at, index: :no
+    	indexes :post_type, index: :no
+    	indexes :pointer_type, index: :no
+    	indexes :pointer_id, index: :no
+    	indexes :image, index: :no
     end	
 
-	def as_indexed_json(options={}) 
-    	self.as_json(only: [:id, :title_cn, :title_en]) 
-  	end 
+	def self.replace_key(old_key, new_key)
+     self[new_key] = self[old_key]
+     self.delete(old_key)
+    end
+
+
 
 	def self.get_posts(chinese)
 		if chinese

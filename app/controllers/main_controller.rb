@@ -21,7 +21,11 @@ class MainController < ApplicationController
 
 	def search_result
 		@page_title = 'Kicks4Love鞋侣 | Search搜索结果'
-		@post_content = Post.search((params[:search].present? ? params[:search] : '*')).records
+		post_content = Elasticsearch::Model.search((params[:search].present? ? params[:search] : '*'), [Post, FeaturePost, OnCourtPost,TrendPost] ).records
+		#@feature_content = FeaturePost.search((params[:search].present? ? params[:search] : '*')).records
+		#@trend_content = TrendPost.search((params[:search].present? ? params[:search] : '*')).records
+		#@oncourt_content = OnCourtPost.search((params[:search].present? ? params[:search] : '*')).records
+		#post_content[:title] = post_content.delete(:title_en)
 	end
 
 	def features
