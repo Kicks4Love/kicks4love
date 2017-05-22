@@ -229,7 +229,7 @@ a {
 .social-media a:nth-child(3) {
     color: #af0eaa
 }
-.social-media a:nth-child(1):hover, .social-media a:nth-child(2):hover, .social-media a:nth-child(3):hover {
+.social-media a:hover {
     opacity: 0.5;
 }
 

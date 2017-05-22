@@ -15,7 +15,9 @@ module Kicks4love
     config.exceptions_app = self.routes
     config.social_media = {
     	:facebook => 'https://www.facebook.com/kicks4love',
+        :facebook_app_id => '1915795425355109',
     	:weibo => 'https://weibo.com/u/5704994024',
+        :weibo_u_id => '5704994024',
     	:instagram => 'https://www.instagram.com/kicks4love'
     }
     config.email_list = {

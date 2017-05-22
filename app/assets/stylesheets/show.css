@@ -33,3 +33,23 @@
 .main figure {
   margin: 2em 0 1em;
 }
+.main .share-link button {
+  color: white;
+  margin: 3px 0;
+  text-transform: capitalize;
+}
+.main .share-link span {
+  font-size: 0.8em;
+}
+.main .share-link hr {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+#facebook-share {
+  background-color: #3b5998;
+  border-color: #3b5998;
+} 
+#weibo-share {
+  background-color: #ce2f00;
+  border-color: #ce2f00;
+} 

@@ -16,6 +16,10 @@
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	    <!-- Common JS -->
+	    <script>
+	    	var facebookAppId = "<%= Rails.application.config.social_media[:facebook_app_id] %>";
+	    	var weiboUId = "<%= Rails.application.config.social_media[:weibo_u_id] %>";
+	    </script>
 	    <%= javascript_include_tag "application.js" %>
 	</head>
   	<body>
