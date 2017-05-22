@@ -6,6 +6,9 @@
 <label>Email:</label>
 <p><%= @admin_user.email %></p>
 
+<label>Username:</label>
+<p><%= @admin_user.username %></p>
+
 <label>Role:</label>
 <p><%= @admin_user.root_user? ? 'Root' : 'Admin' %></p>
 
@@ -29,7 +32,7 @@
 
 <br/>
 
-<% 
+<%
 	is_root_user = @admin_user.root_user?
 	is_same_user = @admin_user.email == current_admin_user.email
 %>

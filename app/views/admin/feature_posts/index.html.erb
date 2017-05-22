@@ -24,6 +24,7 @@
 		<tbody>
 			<tr>
 				<th></th>
+				<th>Author</th>
 				<th>Title (English)</th>
 				<th>中文标题</th>
 				<th>Content (English)</th>
@@ -39,6 +40,13 @@
 						<%= link_to "Edit", edit_admin_feature_post_path(feature_post) %>
 						|
 						<%= link_to "Delete", admin_feature_post_path(feature_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+					</td>
+					<td>
+						<% if feature_post.author.nil? %>
+							No author
+						<% else %>
+							<%= feature_post.author.username.empty? ? feature_post.author.email : feature_post.author.username %>
+						<% end %>
 					</td>
 					<td><%= feature_post.title_en %></td>
 					<td><%= feature_post.title_cn %></td>

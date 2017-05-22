@@ -6,6 +6,8 @@ class OnCourtPost < ApplicationRecord
 	serialize :content_cn, Array
 	serialize :main_images, JSON
 
+	belongs_to :author, class_name: "AdminUser"
+
 	scope :latest, -> {order("created_at DESC")}
 	scope :old, -> {where("created_at < ?", 3.month.ago)}
 	scope :with_link, -> {where("content_en IS NOT NULL AND content_cn IS NOT NULL AND main_images IS NOT NULL")}

@@ -23,6 +23,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Author</th>
                 <th>Title (English)</th>
                 <th>中文标题</th>
                 <th>Content (English)</th>
@@ -37,6 +38,13 @@
       <tbody>
           <% @on_court_posts.each do |post| %>
             <tr>
+                <td>
+                  <% if post.author.nil? %>
+                    No author
+                  <% else %>
+                    <%= post.author.username.empty? ? post.author.email : post.author.username %>
+                  <% end %>
+                </td>
                 <td><%= post.title_en %></td>
                 <td><%= post.title_cn %></th>
                 <% if post.content_en.any?%>
