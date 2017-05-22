@@ -7,6 +7,8 @@ class FeaturePost < ApplicationRecord
 	serialize :main_images, JSON
 	serialize :post_composition, JSON
 
+	belongs_to :author, class_name: "AdminUser"
+
   	scope :latest, -> {order(:created_at => :DESC)}
 	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
