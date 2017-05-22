@@ -41,6 +41,7 @@ class MainController < ApplicationController
 			@page_title = @feature_post.title_en
 			@content = @feature_post.content_en
 		end
+		@og_image = @feature_post.cover_image.url
 	end
 
 	def calendar
@@ -69,6 +70,7 @@ class MainController < ApplicationController
 			@content = @trend_post.content_en
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
+		@og_image = @trend_post.cover_image.url
 	end
 
 	def oncourt
@@ -93,6 +95,7 @@ class MainController < ApplicationController
 			@content = @oncourt_post.content_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
+		@og_image = @oncourt_post.cover_image.url
 	end
 
 	def terms

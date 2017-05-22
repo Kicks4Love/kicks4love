@@ -26,7 +26,6 @@
     <%= render "share" %>
 </article>
 
-<script>
-    setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
-    initApplication(true);
-</script>
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "show.js" %>
+<% end %>

@@ -22,9 +22,7 @@ function initLoadPostHandler() {
             url: '/main/get_posts?next_page=' + nextPage.val() + '&source_page=trend',
             dataType: "json",
             success: function(data) { 
-                console.log(data);
             	var parent = $('#kicks-posts');
-                console.log(parent);
             	for (var i = 0; i < data.posts.length; i++) {
             		parent.append(
                         '<a href="/trend/' + data.posts[i].post.id + '" class="kicks-post col-xs-12 col-sm-6 col-lg-4 wait_load" ' +
