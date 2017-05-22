@@ -7,6 +7,7 @@
 <table class="table table-bordered">
     <thead>
         <th>Email</th>
+        <th>Username</th>
         <th>Login Count</th>
         <th>Last Login Time</th>
         <th>Last Sign In IP</th>
@@ -16,6 +17,7 @@
     <tbody style="<%= 'background-color:lightgreen' if current_admin_user.root_user? %>">
         <tr>
             <td><%= @root_user.email %></td>
+            <td><%= @root_user.username %></td>
             <td><%= @root_user.sign_in_count %></td>
             <td><%= @root_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= @root_user.last_sign_in_ip %></td>
@@ -32,6 +34,7 @@
     <table class="table table-bordered">
         <thead>
             <th>Email</th>
+            <th>Username</th>
             <th>Login Count</th>
             <th>Last Login Time</th>
             <th>Last Sign In IP</th>
@@ -42,6 +45,7 @@
             <% @admin_users.each do |admin_user| %>
                 <tr style="<%= 'background-color:lightgreen' if current_admin_user.email == admin_user.email %>">
                     <td><%= admin_user.email %></td>
+                    <td><%= admin_user.username %></td>
                     <td><%= admin_user.sign_in_count %></td>
                     <td><%= admin_user.last_sign_in_at.strftime("%Y-%m-%d %H:%M") %></td>
                     <td><%= admin_user.last_sign_in_ip %></td>
