@@ -15,11 +15,11 @@
     <% unless @content[i].nil? %>
       <p><%= @content[i] %></p>
     <% end %>
-    <figure>
-      <% unless @oncourt_post.main_images[i].nil? %>
+    <% unless @oncourt_post.main_images[i].nil? %>
+      <figure>
         <%= image_tag @oncourt_post.main_images[i].url %>
-      <% end %>
-    </figure>
+      </figure>  
+    <% end %>
   <% end %>
 </article>
 

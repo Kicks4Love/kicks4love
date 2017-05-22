@@ -32,8 +32,15 @@ class MainController < ApplicationController
 
 	def feature_show
 		@feature_post = FeaturePost.find(params[:id])
-		@page_title = @chinese ? @feature_post.title_cn : @feature_post.title_en
-		@content = @chinese ? @feature_post.content_cn : @feature_post.content_en
+		if @chinese 
+			@category = '专题'
+			@page_title = @feature_post.title_cn
+			@content = @feature_post.content_cn
+		else
+			@category = 'Features'
+			@page_title = @feature_post.title_en
+			@content = @feature_post.content_en
+		end
 	end
 
 	def calendar
