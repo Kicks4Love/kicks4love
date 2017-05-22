@@ -1,0 +1,18 @@
+
+<br>
+<br>
+<br>
+<br>
+
+<%= @post_content %>
+<ul>
+  <% @post_content.each do |p| %>
+    <li>
+      <h3>
+        <%= p.title_en %> <%= p.title_cn %> 
+        <img alt="Icon" src="<%= p.image.url %>" />
+       
+      </h3>
+    </li>
+  <% end %>
+</ul>

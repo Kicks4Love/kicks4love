@@ -59,7 +59,7 @@
 
 				<div class ="navbar-form navbar-right" role="search">
 					<% search_term = t("What_are_you_looking_for") %>
-            		<%= form_tag(admin_posts_path, method: :get) do %>
+            		<%= form_tag(search_result_path, method: :get) do %>
     					<%= text_field_tag :search, params[:search], placeholder: search_term %>	
     					<%= submit_tag t("Go"), :name => nil, class: "btn btn-secondary" %>	
     				<%end%>				

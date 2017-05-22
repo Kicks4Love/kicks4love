@@ -19,6 +19,11 @@ class MainController < ApplicationController
 		@feeds = all_feeds[0..2]
 	end
 
+	def search_result
+		@page_title = 'Kicks4Love鞋侣 | Search搜索结果'
+		@post_content = Post.search((params[:search].present? ? params[:search] : '*')).records
+	end
+
 	def features
 		@page_title = 'Kicks4Love鞋侣 | Features专题'
 		@feature_posts = FeaturePost.latest.paginate(:page => 1)
