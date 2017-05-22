@@ -9,7 +9,7 @@
     <% @feature_posts.each_with_index do |feature_post, index| %>
         <% left = (index%2 == 0) %>
         <div class="kicks-post <%= ' alt' unless left %>">
-            <div class="photo<%= left ? ' photo-left' : ' photo-right' %>" style="background:url('<%= feature_post.cover_image.url %>');background-size:cover;background-position:center"></div>
+            <div class="photo<%= left ? ' photo-left' : ' photo-right' %>" style="background-image:url('<%= feature_post.cover_image.url %>');background-size:cover;background-position:center"></div>
             <div class="kicks-post-content">
                 <a href="/features/<%= feature_post.id %>"><h1><%= feature_post.title %></h1></a>
                 <h2><%= feature_post.created_at.strftime("%Y-%m-%d") %></h2>

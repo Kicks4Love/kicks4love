@@ -27,7 +27,7 @@ function initLoadPostHandler() {
                               var right = i%2 == 0;
                   		parent.append(
                               '<div class="kicks-post' + (right ? ' alt' : '') + '">' +
-                              '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background:url(' + data.posts[i].image_url + ');background-size:cover;background-position:center"></div>' +
+                              '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background-image:url(' + data.posts[i].image_url + ');background-size:cover;background-position:center"></div>' +
                               '<div class="kicks-post-content">' +
                               '<a href="/features/' + data.posts[i].post.id + '"><h1>' + data.posts[i].post.title + '</h1></a>' + 
                               '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' + 

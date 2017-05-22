@@ -20,26 +20,13 @@
                             when "ON_COURT"
                                 url = "/oncourt/#{post.pointer_id}"
                             end
-                            case index
-                            when 0
-                                color = "pink"
-                            when 1
-                                color = "lightblue"
-                            when 2
-                                color = "lightgreen"
-                            when 3
-                                color = "#edc26d"
-                            when 4
-                                color ="#cb77ea"
-                            end
                         %>
-                        <li data-color="<%= color %>">
+                        <li style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url(<%= post.image.url %>)">
                             <a href="<%= url %>">
                                 <div class="slide-filter">
                                     <u><h3><%= post.title %></h3></u>
                                 </div>
                             </a>
-                            <%= image_tag post.image.url %>
                         </li>
                     <% end %> 
                 </ul>

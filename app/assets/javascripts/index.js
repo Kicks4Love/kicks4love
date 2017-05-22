@@ -25,10 +25,7 @@ function initImageSlider() {
 	$('#previous').click(function(){slideLeft();});
 		
 	$('#pagination-wrap ul').empty();
-	$.each($('#slider-wrap ul li'), function() { 
-	   var color = $(this).attr("data-color");
-	   $(this).css("background-color", color);
-	   
+	$.each($('#slider-wrap ul li'), function() { 	   
 	   var li = document.createElement('li');
 	   $('#pagination-wrap ul').append(li);	   
 	});

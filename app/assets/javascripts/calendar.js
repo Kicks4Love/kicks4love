@@ -123,7 +123,7 @@
 		for (var i = this.currentIndex; i < this.currentIndex + 3; i++) {
 			if (this.events[i] === undefined) break;
 			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
-  										'<div class="kicks-box" style="background:url(' + this.events[i].image + ')">' +
+  										'<div class="kicks-box" style="background-image:url(' + this.events[i].image + ')">' +
     									'<div class="cover top-left">' +
       									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
       									'<span class="date">' + dollarSign + ' ' + parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
@@ -143,7 +143,7 @@
 				for (var i = self.currentIndex; i < self.currentIndex + 3; i++) {
 					if (self.events[i] === undefined) break;
 					self.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
-  										'<div class="kicks-box" style="background:url(' + self.events[i].image + ')">' +
+  										'<div class="kicks-box" style="background-image:url(' + self.events[i].image + ')">' +
     									'<div class="cover top-left">' +
       									'<h2 class="title">' + self.events[i].eventName + '</h2>' +
       									'<span class="date">' + dollarSign + ' ' + parseFloat(self.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
