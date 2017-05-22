@@ -46,7 +46,7 @@
 						<% if trend_post.author.nil?%>
 							No author
 						<% else %>
-							<%= trend_post.author.email %>
+            <%= trend_post.author.username.empty? ? trend_post.author.email : trend_post.author.username %>
 						<% end %>
 					</td>
           <td><%= trend_post.title_en %></td>

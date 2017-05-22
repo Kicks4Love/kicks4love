@@ -45,7 +45,7 @@
 						<% if feature_post.author.nil?%>
 							No author
 						<% else %>
-							<%= feature_post.author.email %>
+							<%= feature_post.author.username.empty? ? feature_post.author.email : feature_post.author.username %>
 						<% end %>
 					</td>
 					<td><%= feature_post.title_en %></td>
