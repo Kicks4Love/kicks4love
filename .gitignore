@@ -7,7 +7,6 @@ public/*
 tmp/*
 
 # ignore lock
-Gemfile.lock
 db/schema.rb
 
 # ignore secret
