@@ -1,209 +1,208 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   	<head>
-	    <title><%= @page_title || "Kicks4Love鞋侣" %></title>
-	    <%= favicon_link_tag 'favicon.png' %>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <meta name="description" content="The destination for all sneaker fans and trend enthusiasts 所有球鞋热爱家和潮流脑残粉的终点平台">
-	    <meta name="author" content="RHBoys">
-	    <meta property="og:image" content="<%= @og_image || image_url('main_logo.png') %>" />
+  	    <title><%= @page_title || "Kicks4Love鞋侣" %></title>
+  	    <%= favicon_link_tag 'favicon.png' %>
+  	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	    <meta name="description" content="The destination for all sneaker fans and trend enthusiasts 所有球鞋热爱家和潮流脑残粉的终点平台">
+  	    <meta name="author" content="RHBoys">
+  	    <meta property="og:image" content="<%= @og_image || image_url('main_logo.png') %>" />
 
-	    <!-- Common CSS -->
-	    <%= stylesheet_link_tag "application.css" %>
+  	    <!-- Common CSS -->
+  	    <%= stylesheet_link_tag "application.css" %>
 
-	    <!-- Custom Fonts -->
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	    <!-- Custom Fonts -->
+  	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	    <!-- Common JS -->
-	    <script>
-	    	var facebookAppId = "<%= Rails.application.config.social_media[:facebook_app_id] %>";
-	    	var weiboUId = "<%= Rails.application.config.social_media[:weibo_u_id] %>";
-	    </script>
-	    <%= javascript_include_tag "application.js" %>
-	</head>
+  	    <!-- Common JS -->
+  	    <script>
+  	    	  var facebookAppId = "<%= Rails.application.config.social_media[:facebook_app_id] %>";
+  	    	  var weiboUId = "<%= Rails.application.config.social_media[:weibo_u_id] %>";
+  	    </script>
+  	    <%= javascript_include_tag "application.js" %>
+	  </head>
   	<body>
 
-  		<%= content_for :head %>
-  		<%= hidden_field_tag "language", session[:language] %>
+  		  <%= content_for :head %>
+  		  <%= hidden_field_tag "language", session[:language] %>
   		
       	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        	<div class="container-fluid">
-          		<div class="navbar-header">
-            		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	              		<span class="sr-only">Toggle navigation</span>
-	              		<span class="icon-bar"></span>
-	              		<span class="icon-bar"></span>
-	              		<span class="icon-bar"></span>
-            		</button>
-            		<%= link_to image_tag("nav_logo.png"), :root, :class => "navbar-brand" %>
-          		</div>
-          		<div id="navbar" class="navbar-collapse collapse">
-            		<ul class="nav navbar-nav">
-			            <li><%= link_to t("HOME"), root_path %></li>
-			            <li><%= link_to t("FEATURES"), features_path %></li>
-			            <li><%= link_to t("CALENDAR"), calendar_path %></li>
-			            <li class="dropdown">
-                			<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t("MORE") %><span class="caret"></span></a>
-                			<ul class="dropdown-menu">
-		                  		<li><%= link_to t("TREND"), trend_path %></li>
-		                  		<li><%= link_to t("ON_COURT"), oncourt_path %></li>
-		                  		<li role="separator" class="divider"></li>
-		                  		<li class="dropdown-header"><%= t("LEISURE_ENTERTAINMENT") %></li>
-		                  		<li><a href="#" class="not-work"><%= t("STREET_SNAP") %></a></li>
-		                  		<li><a href="#" class="not-work"><%= t("RUMORS") %></a></li>
-               			 	</ul>
-              			</li>
-            		</ul>
-
-				<div class ="navbar-form navbar-right" role="search">
-					<% search_term = t("What_are_you_looking_for") %>
-            		<%= form_tag(search_result_path, method: :get) do %>
-    					<%= text_field_tag :search, params[:search], placeholder: search_term %>	
-    					<%= submit_tag t("Go"), :name => nil, class: "btn btn-secondary" %>	
-    				<%end%>				
-				</div>
-
-        	</div>
+        	  <div class="container-fluid">
+          		  <div class="navbar-header">
+            		    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    	              		<span class="sr-only">Toggle navigation</span>
+    	              		<span class="icon-bar"></span>
+    	              		<span class="icon-bar"></span>
+    	              		<span class="icon-bar"></span>
+            		    </button>
+            		    <%= link_to image_tag("nav_logo.png"), :root, :class => "navbar-brand" %>
+          		  </div>
+          		  <div id="navbar" class="navbar-collapse collapse">
+            		    <ul class="nav navbar-nav">
+      			            <li><%= link_to t("HOME"), root_path %></li>
+      			            <li><%= link_to t("FEATURES"), features_path %></li>
+      			            <li><%= link_to t("CALENDAR"), calendar_path %></li>
+      			            <li class="dropdown">
+                			      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t("MORE") %><span class="caret"></span></a>
+                			      <ul class="dropdown-menu">
+      		                  		<li><%= link_to t("TREND"), trend_path %></li>
+      		                  		<li><%= link_to t("ON_COURT"), oncourt_path %></li>
+      		                  		<li role="separator" class="divider"></li>
+      		                  		<li class="dropdown-header"><%= t("LEISURE_ENTERTAINMENT") %></li>
+      		                  		<li><a href="#" class="not-work"><%= t("STREET_SNAP") %></a></li>
+      		                  		<li><a href="#" class="not-work"><%= t("RUMORS") %></a></li>
+                     			 	</ul>
+              			    </li>
+            		    </ul>
+            				<div class ="navbar-form navbar-right" role="search">
+                        <%= form_tag(search_path, :method => :get) do %>
+                            <div class="input-group">
+                    				    <%= text_field_tag :search, params[:search], :placeholder => t("What_are_you_looking_for"), :type => "text", :class => "form-control" %>	
+                                <span class="input-group-btn"><%= button_tag t("Go"), :name => nil, :class => "btn btn-secondary" %></span>
+                            </div>
+                    		<% end %>				
+            				</div>
+        	      </div>
+            </div>
         </nav>
         <div class="logo-pendant" style="display:none">
- 			<%= image_tag "main_logo.png" %>
-		</div>
-		<div id='side-nav'>
-    		<ul>
-      			<li>
-        			<a href='#' class="not-work">
-          				<i class="fa fa-user"></i>
-          				<span><%= t("My_Account") %></span>
-        			</a>
-      			</li>
-      			<li>
-        			<a href='#' class="not-work">
-          				<i class="fa fa-shopping-cart"></i>
-          				<span><%= t("My_Cart") %></span>
-        			</a>
-      			</li>
-      			<li>
-        			<a href='#' data-toggle="modal" data-target="#language-modal">
-          				<i class="fa fa-language"></i>
-          				<span><%= t("Language") %></span>
-        			</a>
-      			</li>
-      			<li>
-        			<a href='<%= contact_us_path %>'>
-          				<i class="fa fa-envelope"></i>
-          				<span><%= t("Contact_Us") %></span>
-        			</a>
-      			</li>
-    		</ul>
-		</div>	
-		<% if notice %>
-        	<div class="alert alert-success alert-dismissible" role="alert">
-              	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    				<span aria-hidden="true">&times;</span>
-  				</button>
-              	<%= notice %>
-            </div>
+		          <%= image_tag "main_logo.png" %>
+        </div>
+        <div id='side-nav'>
+		        <ul>
+  			        <li>
+              			<a href='#' class="not-work">
+                				<i class="fa fa-user"></i>
+                				<span><%= t("My_Account") %></span>
+              			</a>
+  			        </li>
+  			        <li>
+            			  <a href='#' class="not-work">
+              				<i class="fa fa-shopping-cart"></i>
+              				<span><%= t("My_Cart") %></span>
+            			</a>
+          			</li>
+          			<li>
+            			  <a href='#' data-toggle="modal" data-target="#language-modal">
+              				  <i class="fa fa-language"></i>
+              				  <span><%= t("Language") %></span>
+            			</a>
+          			</li>
+          			<li>
+            			<a href='<%= contact_us_path %>'>
+              				<i class="fa fa-envelope"></i>
+              				<span><%= t("Contact_Us") %></span>
+            			</a>
+          			</li>
+		        </ul>
+        </div>	
+        <% if notice %>
+    	  <div class="alert alert-success alert-dismissible" role="alert">
+          	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				        <span aria-hidden="true">&times;</span>
+			      </button>
+          	<%= notice %>
+        </div>
         <% end %>
         <% if alert %>
-              <div class="alert alert-danger alert-dismissible" role="alert">
+            <div class="alert alert-danger alert-dismissible" role="alert">
               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    				<span aria-hidden="true">&times;</span>
-  				</button>
+    				        <span aria-hidden="true">&times;</span>
+  				      </button>
               	<%= alert %>
             </div>
         <% end %>
         <noscript>
-	    	<div class="alert alert-danger alert-dismissible" role="alert">
-	    		<p>You have disabled your javascript on your browser. Please go to setting and turn it on.</p>
+  	        <div class="alert alert-danger alert-dismissible" role="alert">
+  		          <p>You have disabled your javascript on your browser. Please go to setting and turn it on.</p>
             </div>
-	    </noscript>
-		<div id="language-modal" class="modal fade" role="dialog">
-  			<div class="modal-dialog">
-    			<div class="modal-content">
-      				<div class="modal-header">
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
-        				<h4 class="modal-title">请选择您的语言</h4>
-        				<h4 class="modal-title">Please choose your language</h4>
-      				</div>
-      				<div class="modal-body">
-        				<%= form_tag url_for(:controller => "main", :action => "change_language"), :id => "language-form", :method => "post" do %>
-        					<%= submit_tag '中文', :onclick => "this.form.submited=this.name;", :class => "btn chinese-option", :name => "language[chinese]" %>
-							<%= submit_tag 'English', :onclick => "this.form.submited=this.name;", :class => "btn english-option", :name => "language[english]" %>
-        				<% end %>
-      				</div>
-      				<div class="modal-footer">
-        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-
-    	<%= yield %>
-
-    	<div class="social-media">
-    		<a href="<%= Rails.application.config.social_media[:facebook] %>" target="_blank" class="fa-stack fa-lg">
-  				<i class="fa fa-circle-thin fa-stack-2x"></i>
-  				<i class="fa fa-facebook fa-stack-1x"></i>
-			</a>
-			<a href="<%= Rails.application.config.social_media[:weibo] %>" target="_blank" class="fa-stack fa-lg">
-  				<i class="fa fa-circle-thin fa-stack-2x"></i>
-  				<i class="fa fa-weibo fa-stack-1x"></i>
-			</a>
-			<a href="<%= Rails.application.config.social_media[:instagram] %>" target="_blank" class="fa-stack fa-lg">
-  				<i class="fa fa-circle-thin fa-stack-2x"></i>
-  				<i class="fa fa-instagram fa-stack-1x"></i>
-			</a>
-    	</div>
-    	<footer>
-		    <div class="container">
-		        <div class="row">
-		            <div class="col-lg-12">
-		                <ul class="list-inline">
-		                    <li>
-		    					<%= link_to t("Home"), root_path %>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li>
-		    					<%= link_to t("Features"), features_path %>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		 					<li>
-		   						<%= link_to t("Calendar"), calendar_path %>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li> 
-		                        <%= link_to t("Trend"), trend_path %>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li>
-		                        <%= link_to t("On_Court"), oncourt_path %>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li>
-		                        <a href="streetsnap.html"><%= t("Street_Snap") %></a>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li>
-		                        <a href="rumors.html"><%= t("Rumors") %></a>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li>
-		                        <%= link_to t("Terms"), terms_path %>
-		                    </li>
-		                    <li class="footer-menu-divider">&sdot;</li>
-		                    <li>
-		                        <%= link_to t("Contact_Us"), contact_us_path %>
-		                    </li>
-		                </ul>
-		                <p class="copyright text-muted small">Copyright &copy; Kicks4love <%= Date.today.year %>. All Rights Reserved</p>
-		            </div>
+        </noscript>
+        <div id="language-modal" class="modal fade" role="dialog">
+		        <div class="modal-dialog">
+			          <div class="modal-content">
+  				          <div class="modal-header">
+    				            <button type="button" class="close" data-dismiss="modal">&times;</button>
+    				            <h4 class="modal-title">请选择您的语言</h4>
+    				            <h4 class="modal-title">Please choose your language</h4>
+  				          </div>
+  				          <div class="modal-body">
+    				            <%= form_tag url_for(:controller => "main", :action => "change_language"), :id => "language-form", :method => "post" do %>
+    					              <%= submit_tag '中文', :onclick => "this.form.submited=this.name;", :class => "btn chinese-option", :name => "language[chinese]" %>
+					                   <%= submit_tag 'English', :onclick => "this.form.submited=this.name;", :class => "btn english-option", :name => "language[english]" %>
+    				            <% end %>
+  				          </div>
+  				          <div class="modal-footer">
+    				            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  				          </div>
+			          </div>
 		        </div>
-		    </div>
-		</footer>
+        </div>
 
-		<%= content_for :end_of_body %>
+	      <%= yield %>
 
+	      <div class="social-media">
+		        <a href="<%= Rails.application.config.social_media[:facebook] %>" target="_blank" class="fa-stack fa-lg">
+        				<i class="fa fa-circle-thin fa-stack-2x"></i>
+        				<i class="fa fa-facebook fa-stack-1x"></i>
+      			</a>
+      			<a href="<%= Rails.application.config.social_media[:weibo] %>" target="_blank" class="fa-stack fa-lg">
+        				<i class="fa fa-circle-thin fa-stack-2x"></i>
+        				<i class="fa fa-weibo fa-stack-1x"></i>
+      			</a>
+      			<a href="<%= Rails.application.config.social_media[:instagram] %>" target="_blank" class="fa-stack fa-lg">
+        				<i class="fa fa-circle-thin fa-stack-2x"></i>
+        				<i class="fa fa-instagram fa-stack-1x"></i>
+      			</a>
+	      </div>
+      	<footer>
+  		      <div class="container">
+  		          <div class="row">
+  		              <div class="col-lg-12">
+    		                <ul class="list-inline">
+    		                    <li>
+    		    					          <%= link_to t("Home"), root_path %>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		                    <li>
+    		    					          <%= link_to t("Features"), features_path %>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		 					          <li>
+    		   						          <%= link_to t("Calendar"), calendar_path %>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		                    <li> 
+    		                        <%= link_to t("Trend"), trend_path %>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		                    <li>
+    		                        <%= link_to t("On_Court"), oncourt_path %>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		                    <li>
+    		                        <a href="streetsnap.html"><%= t("Street_Snap") %></a>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		                    <li>
+    		                        <a href="rumors.html"><%= t("Rumors") %></a>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		                    <li>
+    		                        <%= link_to t("Terms"), terms_path %>
+    		                    </li>
+    		                    <li class="footer-menu-divider">&sdot;</li>
+    		                    <li>
+    		                        <%= link_to t("Contact_Us"), contact_us_path %>
+    		                    </li>
+    		                </ul>
+  		                  <p class="copyright text-muted small">Copyright &copy; Kicks4love <%= Date.today.year %>. All Rights Reserved</p>
+  		              </div>
+  		          </div>
+  		      </div>
+  		  </footer>
+
+        <%= content_for :end_of_body %>
   	</body>
 </html>

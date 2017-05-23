@@ -29,7 +29,7 @@ class FeaturePost < ApplicationRecord
     	indexes :created_at, index: :no
     end	
 
-    def self.custom_search(query)
+    def self.search(query)
         __elasticsearch__.search(
             {
                 query: {
@@ -39,6 +39,16 @@ class FeaturePost < ApplicationRecord
                         fields: ["title_en^1", "title_cn^1", "content_cn", "content_en"],
                         operator: "or",
                         zero_terms_query: "all"
+                    }
+                }, 
+                highlight: {
+                    pre_tags: ['<em>'],
+                    post_tags: ['</em>'],
+                    fields: {
+                        titie_en: {},
+                        titile_cn: {},
+                        content_en: {},
+                        content_cn: {}
                     }
                 }
             }
@@ -51,3 +61,5 @@ class FeaturePost < ApplicationRecord
 	mount_uploader :cover_image, ImageUploader
 
 end
+
+FeaturePost.import

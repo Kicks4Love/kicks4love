@@ -20,8 +20,8 @@ class MainController < ApplicationController
 	end
 
 	def search
-		@page_title = 'Kicks4Love鞋侣 | Search搜索结果'
-		@results = Elasticsearch::Model.custom_search((params[:search].present? ? params[:search] : '*'), [FeaturePost, OnCourtPost, TrendPost] ).records
+		@page_title = 'Kicks4Love鞋侣 | Search搜索'
+		@results = Elasticsearch::Model.search((params[:search].present? ? params[:search] : '*'), [FeaturePost, OnCourtPost, TrendPost]).records[0..10]
 	end
 
 	def features

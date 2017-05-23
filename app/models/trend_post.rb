@@ -11,6 +11,8 @@ class TrendPost < ApplicationRecord
 	serialize :content_cn, Array
 	serialize :main_images, JSON
 
+  belongs_to :author, class_name: "AdminUser"
+
   scope :latest, -> {order(:created_at => :DESC)}
 	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
@@ -26,16 +28,26 @@ class TrendPost < ApplicationRecord
   	indexes :created_at, index: :no
   end
 
-  def self.custom_search(query)
+  def self.search(query)
     __elasticsearch__.search(
       {
         query: {
           multi_match: {
             query: query,
             type:  "best_fields",
-            fields: ["title_en^1", "title_cn^1", "content_cn", "content_en"],
+            fields: ["title_en^1", "title_cn^1", "content_en", "content_cn"],
             operator: "or",
             zero_terms_query: "all"
+          }
+        }, 
+        highlight: {
+          pre_tags: ['<em>'],
+          post_tags: ['</em>'],
+          fields: {
+            title_en: {},
+            title_cn: {},
+            content_en: {},
+            content_cn: {}
           }
         }
       }
@@ -48,3 +60,5 @@ class TrendPost < ApplicationRecord
 	mount_uploaders :main_images, ImageUploader
 
 end
+
+TrendPost.import

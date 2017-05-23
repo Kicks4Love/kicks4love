@@ -31,16 +31,28 @@ class OnCourtPost < ApplicationRecord
     	indexes :created_at, index: :no
     end		
 
-    def self.custom_search(query)
+    def self.search(query)
         __elasticsearch__.search(
             {
-            query: {
-                multi_match: {
-                    query: query,
-                    type:  "best_fields",
-                    fields: ["title_en^2", "title_cn^2", "player_name_en^1", "player_name_cn^1", "content_cn", "content_en"],
-                    operator: "or",
-                    zero_terms_query: "all"
+                query: {
+                    multi_match: {
+                        query: query,
+                        type:  "best_fields",
+                        fields: ["title_en^2", "title_cn^2", "player_name_en^1", "player_name_cn^1", "content_en", "content_cn"],
+                        operator: "or",
+                        zero_terms_query: "all"
+                    }
+                }, 
+                highlight: {
+                    pre_tags: ['<em>'],
+                    post_tags: ['</em>'],
+                    fields: {
+                        title_en: {},
+                        title_cn: {},
+                        player_name_en: {},
+                        player_name_cn: {},
+                        content_en: {},
+                        content_cn: {}
                     }
                 }
             }
@@ -57,3 +69,5 @@ class OnCourtPost < ApplicationRecord
 	end
 
 end
+
+OnCourtPost.import
