@@ -56,19 +56,19 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
     :port                 => 465,
-    :user_name            => Rails.application.config.email_list[:customer_service_email],
+    :user_name            => Rails.application.config.email_list[:customer_service],
     :domain               => 'kicks4love.com',
     :password             => Rails.application.secrets.customer_service_email_password,
     :authentication       => 'plain',
     :ssl                  => true,  
     :tls                  => true 
   }
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  config.middleware.use ExceptionNotification::Rack,
     :email => {
       :deliver_with => :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
       :email_prefix => "[Error] ",
-      :sender_address => %{"error" <Rails.application.config.email_list[:error_notification]>},
-      :exception_recipients => %w{Rails.application.config.email_list[:leon] Rails.application.config.email_list[:daniel] Rails.application.config.email_list[:jackie]},
+      :sender_address => %{"error" <#{Rails.application.config.email_list[:error_notification]}>},
+      :exception_recipients => %W{#{Rails.application.config.email_list[:leon]} #{Rails.application.config.email_list[:daniel]} #{Rails.application.config.email_list[:jackie]}},
       :verbose_subject => true,
       :include_controller_and_action_names_in_subject => true,
       :delivery_method => :smtp,
