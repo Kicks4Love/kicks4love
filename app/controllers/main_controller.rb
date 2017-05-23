@@ -19,13 +19,9 @@ class MainController < ApplicationController
 		@feeds = all_feeds[0..2]
 	end
 
-	def search_result
+	def search
 		@page_title = 'Kicks4Love鞋侣 | Search搜索结果'
-		post_content = Elasticsearch::Model.search((params[:search].present? ? params[:search] : '*'), [Post, FeaturePost, OnCourtPost,TrendPost] ).records
-		#@feature_content = FeaturePost.search((params[:search].present? ? params[:search] : '*')).records
-		#@trend_content = TrendPost.search((params[:search].present? ? params[:search] : '*')).records
-		#@oncourt_content = OnCourtPost.search((params[:search].present? ? params[:search] : '*')).records
-		#post_content[:title] = post_content.delete(:title_en)
+		@results = Elasticsearch::Model.custom_search((params[:search].present? ? params[:search] : '*'), [FeaturePost, OnCourtPost, TrendPost] ).records
 	end
 
 	def features

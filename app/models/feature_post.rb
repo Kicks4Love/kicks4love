@@ -1,8 +1,11 @@
+require 'elasticsearch/model'
+
 class FeaturePost < ApplicationRecord
 
-	attr_accessor :post_type
-	include Elasticsearch::Model
+    include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
+
+	attr_accessor :post_type
     
 	serialize :content_en, Array
 	serialize :content_cn, Array
@@ -24,24 +27,22 @@ class FeaturePost < ApplicationRecord
     	indexes :main_images, index: :no
     	indexes :updated_at, index: :no
     	indexes :created_at, index: :no
-
     end	
-
 
     def self.custom_search(query)
         __elasticsearch__.search(
-        {
-        query: {
-             multi_match: {
-                query: query,
-                type:  "best_fields",
-                fields: ["title_en^9", "title_cn^9", "content_cn", "content_en"],
-                operator: "or",
-                zero_terms_query: "all"
+            {
+                query: {
+                    multi_match: {
+                        query: query,
+                        type:  "best_fields",
+                        fields: ["title_en^1", "title_cn^1", "content_cn", "content_en"],
+                        operator: "or",
+                        zero_terms_query: "all"
+                    }
                 }
             }
-        }
-    )
+        )
     end	
 
 	self.per_page = 3

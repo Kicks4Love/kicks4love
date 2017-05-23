@@ -1,9 +1,11 @@
+require 'elasticsearch/model'
+
 class OnCourtPost < ApplicationRecord
 
-	attr_accessor :post_type
-
-	include Elasticsearch::Model
+    include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
+
+	attr_accessor :post_type
 
 	serialize :content_en, Array
 	serialize :content_cn, Array
@@ -31,18 +33,18 @@ class OnCourtPost < ApplicationRecord
 
     def self.custom_search(query)
         __elasticsearch__.search(
-        {
-        query: {
-             multi_match: {
-                query: query,
-                type:  "best_fields",
-                fields: ["title_en^9", "title_cn^9", "content_cn", "content_en", "player_name_en", "player_name_cn"],
-                operator: "or",
-                zero_terms_query: "all"
+            {
+            query: {
+                multi_match: {
+                    query: query,
+                    type:  "best_fields",
+                    fields: ["title_en^2", "title_cn^2", "player_name_en^1", "player_name_cn^1", "content_cn", "content_en"],
+                    operator: "or",
+                    zero_terms_query: "all"
+                    }
                 }
             }
-        }
-    )
+        )
     end 
 
 	self.per_page = 3

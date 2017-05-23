@@ -1,21 +1,21 @@
+require 'elasticsearch/model'
+
 class TrendPost < ApplicationRecord
 
-	attr_accessor :post_type
-
-	include Elasticsearch::Model
+  include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+
+	attr_accessor :post_type
 
 	serialize :content_en, Array
 	serialize :content_cn, Array
 	serialize :main_images, JSON
 
-	belongs_to :author, class_name: "AdminUser"
-
   scope :latest, -> {order(:created_at => :DESC)}
 	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
 	mapping do
-  	indexes :id, index: :not_analyzed
+    indexes :id, index: :not_analyzed
   	indexes :title_en
   	indexes :title_cn
   	indexes :content_cn
@@ -30,10 +30,10 @@ class TrendPost < ApplicationRecord
     __elasticsearch__.search(
       {
         query: {
-           multi_match: {
+          multi_match: {
             query: query,
             type:  "best_fields",
-            fields: ["title_en^9", "title_cn^9", "content_cn", "content_en"],
+            fields: ["title_en^1", "title_cn^1", "content_cn", "content_en"],
             operator: "or",
             zero_terms_query: "all"
           }
