@@ -24,6 +24,22 @@ class TrendPost < ApplicationRecord
   	indexes :main_images, index: :no
   	indexes :updated_at, index: :no
   	indexes :created_at, index: :no
+  end
+
+  def self.custom_search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+           multi_match: {
+            query: query,
+            type:  "best_fields",
+            fields: ["title_en^9", "title_cn^9", "content_cn", "content_en"],
+            operator: "or",
+            zero_terms_query: "all"
+          }
+        }
+      }
+    )
   end		
 
   self.per_page = 3

@@ -29,6 +29,22 @@ class OnCourtPost < ApplicationRecord
     	indexes :created_at, index: :no
     end		
 
+    def self.custom_search(query)
+        __elasticsearch__.search(
+        {
+        query: {
+             multi_match: {
+                query: query,
+                type:  "best_fields",
+                fields: ["title_en^9", "title_cn^9", "content_cn", "content_en", "player_name_en", "player_name_cn"],
+                operator: "or",
+                zero_terms_query: "all"
+                }
+            }
+        }
+    )
+    end 
+
 	self.per_page = 3
 
 	mount_uploader :cover_image, ImageUploader

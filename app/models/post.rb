@@ -25,10 +25,45 @@ class Post < ApplicationRecord
     	indexes :image, index: :no
     end	
 
+
 	def self.replace_key(old_key, new_key)
      self[new_key] = self[old_key]
      self.delete(old_key)
     end
+
+    def self.custom_search(query)
+  		__elasticsearch__.search(
+    	{
+      	query: {
+       		 multi_match: {
+          		query: query,
+          		type:  "best_fields",
+          		fields: ["title_en", "title_cn"],
+          		operator: "or",
+          		zero_terms_query: "all"
+        		}
+      		}
+    	}
+  	)
+	end
+
+
+	#class << self
+	#   def custom_query(query)
+	#    	__elasticsearch__.search(query: multi_match_query(query))
+	#    end
+
+	#    def multi_match_query(query)
+	#    	{
+	 ##  			query: 			query,
+	 #
+	 #   			type:       	"best_fields",
+	 #     			field:     		["title_en", "title_en" ],
+	 #     			tie_breaker: 	0.3
+	 #   		}
+	 #   	}
+	 #   end
+	#end
 
 
 
