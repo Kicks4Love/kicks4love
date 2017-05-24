@@ -38,11 +38,66 @@
 	  	margin-top: 5px;
 	  	margin-bottom: 5px;
 	}
+	.main .pagination {
+		background: white;
+		cursor: default;
+  	}
+  	.main .pagination a, .pagination span, .pagination em {
+    	padding: 0.2em 0.5em;
+    	display: block;
+    	float: left;
+    	margin-right: 1px; 
+    }
+  	.main .pagination .disabled {
+	    color: #999999;
+	    border: 1px solid #dddddd; 
+	}
+  	.main .pagination .current {
+	    font-style: normal;
+	    font-weight: bold;
+	    background: #2e6ab1;
+	    color: white;
+	    border: 1px solid #2e6ab1; 
+	}
+  	.main .pagination a {
+	    text-decoration: none;
+	    color: #105cb6;
+	    border: 1px solid #9aafe5; 
+	}
+    .main .pagination a:hover, .pagination a:focus {
+      	color: #000033;
+      	border-color: #000033; 
+    }
+  	.main .pagination .page_info {
+	    background: #2e6ab1;
+	    color: white;
+	    padding: 0.4em 0.6em;
+	    width: 22em;
+	    margin-bottom: 0.3em;
+	    text-align: center; 
+	}
+    .main .pagination .page_info b {
+      	color: #000033;
+      	background: #6aa6ed;
+      	padding: 0.1em 0.25em; }
+  	.main .pagination:after {
+	    content: ".";
+	    display: block;
+	    height: 0;
+	    clear: both;
+	    visibility: hidden; 
+	}
+	* html .pagination {
+	    height: 1%; 
+	}
+	*:first-child + html .pagination {
+	    overflow: hidden; 
+	}
 </style>
 
 <div class="main container">
 	<h1><%= t("Search_Result") %></h1>
-	<% description = @chinese ? "有#{@total_results}个搜索结果" : "has #{@total_results} result(s) found" %>
+	<% description = @chinese ? "有#{@results.total_entries}个搜索结果" : "has #{@results.total_entries} result(s) found" %>
 	<h4 class="search-term"><%= "\"#{params[:search]}\" #{description}" %></h4>
 	<% @results.each do |post| %>
 		<div class="search-result">
@@ -83,4 +138,5 @@
 
 		</div>
 	<% end %>
+	<%= will_paginate @results, :previous_label => t("Prev_Page"), :next_label => t("Next_Page") %>
 </div>

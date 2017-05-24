@@ -25,7 +25,7 @@ class MainController < ApplicationController
 		query = {
 			query: {
                 multi_match: {
-                    query: params[:search].present? ? params[:search].strip : '*',
+                    query: params[:q].present? ? params[:q].strip : '*',
                     type:  'best_fields',
                     fields: ['title_en^10', 'title_cn^10', 'content_cn', 'content_en'],
                     operator: 'or',
@@ -33,8 +33,7 @@ class MainController < ApplicationController
                 }
             }, highlight: { fields: {:'*' => {}} }
         }
-		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost]).results
-		@total_results = @results.count
+		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost]).page(params[:page] || 1).per_page(10).results
 	end
 
 	def features
