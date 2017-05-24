@@ -13,6 +13,7 @@
 
 #wrapper {
 	max-width: 1020px;
+	padding: 0 30px;
 	margin: 50px auto;
 	height: 400px;
 	position: relative;
@@ -44,9 +45,7 @@
 	color: white;
 }
 #slider-wrap ul#slider li a > div {
-	position:absolute;
-	top: 20px;
-	left: 35px;	
+	margin-top: 180px;	
 }
 #slider-wrap ul#slider li a > div h3 {
 	font-size: 36px;	
@@ -135,11 +134,6 @@
 	position: relative;
 	opacity: 0.7;
 }
-.main .banner-box .new-box p {
-	font-size: 20px;
-	font-weight: 12px;
-	top: 25%;
-}
 .main .banner-box .new-box img {
 	width: 100%;
 }
@@ -151,11 +145,10 @@
  	text-align: center;
 }
 .main .banner-box .new-box p {
-	position:relative;
+	position: relative;
 	font-size:24px;
-	font-weight: 15px;
 	padding: 5px;
- 	top:36%;
+ 	top:25%;
  	margin: 10px;
  	color:white;
  	text-shadow: 1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000,0px 1px 0 #000,0px -1px 0 #000,-1px 0px 0 #000,1px 0px 0 #000,2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0px 2px 0 #000,0px -2px 0 #000,-2px 0px 0 #000,2px 0px 0 #000,1px 2px 0 #000,-1px 2px 0 #000,1px -2px 0 #000,-1px -2px 0 #000,2px 1px 0 #000,-2px 1px 0 #000,2px -1px 0 #000,-2px -1px 0 #000;
@@ -226,10 +219,10 @@
 	}
 	#wrapper {
 		height: 300px;
+		padding: 0;
 	}
 	#slider-wrap ul#slider li a > div {
-		top: 0;
-		left: 0;	
+		margin-top: 120px;	
 	}
 	#slider-wrap ul#slider li a > div h3 {
 		font-size: 25px;	
@@ -257,7 +250,6 @@
  	}
 	.main .banner-box .new-box p {
 		font-size: 15px;
-		font-weight: 10px;
 		color: white;
 		top: 20%;
 		margin: 0;
