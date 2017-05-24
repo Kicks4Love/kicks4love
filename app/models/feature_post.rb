@@ -17,17 +17,19 @@ class FeaturePost < ApplicationRecord
   	scope :latest, -> {order(:created_at => :DESC)}
 	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
-	mapping do
-    	indexes :id, index: :not_analyzed
-    	indexes :title_en
-    	indexes :title_cn
-    	indexes :content_cn
-    	indexes :content_en
-    	indexes :cover_image, index: :no
-    	indexes :main_images, index: :no
-    	indexes :updated_at, index: :no
-    	indexes :created_at, index: :no
-    end	
+    self.per_page = 3
+
+    mount_uploaders :main_images, ImageUploader
+    mount_uploader :cover_image, ImageUploader
+
+    settings index: { number_of_shards: 1 } do
+        #mappings dynamic: 'false' do
+        #    indexes :title_en
+        #    indexes :title_cn
+        #    indexes :content_en
+        #    indexes :content_cn
+        #end
+    end
 
     def self.search(query)
         __elasticsearch__.search(
@@ -35,10 +37,10 @@ class FeaturePost < ApplicationRecord
                 query: {
                     multi_match: {
                         query: query,
-                        type:  "best_fields",
-                        fields: ["title_en^1", "title_cn^1", "content_cn", "content_en"],
-                        operator: "or",
-                        zero_terms_query: "all"
+                        type:  'best_fields',
+                        fields: ['title_en^2', 'title_cn^2', 'content_cn', 'content_en'],
+                        operator: 'or',
+                        zero_terms_query: 'all'
                     }
                 }, 
                 highlight: {
@@ -55,10 +57,9 @@ class FeaturePost < ApplicationRecord
         )
     end	
 
-	self.per_page = 3
-
-	mount_uploaders :main_images, ImageUploader
-	mount_uploader :cover_image, ImageUploader
+    def self.as_indexed_json(options={})
+        self.as_json({only: [:title_en, :title_cn, :content_en, :content_cn]})
+    end
 
 end
 

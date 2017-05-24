@@ -214,6 +214,8 @@ a {
 .main {
     margin-top: 50px;
     max-width: 1020px;
+    font-family: "Helvetica", sans-serif;
+    font-weight: lighter;
 }
 
 .social-media {

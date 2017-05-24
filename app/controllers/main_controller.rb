@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+	
 	before_action :set_locale, :except => [:change_language]
 
 	def index
@@ -21,7 +22,7 @@ class MainController < ApplicationController
 
 	def search
 		@page_title = 'Kicks4Love鞋侣 | Search搜索'
-		@results = Elasticsearch::Model.search((params[:search].present? ? params[:search] : '*'), [FeaturePost, OnCourtPost, TrendPost]).records[0..10]
+		@results = Elasticsearch::Model.search((params[:search].present? ? params[:search] : '*'), [FeaturePost, OnCourtPost, TrendPost]).records
 	end
 
 	def features

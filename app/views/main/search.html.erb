@@ -1,18 +1,60 @@
 <style>
-	ul li {
-		
+	.main h1 {
+		font-size: 40px;
+		font-weight: 300;
+  		margin-bottom: 5px;
+	}
+	.main h4.search-term {
+		font-size: 1.0em;
+		font-weight: light;
+		color: #999;
+		margin: 0;
+		padding: 0;
+	}
+	.main h2 {
+		font-weight: 300;
+	}
+	.main h2 a {
+		text-decoration: none;
+	}
+	.main .search-result {
+	  border-top: 1px solid #cccccc;
+	  padding: 15px 15px 10px;
+	  margin-bottom: 5px;
+	}
+	.main .search-result h2 {
+	  margin-bottom: 0;
+	  margin-top: 0;
+	}
+	.main .post-type {
+	  margin: 0;
+	  padding: 0;
+	  color: green;
+	}
+	.main .post-content {
+	  margin-top: 5px;
+	  margin-bottom: 5px;
 	}
 </style>
 
 <div class="main container">
-	<ul>
-	  <% @results.each do |p| %>
-	    <li>
-	      <h3>
-	        <%= p.title_en %> <%= p.title_cn %> 
-	      </h3>
-	      <p><%= p.content_en[0] %></p>
-	    </li>
-	  <% end %>
-	</ul>
+	<h1>Search Results</h1>
+	<h4 class="search-term"><%= params[:search] %></h4>
+	<% @results.each do |post| %>
+		<div class="search-result">
+			<%  
+                case post.class.name
+                    when "FeaturePost"
+                        url = "/features/#{post.id}"
+                    when "TrendPost"
+                       url = "/trend/#{post.id}"
+                    when "OnCourtPost"
+                        url = "/oncourt/#{post.id}"
+                end
+            %>
+			<h2><a href="<%= url %>"><%= post.title_en %></a></h2>
+			<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= post.class.name %></p>
+			<p class="post-content"><%= post.content_en[0] %></p>
+		</div>
+	<% end %>
 </div>
