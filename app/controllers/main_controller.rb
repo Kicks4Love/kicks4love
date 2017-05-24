@@ -58,7 +58,7 @@ class MainController < ApplicationController
 			@page_title = @feature_post.title_en
 			@content = @feature_post.content_en
 		end
-		@og_image = @feature_post.cover_image.url
+		@og_image = "http://#{request.host}:#{request.port}#{@feature_post.cover_image.url}"
 	end
 
 	def calendar
