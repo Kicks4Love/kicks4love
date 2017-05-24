@@ -98,7 +98,7 @@
 <div class="main container">
 	<h1><%= t("Search_Result") %></h1>
 	<% description = @chinese ? "有#{@results.total_entries}个搜索结果" : "has #{@results.total_entries} result(s) found" %>
-	<h4 class="search-term"><%= "\"#{params[:search]}\" #{description}" %></h4>
+	<h4 class="search-term"><%= "\"#{params[:q]}\" #{description}" %></h4>
 	<% @results.each do |post| %>
 		<div class="search-result">
 			<%  
