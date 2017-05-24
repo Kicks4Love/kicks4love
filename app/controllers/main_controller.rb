@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+	
 	before_action :set_locale, :except => [:change_language]
 
 	def index
@@ -17,6 +18,22 @@ class MainController < ApplicationController
 		all_feeds = Post.get_posts(@chinese)
 		@no_more = 3 >= all_feeds.count
 		@feeds = all_feeds[0..2]
+	end
+
+	def search
+		@page_title = 'Kicks4Love鞋侣 | Search搜索'
+		query = {
+			query: {
+                multi_match: {
+                    query: params[:q].present? ? params[:q].strip : '*',
+                    type:  'best_fields',
+                    fields: ['title_en^10', 'title_cn^10', 'content_cn', 'content_en'],
+                    operator: 'or',
+                    zero_terms_query: 'all'
+                }
+            }, highlight: { fields: {:'*' => {}} }
+        }
+		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost]).page(params[:page] || 1).per_page(10).results
 	end
 
 	def features

@@ -13,7 +13,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    0..150.kilobytes
+    if Rails.env.production?
+      0..150.kilobytes
+    end
   end
 
   process resize_to_limit: [800, 800]
