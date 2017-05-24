@@ -22,7 +22,18 @@ class MainController < ApplicationController
 
 	def search
 		@page_title = 'Kicks4Love鞋侣 | Search搜索'
-		@results = Elasticsearch::Model.search((params[:search].present? ? params[:search] : '*'), [FeaturePost, OnCourtPost, TrendPost]).records
+		query = {
+			query: {
+                multi_match: {
+                    query: params[:search].present? ? params[:search].strip : '*',
+                    type:  'best_fields',
+                    fields: ['title_en^10', 'title_cn^10', 'content_cn', 'content_en'],
+                    operator: 'or',
+                    zero_terms_query: 'all'
+                }
+            }, highlight: { fields: {:'*' => {}} }
+        }
+		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost]).results
 		@total_results = @results.count
 	end
 

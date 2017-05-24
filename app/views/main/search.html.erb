@@ -14,6 +14,9 @@
 	.main h2 {
 		font-weight: 300;
 	}
+	.main em {
+		background: yellow;
+	}
 	.main h2 a {
 		text-decoration: none;
 	}
@@ -44,21 +47,40 @@
 	<% @results.each do |post| %>
 		<div class="search-result">
 			<%  
-                case post.class.name
-                    when "FeaturePost"
+                case post._type
+                    when "feature_post"
                         url = "/features/#{post.id}"
                         tag = "Features"
-                    when "TrendPost"
+                    when "trend_post"
                        	url = "/trend/#{post.id}"
                        	tag = "Trend"
-                    when "OnCourtPost"
-                        url = "/oncourt/#{post.id}"
+                    when "on_court_post"
+                        url = post.content_en.empty? || post.content_cn.empty? ? "/oncourt" : "/oncourt/#{post.id}"
                         tag = "On_Court"
                 end
             %>
-			<h2><a href="<%= url %>"><%= @chinese ? post.title_cn : post.title_en %></a></h2>
-			<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= t(tag) %></p>
-			<p class="post-content"><%= @chinese ? post.content_cn[0] : post.content_en[0] %></p>
+			<% if @chinese %>
+				<h2><a href="<%= url %>"><%= post.try(:highlight).try(:title_cn) ? post.highlight.title_cn[0].html_safe : post.title_cn %></a></h2>
+				<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= t(tag) %></p>
+				<% if post.try(:highlight).try(:content_cn) %>
+        			<% post.highlight.content_cn.each do |snippet| %>
+          				<p><%= snippet.html_safe %>...</p>
+        			<% end %>
+        		<% elsif !post.content_cn.empty? %>
+        			<p><%= post.content_cn[0][0..100] %>...</p>
+      			<% end %>
+      		<% else %>
+      			<h2><a href="<%= url %>"><%= post.try(:highlight).try(:title_en) ? post.highlight.title_en[0].html_safe : post.title_en %></a></h2>
+				<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= t(tag) %></p>
+				<% if post.try(:highlight).try(:content_en) %>
+        			<% post.highlight.content_en.each do |snippet| %>
+          				<p><%= snippet.html_safe %>...</p>
+        			<% end %>
+        		<% elsif !post.content_en.empty? %>
+        			<p><%= post.content_en[0][0..100] %>...</p>
+      			<% end %>
+			<% end %>
+
 		</div>
 	<% end %>
 </div>

@@ -31,32 +31,6 @@ class FeaturePost < ApplicationRecord
         #end
     end
 
-    def self.search(query)
-        __elasticsearch__.search(
-            {
-                query: {
-                    multi_match: {
-                        query: query,
-                        type:  'best_fields',
-                        fields: ['title_en^2', 'title_cn^2', 'content_cn', 'content_en'],
-                        operator: 'or',
-                        zero_terms_query: 'all'
-                    }
-                }, 
-                highlight: {
-                    pre_tags: ['<em>'],
-                    post_tags: ['</em>'],
-                    fields: {
-                        titie_en: {},
-                        titile_cn: {},
-                        content_en: {},
-                        content_cn: {}
-                    }
-                }
-            }
-        )
-    end	
-
     def self.as_indexed_json(options={})
         self.as_json({only: [:title_en, :title_cn, :content_en, :content_cn]})
     end
