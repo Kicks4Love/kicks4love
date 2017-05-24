@@ -23,6 +23,7 @@ class MainController < ApplicationController
 	def search
 		@page_title = 'Kicks4Love鞋侣 | Search搜索'
 		@results = Elasticsearch::Model.search((params[:search].present? ? params[:search] : '*'), [FeaturePost, OnCourtPost, TrendPost]).records
+		@total_results = @results.count
 	end
 
 	def features

@@ -18,43 +18,47 @@
 		text-decoration: none;
 	}
 	.main .search-result {
-	  border-top: 1px solid #cccccc;
-	  padding: 15px 15px 10px;
-	  margin-bottom: 5px;
+	  	border-top: 1px solid #cccccc;
+	  	padding: 15px 15px 10px;
+	  	margin-bottom: 5px;
 	}
 	.main .search-result h2 {
-	  margin-bottom: 0;
-	  margin-top: 0;
+	  	margin-bottom: 0;
+	  	margin-top: 0;
 	}
 	.main .post-type {
-	  margin: 0;
-	  padding: 0;
-	  color: green;
+	  	margin: 0;
+	  	padding: 0;
+	  	color: green;
 	}
 	.main .post-content {
-	  margin-top: 5px;
-	  margin-bottom: 5px;
+	  	margin-top: 5px;
+	  	margin-bottom: 5px;
 	}
 </style>
 
 <div class="main container">
-	<h1>Search Results</h1>
-	<h4 class="search-term"><%= params[:search] %></h4>
+	<h1><%= t("Search_Result") %></h1>
+	<% description = @chinese ? "有#{@total_results}个搜索结果" : "has #{@total_results} result(s) found" %>
+	<h4 class="search-term"><%= "\"#{params[:search]}\" #{description}" %></h4>
 	<% @results.each do |post| %>
 		<div class="search-result">
 			<%  
                 case post.class.name
                     when "FeaturePost"
                         url = "/features/#{post.id}"
+                        tag = "Features"
                     when "TrendPost"
-                       url = "/trend/#{post.id}"
+                       	url = "/trend/#{post.id}"
+                       	tag = "Trend"
                     when "OnCourtPost"
                         url = "/oncourt/#{post.id}"
+                        tag = "On_Court"
                 end
             %>
-			<h2><a href="<%= url %>"><%= post.title_en %></a></h2>
-			<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= post.class.name %></p>
-			<p class="post-content"><%= post.content_en[0] %></p>
+			<h2><a href="<%= url %>"><%= @chinese ? post.title_cn : post.title_en %></a></h2>
+			<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= t(tag) %></p>
+			<p class="post-content"><%= @chinese ? post.content_cn[0] : post.content_en[0] %></p>
 		</div>
 	<% end %>
 </div>
