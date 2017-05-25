@@ -112,6 +112,9 @@
                     when "on_court_post"
                         url = post.content_en.empty? || post.content_cn.empty? ? "/oncourt" : "/oncourt/#{post.id}"
                         tag = "On_Court"
+                    else
+                    	url = "/calendar?date=#{post.release_date}"
+                    	tag = "Calendar"
                 end
             %>
 			<% if @chinese %>
@@ -121,7 +124,7 @@
         			<% post.highlight.content_cn.each do |snippet| %>
           				<p><%= snippet.html_safe %>...</p>
         			<% end %>
-        		<% elsif !post.content_cn.empty? %>
+        		<% elsif !post._type == "calendar_post" && !post.content_cn.empty? %>
         			<p><%= post.content_cn[0][0..100] %>...</p>
       			<% end %>
       		<% else %>
@@ -131,7 +134,7 @@
         			<% post.highlight.content_en.each do |snippet| %>
           				<p><%= snippet.html_safe %>...</p>
         			<% end %>
-        		<% elsif !post.content_en.empty? %>
+        		<% elsif !post._type == "calendar_post" && !post.content_en.empty? %>
         			<p><%= post.content_en[0][0..100] %>...</p>
       			<% end %>
 			<% end %>

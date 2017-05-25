@@ -3,7 +3,7 @@ require 'elasticsearch/model'
 class FeaturePost < ApplicationRecord
 
     include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
+    #include Elasticsearch::Model::Callbacks
 
 	attr_accessor :post_type
     

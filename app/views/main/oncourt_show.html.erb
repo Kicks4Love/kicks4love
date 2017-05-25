@@ -15,7 +15,7 @@
   </header>
   <% @times.times do |i|%>
     <% unless @content[i].nil? %>
-      <p><%= @content[i] %></p>
+      <p><%= @content[i].html_safe %></p>
     <% end %>
     <% unless @oncourt_post.main_images[i].nil? %>
       <figure>
