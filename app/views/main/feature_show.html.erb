@@ -21,7 +21,7 @@
     		  <% image_index += 1 %>
             </figure>
     	<% else %>
-    		<p><%= @content[paragraph_index] %></p>
+    		<p><%= @content[paragraph_index].html_safe %></p>
     		<% paragraph_index += 1 %>
     	<% end %>
     <% end %>

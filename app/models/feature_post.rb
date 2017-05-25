@@ -23,12 +23,12 @@ class FeaturePost < ApplicationRecord
     mount_uploader :cover_image, ImageUploader
 
     settings index: { number_of_shards: 1 } do
-        #mappings dynamic: 'false' do
-        #    indexes :title_en
-        #    indexes :title_cn
-        #    indexes :content_en
-        #    indexes :content_cn
-        #end
+        mappings dynamic: 'false' do
+            indexes :title_en
+            indexes :title_cn
+            indexes :content_en
+            indexes :content_cn
+        end
     end
 
     def self.as_indexed_json(options={})

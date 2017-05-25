@@ -22,12 +22,12 @@ class TrendPost < ApplicationRecord
   mount_uploaders :main_images, ImageUploader
 
   settings index: { number_of_shards: 1 } do
-    #mappings dynamic: 'false' do
-    #  indexes :title_en
-    #  indexes :title_cn
-    #  indexes :content_cn
-    #  indexes :content_en
-    #end
+    mappings dynamic: 'false' do
+      indexes :title_en
+      indexes :title_cn
+      indexes :content_cn
+      indexes :content_en
+    end
   end
 
   def self.as_indexed_json(options={})
