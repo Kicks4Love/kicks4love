@@ -96,7 +96,7 @@
                 </a>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
-                    <p><%= feed.content[0][0..120] %>...</p>
+                    <p><%= ActionView::Base.full_sanitizer.sanitize(feed.content[0][0..120]) %>...</p>
                     <a href="<%= link %>">(<%= t("more") %>)</a>
                     <span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span>
                     <br/><br/>

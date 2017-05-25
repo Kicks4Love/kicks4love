@@ -11,7 +11,10 @@
   <span class="switch-btn"></span>
 </div>
 <br/>
-<span class="press-warning"><%= raw t("DO_NOT_press_this_switch") %></span>
+<div class="opening-scene modal">
+  <span data-text="<%= ActionView::Base.full_sanitizer.sanitize(t("Press_Me_to_switch_mode")) %>"><%= ActionView::Base.full_sanitizer.sanitize(t("Press_Me_to_switch_mode")) %></span>
+</div>
+<span class="press-warning hidden"><%= raw t("Press_Me_to_switch_mode") %></span>
 <div id="calendar"></div>
 <div id="release-modal" class="modal fade" role="dialog">
   	<div class="modal-dialog">

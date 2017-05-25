@@ -375,11 +375,11 @@
 	  		if(this.checked) {
 	  			$(self.monthAlt).fadeOut();
 	    		mainParent.classList.add('active');
-	    		$(self.month).slideDown();
+	    		$(self.month).slideDown('slow');
 	    		legend.removeAttribute('style');
 	    		self.calendarMode = true;
 	  		} else {
-	    		$(self.month).slideUp();
+	    		$(self.month).slideUp('slow');
 	    		legend.style.display = 'none';
 	    		mainParent.classList.remove('active');
 	    		$(self.monthAlt).fadeIn();
@@ -439,6 +439,12 @@ $(document).ready(function() {
 function initCalendar() {
 	try {
   		var calendar = new Calendar('#calendar');
+  		setTimeout(function() { 
+  			$('.opening-scene').remove();
+  			$('body').css('overflow', 'auto');
+  			$('span.press-warning').removeClass('hidden'); 
+  			$('.switch-checkbox').trigger('click');
+  		}, 2500);
   	} catch(e) {
   		var chinese = isChinese();
   		var errorDescription = chinese ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';

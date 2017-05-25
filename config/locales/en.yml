@@ -55,7 +55,7 @@ en:
   Go_Back_Home: "Go Back Home"
   by: "by"
   posted: "posted"
-  DO_NOT_press_this_switch: "<b>DO NOT</b> press this switch"
+  Press_Me_to_switch_mode: "<b>Press Me</b> to switch mode"
   Share_Article_To: "Share Article To"
   facebook: "facebook"
   weibo: "weibo"

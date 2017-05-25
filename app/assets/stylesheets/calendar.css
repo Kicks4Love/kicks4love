@@ -5,6 +5,7 @@ body {
 	-moz-user-select: none;
   -ms-user-select: none;
 	user-select: none;
+  overflow: hidden;
 }
 
 h1, h4 {
@@ -25,6 +26,29 @@ h1, h4 {
   font-size: 20px;
 }
 
+.main .opening-scene {
+  display: block;
+  background-color: black;
+  opacity: 0.5;
+  text-align: center;
+}
+.main .opening-scene span {
+  color: white;
+  font-size: 18px;
+  position: relative;
+  top: 185px;
+  font-weight: lighter;
+}
+.main .opening-scene span:before {
+  content: attr(data-text);
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  color: red;
+  -webkit-animation: fill-text 2s infinite;
+          animation: fill-text 2s infinite;
+}
 .main .header {
   color: white;
 	text-align: center;
@@ -34,7 +58,6 @@ h1, h4 {
 	font-size: 24px;
 	line-height: 50px;
 }
-
 .main .kicks-switch {
   width: 80px;
   height: 40px;
@@ -343,6 +366,15 @@ h1, h4 {
 #calendar .entry.green:after { background: rgba(153, 198, 109, 1); }
 #calendar .entry.yellow:after { background: rgba(249, 233, 0, 1); }
 
+
+@-webkit-keyframes fill-text {
+  50% { width: 100%; }
+  100% { width: 0%; }
+}
+@keyframes fill-text {
+  50% { width: 100%; }
+  100% { width: 0%; }
+}
 @-webkit-keyframes moveFromTopFade {
   from { opacity: .3; height:0px; margin-top:0px; -webkit-transform: translateY(-100%); }
 }
