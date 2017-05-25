@@ -43,4 +43,4 @@ class OnCourtPost < ApplicationRecord
 
 end
 
-OnCourtPost.import
+OnCourtPost.import force: true

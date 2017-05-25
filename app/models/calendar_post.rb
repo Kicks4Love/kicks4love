@@ -25,4 +25,4 @@ class CalendarPost < ApplicationRecord
 
 end
 
-CalendarPost.import
+CalendarPost.import force: true

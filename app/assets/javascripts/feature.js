@@ -31,7 +31,7 @@ function initLoadPostHandler() {
                               '<div class="kicks-post-content">' +
                               '<a href="/features/' + data.posts[i].post.id + '"><h1>' + data.posts[i].post.title + '</h1></a>' + 
                               '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' + 
-                              '<p>' + data.posts[i].post.content.slice(0, 200) + '...</p>' + 
+                              '<p>' + data.posts[i].post.content.slice(0, 120) + '...</p>' + 
                               '<a href="/features/' + data.posts[i].post.id + '" class="kicks-post-more">' + (chinese ? '更多' : 'more') + '</a>' +
                               '</div></div>'
                   		);

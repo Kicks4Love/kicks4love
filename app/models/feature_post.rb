@@ -37,4 +37,4 @@ class FeaturePost < ApplicationRecord
 
 end
 
-FeaturePost.import
+FeaturePost.import force: true

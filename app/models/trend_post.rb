@@ -36,4 +36,4 @@ class TrendPost < ApplicationRecord
 
 end
 
-TrendPost.import
+TrendPost.import force: true
