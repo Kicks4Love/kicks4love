@@ -3,17 +3,9 @@ class MainController < ApplicationController
 	before_action :set_locale, :except => [:change_language]
 
 	def index
-		all_posts = Post.order(:created_at => :DESC)
+		all_posts = Post.latest
 		@news = all_posts.news
 		@posts = all_posts.posts
-
-		if @chinese
-			@news = @news.select("title_cn AS title, image, pointer_id, pointer_type")
-			@posts = @posts.select("title_cn AS title, image, pointer_id, pointer_type")
-		else
-			@news = @news.select("title_en AS title, image, pointer_id, pointer_type")
-			@posts = @posts.select("title_en AS title, image, pointer_id, pointer_type")
-		end
 
 		all_feeds = Post.get_posts(@chinese)
 		@no_more = 3 >= all_feeds.count

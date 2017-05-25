@@ -7,6 +7,8 @@ class Post < ApplicationRecord
 	scope :posts, -> {where(:post_type => :POST)}
 	scope :news, -> {where(:post_type => :NEWS)}
 
+	mount_uploader :image, ImageUploader
+
 	def self.get_posts(chinese)
 		if chinese
 			feature_posts = FeaturePost.select("id, title_cn AS title, content_cn AS content, cover_image, created_at")
@@ -22,7 +24,5 @@ class Post < ApplicationRecord
 			post.content = ApplicationController.helpers.serialized_array_string_to_array(post.content)
 		}
 	end
-
-	mount_uploader :image, ImageUploader
 
 end

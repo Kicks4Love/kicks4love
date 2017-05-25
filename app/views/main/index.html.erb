@@ -10,7 +10,7 @@
         <div id="wrapper">
             <div id="slider-wrap" class="active">
                 <ul id="slider">
-                    <% @posts.each_with_index do |post, index| %>
+                    <% @posts.each do |post| %>
                         <%  
                             case post.pointer_type
                             when "FEATURES"
@@ -24,7 +24,7 @@
                         <li style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(<%= post.image.url %>)">
                             <a href="<%= url %>">
                                 <div class="slide-filter">
-                                    <h3><%= post.title %></h3>
+                                    <h3><%= @chinese ? post.title_cn : post.title_en %></h3>
                                 </div>
                             </a>
                         </li>
