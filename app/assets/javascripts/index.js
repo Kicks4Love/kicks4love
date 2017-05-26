@@ -10,6 +10,8 @@ $(document).ready(function() {
     initApplication(true, true);
 });
 
+$(window).trigger('resize');
+
 function initImageSlider() {
 	var pos = 0;
 	var totalSlides = $('#slider-wrap ul#slider li').length;	

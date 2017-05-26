@@ -17,17 +17,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-@font-face {
-    /* font-properties */
-    font-family: Univers-UltraCondensed;
-    src:url(../fonts/Univers/Univers/Univers-UltraCondensed.otf);
-}
-@font-face {
-    /* font-properties */
-    font-family: UniversLTStd-UltraCn;
-    src:url(../fonts/univers_lt_std_59_ultra_condensed/UniversLTStd-UltraCn.otf);
-}
-
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -44,9 +33,9 @@ a {
 .navbar-brand > img:hover {
    opacity: 0.5;
 }
-
-.search-go-btn {
-   margin-left: 10px;
+.search-form button {
+    color: white;
+    background-color: #999999;
 }
 
 .alert {
@@ -214,7 +203,6 @@ a {
 .main {
     margin-top: 50px;
     max-width: 1020px;
-    font-family: "Helvetica", sans-serif;
     font-weight: lighter;
 }
 
