@@ -209,9 +209,9 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	background: #FF9;
+	background: #f8f8f8;
 	cursor: pointer;
-	color: #4A4A4A;
+	color: #777;
 }
 
 @media only screen and (max-width:767px) {
