@@ -27,12 +27,12 @@
     transition: all 300ms ease-out;
 }
 #kicks-posts .kicks-post h3 {
-    color:white;
+    color: white;
     position: absolute;
     bottom: 80px;
     margin: 0;
-    font-size: 45px;
-    line-height: 0.8;
+    font-size: 35px;
+    line-height: 0.9;
     text-transform: uppercase;
     text-align: left;
     z-index: 1;

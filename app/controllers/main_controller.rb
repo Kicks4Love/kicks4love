@@ -43,14 +43,14 @@ class MainController < ApplicationController
 		@feature_post = FeaturePost.find(params[:id])
 		if @chinese 
 			@category = '专题'
-			@page_title = @feature_post.title_cn
+			@page_title = "#{@feature_post.title_cn} #{@feature_post.title_en}"
 			@content = @feature_post.content_cn
 		else
 			@category = 'Features'
-			@page_title = @feature_post.title_en
+			@page_title = "#{@feature_post.title_en} #{@feature_post.title_cn}"
 			@content = @feature_post.content_en
 		end
-		@og_image = "http://#{request.host}:#{request.port}#{@feature_post.cover_image.url}"
+		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
 	end
 
 	def calendar
@@ -71,15 +71,15 @@ class MainController < ApplicationController
 		@trend_post = TrendPost.find(params[:id])
 		if @chinese 
 			@category = '潮流趋势'
-			@page_title = @trend_post.title_cn
+			@page_title = "#{@trend_post.title_cn} #{@trend_post.title_en}"
 			@content = @trend_post.content_cn
 		else
 			@category = 'Trend'
-			@page_title = @trend_post.title_en
+			@page_title = "#{@trend_post.title_en} #{@trend_post.title_cn}"
 			@content = @trend_post.content_en
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
-		@og_image = @trend_post.cover_image.url
+		@og_image = "http://#{request.host}#{@trend_post.cover_image.url}"
 	end
 
 	def oncourt
@@ -96,15 +96,15 @@ class MainController < ApplicationController
 		@oncourt_post = OnCourtPost.find(params[:id])
 		if @chinese 
 			@category = '球场时装'
-			@page_title = @oncourt_post.title_cn
+			@page_title = "#{@oncourt_post.title_cn} #{@oncourt_post.title_en}"
 			@content = @oncourt_post.content_cn
 		else
 			@category = 'On Court'
-			@page_title = @oncourt_post.title_en
+			@page_title = "#{@oncourt_post.title_en} #{@oncourt_post.title_cn}"
 			@content = @oncourt_post.content_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
-		@og_image = @oncourt_post.cover_image.url
+		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
 	end
 
 	def terms
