@@ -370,6 +370,7 @@
 		this.el.appendChild(legend);
 
 		var self = this;
+		var warning = $('.press-warning');
 		document.getElementsByClassName('switch-checkbox')[0].addEventListener('click', function() {
 	  		var mainParent = this.parentElement;
 	  		if(this.checked) {
@@ -377,12 +378,14 @@
 	    		mainParent.classList.add('active');
 	    		$(self.month).slideDown('slow');
 	    		legend.removeAttribute('style');
+	    		warning.html(warning.data().calendar);
 	    		self.calendarMode = true;
 	  		} else {
 	    		$(self.month).slideUp('slow');
 	    		legend.style.display = 'none';
 	    		mainParent.classList.remove('active');
 	    		$(self.monthAlt).fadeIn();
+	    		warning.html(warning.data().image);
 	    		self.calendarMode = false;
 	    		updateHeader(self.chinese, self.current, self.events, self.calendarMode);
 	  		}
@@ -433,18 +436,12 @@ $(document).ready(function() {
 	console.log("calendar");
 
 	initCalendar();
-	initApplication(true);
+	initApplication(true, false);
 });
 
 function initCalendar() {
 	try {
   		var calendar = new Calendar('#calendar');
-  		setTimeout(function() { 
-  			$('.opening-scene').remove();
-  			$('body').css('overflow', 'auto');
-  			$('span.press-warning').removeClass('hidden'); 
-  			$('.switch-checkbox').trigger('click');
-  		}, 2500);
   	} catch(e) {
   		var chinese = isChinese();
   		var errorDescription = chinese ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
@@ -459,5 +456,11 @@ function initCalendar() {
   				click: function() {location.reload();}
   			}
   		}));
+  	} finally {
+  		setTimeout(function() { 
+  			$('.opening-scene').remove();
+  			$('body').css('overflow', 'auto');
+  			$('.switch-checkbox').trigger('click');
+  		}, 1000);
   	}
 }

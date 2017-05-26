@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  	initApplication(true);
+  	initApplication(true, true);
 
   	document.getElementById('facebook-share').onclick = function() {
     	FB.ui({

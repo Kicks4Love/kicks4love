@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('#navbar .dropdown ul li').eq(0).addClass('active');
 
 	initLoadPostHandler();
-	initApplication(true);
+	initApplication(true, true);
 });
 
 function initLoadPostHandler() {

@@ -31,12 +31,12 @@ h1, h4 {
   background-color: black;
   opacity: 0.5;
   text-align: center;
+  top: 50px;
 }
 .main .opening-scene span {
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   position: relative;
-  top: 185px;
   font-weight: lighter;
 }
 .main .opening-scene span:before {
@@ -538,7 +538,7 @@ h1, h4 {
 }
 
 @media only screen and (max-width:767px) {
-  .logo-pendant {
+  .logo-pendant.hide-small {
     display: none;
   }
 

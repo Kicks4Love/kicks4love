@@ -12,9 +12,9 @@
 </div>
 <br/>
 <div class="opening-scene modal">
-  <span data-text="<%= ActionView::Base.full_sanitizer.sanitize(t("Press_Me_to_switch_mode")) %>"><%= ActionView::Base.full_sanitizer.sanitize(t("Press_Me_to_switch_mode")) %></span>
+  <span data-text="<%= t('Click_switch_to_change_mode') %>"><%= t("Click_switch_to_change_mode") %></span>
 </div>
-<span class="press-warning hidden"><%= raw t("Press_Me_to_switch_mode") %></span>
+<span class="press-warning" data-calendar="<%= t('Switch_to_Calendar_Mode') %>" data-image="<%= t('Switch_to_Image_Mode') %>"><%= raw t("Switch_to_Image_Mode") %></span>
 <div id="calendar"></div>
 <div id="release-modal" class="modal fade" role="dialog">
   	<div class="modal-dialog">

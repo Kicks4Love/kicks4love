@@ -2,5 +2,5 @@ $(document).ready(function() {
     if (getSourcePage() !== 'contact') return;
 	console.log("contact");
 
-	initApplication(false);
+	initApplication(false, true);
 });

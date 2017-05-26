@@ -17,8 +17,8 @@
 
 var autoSlider = null;
 
-function initApplication(showPendant) {
-	if (!$('#language').val().length)
+function initApplication(showPendant, showLanguage) {
+	if (!$('#language').val().length && showLanguage)
 		$('#language-modal').modal('show');
 
 	$('#language-form').submit(function() {
@@ -31,7 +31,11 @@ function initApplication(showPendant) {
     		return false;
 	});
 
-    if (showPendant) setTimeout(function() { $('.logo-pendant').fadeIn('slow'); }, 1000);
+    if (showPendant) {
+        setTimeout(function() { 
+            $('.logo-pendant').fadeIn('slow', function() { $(this).removeAttr('style'); $(this).addClass('hide-small') }); 
+        }, 1000);
+    }
 
     $('.not-work').on('click submit' ,function(event) {
         event.preventDefault();
