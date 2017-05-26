@@ -375,6 +375,7 @@ h1, h4 {
   50% { width: 100%; }
   100% { width: 0%; }
 }
+
 @-webkit-keyframes moveFromTopFade {
   from { opacity: .3; height:0px; margin-top:0px; -webkit-transform: translateY(-100%); }
 }
@@ -534,4 +535,14 @@ h1, h4 {
   color: #4A4A4A;
   float: left;
   margin-top: 20px;
+}
+
+@media only screen and (max-width:767px) {
+  .logo-pendant {
+    display: none;
+  }
+
+  #side-nav {
+    display: none;
+  }
 }

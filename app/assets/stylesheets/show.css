@@ -53,3 +53,16 @@
   background-color: #ce2f00;
   border-color: #ce2f00;
 } 
+#copy-share {
+  background-color: #999999;
+}
+
+@media only screen and (max-width:767px) {
+  .logo-pendant {
+    display: none;
+  }
+
+  #side-nav {
+    display: none;
+  }
+}
