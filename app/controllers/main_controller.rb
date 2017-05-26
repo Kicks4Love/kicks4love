@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-	
+
 	before_action :set_locale, :except => [:change_language]
 
 	def index
@@ -41,13 +41,15 @@ class MainController < ApplicationController
 
 	def feature_show
 		@feature_post = FeaturePost.find(params[:id])
-		if @chinese 
+		if @chinese
 			@category = '专题'
 			@page_title = "#{@feature_post.title_cn} #{@feature_post.title_en}"
+			@article_title = @feature_post.title_cn
 			@content = @feature_post.content_cn
 		else
 			@category = 'Features'
 			@page_title = "#{@feature_post.title_en} #{@feature_post.title_cn}"
+			@article_title = @feature_post.title_en
 			@content = @feature_post.content_en
 		end
 		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
@@ -62,20 +64,22 @@ class MainController < ApplicationController
 		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
 		if @chinese
 			@all_trend_posts = @all_trend_posts.select("title_cn AS title, cover_image, id, created_at")
-		else 
+		else
 			@all_trend_posts = @all_trend_posts.select("title_en AS title, cover_image, id, created_at")
 		end
 	end
 
 	def trend_show
 		@trend_post = TrendPost.find(params[:id])
-		if @chinese 
+		if @chinese
 			@category = '潮流趋势'
 			@page_title = "#{@trend_post.title_cn} #{@trend_post.title_en}"
+			@article_title = @trend_post.title_cn
 			@content = @trend_post.content_cn
 		else
 			@category = 'Trend'
 			@page_title = "#{@trend_post.title_en} #{@trend_post.title_cn}"
+			@article_title = @trend_post.title_en
 			@content = @trend_post.content_en
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
@@ -94,13 +98,15 @@ class MainController < ApplicationController
 
 	def oncourt_show
 		@oncourt_post = OnCourtPost.find(params[:id])
-		if @chinese 
+		if @chinese
 			@category = '球场时装'
 			@page_title = "#{@oncourt_post.title_cn} #{@oncourt_post.title_en}"
+			@article_title = @oncourt_post.title_cn
 			@content = @oncourt_post.content_cn
 		else
 			@category = 'On Court'
 			@page_title = "#{@oncourt_post.title_en} #{@oncourt_post.title_cn}"
+			@article_title = @oncourt_post.title_en
 			@content = @oncourt_post.content_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
