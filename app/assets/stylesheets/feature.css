@@ -25,6 +25,12 @@
   box-sizing: border-box;
   position: relative;
 }
+.main .kicks-post .kicks-post-content a:hover {
+  text-decoration: none;
+}
+.main .kicks-post .kicks-post-content a:hover h1 {
+  opacity: 0.5;
+}
 .main .kicks-post .kicks-post-content h1 {
   color: #4A4A4A;
   font-size: 26px;

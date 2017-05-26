@@ -21,7 +21,7 @@
 		<label>Release Date:</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_field :release_date, :value => Date.today %>
+		<%= form.text_field :release_date, :value => @calendar_post.new_record? ? Date.today : @calendar_post.release_date.strftime("%Y-%m-%d") %>
 	</div>
 </div>
 <br>

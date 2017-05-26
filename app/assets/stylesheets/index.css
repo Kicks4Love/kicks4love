@@ -46,10 +46,10 @@
 }
 #slider-wrap ul#slider li a > div {
 	padding: 0 40px;
-	margin-top: 180px;	
+	margin-top: 150px;	
 }
 #slider-wrap ul#slider li a > div h3 {
-	font-size: 36px;	
+	font-size: 42px;	
 }
 #slider-wrap ul#slider li img {
 	height: 100%;
@@ -168,6 +168,12 @@
 	cursor:pointer;
 }
 
+.main .kicks-intro a:hover, #wrapper #slider a:hover {
+	text-decoration: none;
+}
+.main .kicks-intro a:hover .feed-title h3, #wrapper #slider a:hover .slide-filter h3 {
+	opacity: 0.5;
+}
 .main .kicks-intro .feed-title {
 	color: rgb(38, 38, 38);
 	margin: 0;
