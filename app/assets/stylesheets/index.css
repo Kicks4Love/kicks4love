@@ -45,6 +45,7 @@
 	color: white;
 }
 #slider-wrap ul#slider li a > div {
+	padding: 0 40px;
 	margin-top: 180px;	
 }
 #slider-wrap ul#slider li a > div h3 {

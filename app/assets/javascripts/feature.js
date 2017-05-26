@@ -31,8 +31,9 @@ function initLoadPostHandler() {
                                     right = i%2 === 0;
                   		parent.append(
                               '<div class="kicks-post' + (right ? ' alt' : '') + '">' +
+                              '<a href="/features/' + data.posts[i].post.id + '">' +
                               '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background-image:url(' + data.posts[i].image_url + ');background-size:cover;background-position:center"></div>' +
-                              '<div class="kicks-post-content">' +
+                              '</a><div class="kicks-post-content">' +
                               '<a href="/features/' + data.posts[i].post.id + '"><h1>' + data.posts[i].post.title + '</h1></a>' + 
                               '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' + 
                               '<p>' + data.posts[i].post.content[0].trim().slice(0, 120) + '...</p>' + 
