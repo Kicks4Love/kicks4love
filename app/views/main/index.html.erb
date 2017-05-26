@@ -61,7 +61,7 @@
                     <a href="<%= url %>">
                         <%= image_tag news.image.url %>
                         <div class="kicks-filter">
-                            <p><%= news.title %></p>
+                            <p><%= @chinese ? news.title_cn : news.title_en %></p>
                         </div>
                     </a>
                 </div>

@@ -460,7 +460,7 @@ function initCalendar() {
   		setTimeout(function() { 
   			$('.opening-scene').remove();
   			$('body').css('overflow', 'auto');
-  			$('.switch-checkbox').trigger('click');
+  			if (!getQueryParams().date) $('.switch-checkbox').trigger('click');
   		}, 1000);
   	}
 }

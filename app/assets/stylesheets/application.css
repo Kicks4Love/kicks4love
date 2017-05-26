@@ -204,6 +204,7 @@ a {
     margin-top: 50px;
     max-width: 1020px;
     font-weight: lighter;
+    font-family: "Helvetica", sans-serif;
 }
 
 .pagination {
