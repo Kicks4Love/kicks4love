@@ -294,6 +294,21 @@ p.copyright {
         height: auto;
     }
 
+    .logo-pendant {
+        right: 5px;
+        top: 100px;
+        width: 60px;
+    }
+    .logo-pendant:before {
+        width: 70px;
+        height: 70px;
+        top: -40px;
+        margin-left: -35px;
+    }
+    .logo-pendant:after {
+        top: -60px;
+    }
+
     #side-nav .fa {
         font-size: 18px;
         width: 35px;

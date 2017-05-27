@@ -26,7 +26,7 @@
   	<body>
 
   		  <%= content_for :head %>
-  		  <%= hidden_field_tag "language", session[:language] %>
+  		  <%= hidden_field_tag "language", cookies[:language] %>
   		
       	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         	  <div class="container-fluid">

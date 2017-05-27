@@ -231,7 +231,7 @@ class MainController < ApplicationController
 		redirect_to :back and return unless params[:language].present?
 
 		I18n.locale = params[:language][:chinese].present? ? :cn : :en
-		session[:language] = I18n.locale
+		cookies[:language] = I18n.locale
 
 		redirect_to :back
 	end
@@ -239,8 +239,8 @@ class MainController < ApplicationController
 	private
 
 	def set_locale
-  		I18n.locale = session[:language] || I18n.default_locale
-  		@chinese = session[:language] == "cn"
+  		I18n.locale = cookies[:language] || I18n.default_locale
+  		@chinese = cookies[:language] == "cn"
 	end
 
 end
