@@ -95,7 +95,8 @@ function initLoadPostHandler() {
                 		'<div class="feed-title"><h3>' + data.posts[i].post.title + '</h3></div></a>' +
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
-                    	'<span>' + data.posts[i].post.content[0].trim().slice(0, 120) + '...</span>' +
+                		// hacky way to remove any html tags in the content
+                    	'<span>' + $('<p>' + data.posts[i].post.content[0] + '</p>').text().trim().slice(0, 120) + '...</span>' +
                     	'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
                     	'<br/><br/><i class="fa fa-tags" aria-hidden="true"></i>' +

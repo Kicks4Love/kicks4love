@@ -36,7 +36,8 @@ function initLoadPostHandler() {
                               '</a><div class="kicks-post-content">' +
                               '<a href="/features/' + data.posts[i].post.id + '"><h1>' + data.posts[i].post.title + '</h1></a>' + 
                               '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' + 
-                              '<p>' + data.posts[i].post.content[0].trim().slice(0, 120) + '...</p>' + 
+                              // hacky way to remove any html tags in the content
+                              '<p>' + $('<p>' + data.posts[i].post.content[0] + '</p>').text().trim().slice(0, 120) + '...</p>' + 
                               '<a href="/features/' + data.posts[i].post.id + '" class="kicks-post-more">' + (chinese ? '更多' : 'more') + '</a>' +
                               '</div></div>'
                   		);

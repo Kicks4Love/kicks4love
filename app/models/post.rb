@@ -20,9 +20,7 @@ class Post < ApplicationRecord
 			on_court_posts = OnCourtPost.select("id, title_en AS title, content_en AS content, cover_image, created_at").with_link
 		end
 		
-		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse.each {|post| 
-			post.content = ApplicationController.helpers.serialized_array_string_to_array(post.content)
-		}
+		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse.each {|post| post.content = YAML.load(post.content)}
 	end
 
 end
