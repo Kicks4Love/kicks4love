@@ -286,8 +286,10 @@
 
 	      		var data = this.dataset;
 	      		var modal = document.getElementById('release-modal');
+	      		var modalImage = modal.querySelector('.modal-body > img');
 	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
-	      		modal.querySelector('.modal-body > img').setAttribute('src', data.image);
+	      		modalImage.setAttribute('src', '');
+	      		modalImage.setAttribute('src', data.image);
 	      		var span = createElement('span', '', dollarSign + ' ' + parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
 	      		modal.getElementsByClassName('modal-footer')[0].appendChild(span);
 	      	});
