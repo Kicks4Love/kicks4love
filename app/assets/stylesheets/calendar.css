@@ -537,13 +537,3 @@ h1, h4 {
   float: left;
   margin-top: 20px;
 }
-
-@media only screen and (max-width:767px) {
-  .logo-pendant.hide-small {
-    display: none;
-  }
-
-  #side-nav {
-    display: none;
-  }
-}
