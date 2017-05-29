@@ -35,10 +35,12 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bund
 
 namespace :deploy do
 	desc "Fix permission"
-   	task :fix_permissions, :roles => [:app, :db, :web] do
-     	run "#{try_sudo} chmod -R 777 #{current_path}/tmp"
-     	run "#{try_sudo} chmod -R 777 #{current_path}/public/uploads"
+   	task :fix_permissions do
+   		on roles(:app) do
+	     	run "#{try_sudo} chmod -R 777 #{current_path}/tmp"
+	     	run "#{try_sudo} chmod -R 777 #{current_path}/public/uploads"
+	    end
    	end
 end
 
-after "deploy:finalize_update", :fix_permissions
+after "deploy:finished", :fix_permissions
