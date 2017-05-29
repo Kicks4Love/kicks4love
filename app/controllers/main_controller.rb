@@ -23,11 +23,7 @@ class MainController < ApplicationController
                     operator: 'or',
                     zero_terms_query: 'all'
                 }
-            }, 
-            highlight: { 
-            	pre_tags: ['<mark>'], 
-            	post_tags: ['</mark>'], 
-  			}
+            }
         }
 		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, CalendarPost]).page(params[:page] || 1).per_page(10).results
 	end
