@@ -44,6 +44,11 @@ Rails.application.routes.draw do
         get 'get_posts'
       end
     end
+    resources :rumor_posts do
+      collection do
+        get 'remove_old'
+      end
+    end
     resources :feature_posts do
       collection do
         get 'remove_old'

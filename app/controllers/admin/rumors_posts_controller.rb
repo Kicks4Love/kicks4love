@@ -1,7 +1,7 @@
 class Admin::RumorsPostsController < Admin::AdminController
 
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
-	before_action :get_feature_post, :only => [:edit, :destroy, :update, :show]
+	before_action :get_rumor_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
 		@page_title = "Kicks4Love Admin | Rumors Posts"
@@ -62,21 +62,21 @@ class Admin::RumorsPostsController < Admin::AdminController
 	end
 
 	def edit
-		@page_title = "Kicks4Love Admin | Edit Feature Post"
+		@page_title = "Kicks4Love Admin | Edit Rumor Post"
 	end
 
 	def destroy
-		if @feature_post.destroy
-			flash[:notice] = "The feature_post has been deleted successfully"
+		if @rumor_post.destroy
+			flash[:notice] = "The object rumor_post has been deleted successfully"
 		else
-			flash[:alert] = "Error occurs while deleting the feature post, please try again"
+			flash[:alert] = "Error occurs while deleting the rumor post, please try again"
 		end
 
-		redirect_to admin_feature_posts_path
+		redirect_to admin_rumor_posts_path
 	end
 
 	def remove_old
-		old_posts = FeaturePost.old
+		old_posts = RumorPost.old
 		return_posts = old_posts.to_a
 		if old_posts.delete_all
 			render :json => return_posts.to_json, :layout => false
@@ -87,9 +87,9 @@ class Admin::RumorsPostsController < Admin::AdminController
 
 	private
 
-	def feature_post_params
+	def rumor_post_params
 		params
-		.require(:feature_post)
+		.require(:rumor_post)
 		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []}, :remove_main_images, :post_composition)
 	end
 
@@ -100,7 +100,7 @@ class Admin::RumorsPostsController < Admin::AdminController
     	return params
   	end
 
-	def get_feature_post
-		@feature_post = FeaturePost.find_by_id(params[:id])
+	def get_rumor_post
+		@rumor_post = RumorPost.find_by_id(params[:id])
 	end
 end
