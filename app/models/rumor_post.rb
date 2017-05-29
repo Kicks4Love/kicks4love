@@ -3,6 +3,7 @@ require 'elasticsearch/model'
 class RumorPost < ApplicationRecord
 
 	include Elasticsearch::Model
+	#include Elasticsearch::Model::Callbacks
 
 	attr_accessor :post_type
 
@@ -22,16 +23,16 @@ class RumorPost < ApplicationRecord
 
   	settings index: { number_of_shards: 1 } do
 	    mappings dynamic: 'false' do
-	      indexes :title_en
-	      indexes :title_cn
-	      indexes :content_cn
-	      indexes :content_en
+	      	indexes :title_en
+		    indexes :title_cn
+		    indexes :content_cn
+		    indexes :content_en
 	    end
 	end
 
 	def self.as_indexed_json(options={})
-    self.as_json({only: [:title_en, :title_cn, :content_en, :content_cn]})
-  end
+    	self.as_json({only: [:title_en, :title_cn, :content_en, :content_cn]})
+  	end
 end
 
 RumorPost.import force: true

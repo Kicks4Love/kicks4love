@@ -8,7 +8,7 @@ function initOldPostRemoval() {
   $("#remove-old").click(function() {
     var self = $(this);
     $.ajax({
-	  type: 'GET',
+	    type: 'GET',
       url: '/admin/rumor_posts/remove_old.json',
       dataType: "json",
       success: function(data) {

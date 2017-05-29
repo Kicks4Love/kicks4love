@@ -49,9 +49,7 @@ class Admin::RumorPostsController < Admin::AdminController
       		redirect_to :back, :alert => "Maximum main image number is 5"
       		return
     	end
-		if @rumor_post.author.nil?
-			@rumor_post.author = current_admin_user
-		end
+		@rumor_post.author = current_admin_user if @rumor_post.author.nil?
 		if @rumor_post.update_attributes(params)
 			flash[:notice] = "The rumor post has been successfully updated"
 		else
@@ -67,7 +65,7 @@ class Admin::RumorPostsController < Admin::AdminController
 
 	def destroy
 		if @rumor_post.destroy
-			flash[:notice] = "The object rumor_post has been deleted successfully"
+			flash[:notice] = "The rumor post has been deleted successfully"
 		else
 			flash[:alert] = "Error occurs while deleting the rumor post, please try again"
 		end
@@ -90,7 +88,7 @@ class Admin::RumorPostsController < Admin::AdminController
 	def rumor_post_params
 		params
 		.require(:rumor_post)
-		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []}, :remove_main_images, :post_composition)
+		.permit(:title_en, :title_cn, :content_en, :content_cn, :cover_image, {main_images: []}, :remove_main_images)
 	end
 
 	def process_content(params)

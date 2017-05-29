@@ -1,4 +1,5 @@
 class Admin::TrendPostsController < Admin::AdminController
+
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_trend_post, :only => [:edit, :destroy, :update, :show]
 
@@ -48,9 +49,7 @@ class Admin::TrendPostsController < Admin::AdminController
       		redirect_to :back, :alert => "Maximum main image number is 6"
       		return
     	end
-		if @trend_post.author.nil?
-			@trend_post.author = current_admin_user
-		end
+		@trend_post.author = current_admin_user if @trend_post.author.nil?
 		if @trend_post.update_attributes(params)
 			flash[:notice] = "The trend post has been successfully updated"
 		else

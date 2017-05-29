@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   get '/trend/:id' => 'main#trend_show'
   get '/oncourt' => 'main#oncourt'
   get '/oncourt/:id' => 'main#oncourt_show'
+  get '/rumors' => 'main#rumors'
   get '/terms' => 'main#terms'
   get '/contact_us' => 'main#contact'
   get '/search' => 'main#search'
-  get '/rumors' => 'main#rumors'
 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
@@ -44,11 +44,6 @@ Rails.application.routes.draw do
         get 'get_posts'
       end
     end
-    resources :rumor_posts do
-      collection do
-        get 'remove_old'
-      end
-    end
     resources :feature_posts do
       collection do
         get 'remove_old'
@@ -65,6 +60,11 @@ Rails.application.routes.draw do
       end
     end
     resources :on_court_posts do
+      collection do
+        get 'remove_old'
+      end
+    end
+    resources :rumor_posts do
       collection do
         get 'remove_old'
       end
