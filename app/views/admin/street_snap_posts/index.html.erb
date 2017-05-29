@@ -1,0 +1,87 @@
+<h1>Admin Street Snaps Posts</h1>
+
+<hr/>
+
+<% if @street_snap_posts.any? %>
+	<%= link_to "Create new street snap post", new_admin_street_snap_post_path, :class => "btn btn-primary" %>
+	<!-- <% if @expired_posts_count > 0 %>
+		<button id="remove-old" class="btn btn-danger">Delete <%= @expired_posts_count %> old posts</button>
+	<% end %> -->
+	<br><br>
+
+	<%= form_for :filter, :url => admin_street_snap_posts_path, :method => :get, :html => {:class => "filter-form"} do |f| %>
+	    <label>Per Page:</label>
+	    <%= f.radio_button :per_page, 5, :checked => @per_page == 5 %>
+	    <%= f.label :per_page, 5, :value => 5 %>
+	    <%= f.radio_button :per_page, 10, :checked => @per_page == 10 %>
+	    <%= f.label :per_page, 10, :value => 10  %>
+
+	    <%= f.submit 'Filter', :class => "btn btn-default"  %>
+	    <%= link_to 'Clear Filter', admin_street_snap_posts_path %>
+	<% end %>
+	<br/>
+	<table class="table table-bordered">
+		<tbody>
+			<tr>
+				<th></th>
+				<th>Author</th>
+				<th>Title (English)</th>
+				<th>中文标题</th>
+				<th>Content (English)</th>
+				<th>文章内容 （中文)</th>
+				<th>Cover Image</th>
+				<th>Main Images</th>
+			</tr>
+		</tbody>
+		<tbody>
+			<% @street_snap_posts.each do |street_snap_post| %>
+				<tr>
+					<td>
+						<%= link_to "Edit", edit_admin_street_snap_post_path(street_snap_post) %>
+						|
+						<%= link_to "Delete", admin_street_snap_post_path(street_snap_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+					</td>
+					<td>
+						<% if street_snap_post.author.nil? %>
+							No author
+						<% else %>
+							<%= street_snap_post.author.username.empty? ? street_snap_post.author.email : street_snap_post.author.username %>
+						<% end %>
+					</td>
+					<td><%= street_snap_post.title_en %></td>
+					<td><%= street_snap_post.title_cn %></td>
+					<% if street_snap_post.content_en.any?%>
+						<td>
+						<%= street_snap_post.content_en.size %> paragraphs
+						</td>
+					<% else %>
+						<td>No content in English</td>
+					<% end %>
+					<% if street_snap_post.content_cn.any?%>
+						<td>
+						<%= street_snap_post.content_cn.size %> 段
+						</td>
+					<% else %>
+						<td>暂无中文内容</td>
+					<% end %>
+					<td><img src="<%= street_snap_post.cover_image.url %>" height="50px" /></td>
+					<td><%= street_snap_post.main_images.size %> main images</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= will_paginate @street_snap_posts, :previous_label => 'Prev', :next_label => 'Next' %>
+<% else %>
+	<h2>No Record</h2>
+
+	<br/>
+
+	<%= link_to "Create a new street snap post now", new_admin_street_snap_post_path, :class => "btn btn-primary" %>
+<% end %>
+
+<br><br>
+
+<p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "admin/street_snap.js" %>
+<% end %>

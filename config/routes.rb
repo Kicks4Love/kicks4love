@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
-  
+
   resources :main do
   	collection do
   		get 'get_posts'
@@ -66,6 +66,11 @@ Rails.application.routes.draw do
       end
     end
     resources :rumor_posts do
+      collection do
+        get 'remove_old'
+      end
+    end
+    resources :street_snap_posts do
       collection do
         get 'remove_old'
       end
