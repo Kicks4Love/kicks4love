@@ -1,0 +1,2 @@
+class RumorPost < ApplicationRecord
+end

@@ -23,7 +23,11 @@ class MainController < ApplicationController
                     operator: 'or',
                     zero_terms_query: 'all'
                 }
-            }, highlight: { fields: {:'*' => {}} }
+            }, 
+            highlight: { 
+            	pre_tags: ['<mark>'], 
+            	post_tags: ['</mark>'], 
+  			}
         }
 		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, CalendarPost]).page(params[:page] || 1).per_page(10).results
 	end
@@ -53,6 +57,10 @@ class MainController < ApplicationController
 			@content = @feature_post.content_en
 		end
 		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
+	end
+
+	def rumors
+		@page_title = 'Kicks4Love鞋侣 | Rumors 流言蜚语'
 	end
 
 	def calendar
