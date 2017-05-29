@@ -37,6 +37,18 @@ function initApplication(showPendant, showLanguage) {
         }, 1000);
     }
 
+    var scrollTopButton = $('#scroll-top');
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 100)
+            scrollTopButton.css('bottom', '15px');
+        else
+            scrollTopButton.removeAttr('style');
+    });
+    scrollTopButton.click(function(){
+        $('html, body').animate({scrollTop : 0},500);
+        return false;
+    });
+
     $('.not-work').on('click submit' ,function(event) {
         event.preventDefault();
         alert("即将来临\nComing soon");

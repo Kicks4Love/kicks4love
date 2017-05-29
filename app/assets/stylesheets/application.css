@@ -263,6 +263,33 @@ a {
     overflow: hidden; 
 }
 
+#scroll-top {
+    color: white;
+    text-align: center;
+    z-index: 2;
+    padding: 3px;
+    background: #555;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    position: fixed;
+    bottom: -100px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    overflow: auto;
+    opacity: 0.5;
+}
+#scroll-top:hover {
+    opacity: 1;
+}
+
 .social-media {
     text-align: center;
     margin-top: 20px;
@@ -321,10 +348,10 @@ p.copyright {
         line-height: 35px;
     }
 
-    .banner h2 {
-        margin: 0;
-        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-        font-size: 3em;
+    #scroll-top {
+        width: 35px;
+        height: 35px;
+        padding: 0;
     }
 
     footer {
