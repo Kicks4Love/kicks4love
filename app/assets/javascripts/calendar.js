@@ -380,14 +380,14 @@
 	    		mainParent.classList.add('active');
 	    		$(self.month).slideDown('slow');
 	    		legend.removeAttribute('style');
-	    		warning.html(warning.data().calendar);
+	    		warning.html(warning.data().image);
 	    		self.calendarMode = true;
 	  		} else {
 	    		$(self.month).slideUp('slow');
 	    		legend.style.display = 'none';
 	    		mainParent.classList.remove('active');
 	    		$(self.monthAlt).fadeIn();
-	    		warning.html(warning.data().image);
+	    		warning.html(warning.data().calendar);
 	    		self.calendarMode = false;
 	    		updateHeader(self.chinese, self.current, self.events, self.calendarMode);
 	  		}

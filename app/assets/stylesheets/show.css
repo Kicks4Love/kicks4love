@@ -65,4 +65,12 @@
   #side-nav {
     display: none;
   }
+
+  .main header h1 {
+    font-size: 2em;
+    margin-top: 10px;
+  }
+  .main header .category {
+    font-size: 1.15em;
+  }
 }
