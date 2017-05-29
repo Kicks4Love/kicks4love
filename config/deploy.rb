@@ -32,3 +32,13 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bund
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+namespace :deploy do
+	desc "Fix permission"
+   	task :fix_permissions, :roles => [:app, :db, :web] do
+     	run "#{try_sudo} chmod -R 777 #{current_path}/tmp"
+     	run "chmod -R 777 #{current_path}/public/uploads"
+   	end
+end
+
+after "deploy:finalize_update", :fix_permissions
