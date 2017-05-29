@@ -37,8 +37,8 @@ namespace :deploy do
 	desc "Fix permission"
    	task :fix_permissions do
    		on roles(:app) do
-	     	run "#{try_sudo} chmod -R 777 #{current_path}/tmp"
-	     	run "#{try_sudo} chmod -R 777 #{current_path}/public/uploads"
+	     	run "chmod -R 777 #{current_path}/tmp"
+	     	run "chmod -R 777 #{current_path}/public/uploads"
 	    end
    	end
 end
