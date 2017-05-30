@@ -71,7 +71,7 @@
 
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feeds.each_with_index do |feed, index| %>
-        <% feed_sample = feed.content.blank? ? " " : feed.content[0][0..120].strip %>
+        <% feed.content = feed.content.blank? ? "" : feed.content[0][0..120].strip %>
         <div class="kicks-box clearfix<%=' last' if index == @feeds.size-1%>">
             <%
                 case feed.class.name
@@ -97,7 +97,7 @@
                 </a>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
-                    <p><%= ActionView::Base.full_sanitizer.sanitize(feed_sample) %>...</p>
+                    <p><%= ActionView::Base.full_sanitizer.sanitize(feed.content) %>...</p>
                     <a href="<%= link %>">(<%= t("more") %>)</a>
                     <span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span>
                     <br/><br/>
