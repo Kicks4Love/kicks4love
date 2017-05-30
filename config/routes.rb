@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/trend/:id' => 'main#trend_show'
   get '/oncourt' => 'main#oncourt'
   get '/oncourt/:id' => 'main#oncourt_show'
+  get '/rumors' => 'main#rumors'
+  get '/rumors/:id' => 'main#rumor_show'
   get '/terms' => 'main#terms'
   get '/contact_us' => 'main#contact'
   get '/search' => 'main#search'
@@ -59,6 +61,11 @@ Rails.application.routes.draw do
       end
     end
     resources :on_court_posts do
+      collection do
+        get 'remove_old'
+      end
+    end
+    resources :rumor_posts do
       collection do
         get 'remove_old'
       end

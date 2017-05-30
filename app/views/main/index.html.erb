@@ -19,6 +19,8 @@
                                 url = "/trend/#{post.pointer_id}"
                             when "ON_COURT"
                                 url = "/oncourt/#{post.pointer_id}"
+                            when "RUMORS"
+                                url = "/rumors/#{post.pointer_id}"
                             end
                         %>
                         <li style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(<%= post.image.url %>)">
@@ -56,6 +58,8 @@
                             url = "/trend/#{news.pointer_id}"
                         when "ON_COURT"
                             url = "/oncourt/#{news.pointer_id}"
+                        when "RUMORS"
+                            url = "/rumors/#{news.pointer_id}"
                         end
                     %>
                     <a href="<%= url %>">
@@ -84,6 +88,9 @@
                 when "OnCourtPost"
                     link = "/oncourt/#{feed.id}"
                     tag = "On_Court"
+                when "RumorPost"
+                    link = "/rumors/#{feed.id}"
+                    tag = "Rumors"
                 end
             %>
             <a href="<%= link %>">

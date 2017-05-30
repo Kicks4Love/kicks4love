@@ -112,6 +112,9 @@
                     when "on_court_post"
                         url = post.content_en.empty? || post.content_cn.empty? ? "/oncourt" : "/oncourt/#{post.id}"
                         tag = "On_Court"
+                    when "rumor_post"
+                    	url = "/rumors/#{post.id}"
+                    	tag = "Rumors"
                     else
                     	url = "/calendar?date=#{post.release_date}"
                     	tag = "Calendar"

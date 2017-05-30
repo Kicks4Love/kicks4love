@@ -1,0 +1,31 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "show.css" %>
+<% end %>
+
+<article class="main container">
+  <header>
+    <span class="category"><i class="fa fa-tags" aria-hidden="true"></i><%= @category %></span>
+    <h1><%= @article_title %></h1>
+    <div class="meta">
+      <span class="author">
+        <%= t("by") %> <i class="author-name"><%= @rumor_post.author.nil? || @rumor_post.author.username.empty? ? "Kicks4Love鞋侣" : @rumor_post.author.username %></i>
+      </span>
+      <span class="pub-date"><%= "#{t("posted")} #{@rumor_post.created_at.strftime("%Y-%m-%d")}" %></span>
+    </div>
+  </header>
+  <% @times.times do |i|%>
+    <% unless @content[i].nil? %>
+      <p><%= @content[i].html_safe %></p>
+    <% end %>
+    <% unless @rumor_post.main_images[i].nil? %>
+      <figure>
+        <%= image_tag @rumor_post.main_images[i].url %>
+      </figure>
+    <% end %>
+  <% end %>
+  <%= render "share" %>
+</article>
+
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "show.js" %>
+<% end %>
