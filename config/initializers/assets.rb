@@ -11,7 +11,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 Rails.application.config.assets.precompile += %w( bootstrap.min.css bootstrap.min.js )
-Rails.application.config.assets.precompile += %w( index.css feature.css calendar.css trend.css oncourt.css contact.css show.css)
-Rails.application.config.assets.precompile += %w( index.js feature.js calendar.js trend.js oncourt.js contact.js show.js)
+Rails.application.config.assets.precompile += %w( index.css feature.css calendar.css trend.css oncourt.css rumors.css contact.css show.css)
+Rails.application.config.assets.precompile += %w( index.js feature.js calendar.js trend.js oncourt.js rumors.js contact.js show.js)
 Rails.application.config.assets.precompile += %w( admin/admin.css )
 Rails.application.config.assets.precompile += %w( admin/posts.js admin/calendar.js admin/features.js admin/oncourt.js admin/trend.js admin/rumors.js)

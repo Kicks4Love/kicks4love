@@ -60,7 +60,7 @@ class MainController < ApplicationController
 	end
 
 	def trend
-		@page_title= 'Kicks4Love鞋侣 | Trend潮流'
+		@page_title = 'Kicks4Love鞋侣 | Trend潮流'
 		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
 		if @chinese
 			@all_trend_posts = @all_trend_posts.select("title_cn AS title, cover_image, id, created_at")
@@ -115,6 +115,13 @@ class MainController < ApplicationController
 
 	def rumors
 		@page_title = 'Kicks4Love鞋侣 | Rumors 流言蜚语'
+		@rumors_posts = RumorPost.latest.paginate(:page => params[:page] || 1)
+		if @chinese
+			@rumors_posts = @rumors_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
+		else
+			@rumors_posts = @rumors_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
+		end
+		@rumors_posts.each {|rumors_post| rumors_post.content = YAML.load(rumors_post.content)}
 	end
 
 	def terms
