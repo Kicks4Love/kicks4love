@@ -32,9 +32,16 @@ function initApplication(showPendant, showLanguage) {
 	});
 
     if (showPendant) {
+        var logoPendant = $('.logo-pendant');
         setTimeout(function() { 
-            $('.logo-pendant').fadeIn('slow', function() { $(this).removeAttr('style'); $(this).addClass('hide-small') }); 
+            logoPendant.fadeIn('slow', function() { $(this).removeAttr('style'); $(this).addClass('hide-small') }); 
         }, 1000);
+        logoPendant.click(function() {
+            if ($(this).attr('style') === undefined)
+                $(this).css('top', '30px');
+            else
+                $(this).removeAttr('style');
+        });
     }
 
     var scrollTopButton = $('#scroll-top');
