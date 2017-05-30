@@ -36,7 +36,7 @@ class MainController < ApplicationController
 		else
 			@feature_posts = @feature_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
-		@feature_posts.each {|feature_post| feature_post.content = YAML.load(feature_post.content) }
+		@feature_posts.each {|feature_post| feature_post.content = feature_post.content.blank? ? "" : YAML.load(feature_post.content) }
 	end
 
 	def feature_show
@@ -188,7 +188,7 @@ class MainController < ApplicationController
 			else
 				feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image, created_at")
 			end
-			feeds.each {|feed| feed.content = YAML.load(feed.content)}
+			feeds.each {|feed| feed.content = feed.content.blank? ? "" : YAML.load(feed.content)}
 		when 'calendar'
 			feeds = CalendarPost.where('extract(year from release_date) = ? AND extract(month from release_date) = ?', params[:year], params[:month])
 			@no_more = false

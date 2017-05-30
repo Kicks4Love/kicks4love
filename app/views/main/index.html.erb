@@ -11,7 +11,7 @@
             <div id="slider-wrap" class="active">
                 <ul id="slider">
                     <% @posts.each do |post| %>
-                        <%  
+                        <%
                             case post.pointer_type
                             when "FEATURES"
                                 url = "/features/#{post.pointer_id}"
@@ -28,13 +28,13 @@
                                 </div>
                             </a>
                         </li>
-                    <% end %> 
+                    <% end %>
                 </ul>
                 <div class="slide-btns" id="next"><i class="fa fa-arrow-right"></i></div>
                 <div class="slide-btns" id="previous"><i class="fa fa-arrow-left"></i></div>
                 <div id="pagination-wrap">
                     <ul></ul>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
         <% @news.each do |news| %>
             <div class="banner-box col-sm-4">
                 <div class="new-box">
-                    <%  
+                    <%
                         case news.pointer_type
                         when "FEATURES"
                             url = "/features/#{news.pointer_id}"
@@ -68,9 +68,10 @@
             </div>
         <% end %>
     </div>
-    
+
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feeds.each_with_index do |feed, index| %>
+        <% feed_sample = feed.content.blank? ? " " : feed.content[0][0..120].strip %>
         <div class="kicks-box clearfix<%=' last' if index == @feeds.size-1%>">
             <%
                 case feed.class.name
@@ -96,7 +97,7 @@
                 </a>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
-                    <p><%= ActionView::Base.full_sanitizer.sanitize(feed.content[0][0..120].strip) %>...</p>
+                    <p><%= ActionView::Base.full_sanitizer.sanitize(feed_sample) %>...</p>
                     <a href="<%= link %>">(<%= t("more") %>)</a>
                     <span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span>
                     <br/><br/>

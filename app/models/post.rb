@@ -19,8 +19,8 @@ class Post < ApplicationRecord
 			trend_posts = TrendPost.select("id, title_en AS title, content_en AS content, cover_image, created_at")
 			on_court_posts = OnCourtPost.select("id, title_en AS title, content_en AS content, cover_image, created_at").with_link
 		end
-		
-		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse.each {|post| post.content = YAML.load(post.content)}
+
+		return (feature_posts + trend_posts + on_court_posts).sort_by(&:created_at).reverse.each {|post| post.content = post.content.blank? ? '' : YAML.load(post.content)}
 	end
 
 end
