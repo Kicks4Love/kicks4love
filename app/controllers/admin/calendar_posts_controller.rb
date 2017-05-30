@@ -4,7 +4,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 
 	def index
 		@page_title = "Kicks4Love Admin | Calendar Posts"
-		@calendar_posts = CalendarPost
+		@calendar_posts = CalendarPost.all
 		@expired_posts_count = CalendarPost.old.size
  		if params[:filter].present?
  			if params[:filter][:release_type].present?
@@ -16,6 +16,8 @@ class Admin::CalendarPostsController < Admin::AdminController
  				@calendar_posts = @calendar_posts.order(release_date: :DESC)
  			end
  			session[:calendar_post_per_page] = params[:filter][:per_page].to_i
+ 		else
+ 			@calendar_posts.latest
  		end
 
 		@per_page = session[:calendar_post_per_page] || 5
