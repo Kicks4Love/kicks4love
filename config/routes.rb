@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/trend/:id' => 'main#trend_show'
   get '/oncourt' => 'main#oncourt'
   get '/oncourt/:id' => 'main#oncourt_show'
+  get '/streetsnap' => 'main#street_snap'
+  get '/streetsnap/:id' => 'main#street_snap_show'
   get '/rumors' => 'main#rumors'
   get '/rumors/:id' => 'main#rumor_show'
   get '/terms' => 'main#terms'

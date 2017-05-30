@@ -113,6 +113,34 @@ class MainController < ApplicationController
 		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
 	end
 
+	def street_snap
+		@page_title = 'Kicks4Love鞋侣 | Street Snap街拍'
+		@street_snap_posts = StreetSnapPost.latest.paginate(:page => 1)
+		if @chinese
+			@street_snap_posts = @street_snap_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
+		else
+			@street_snap_posts = @street_snap_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
+		end
+		@street_snap_posts.each {|post| post.content = YAML.load(post.content) }
+
+	end
+
+	def street_snap_show
+		@street_snap_post = StreetSnapPost.find(params[:id])
+		if @chinese
+			@category = '街拍'
+			@page_title = "#{@street_snap_post.title_cn} #{@street_snap_post.title_en}"
+			@article_title = @street_snap_post.title_cn
+			@content = @street_snap_post.content_cn
+		else
+			@category = 'Street Snap'
+			@page_title = "#{@street_snap_post.title_cn} #{@street_snap_post.title_en}"
+			@article_title = @street_snap_post.title_en
+			@content = @street_snap_post.content_en
+		end
+		@og_image = "http://#{request.host}#{@street_snap_post.cover_image.url}"
+	end
+
 	def rumors
 		@page_title = 'Kicks4Love鞋侣 | Rumors 流言蜚语'
 		@rumors_posts = RumorPost.latest.paginate(:page => params[:page] || 1)

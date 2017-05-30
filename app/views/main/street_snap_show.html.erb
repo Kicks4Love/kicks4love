@@ -1,0 +1,25 @@
+<article class="main container">
+    <header>
+        <span class="category"><i class="fa fa-tags" aria-hidden="true"></i><%= @category %></span>
+        <h1><%= @article_title %></h1>
+        <div class="meta">
+            <span class="author">
+              <%= t("by") %> <i class="author-name"><%= @street_snap_post.author.nil? || @street_snap_post.author.username.empty? ? "Kicks4Love鞋侣" : @street_snap_post.author.username %></i>
+            </span>
+            <span class="pub-date"><%= "#{t("posted")} #{@street_snap_post.created_at.strftime("%Y-%m-%d")}" %></span>
+        </div>
+    </header>
+	<% image_index = paragraph_index = 0 %>
+    <% @street_snap_post.post_composition.each do |index, hash| %>
+    	<% if hash['type'] == 'image' %>
+            <figure>
+    		  <%= image_tag @street_snap_post.main_images[image_index].url %>
+    		  <% image_index += 1 %>
+            </figure>
+    	<% else %>
+    		<p><%= @content[paragraph_index].html_safe %></p>
+    		<% paragraph_index += 1 %>
+    	<% end %>
+    <% end %>
+    <%= render "share" %>
+</article>

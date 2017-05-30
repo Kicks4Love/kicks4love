@@ -36,7 +36,7 @@
 
   		  <%= content_for :head %>
   		  <%= hidden_field_tag "language", cookies[:language] %>
-  		
+
       	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         	  <div class="container-fluid">
           		  <div class="navbar-header">
@@ -60,7 +60,7 @@
       		                  		<li><%= link_to t("ON_COURT"), oncourt_path %></li>
       		                  		<li role="separator" class="divider"></li>
       		                  		<li class="dropdown-header"><%= t("LEISURE_ENTERTAINMENT") %></li>
-      		                  		<li><a href="#"><%= t("STREET_SNAP") %></a></li>
+      		                  		<li><%= link_to t("STREET_SNAP"), streetsnap_path %></li>
                                 <li><%= link_to t("RUMORS"), rumors_path %></li>
                      			 	</ul>
               			    </li>
@@ -68,10 +68,10 @@
             				<div class ="navbar-form navbar-right" role="search">
                         <%= form_tag(search_path, :method => :get, :class => "search-form") do %>
                             <div class="input-group">
-                    				    <%= text_field_tag :q, params[:q], :placeholder => t("What_are_you_looking_for"), :type => "text", :class => "form-control" %>	
+                    				    <%= text_field_tag :q, params[:q], :placeholder => t("What_are_you_looking_for"), :type => "text", :class => "form-control" %>
                                 <span class="input-group-btn"><%= button_tag t("Go"), :name => nil, :class => "btn btn-secondary" %></span>
                             </div>
-                    		<% end %>				
+                    		<% end %>
             				</div>
         	      </div>
             </div>
@@ -106,7 +106,7 @@
             			</a>
           			</li>
 		        </ul>
-        </div>	
+        </div>
         <% if notice %>
     	  <div class="alert alert-success alert-dismissible" role="alert">
           	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -186,7 +186,7 @@
     		   						          <%= link_to t("Calendar"), calendar_path %>
     		                    </li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li> 
+    		                    <li>
     		                        <%= link_to t("Trend"), trend_path %>
     		                    </li>
     		                    <li class="footer-menu-divider">&sdot;</li>
@@ -195,7 +195,7 @@
     		                    </li>
     		                    <li class="footer-menu-divider">&sdot;</li>
     		                    <li>
-    		                        <a href="streetsnap.html"><%= t("Street_Snap") %></a>
+    		                        <%= link_to t("STREET_SNAP"), streetsnap_path%>
     		                    </li>
     		                    <li class="footer-menu-divider">&sdot;</li>
     		                    <li>
@@ -217,5 +217,6 @@
   		  </footer>
 
         <%= content_for :end_of_body %>
+        
   	</body>
 </html>
