@@ -7,6 +7,7 @@
 <div class="main container clearfix">
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feature_posts.each_with_index do |feature_post, index| %>
+        <% feature_post.content = feature_post.content.blank? ? "" : feature_post.content[0][0..120].strip %>
         <% left = (index%2 == 0) %>
         <div class="kicks-post <%= ' alt' unless left %>">
             <a href="/features/<%= feature_post.id %>">
@@ -15,7 +16,7 @@
             <div class="kicks-post-content">
                 <a href="/features/<%= feature_post.id %>"><h1><%= feature_post.title %></h1></a>
                 <h2><%= feature_post.created_at.strftime("%Y-%m-%d") %></h2>
-                <p><%= ActionView::Base.full_sanitizer.sanitize(feature_post.content[0][0..120].strip) %>...</p>
+                <p><%= ActionView::Base.full_sanitizer.sanitize(feature_post.content) %>...</p>
                 <a href="/features/<%= feature_post.id %>" class="kicks-post-more"><%= t("more") %></a>
             </div>
         </div>

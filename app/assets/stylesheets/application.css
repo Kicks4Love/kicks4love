@@ -57,6 +57,7 @@ a {
     transform-origin: 50% -65px;
     z-index: 1000;
     animation: pendantSwing 1.5s infinite alternate ease-in-out;
+    transition: top 1s ease-in-out;
 }
 .logo-pendant:hover {
     animation-play-state: paused;
@@ -341,6 +342,7 @@ p.copyright {
         width: 35px;
         height: 35px;
         line-height: 35px;
+        opacity: 0.8;
     }
     #side-nav li span {
         font-size: 15px;
