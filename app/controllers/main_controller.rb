@@ -25,7 +25,7 @@ class MainController < ApplicationController
                 }
             }, highlight: { fields: {:'*' => {}} }
         }
-		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, CalendarPost]).page(params[:page] || 1).per_page(10).results
+		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, RumorPost ,CalendarPost]).page(params[:page] || 1).per_page(10).results
 	end
 
 	def features
@@ -124,6 +124,23 @@ class MainController < ApplicationController
 		@rumors_posts.each {|rumors_post| rumors_post.content = YAML.load(rumors_post.content)}
 	end
 
+	def rumor_show
+		@rumor_post = RumorPost.find(params[:id])
+		if @chinese
+			@category = '流言蜚语'
+			@page_title = "#{@rumor_post.title_cn} #{@rumor_post.title_en}"
+			@article_title = @rumor_post.title_cn
+			@content = @rumor_post.content_cn
+		else
+			@category = 'Rumors'
+			@page_title = "#{@rumor_post.title_en} #{@rumor_post.title_cn}"
+			@article_title = @rumor_post.title_en
+			@content = @rumor_post.content_en
+		end
+		@times = [@content.size, @rumor_post.main_images.size].max
+		@og_image = "http://#{request.host}#{@rumor_post.cover_image.url}"
+	end
+
 	def terms
 		@page_title = 'Kicks4Love鞋侣 | Terms条款'
 	end
@@ -189,6 +206,8 @@ class MainController < ApplicationController
               		feed.post_type = "trend"
                 when "OnCourtPost"
                   	feed.post_type = "oncourt"
+                when "RumorPost"
+                	feed.post_type = "rumors"
                 end
 			end
 		when 'features'

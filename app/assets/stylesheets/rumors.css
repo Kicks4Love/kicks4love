@@ -1,6 +1,9 @@
 .main {
     margin-top: 90px;
 }
+.main a:hover {
+    text-decoration: none;
+}
 .main .header {
     text-align: center;
     position: relative;
@@ -52,6 +55,10 @@
     font-size: 25px;
     text-transform: uppercase;
     padding: 10px 0 10px 0;
+    color: #333;
+}
+.main .content .collumn a:hover .headline.title {
+    opacity: 0.5;
 }
 .main .content .collumn .headline.sub-title{
     font-weight: 700;
@@ -82,6 +89,7 @@
     filter: gray;
     background-position: center;
     background-size: cover;
+    background-color: #f8f8f8;
 }
 .main .pagination-container {
     width: 100%;

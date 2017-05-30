@@ -83,6 +83,10 @@ function initLoadPostHandler() {
             				break;
             			case 'oncourt':
             				tag = chinese ? '球场时装' : 'On Court';
+            				break;
+            			case 'rumors':
+            				tag = chinese ? '流言蜚语' : 'Rumors';
+            				break;
             		}
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
@@ -94,10 +98,10 @@ function initLoadPostHandler() {
                 		'<hr class="title-divider">' +
                 		'<div class="kicks-intro-content">' + 
                 		// hacky way to remove any html tags in the content
-                    	'<span>' + $('<p>' + data.posts[i].post.content[0] + '</p>').text().trim().slice(0, 120) + '...</span>' +
+                    	'<p>' + $('<p>' + data.posts[i].post.content[0] + '</p>').text().trim().slice(0, 120) + '... ' +
                     	'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">(' + (chinese ? '更多' : 'more') + ')</a>' +
-                    	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span>' +
-                    	'<br/><br/><i class="fa fa-tags" aria-hidden="true"></i>' +
+                    	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span></p>' +
+                    	'<br/><i class="fa fa-tags" aria-hidden="true"></i>' +
                     	'<span class="post-tag">' + tag + '</span>' +
                 		'</div></div></div>'
             		);

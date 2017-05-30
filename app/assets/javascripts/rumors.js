@@ -4,7 +4,6 @@ $(document).ready(function() {
 
     // set RUMORS menu selected
 	$('#navbar .dropdown ul li').eq(2).addClass('active');
-
-	//initLoadPostHandler();
+	
 	initApplication(true, true);
 });

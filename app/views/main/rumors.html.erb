@@ -10,7 +10,7 @@
         <div class="sub-header"><%= t("Comprehensive_Rumor_All_In_One_View") %></div>
     </div>
     <div class="content">
-    	<% @rumors_posts.each_with_index do |rumors_post, index| %>
+    	<% @rumors_posts.each_with_index do |rumor_post, index| %>
     		<%  
     			if index%3 == 0
     				border_class = "left-lg-none left-sm-none"
@@ -22,13 +22,17 @@
     		%>
 	        <div class="collumn <%= border_class %> col-xs-12 col-sm-6 col-lg-4">
 	            <div class="head">
-	                <span class="headline title"><%= rumors_post.title %></span>
+	                <a href="/rumors/<%= rumor_post.id %>">
+                        <span class="headline title"><%= rumor_post.title %></span>
+                    </a>
 	                <p>
-	                    <span class="headline sub-title"><%= rumors_post.created_at.strftime("%Y-%m-%d") %></span>
+	                    <span class="headline sub-title"><%= rumor_post.created_at.strftime("%Y-%m-%d") %></span>
 	                </p>
 	            </div>
-	            <p><%= ActionView::Base.full_sanitizer.sanitize(rumors_post.content[0])[0..200] %>...</p>
-	            <div class="photo" style="background-image:url('<%= rumors_post.cover_image.url %>')"></div>
+	            <p><%= ActionView::Base.full_sanitizer.sanitize(rumor_post.content[0])[0..200] %>... <a href="/rumors/<%= rumor_post.id %>">(<%= t("more") %>)</a></p>
+                <a href="/rumors/<%= rumor_post.id %>">
+	               <div class="photo" style="background-image:url('<%= rumor_post.cover_image.url %>')"></div>
+                </a>
 	        </div>
 	    <% end %>
     </div>
