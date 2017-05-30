@@ -1,4 +1,8 @@
+require 'elasticsearch/model'
+
 class StreetSnapPost < ApplicationRecord
+  include Elasticsearch::Model
+
   attr_accessor :post_type
 
 	serialize :content_en, Array
@@ -13,4 +17,20 @@ class StreetSnapPost < ApplicationRecord
 
   mount_uploader :cover_image, ImageUploader
   mount_uploaders :main_images, ImageUploader
+
+  settings index: { number_of_shards: 1 } do
+      mappings dynamic: 'false' do
+          indexes :title_en
+          indexes :title_cn
+          indexes :content_en
+          indexes :content_cn
+      end
+  end
+
+  def self.as_indexed_json(options={})
+      self.as_json({only: [:title_en, :title_cn, :content_en, :content_cn]})
+  end
+  
 end
+
+StreetSnapPost.import force: true

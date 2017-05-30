@@ -25,7 +25,7 @@ class MainController < ApplicationController
                 }
             }, highlight: { fields: {:'*' => {}} }
         }
-		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, RumorPost ,CalendarPost]).page(params[:page] || 1).per_page(10).results
+		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, CalendarPost, StreetSnapPost, RumorPost]).page(params[:page] || 1).per_page(10).results
 	end
 
 	def features
