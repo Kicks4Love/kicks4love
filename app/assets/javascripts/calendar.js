@@ -122,7 +122,7 @@
 		this.monthAlt.innerHTML = '';
 		for (var i = this.currentIndex; i < this.currentIndex + 3; i++) {
 			if (this.events[i] === undefined) break;
-			var pricestr = this.events[i].price <= 0 ? "N/A" : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, 'N/A');
+			var pricestr = parseFloat(this.events[i].price) <= 0 ? 'N/A' : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
   										'<div class="kicks-box" style="background-image:url(' + this.events[i].image + ')">' +
     									'<div class="cover top-left">' +
@@ -143,8 +143,7 @@
 				// copy the function currentMonthLargeIcon code instead of calling it directly to prevent stack overflow
 				for (var i = self.currentIndex; i < self.currentIndex + 3; i++) {
 					if (self.events[i] === undefined) break;
-					var pricestr = this.events[i].price <= 0 ? "N/A" : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, 'N/A');
-
+					var pricestr = this.events[i].price <= 0 ? "N/A" : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 					self.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
   										'<div class="kicks-box" style="background-image:url(' + self.events[i].image + ')">' +
     									'<div class="cover top-left">' +
@@ -293,8 +292,7 @@
 	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
 	      		modalImage.setAttribute('src', '');
 	      		modalImage.setAttribute('src', data.image);
-						var pricestr = data.price <= 0 ? "N/A" : parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, 'N/A');
-
+				var pricestr = data.price <= 0 ? "N/A" : parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 	      		var span = createElement('span', '', dollarSign + ' ' + pricestr);
 	      		modal.getElementsByClassName('modal-footer')[0].appendChild(span);
 	      	});
