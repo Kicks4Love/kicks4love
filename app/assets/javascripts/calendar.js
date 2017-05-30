@@ -45,7 +45,7 @@
 	      	var left = createElement('div', 'left');
 	      	left.addEventListener('click', function() { self.prevMonth(); });
 
-	      	this.header.appendChild(this.title); 
+	      	this.header.appendChild(this.title);
 	      	this.header.appendChild(right);
 	      	this.header.appendChild(left);
 	      	this.el.appendChild(this.header);
@@ -122,11 +122,12 @@
 		this.monthAlt.innerHTML = '';
 		for (var i = this.currentIndex; i < this.currentIndex + 3; i++) {
 			if (this.events[i] === undefined) break;
+			var pricestr = parseFloat(this.events[i].price) <= 0 ? 'N/A' : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
   										'<div class="kicks-box" style="background-image:url(' + this.events[i].image + ')">' +
     									'<div class="cover top-left">' +
       									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
-      									'<span class="date">' + dollarSign + ' ' + parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
+      									'<span class="date">' + dollarSign + ' ' + pricestr +
       									'</span></div></div><span style="color:#4A4A4A;width:100%">' + this.events[i].date.format('MM/DD') + '</span></div></div>';
 		}
 		this.currentIndex += 3;
@@ -142,11 +143,12 @@
 				// copy the function currentMonthLargeIcon code instead of calling it directly to prevent stack overflow
 				for (var i = self.currentIndex; i < self.currentIndex + 3; i++) {
 					if (self.events[i] === undefined) break;
+					var pricestr = this.events[i].price <= 0 ? "N/A" : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 					self.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
   										'<div class="kicks-box" style="background-image:url(' + self.events[i].image + ')">' +
     									'<div class="cover top-left">' +
       									'<h2 class="title">' + self.events[i].eventName + '</h2>' +
-      									'<span class="date">' + dollarSign + ' ' + parseFloat(self.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + 
+      									'<span class="date">' + dollarSign + ' ' + pricestr +
       									'</span></div></div><span style="color:#4A4A4A;width:100%">' + self.events[i].date.format('MM/DD') + '</span></div></div>';
 				}
 				self.currentIndex += 3;
@@ -290,7 +292,8 @@
 	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
 	      		modalImage.setAttribute('src', '');
 	      		modalImage.setAttribute('src', data.image);
-	      		var span = createElement('span', '', dollarSign + ' ' + parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+				var pricestr = data.price <= 0 ? "N/A" : parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
+	      		var span = createElement('span', '', dollarSign + ' ' + pricestr);
 	      		modal.getElementsByClassName('modal-footer')[0].appendChild(span);
 	      	});
 		});
@@ -333,7 +336,7 @@
 			async : false,
             url: '/main/get_posts?next_page=1&source_page=calendar&month=' + (this.current.month() + 1) + "&year=" + this.current.year(),
             dataType: "json",
-            success: function(data) { 
+            success: function(data) {
             	self.events = new Array();
             	data.posts.forEach(function(ev) {
             		self.events.push({
@@ -459,7 +462,7 @@ function initCalendar() {
   			}
   		}));
   	} finally {
-  		setTimeout(function() { 
+  		setTimeout(function() {
   			$('.opening-scene').remove();
   			$('body').css('overflow', 'auto');
   			if (!getQueryParams().date) $('.switch-checkbox').trigger('click');

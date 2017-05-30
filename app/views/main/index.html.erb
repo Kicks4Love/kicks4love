@@ -11,7 +11,7 @@
             <div id="slider-wrap" class="active">
                 <ul id="slider">
                     <% @posts.each do |post| %>
-                        <%  
+                        <%
                             case post.pointer_type
                             when "FEATURES"
                                 url = "/features/#{post.pointer_id}"
@@ -19,6 +19,8 @@
                                 url = "/trend/#{post.pointer_id}"
                             when "ON_COURT"
                                 url = "/oncourt/#{post.pointer_id}"
+                            when "RUMORS"
+                                url = "/rumors/#{post.pointer_id}"
                             end
                         %>
                         <li style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(<%= post.image.url %>)">
@@ -28,13 +30,13 @@
                                 </div>
                             </a>
                         </li>
-                    <% end %> 
+                    <% end %>
                 </ul>
                 <div class="slide-btns" id="next"><i class="fa fa-arrow-right"></i></div>
                 <div class="slide-btns" id="previous"><i class="fa fa-arrow-left"></i></div>
                 <div id="pagination-wrap">
                     <ul></ul>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
@@ -45,7 +47,7 @@
         <% @news.each do |news| %>
             <div class="banner-box col-sm-4">
                 <div class="new-box">
-                    <%  
+                    <%
                         case news.pointer_type
                         when "FEATURES"
                             url = "/features/#{news.pointer_id}"
@@ -56,6 +58,8 @@
                             url = "/trend/#{news.pointer_id}"
                         when "ON_COURT"
                             url = "/oncourt/#{news.pointer_id}"
+                        when "RUMORS"
+                            url = "/rumors/#{news.pointer_id}"
                         end
                     %>
                     <a href="<%= url %>">
@@ -68,9 +72,10 @@
             </div>
         <% end %>
     </div>
-    
+
     <!-- maximum should be three only (more will be loaded by ajax) -->
     <% @feeds.each_with_index do |feed, index| %>
+        <% feed.content = feed.content.blank? ? "" : feed.content[0][0..120].strip %>
         <div class="kicks-box clearfix<%=' last' if index == @feeds.size-1%>">
             <%
                 case feed.class.name
@@ -83,6 +88,9 @@
                 when "OnCourtPost"
                     link = "/oncourt/#{feed.id}"
                     tag = "On_Court"
+                when "RumorPost"
+                    link = "/rumors/#{feed.id}"
+                    tag = "Rumors"
                 end
             %>
             <a href="<%= link %>">
@@ -96,10 +104,8 @@
                 </a>
                 <hr class="title-divider">
                 <div class="kicks-intro-content">
-                    <p><%= ActionView::Base.full_sanitizer.sanitize(feed.content[0][0..120].strip) %>...</p>
-                    <a href="<%= link %>">(<%= t("more") %>)</a>
-                    <span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span>
-                    <br/><br/>
+                    <p><%= ActionView::Base.full_sanitizer.sanitize(feed.content) %>... <a href="<%= link %>">(<%= t("more") %>)</a><span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span></p>
+                    <br/>
                     <i class="fa fa-tags" aria-hidden="true"></i><span class="post-tag"><%= t(tag) %></span>
                 </div>
             </div>
