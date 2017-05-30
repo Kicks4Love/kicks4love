@@ -41,16 +41,16 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   def update
     params = process_content(street_snap_post_params)
 
-    if params[:content_en].count > 12 || params[:content_cn].count > 12
-          redirect_to :back, :alert => "Maximum paragraph number is 12"
+    if params[:content_en].count > 10 || params[:content_cn].count > 10
+          redirect_to :back, :alert => "Maximum paragraph number is 10"
           return
-      elsif params[:main_images].present? && params[:main_images].count > 12
-          redirect_to :back, :alert => "Maximum main image number is 12"
+      elsif params[:main_images].present? && params[:main_images].count > 10
+          redirect_to :back, :alert => "Maximum main image number is 10"
           return
       end
-    if @street_snap_post.author.nil?
-      @street_snap_post.author = current_admin_user
-    end
+
+    @street_snap_post.author = current_admin_user if @street_snap_post.author.nil?
+
     if @street_snap_post.update_attributes(params)
       flash[:notice] = "The street snap post has been successfully updated"
     else
