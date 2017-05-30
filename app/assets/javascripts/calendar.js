@@ -134,7 +134,6 @@
 		if (this.events[this.currentIndex] !== undefined)
 			this.monthAlt.innerHTML += '<div class="to-view-more"><span>' + (this.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>';
 
-
 		if (this.initial) {
 			var self = this;
 			 $('.month-alt').on('click', '.to-view-more' , function() {
@@ -143,7 +142,8 @@
 				// copy the function currentMonthLargeIcon code instead of calling it directly to prevent stack overflow
 				for (var i = self.currentIndex; i < self.currentIndex + 3; i++) {
 					if (self.events[i] === undefined) break;
-					var pricestr = this.events[i].price <= 0 ? "N/A" : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
+					console.log(self.events[i].price);
+					var pricestr = parseFloat(self.events[i].price) <= 0 ? 'N/A' : parseFloat(self.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 					self.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
   										'<div class="kicks-box" style="background-image:url(' + self.events[i].image + ')">' +
     									'<div class="cover top-left">' +
