@@ -3,8 +3,7 @@ require 'elasticsearch/model'
 class CalendarPost < ApplicationRecord
 
 	include Elasticsearch::Model
-    #include Elasticsearch::Model::Callbacks
-
+	validates :release_date, :presence => true
 	enum :release_type => [:SNEAKER, :CLOTH, :ACCESSORY, :OTHER]
 
 	scope :latest, -> {order(:created_at => :DESC)}
