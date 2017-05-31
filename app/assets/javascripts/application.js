@@ -22,13 +22,13 @@ function initApplication(showPendant, showLanguage) {
 		$('#language-modal').modal('show');
 
 	$('#language-form').submit(function() {
-      var languageSet = $('#language-set').val();
+      var languageSet = $('#language-set').val() == "true";
     	var chinese = isChinese();
 
-    	if (languageSet && chinese && this.submited.includes('chinese'))
-    		return false;
-    	if (languageSet && !chinese && this.submited.includes('english'))
-    		return false;
+			if (languageSet && chinese && this.submited.includes('chinese'))
+			return false;
+			if (languageSet && !chinese && this.submited.includes('english'))
+			return false;
 	});
 
     if (showPendant) {
@@ -69,7 +69,7 @@ function getQueryParams() {
 }
 
 function isChinese() {
-    return $('html').attr('lang') == 'cn';
+    return $('html').attr('lang') == 'zh';
 }
 
 function getSourcePage() {
