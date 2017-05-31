@@ -9,7 +9,8 @@ $(document).ready(function() {
   	} 
 
   	document.getElementById('weibo-share').onclick = function() {
-  		window.open('http://service.weibo.com/share/share.php?' + jQuery.param({url: document.URL, ralateUid: weiboUId}));
+      var imgs = document.querySelector('meta[property="og:image"]').content;
+  		window.open('http://service.weibo.com/share/share.php?' + jQuery.param({url: document.URL, ralateUid: weiboUId, title: document.title, pic: imgs}));
   	}
 
   	document.getElementById('copy-share').onclick = function() {
