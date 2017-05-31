@@ -3,7 +3,7 @@ $(document).ready(function() {
     console.log("streetsnap");
 
     // set STREETSNAP menu selected
-	$('#navbar .dropdown ul li').eq(2).addClass('active');
+	$('#navbar .dropdown ul li').eq(4).addClass('active');
 	
 	initApplication(true, true);
 	$('.snap-card').on('click touchstart', function() { $(this).toggleClass('active'); });

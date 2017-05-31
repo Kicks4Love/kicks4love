@@ -124,20 +124,20 @@ class MainController < ApplicationController
 		@streetsnap_posts.each {|post| post.content = post.content.blank? ? [""] : YAML.load(post.content) }
 	end
 
-	def street_snap_show
-		@street_snap_post = StreetSnapPost.find(params[:id])
+	def streetsnap_show
+		@streetsnap_post = StreetSnapPost.find(params[:id])
 		if @chinese
 			@category = '街拍'
-			@page_title = "#{@street_snap_post.title_cn} #{@street_snap_post.title_en}"
-			@article_title = @street_snap_post.title_cn
-			@content = @street_snap_post.content_cn
+			@page_title = "#{@streetsnap_post.title_cn} #{@streetsnap_post.title_en}"
+			@article_title = @streetsnap_post.title_cn
+			@content = @streetsnap_post.content_cn
 		else
 			@category = 'Street Snap'
-			@page_title = "#{@street_snap_post.title_cn} #{@street_snap_post.title_en}"
-			@article_title = @street_snap_post.title_en
-			@content = @street_snap_post.content_en
+			@page_title = "#{@streetsnap_post.title_en} #{@streetsnap_post.title_cn}"
+			@article_title = @streetsnap_post.title_en
+			@content = @streetsnap_post.content_en
 		end
-		@og_image = "http://#{request.host}#{@street_snap_post.cover_image.url}"
+		@og_image = "http://#{request.host}#{@streetsnap_post.cover_image.url}"
 	end
 
 	def rumors
