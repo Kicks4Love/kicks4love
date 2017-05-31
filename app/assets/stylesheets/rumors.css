@@ -92,6 +92,7 @@
     background-color: #f8f8f8;
 }
 .main .pagination-container {
+    float: right;
     width: 100%;
     text-align: center;
 }

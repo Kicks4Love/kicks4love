@@ -3,7 +3,7 @@ $(document).ready(function() {
     console.log("rumors");
 
     // set RUMORS menu selected
-	$('#navbar .dropdown ul li').eq(2).addClass('active');
+	$('#navbar .dropdown ul li').eq(3).addClass('active');
 	
 	initApplication(true, true);
 });

@@ -36,7 +36,7 @@ class MainController < ApplicationController
 		else
 			@feature_posts = @feature_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
-		@feature_posts.each {|feature_post| feature_post.content = feature_post.content.blank? ? "" : YAML.load(feature_post.content) }
+		@feature_posts.each {|feature_post| feature_post.content = feature_post.content.blank? ? [""] : YAML.load(feature_post.content) }
 	end
 
 	def feature_show
@@ -113,16 +113,15 @@ class MainController < ApplicationController
 		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
 	end
 
-	def street_snap
+	def streetsnap
 		@page_title = 'Kicks4Love鞋侣 | Street Snap街拍'
-		@street_snap_posts = StreetSnapPost.latest.paginate(:page => 1)
+		@streetsnap_posts = StreetSnapPost.latest.paginate(:page => params[:page] || 1)
 		if @chinese
-			@street_snap_posts = @street_snap_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
+			@streetsnap_posts = @streetsnap_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
 		else
-			@street_snap_posts = @street_snap_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
+			@streetsnap_posts = @streetsnap_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
-		@street_snap_posts.each {|post| post.content = YAML.load(post.content) }
-
+		@streetsnap_posts.each {|post| post.content = post.content.blank? ? [""] : YAML.load(post.content) }
 	end
 
 	def street_snap_show
@@ -142,14 +141,14 @@ class MainController < ApplicationController
 	end
 
 	def rumors
-		@page_title = 'Kicks4Love鞋侣 | Rumors 流言蜚语'
+		@page_title = 'Kicks4Love鞋侣 | Rumors流言蜚语'
 		@rumors_posts = RumorPost.latest.paginate(:page => params[:page] || 1)
 		if @chinese
 			@rumors_posts = @rumors_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
 		else
 			@rumors_posts = @rumors_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
-		@rumors_posts.each {|rumors_post| rumors_post.content = YAML.load(rumors_post.content)}
+		@rumors_posts.each {|post| post.content = post.content.blank? ? [""] : YAML.load(post.content)}
 	end
 
 	def rumor_show
