@@ -25,7 +25,7 @@ class MainController < ApplicationController
                 }
             }, highlight: { fields: {:'*' => {}} }
         }
-		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, RumorPost ,CalendarPost]).page(params[:page] || 1).per_page(10).results
+		@results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, CalendarPost, StreetSnapPost, RumorPost]).page(params[:page] || 1).per_page(10).results
 	end
 
 	def features
@@ -36,7 +36,7 @@ class MainController < ApplicationController
 		else
 			@feature_posts = @feature_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
-		@feature_posts.each {|feature_post| feature_post.content = feature_post.content.blank? ? "" : YAML.load(feature_post.content) }
+		@feature_posts.each {|feature_post| feature_post.content = feature_post.content.blank? ? [""] : YAML.load(feature_post.content) }
 	end
 
 	def feature_show
@@ -113,15 +113,42 @@ class MainController < ApplicationController
 		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
 	end
 
+	def streetsnap
+		@page_title = 'Kicks4Love鞋侣 | Street Snap街拍'
+		@streetsnap_posts = StreetSnapPost.latest.paginate(:page => params[:page] || 1)
+		if @chinese
+			@streetsnap_posts = @streetsnap_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
+		else
+			@streetsnap_posts = @streetsnap_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
+		end
+		@streetsnap_posts.each {|post| post.content = post.content.blank? ? [""] : YAML.load(post.content) }
+	end
+
+	def streetsnap_show
+		@streetsnap_post = StreetSnapPost.find(params[:id])
+		if @chinese
+			@category = '街拍'
+			@page_title = "#{@streetsnap_post.title_cn} #{@streetsnap_post.title_en}"
+			@article_title = @streetsnap_post.title_cn
+			@content = @streetsnap_post.content_cn
+		else
+			@category = 'Street Snap'
+			@page_title = "#{@streetsnap_post.title_en} #{@streetsnap_post.title_cn}"
+			@article_title = @streetsnap_post.title_en
+			@content = @streetsnap_post.content_en
+		end
+		@og_image = "http://#{request.host}#{@streetsnap_post.cover_image.url}"
+	end
+
 	def rumors
-		@page_title = 'Kicks4Love鞋侣 | Rumors 流言蜚语'
+		@page_title = 'Kicks4Love鞋侣 | Rumors流言蜚语'
 		@rumors_posts = RumorPost.latest.paginate(:page => params[:page] || 1)
 		if @chinese
 			@rumors_posts = @rumors_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
 		else
 			@rumors_posts = @rumors_posts.select("title_en AS title, content_en AS content, cover_image, id, created_at")
 		end
-		@rumors_posts.each {|rumors_post| rumors_post.content = YAML.load(rumors_post.content)}
+		@rumors_posts.each {|post| post.content = post.content.blank? ? [""] : YAML.load(post.content)}
 	end
 
 	def rumor_show

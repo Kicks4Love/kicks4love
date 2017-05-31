@@ -1,0 +1,125 @@
+.main {
+    margin-top: 90px;
+}
+.main a:hover {
+    text-decoration: none;
+}
+.main .header {
+    text-align: center;
+    position: relative;
+}
+.main .header header {
+    font-size: 80px;
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 72px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.main .header .sub-header {
+    text-transform: uppercase;
+    border-bottom: 2px solid #2f2f2f;
+    border-top: 2px solid #2f2f2f;
+    padding: 12px 0 12px 0;
+}
+.main .content {
+    margin: 30px 2% 0 2%;
+}
+.main .content * {
+    box-sizing: border-box;
+}
+.main .content .snap-card {
+	height: 400px;
+	background-size: cover;
+	background-position: center center;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	box-shadow: 0 2px 1px rgba(0,0,0,.1);
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+	overflow: hidden;
+}
+.main .content .snap-card h1 {
+	margin: auto;
+	width: 105%;
+	-webkit-transform: translateX(-2.5%);
+	text-align: center;
+	padding: .2em 0;
+	border-radius: 2px;
+	background: rgba(255, 255, 255, .95);
+	font-size: 1.5em;
+	text-transform: uppercase;
+	text-shadow: 0 2px white;
+	box-shadow: 0 2px 1px rgba(0,0,0,.1);
+	margin-top: 2em;
+	transition: all 0.3s ease-in-out;
+}
+.main .content .snap-card a {
+  color: #333;
+}
+.main .content .snap-card .description {
+	position: relative;
+	height: 160px;
+  top: 115px;
+	background: rgba(255, 255, 255, .95);
+	width: 100%;
+	padding: 1em;
+	letter-spacing: 1.2px;
+	line-height: 1.5em;
+	margin: 0;
+	transition: all .3s ease-in-out;
+}
+.main .content .snap-card .description span {
+  font-size: .8em;
+  color: gray;
+}
+.main .content .snap-card .post-date {
+  float: right;
+}
+.main .content .snap-card .description p {
+  margin-top: 10px;
+}
+.main .content .snap-card:hover {
+  -webkit-filter: grayscale(0%);
+  filter: none;
+}
+.main .content .snap-card:hover .description {
+  top: 0px;
+}
+.main .content .snap-card:hover h1  {
+  padding-top: 3em;
+  font-size: 2em;
+  margin-top: -2.5em;
+}
+.main .content .snap-card.active {
+  -webkit-filter: grayscale(0%);
+  filter: none;
+}
+.main .content .snap-card.active .description {
+	top: 0px;
+}
+.main .content .snap-card.active h1  {
+  padding-top: 3em;
+  font-size: 2em;
+  margin-top: -2.5em;
+}
+.main .content .snap-card .description a {
+  top: -5px;
+  right: 0px;
+}
+.main .pagination-container {
+    float: right;
+    width: 100%;
+    text-align: center;
+}
+
+@media only all and (max-width: 767px) {
+    .main .header header {
+        max-width: 320px;
+        font-size: 60px;
+        line-height: 54px;
+        overflow: hidden;
+    }
+}

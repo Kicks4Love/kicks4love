@@ -46,27 +46,27 @@
     	padding: 0.2em 0.5em;
     	display: block;
     	float: left;
-    	margin-right: 1px; 
+    	margin-right: 1px;
     }
   	.main .pagination .disabled {
 	    color: #999999;
-	    border: 1px solid #dddddd; 
+	    border: 1px solid #dddddd;
 	}
   	.main .pagination .current {
 	    font-style: normal;
 	    font-weight: bold;
 	    background: #2e6ab1;
 	    color: white;
-	    border: 1px solid #2e6ab1; 
+	    border: 1px solid #2e6ab1;
 	}
   	.main .pagination a {
 	    text-decoration: none;
 	    color: #105cb6;
-	    border: 1px solid #9aafe5; 
+	    border: 1px solid #9aafe5;
 	}
     .main .pagination a:hover, .pagination a:focus {
       	color: #000033;
-      	border-color: #000033; 
+      	border-color: #000033;
     }
   	.main .pagination .page_info {
 	    background: #2e6ab1;
@@ -74,7 +74,7 @@
 	    padding: 0.4em 0.6em;
 	    width: 22em;
 	    margin-bottom: 0.3em;
-	    text-align: center; 
+	    text-align: center;
 	}
     .main .pagination .page_info b {
       	color: #000033;
@@ -85,13 +85,13 @@
 	    display: block;
 	    height: 0;
 	    clear: both;
-	    visibility: hidden; 
+	    visibility: hidden;
 	}
 	* html .pagination {
-	    height: 1%; 
+	    height: 1%;
 	}
 	*:first-child + html .pagination {
-	    overflow: hidden; 
+	    overflow: hidden;
 	}
 </style>
 
@@ -112,6 +112,9 @@
                     when "on_court_post"
                         url = post.content_en.empty? || post.content_cn.empty? ? "/oncourt" : "/oncourt/#{post.id}"
                         tag = "On_Court"
+                    when "street_snap_post"
+						url = "/streetsnap/#{post.id}"
+						tag = "Street_Snap"
                     when "rumor_post"
                     	url = "/rumors/#{post.id}"
                     	tag = "Rumors"
@@ -147,6 +150,4 @@
 	<%= will_paginate @results, :previous_label => t("Prev_Page"), :next_label => t("Next_Page") %>
 </div>
 
-<script>
-	initApplication(true, true);
-</script>
+<script>initApplication(true, true);</script>

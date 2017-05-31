@@ -1,0 +1,33 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "show.css" %>
+<% end %>
+
+<article class="main container">
+    <header>
+        <span class="category"><i class="fa fa-tags" aria-hidden="true"></i><%= @category %></span>
+        <h1><%= @article_title %></h1>
+        <div class="meta">
+            <span class="author">
+              <%= t("by") %> <i class="author-name"><%= @streetsnap_post.author.nil? || @streetsnap_post.author.username.empty? ? "Kicks4Love鞋侣" : @streetsnap_post.author.username %></i>
+            </span>
+            <span class="pub-date"><%= "#{t("posted")} #{@streetsnap_post.created_at.strftime("%Y-%m-%d")}" %></span>
+        </div>
+    </header>
+	<% image_index = paragraph_index = 0 %>
+    <% @streetsnap_post.post_composition.each do |index, hash| %>
+    	<% if hash['type'] == 'image' %>
+            <figure>
+    		  <%= image_tag @streetsnap_post.main_images[image_index].url %>
+    		  <% image_index += 1 %>
+            </figure>
+    	<% else %>
+    		<p><%= @content[paragraph_index].html_safe %></p>
+    		<% paragraph_index += 1 %>
+    	<% end %>
+    <% end %>
+    <%= render "share" %>
+</article>
+
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "show.js" %>
+<% end %>
