@@ -40,10 +40,14 @@
 	      	this.title = createElement('h1');
 
 	      	var right = createElement('div', 'right');
+	      	var chevronRight = createElement('i', 'fa fa-chevron-right fa-2x');
 	      	right.addEventListener('click', function() { self.nextMonth(); });
+	      	right.appendChild(chevronRight);
 
 	      	var left = createElement('div', 'left');
+	      	var chevronLeft = createElement('i', 'fa fa-chevron-left fa-2x');
 	      	left.addEventListener('click', function() { self.prevMonth(); });
+	      	left.appendChild(chevronLeft);
 
 	      	this.header.appendChild(this.title);
 	      	this.header.appendChild(right);
@@ -288,10 +292,10 @@
 
 	      		var data = this.dataset;
 	      		var modal = document.getElementById('release-modal');
-	      		var modalImage = modal.querySelector('.modal-body > img');
+	      		var modalBody = modal.querySelector('.modal-body');
 	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
-	      		modalImage.setAttribute('src', '');
-	      		modalImage.setAttribute('src', data.image);
+	      		modalBody.removeAttribute('style');
+	      		modalBody.setAttribute('style', "background-image:url('" + data.image + "')");
 				var pricestr = data.price <= 0 ? "N/A" : parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 	      		var span = createElement('span', '', dollarSign + ' ' + pricestr);
 	      		modal.getElementsByClassName('modal-footer')[0].appendChild(span);
