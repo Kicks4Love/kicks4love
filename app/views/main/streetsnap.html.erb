@@ -11,7 +11,7 @@
     </div>
     <div class="content">
         <% @streetsnap_posts.each_with_index do |streetsnap_post, index| %>
-            <% streetsnap_post.content = streetsnap_post.content.blank? ? "" : streetsnap_post.content[0][0..120].strip %>
+            <% streetsnap_post.content = streetsnap_post.content.blank? ? "" : streetsnap_post.content[0][0..110].strip %>
             <div class="col-xs-12 col-sm-6 col-lg-4">
             <div class="snap-card" style="background-image:url('<%= streetsnap_post.cover_image.url %>')">
                 <h1><a href="/streetsnap/<%= streetsnap_post.id %>"><%= streetsnap_post.title %></a></h1>

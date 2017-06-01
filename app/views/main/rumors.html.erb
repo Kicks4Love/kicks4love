@@ -12,14 +12,19 @@
     <div class="content">
     	<% @rumors_posts.each_with_index do |rumor_post, index| %>
     		<%  
-    			if index%3 == 0
-    				border_class = "left-lg-none left-sm-none"
-    			elsif index%2 == 0
-    				border_class = "left-sm-none"
-    			else
-    				border_class = ""
-    			end
+                row_div_start = row_div_end = false
+                if index == 0 || index == 3
+                    row_div_start = true
+                    border_class = "left-lg-none left-sm-none"
+                elsif index == 2 || index == 5
+                    border_class = "left-sm-none"
+                    row_div_end = true
+                end
+                row_div_end = true if index == @rumors_posts.size-1
     		%>
+            <% if row_div_start %>
+                <div class="row">
+            <% end %>
 	        <div class="collumn <%= border_class %> col-xs-12 col-sm-6 col-lg-4">
 	            <div class="head">
 	                <a href="/rumors/<%= rumor_post.id %>">
@@ -34,6 +39,9 @@
 	               <div class="photo" style="background-image:url('<%= rumor_post.cover_image.url %>')"></div>
                 </a>
 	        </div>
+            <% if row_div_end %>
+                </div>
+            <% end %>
 	    <% end %>
     </div>
     <div class="pagination-container">

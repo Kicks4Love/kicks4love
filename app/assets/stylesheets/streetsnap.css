@@ -37,8 +37,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	box-shadow: 0 2px 1px rgba(0,0,0,.1);
-  -webkit-filter: grayscale(100%);
-  filter: gray;
+  -webkit-filter: grayscale(50%);
 	overflow: hidden;
 }
 .main .content .snap-card h1 {
