@@ -80,4 +80,6 @@ Rails.application.routes.draw do
     resources :admin_users
   end
 
+  get '/sitemap.xml', :to => 'sitemap#index', :defaults => {:format => 'xml'}
+
 end

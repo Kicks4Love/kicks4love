@@ -18,23 +18,24 @@
 var autoSlider = null;
 
 function initApplication(showPendant, showLanguage) {
-	if (!$('#language').val().length && showLanguage)
+    var languageSet = $('#language-set').val().length > 0;
+    
+	if (!languageSet && showLanguage)
 		$('#language-modal').modal('show');
 
 	$('#language-form').submit(function() {
-        var languageSet = $('#language').val().length > 0;
     	var chinese = isChinese();
-    	
-    	if (languageSet && chinese && this.submited.includes('chinese'))
-    		return false;
-    	if (languageSet && !chinese && this.submited.includes('english'))
-    		return false;
+
+		if (languageSet && chinese && this.submited.includes('chinese'))
+			return false;
+		if (languageSet && !chinese && this.submited.includes('english'))
+			return false;
 	});
 
     if (showPendant) {
         var logoPendant = $('.logo-pendant');
-        setTimeout(function() { 
-            logoPendant.fadeIn('slow', function() { $(this).removeAttr('style'); $(this).addClass('hide-small') }); 
+        setTimeout(function() {
+            logoPendant.fadeIn('slow', function() { $(this).removeAttr('style'); $(this).addClass('hide-small') });
         }, 1000);
         logoPendant.click(function() {
             if ($(this).attr('style') === undefined)
@@ -69,7 +70,7 @@ function getQueryParams() {
 }
 
 function isChinese() {
-    return $('#language').val() == 'cn';
+    return $('html').attr('lang') == 'zh';
 }
 
 function getSourcePage() {
