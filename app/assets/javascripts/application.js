@@ -18,16 +18,17 @@
 var autoSlider = null;
 
 function initApplication(showPendant, showLanguage) {
-	if ($('#language-set').val() == "false" && showLanguage)
+    var languageSet = $('#language-set').val().length > 0;
+    
+	if (!languageSet && showLanguage)
 		$('#language-modal').modal('show');
 
 	$('#language-form').submit(function() {
-      var languageSet = $('#language-set').val() == "true";
     	var chinese = isChinese();
 
-			if (languageSet && chinese && this.submited.includes('chinese'))
+		if (languageSet && chinese && this.submited.includes('chinese'))
 			return false;
-			if (languageSet && !chinese && this.submited.includes('english'))
+		if (languageSet && !chinese && this.submited.includes('english'))
 			return false;
 	});
 
