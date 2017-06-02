@@ -50,13 +50,11 @@ h1, h4 {
           animation: fill-text 2s infinite;
 }
 .main .header {
-  color: white;
-	text-align: center;
-	background: #999999;
-	border-radius: 20px;
-  border-style: groove;
-	font-size: 24px;
-	line-height: 50px;
+  padding: 10px 0;
+  background: linear-gradient(45deg, white 25%, #e7e7e7 25%, #e7e7e7 50%, white 50%, white 75%, #e7e7e7 75%);
+  background-size: 80px 80px;
+  border-radius: 20px;
+  border: 2px solid #a4a4a4;
 }
 .main .kicks-switch {
   width: 80px;
@@ -492,7 +490,7 @@ h1, h4 {
 #calendar .month-alt .product-container .cover {
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.4);
   position: relative;
   -webkit-transition: all 0.4s cubic-bezier(.99,.99,0,.61);
   padding: 1em;
