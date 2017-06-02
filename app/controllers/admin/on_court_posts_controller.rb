@@ -23,11 +23,11 @@ class Admin::OnCourtPostsController < Admin::AdminController
 
     new_post.author = current_admin_user
 
-    if new_post.content_en.count > 2 || new_post.content_cn.count > 2
-      redirect_to :back, :alert => "Maximum paragraph number is 2"
+    if new_post.content_en.count > OnCourtPost::MAX_NUMBER_ALLOW || new_post.content_cn.count > OnCourtPost::MAX_NUMBER_ALLOW
+      redirect_to :back, :alert => "Maximum paragraph number is #{OnCourtPost::MAX_NUMBER_ALLOW}"
       return
-    elsif new_post.main_images.count > 2
-      redirect_to :back, :alert => "Maximum main image number is 2"
+    elsif new_post.main_images.count > OnCourtPost::MAX_NUMBER_ALLOW
+      redirect_to :back, :alert => "Maximum main image number is #{OnCourtPost::MAX_NUMBER_ALLOW}"
       return
     end
 
@@ -45,11 +45,11 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def update
     params = process_content(on_court_post_params)
 
-    if params[:content_en].count > 2 || params[:content_cn].count > 2
-      redirect_to :back, :alert => "Maximum paragraph number is 2"
+    if params[:content_en].count > OnCourtPost::MAX_NUMBER_ALLOW || params[:content_cn].count > OnCourtPost::MAX_NUMBER_ALLOW
+      redirect_to :back, :alert => "Maximum paragraph number is #{OnCourtPost::MAX_NUMBER_ALLOW}"
       return
-    elsif params[:main_images].present? && params[:main_images].count > 2
-      redirect_to :back, :alert => "Maximum main image number is 2"
+    elsif params[:main_images].present? && params[:main_images].count > OnCourtPost::MAX_NUMBER_ALLOW
+      redirect_to :back, :alert => "Maximum main image number is #{OnCourtPost::MAX_NUMBER_ALLOW}"
       return
     end
     if @on_court_post.author.nil?

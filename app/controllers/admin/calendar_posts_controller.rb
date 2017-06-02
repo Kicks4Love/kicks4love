@@ -82,4 +82,5 @@ class Admin::CalendarPostsController < Admin::AdminController
 	def get_calendar_post
 		@calendar_post = CalendarPost.find_by_id(params[:id])
 	end
+	
 end

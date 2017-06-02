@@ -24,11 +24,11 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 		feature_post.author = current_admin_user
 
-		if feature_post.content_en.count > 12 || feature_post.content_cn.count > 12
-	      	redirect_to :back, :alert => "Maximum paragraph number is 12"
+		if feature_post.content_en.count > FeaturePost::MAX_NUMBER_ALLOW  || feature_post.content_cn.count > FeaturePost::MAX_NUMBER_ALLOW
+	      	redirect_to :back, :alert => "Maximum paragraph number is #{FeaturePost::MAX_NUMBER_ALLOW}"
 	      	return
-	    elsif feature_post.main_images.count > 12
-	      	redirect_to :back, :alert => "Maximum main image number is 12"
+	    elsif feature_post.main_images.count > FeaturePost::MAX_NUMBER_ALLOW
+	      	redirect_to :back, :alert => "Maximum main image number is #{FeaturePost::MAX_NUMBER_ALLOW}"
 	      	return
 	    end
 
@@ -42,11 +42,11 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def update
 		params = process_content(feature_post_params)
 
-		if params[:content_en].count > 12 || params[:content_cn].count > 12
-      		redirect_to :back, :alert => "Maximum paragraph number is 12"
+		if params[:content_en].count > FeaturePost::MAX_NUMBER_ALLOW || params[:content_cn].count > FeaturePost::MAX_NUMBER_ALLOW
+      		redirect_to :back, :alert => "Maximum paragraph number is #{FeaturePost::MAX_NUMBER_ALLOW}"
       		return
-    	elsif params[:main_images].present? && params[:main_images].count > 12
-      		redirect_to :back, :alert => "Maximum main image number is 12"
+    	elsif params[:main_images].present? && params[:main_images].count > FeaturePost::MAX_NUMBER_ALLOW
+      		redirect_to :back, :alert => "Maximum main image number is #{FeaturePost::MAX_NUMBER_ALLOW}"
       		return
     	end
 		if @feature_post.author.nil?

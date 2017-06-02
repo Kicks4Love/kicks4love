@@ -24,11 +24,11 @@ class Admin::TrendPostsController < Admin::AdminController
 
 		trend_post.author = current_admin_user
 
-		if trend_post.content_en.count > 6 || trend_post.content_cn.count > 6
-	      redirect_to :back, :alert => "Maximum paragraph number is 6"
+		if trend_post.content_en.count > TrendPost::MAX_NUMBER_ALLOW || trend_post.content_cn.count > TrendPost::MAX_NUMBER_ALLOW
+	      redirect_to :back, :alert => "Maximum paragraph number is #{TrendPost::MAX_NUMBER_ALLOW}"
 	      return
-	    elsif trend_post.main_images.count > 6
-	      redirect_to :back, :alert => "Maximum main image number is 6"
+	    elsif trend_post.main_images.count > TrendPost::MAX_NUMBER_ALLOW
+	      redirect_to :back, :alert => "Maximum main image number is #{TrendPost::MAX_NUMBER_ALLOW}"
 	      return
 	    end
 
@@ -42,11 +42,11 @@ class Admin::TrendPostsController < Admin::AdminController
 	def update
 		params = process_content(trend_post_params)
 
-		if params[:content_en].count > 6 || params[:content_cn].count > 6
-      		redirect_to :back, :alert => "Maximum paragraph number is 6"
+		if params[:content_en].count > TrendPost::MAX_NUMBER_ALLOW || params[:content_cn].count > TrendPost::MAX_NUMBER_ALLOW
+      		redirect_to :back, :alert => "Maximum paragraph number is #{TrendPost::MAX_NUMBER_ALLOW}"
       		return
-    	elsif params[:main_images].present? && params[:main_images].count > 6
-      		redirect_to :back, :alert => "Maximum main image number is 6"
+    	elsif params[:main_images].present? && params[:main_images].count > TrendPost::MAX_NUMBER_ALLOW
+      		redirect_to :back, :alert => "Maximum main image number is #{TrendPost::MAX_NUMBER_ALLOW}"
       		return
     	end
 		@trend_post.author = current_admin_user if @trend_post.author.nil?

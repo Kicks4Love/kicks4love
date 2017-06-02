@@ -17,6 +17,7 @@ class RumorPost < ApplicationRecord
 	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
 	self.per_page = 6
+	MAX_NUMBER_ALLOW = 5
 
     mount_uploader :cover_image, ImageUploader
   	mount_uploaders :main_images, ImageUploader

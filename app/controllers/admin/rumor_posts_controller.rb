@@ -24,11 +24,11 @@ class Admin::RumorPostsController < Admin::AdminController
 		
 		rumor_post.author = current_admin_user
 		
-		if rumor_post.content_en.count > 5 || rumor_post.content_cn.count > 5
-	      	redirect_to :back, :alert => "Maximum paragraph number is 5"
+		if rumor_post.content_en.count > RumorPost::MAX_NUMBER_ALLOW || rumor_post.content_cn.count > RumorPost::MAX_NUMBER_ALLOW
+	      	redirect_to :back, :alert => "Maximum paragraph number is #{RumorPost::MAX_NUMBER_ALLOW}"
 	      	return
-	    elsif rumor_post.main_images.count > 5
-	      	redirect_to :back, :alert => "Maximum main image number is 5"
+	    elsif rumor_post.main_images.count > RumorPost::MAX_NUMBER_ALLOW
+	      	redirect_to :back, :alert => "Maximum main image number is #{RumorPost::MAX_NUMBER_ALLOW}"
 	      	return
 	    end
 
@@ -42,11 +42,11 @@ class Admin::RumorPostsController < Admin::AdminController
 	def update
 		params = process_content(rumor_post_params)
 
-		if params[:content_en].count > 5 || params[:content_cn].count > 5
-      		redirect_to :back, :alert => "Maximum paragraph number is 5"
+		if params[:content_en].count > RumorPost::MAX_NUMBER_ALLOW || params[:content_cn].count > RumorPost::MAX_NUMBER_ALLOW
+      		redirect_to :back, :alert => "Maximum paragraph number is #{RumorPost::MAX_NUMBER_ALLOW}"
       		return
-    	elsif params[:main_images].present? && params[:main_images].count > 5
-      		redirect_to :back, :alert => "Maximum main image number is 5"
+    	elsif params[:main_images].present? && params[:main_images].count > RumorPost::MAX_NUMBER_ALLOW
+      		redirect_to :back, :alert => "Maximum main image number is #{RumorPost::MAX_NUMBER_ALLOW}"
       		return
     	end
 		@rumor_post.author = current_admin_user if @rumor_post.author.nil?

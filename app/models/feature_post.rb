@@ -18,6 +18,7 @@ class FeaturePost < ApplicationRecord
 	scope :old, -> {where("created_at < ?", 3.month.ago)}
 
     self.per_page = 3
+    MAX_NUMBER_ALLOW = 12
 
     mount_uploaders :main_images, ImageUploader
     mount_uploader :cover_image, ImageUploader

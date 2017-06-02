@@ -18,6 +18,7 @@ class OnCourtPost < ApplicationRecord
 	scope :with_link, -> {where("content_en IS NOT NULL AND content_cn IS NOT NULL AND main_images IS NOT NULL")}
 
     self.per_page = 3
+    MAX_NUMBER_ALLOW = 4
 
     mount_uploader :cover_image, ImageUploader
     mount_uploaders :main_images, ImageUploader

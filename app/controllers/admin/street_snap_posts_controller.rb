@@ -23,11 +23,11 @@ class Admin::StreetSnapPostsController < Admin::AdminController
 
     street_snap_post.author = current_admin_user
 
-    if street_snap_post.content_en.count > 10 || street_snap_post.content_cn.count > 10
-          redirect_to :back, :alert => "Maximum paragraph number is 10"
+    if street_snap_post.content_en.count > StreetSnapPost::MAX_NUMBER_ALLOW || street_snap_post.content_cn.count > StreetSnapPost::MAX_NUMBER_ALLOW 
+          redirect_to :back, :alert => "Maximum paragraph number is #{StreetSnapPost::MAX_NUMBER_ALLOW}"
           return
-      elsif street_snap_post.main_images.count > 10
-          redirect_to :back, :alert => "Maximum main image number is 10"
+      elsif street_snap_post.main_images.count > StreetSnapPost::MAX_NUMBER_ALLOW 
+          redirect_to :back, :alert => "Maximum main image number is #{StreetSnapPost::MAX_NUMBER_ALLOW}"
           return
       end
 
@@ -41,11 +41,11 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   def update
     params = process_content(street_snap_post_params)
 
-    if params[:content_en].count > 10 || params[:content_cn].count > 10
-          redirect_to :back, :alert => "Maximum paragraph number is 10"
+    if params[:content_en].count > StreetSnapPost::MAX_NUMBER_ALLOW  || params[:content_cn].count > StreetSnapPost::MAX_NUMBER_ALLOW 
+          redirect_to :back, :alert => "Maximum paragraph number is #{StreetSnapPost::MAX_NUMBER_ALLOW }"
           return
-      elsif params[:main_images].present? && params[:main_images].count > 10
-          redirect_to :back, :alert => "Maximum main image number is 10"
+      elsif params[:main_images].present? && params[:main_images].count > StreetSnapPost::MAX_NUMBER_ALLOW 
+          redirect_to :back, :alert => "Maximum main image number is #{StreetSnapPost::MAX_NUMBER_ALLOW }"
           return
       end
 
@@ -102,4 +102,5 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   def get_street_snap_post
     @street_snap_post = StreetSnapPost.find_by_id(params[:id])
   end
+
 end
