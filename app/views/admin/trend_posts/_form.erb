@@ -1,3 +1,9 @@
+<style>
+	.content-form {
+		min-width: 500px;
+		min-height: 200px;
+	}
+</style>
 <div class="row no-margin">
 	<div class="col-sm-2">
 		<label>Title (English):</label>
@@ -21,7 +27,7 @@
 		<label>Content (English):</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_area :content_en, :value => @trend_post.content_en.join("\n"), :title => "Different paragraph in different line" %>
+		<%= form.text_area :content_en, :class => 'content-form', :value => @trend_post.content_en.join("\n"), :title => "Different paragraph in different line" %>
 	</div>
 </div>
 <br>
@@ -30,7 +36,7 @@
 		<label>文章内容（中文):</label>
 	</div>
 	<div class="col-sm-2">
-		<%= form.text_area :content_cn, :value => @trend_post.content_cn.join("\n"), :title => "Different paragraph in different line" %>
+		<%= form.text_area :content_cn, :class => 'content-form', :value => @trend_post.content_cn.join("\n"), :title => "Different paragraph in different line" %>
 	</div>
 </div>
 <br>
