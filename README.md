@@ -9,15 +9,15 @@
 2. **MySql**
   - We are using MySql
   - Please install that as well
-
-3. **Developer Guide**
-  - Please create a new branch any time modifying the code
-  - Unless being permitted to do so
-
-4. **ImageMagick**
+  
+3. **ImageMagick**
   - Our image uploader gem _carrierwave_ depends on ImageMagick to resize images; uploading would not work if ImageMagick is not installed on your machine
   - On Linux, run: ```sudo apt-get update && sudo apt-get install imagemagick --fix-missing ```
-  - On Mac, download [this installer](http://cactuslab.com/imagemagick/) created by Cactuslab.
+  - On Mac, download [this installer](http://cactuslab.com/imagemagick/) created by Cactuslab, or simply run ```brew install imagemagick ``` if Homebrew is installed on the machine.
+
+4. **Developer Guide**
+  - Please create a new branch any time modifying the code
+  - Unless being permitted to do so
 
 Check out this [Link](https://gorails.com/setup/osx/10.12-sierra) for more information for setting up environment
 ```bash
