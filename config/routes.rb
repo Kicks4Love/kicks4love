@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/streetsnap/:id' => 'main#streetsnap_show'
   get '/rumors' => 'main#rumors'
   get '/rumors/:id' => 'main#rumor_show'
-  get '/terms' => 'main#terms'
+  get '/privacy' => 'main#privacy'
   get '/contact_us' => 'main#contact'
   get '/search' => 'main#search'
 

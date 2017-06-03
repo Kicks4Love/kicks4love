@@ -168,8 +168,8 @@ class MainController < ApplicationController
 		@og_image = "http://#{request.host}#{@rumor_post.cover_image.url}"
 	end
 
-	def terms
-		@page_title = 'Kicks4Love鞋侣 | Terms条款'
+	def privacy
+		@page_title = 'Kicks4Love鞋侣 | Privacy隐私'
 	end
 
 	def contact

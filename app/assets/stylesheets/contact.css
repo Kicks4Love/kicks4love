@@ -27,14 +27,12 @@
 .main .kicks-contact-row.header h1 {
     font-weight: 300;
     display: inline-block;
-    font-weight: 100;
     font-size: 2.8125em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     margin: 0 0 0.1em 0;
     padding: 0 0 0.4em 0;
 }
 .main .kicks-contact-row.header h3 {
-    font-weight: 400;
     font-size: 1.25em;
     margin: 1em 0 0.4em 0;
 }
@@ -49,7 +47,6 @@
     border-width: 0 0 0 0;
     border-bottom: 5px solid;
     text-transform: uppercase;
-    font-weight: 300;
 }
 .main .kicks-contact .body .btn.btn-submit {
     background-color: #4f6fad;

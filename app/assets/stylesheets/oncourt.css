@@ -82,9 +82,6 @@
     float: left;
     margin-bottom: 25px;
 }
-.main ul li .player-card .player-card-inside .player-name span {
-    font-weight: lighter;
-}
 .main ul li .player-card .player-card-inside .player-name b {
     font-weight: 800;
 }

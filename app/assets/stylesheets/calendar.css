@@ -50,6 +50,7 @@ h1, h4 {
           animation: fill-text 2s infinite;
 }
 .main .header {
+  font-size: 25px;
   padding: 10px 0;
   background: linear-gradient(45deg, white 25%, #e7e7e7 25%, #e7e7e7 50%, white 50%, white 75%, #e7e7e7 75%);
   background-size: 80px 80px;
@@ -105,7 +106,6 @@ h1, h4 {
 }
 .main .press-warning {
   color: red;
-  font-weight: lighter;
 }
 
 *, *:before, *:after {
