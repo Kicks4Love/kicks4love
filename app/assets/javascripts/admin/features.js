@@ -43,11 +43,9 @@ function initPostComposition() {
 
   $('#feature_post_content_en').keyup(function() {
     enCount = $(this).val().split(/\r|\n/).length;
-    currentEnCount = parseInt(displayParagraph.text().split('/')[0]);
+    var currentEnCount = parseInt(displayParagraph.text().split('/')[0]);
     displayParagraph.text(enCount + ' / ' + cnCount);
-    if (currentEnCount != enCount) {
-      updateCompositionTable();
-    }
+    if (currentEnCount != enCount) updateCompositionTable();
   });
 
   $('#feature_post_content_cn').keyup(function() {
