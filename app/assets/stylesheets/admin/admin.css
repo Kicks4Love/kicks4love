@@ -11,6 +11,11 @@
 	table-layout: fixed
 }
 
+.content-form {
+	min-width: 500px;
+	min-height: 200px;
+}
+
 .no-margin {
 	margin: 0;
 }

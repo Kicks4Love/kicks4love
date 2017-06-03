@@ -43,29 +43,33 @@ function initPostComposition() {
 
   $('#street_snap_post_content_en').keyup(function() {
     enCount = $(this).val().split(/\r|\n/).length;
+    currentEnCount = parseInt(displayParagraph.text().split('/')[0]);
     displayParagraph.text(enCount + ' / ' + cnCount);
-    updateCompositionTable();
+    if (currentEnCount != enCount) {
+      updateCompositionTable();
+    }
   });
 
   $('#street_snap_post_content_cn').keyup(function() {
     cnCount = $(this).val().split(/\r|\n/).length;
     displayParagraph.text(enCount + ' / ' + cnCount);
-    updateCompositionTable();
   });
 
   $('#street_snap_post_content_en').add('#street_snap_post_content_cn').keyup();
 
   $('#street_snap_post_main_images').change(function() {
     imageCount = $(this).get(0).files.length;
-    displayImage.text(imageCount);
-    $('.main-images').remove();
-    for (var i = 0; i < imageCount; i++)
-      $('<input>').attr({
-        type: 'hidden',
-        class: 'main-images',
-        value: $(this).get(0).files[i].name
-      }).appendTo(postComposition);
-    updateCompositionTable();
+    if (parseInt(displayImage.text()) != imageCount) {
+      displayImage.text(imageCount);
+      $('.main-images').remove();
+      for (var i = 0; i < imageCount; i++)
+        $('<input>').attr({
+          type: 'hidden',
+          class: 'main-images',
+          value: $(this).get(0).files[i].name
+        }).appendTo(postComposition);
+      updateCompositionTable();
+    }
   });
 
   var imageRows = table.find('tr[data-type="image"]');
