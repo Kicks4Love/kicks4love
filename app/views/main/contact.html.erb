@@ -42,6 +42,50 @@
             <% end %>  
         </div>
     </div>
+    <div id="aboutus-accordion" role="tablist">
+        <div class="card">
+            <div class="card-header" role="tab">
+                <h4>
+                    <a data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-1" aria-expanded="true">
+                        <%= t("About_Us") %>
+                    </a>
+                </h4>
+            </div>
+            <div id="aboutus-collapse-1" class="collapse in" role="tabpanel">
+                <div class="card-block">
+                    <%= raw t("about_us_1") %>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab">
+                <h4>
+                    <a class="collapsed" data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-2" aria-expanded="false">
+                        <%= t("about_us_2") %>
+                    </a>
+                </h4>
+            </div>
+            <div id="aboutus-collapse-2" class="collapse" role="tabpanel">
+                <div class="card-block">
+                    <%= raw t("about_us_3") %>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab">
+                <h4>
+                    <a class="collapsed" data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-3" aria-expanded="false">
+                        <%= t("about_us_4") %>
+                    </a>
+                </h4>
+            </div>
+            <div id="aboutus-collapse-3" class="collapse" role="tabpanel">
+                <div class="card-block">
+                    <%= raw t("about_us_5") %>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <% content_for :end_of_body do %>

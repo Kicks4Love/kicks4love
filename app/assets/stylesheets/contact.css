@@ -7,7 +7,7 @@
 .main .kicks-contact {
     width: 100%;
     min-width: 324px;
-    margin: 50px auto 0px;
+    margin: 50px auto;
     background-color: #fff;
     border: 1px solid #cfcfcf;
     border-bottom: 3px solid #ccc;
@@ -119,6 +119,39 @@
 .main .kicks-contact form small {
     color: #4f6fad;
     margin: 0 0 0 0.5em;
+}
+
+#aboutus-accordion {
+    margin-bottom: 20px;
+}
+#aboutus-accordion .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #cfcfcf;
+    border-radius: .25rem;
+}
+#aboutus-accordion .card .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e7e7e7;
+}
+#aboutus-accordion .card .card-header h4 {
+    margin: 0;
+}
+#aboutus-accordion .card .card-header a:after {
+    font-family: FontAwesome;
+    content: "\f078";    
+    float: right;
+    color: grey;
+}
+#aboutus-accordion .card .card-header a.collapsed:after {
+    content: "\f054";
+}
+#aboutus-accordion .card .card-block {
+    flex: 1 1 auto;
+    padding: 1.25rem;
 }
 
 @media only screen and (max-width: 767px) {
