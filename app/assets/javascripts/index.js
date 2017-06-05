@@ -84,6 +84,9 @@ function initLoadPostHandler() {
             			case 'oncourt':
             				tag = chinese ? '球场时装' : 'On Court';
             				break;
+            			case 'streetsnap':
+            				tag = chinese ? '街拍' : 'Street Snap';
+            				break;
             			case 'rumors':
             				tag = chinese ? '流言蜚语' : 'Rumors';
             				break;

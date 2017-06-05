@@ -233,6 +233,8 @@ class MainController < ApplicationController
               		feed.post_type = "trend"
                 when "OnCourtPost"
                   	feed.post_type = "oncourt"
+                when "StreetSnapPost"
+                	feed.post_type = "streetsnap"
                 when "RumorPost"
                 	feed.post_type = "rumors"
                 end
