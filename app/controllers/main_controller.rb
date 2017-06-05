@@ -13,7 +13,7 @@ class MainController < ApplicationController
 	end
 
 	def search
-		@page_title = 'Kicks4Love鞋侣 | Search搜索'
+		@page_title = 'Search搜索 | Kicks4Love鞋侣'
 		query = {
 			query: {
                 multi_match: {
@@ -29,7 +29,7 @@ class MainController < ApplicationController
 	end
 
 	def features
-		@page_title = 'Kicks4Love鞋侣 | Features专题'
+		@page_title = 'Features专题 | Kicks4Love鞋侣'
 		@feature_posts = FeaturePost.latest.paginate(:page => 1)
 		if @chinese
 			@feature_posts = @feature_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
@@ -56,11 +56,11 @@ class MainController < ApplicationController
 	end
 
 	def calendar
-		@page_title = 'Kicks4Love鞋侣 | Calendar日历'
+		@page_title = 'Calendar日历 | Kicks4Love鞋侣'
 	end
 
 	def trend
-		@page_title = 'Kicks4Love鞋侣 | Trend潮流'
+		@page_title = 'Trend潮流  | Kicks4Love鞋侣'
 		@all_trend_posts = TrendPost.latest.paginate(:page => 1)
 		if @chinese
 			@all_trend_posts = @all_trend_posts.select("title_cn AS title, cover_image, id, created_at")
@@ -87,7 +87,7 @@ class MainController < ApplicationController
 	end
 
 	def oncourt
-		@page_title = 'Kicks4Love鞋侣 | On Court球场'
+		@page_title = 'On Court球场 | Kicks4Love鞋侣'
 		@on_court_posts = OnCourtPost.latest.paginate(:page => 1)
 		if @chinese
 			@on_court_posts = @on_court_posts.select("title_cn AS title, player_name_cn AS player_name, content_en, content_cn, main_images, cover_image, id, created_at")
@@ -114,7 +114,7 @@ class MainController < ApplicationController
 	end
 
 	def streetsnap
-		@page_title = 'Kicks4Love鞋侣 | Street Snap街拍'
+		@page_title = 'Street Snap街拍 | Kicks4Love鞋侣'
 		@streetsnap_posts = StreetSnapPost.latest.paginate(:page => params[:page] || 1)
 		if @chinese
 			@streetsnap_posts = @streetsnap_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
@@ -141,7 +141,7 @@ class MainController < ApplicationController
 	end
 
 	def rumors
-		@page_title = 'Kicks4Love鞋侣 | Rumors流言蜚语'
+		@page_title = 'Rumors流言蜚语 | Kicks4Love鞋侣'
 		@rumors_posts = RumorPost.latest.paginate(:page => params[:page] || 1)
 		if @chinese
 			@rumors_posts = @rumors_posts.select("title_cn AS title, content_cn AS content, cover_image, id, created_at")
@@ -169,11 +169,11 @@ class MainController < ApplicationController
 	end
 
 	def privacy
-		@page_title = 'Kicks4Love鞋侣 | Privacy隐私'
+		@page_title = 'Privacy隐私 | Kicks4Love鞋侣'
 	end
 
 	def contact
-		@page_title = 'Kicks4Love鞋侣 | Contact Us联系我们'
+		@page_title = 'Contact Us联系我们 | Kicks4Love鞋侣'
 		if @chinese
 			@contact_placeholder = {
 				:first_name_label => "名字",
