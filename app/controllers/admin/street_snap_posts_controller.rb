@@ -3,7 +3,7 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   before_action :get_street_snap_post, :only => [:edit, :destroy, :update, :show]
 
   def index
-    @page_title = "Kicks4Love Admin | Street snap Posts"
+    @page_title = "Street snap Posts | Kicks4Love Admin"
     @street_snap_posts = StreetSnapPost.latest
     @expired_posts_count = StreetSnapPost.old.size;
     if params[:filter].present?
@@ -15,7 +15,7 @@ class Admin::StreetSnapPostsController < Admin::AdminController
 
   def new
     @street_snap_post = StreetSnapPost.new
-    @page_title = "Kicks4Love Admin | New Street snap Post"
+    @page_title = "New Street snap Post | Kicks4Love Admin"
   end
 
   def create
@@ -61,7 +61,7 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   end
 
   def edit
-    @page_title = "Kicks4Love Admin | Edit Street Snap Post"
+    @page_title = "Edit Street Snap Post | Kicks4Love Admin"
   end
 
   def destroy

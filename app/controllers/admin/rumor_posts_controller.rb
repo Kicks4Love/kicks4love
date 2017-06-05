@@ -4,7 +4,7 @@ class Admin::RumorPostsController < Admin::AdminController
 	before_action :get_rumor_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
-		@page_title = "Kicks4Love Admin | Rumors Posts"
+		@page_title = "Rumors Posts | Kicks4Love Admin"
 		@rumor_posts = RumorPost.latest
 		@expired_posts_count = RumorPost.old.size;
 		if params[:filter].present?
@@ -16,7 +16,7 @@ class Admin::RumorPostsController < Admin::AdminController
 
 	def new
 		@rumor_post = RumorPost.new
-		@page_title = "Kicks4Love Admin | New Rumor Post"
+		@page_title = "New Rumor Post | Kicks4Love Admin"
 	end
 
 	def create
@@ -60,7 +60,7 @@ class Admin::RumorPostsController < Admin::AdminController
 	end
 
 	def edit
-		@page_title = "Kicks4Love Admin | Edit Rumor Post"
+		@page_title = "Edit Rumor Post | Kicks4Love Admin"
 	end
 
 	def destroy
@@ -100,4 +100,5 @@ class Admin::RumorPostsController < Admin::AdminController
 	def get_rumor_post
 		@rumor_post = RumorPost.find_by_id(params[:id])
 	end
+
 end

@@ -4,7 +4,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 	before_action :get_feature_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
-		@page_title = "Kicks4Love Admin | Feature Posts"
+		@page_title = "Feature Posts | Kicks4Love Admin"
 		@feature_posts = FeaturePost.latest
 		@expired_posts_count = FeaturePost.old.size;
 		if params[:filter].present?
@@ -16,7 +16,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 	def new
 		@feature_post = FeaturePost.new
-		@page_title = "Kicks4Love Admin | New Feature Post"
+		@page_title = "New Feature Post | Kicks4Love Admin"
 	end
 
 	def create
@@ -62,7 +62,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def edit
-		@page_title = "Kicks4Love Admin | Edit Feature Post"
+		@page_title = "Edit Feature Post | Kicks4Love Admin"
 	end
 
 	def destroy

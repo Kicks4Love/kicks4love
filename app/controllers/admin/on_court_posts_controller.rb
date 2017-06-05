@@ -3,7 +3,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
   skip_before_filter :verify_authenticity_token, :only => [:destroy]
 
   def index
-    @page_title = "Kicks4Love Admin | On Court Posts"
+    @page_title = "On Court Posts | Kicks4Love Admin"
 		@on_court_posts = OnCourtPost.latest
     @expired_posts_count = OnCourtPost.old.size;
     if params[:filter].present?
@@ -14,7 +14,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
   end
 
   def new
-    @page_title = "Kicks4Love Admin | Create a new On Court post"
+    @page_title = "Create a new On Court post | Kicks4Love Admin"
     @on_court_post = OnCourtPost.new
   end
 
@@ -39,7 +39,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
   end
 
   def edit
-    @page_title = "Kicks4Love Admin | Edit a On Court post"
+    @page_title = "Edit a On Court post | Kicks4Love Admin"
   end
 
   def update

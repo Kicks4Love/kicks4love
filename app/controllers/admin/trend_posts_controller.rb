@@ -4,7 +4,7 @@ class Admin::TrendPostsController < Admin::AdminController
 	before_action :get_trend_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
-		@page_title = "Kicks4Love Admin | Trend Posts"
+		@page_title = "Trend Posts | Kicks4Love Admin"
 		@trend_posts = TrendPost.latest
 		@expired_posts_count = TrendPost.old.size;
 		if params[:filter].present?
@@ -16,7 +16,7 @@ class Admin::TrendPostsController < Admin::AdminController
 
 	def new
 		@trend_post = TrendPost.new
-		@page_title = "Kicks4Love Admin | New Trend Post"
+		@page_title = "New Trend Post | Kicks4Love Admin"
 	end
 
 	def create
@@ -60,7 +60,7 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def edit
-		@page_title = "Kicks4Love Admin | Edit Trend Post"
+		@page_title = "Edit Trend Post | Kicks4Love Admin"
 	end
 
 	def destroy

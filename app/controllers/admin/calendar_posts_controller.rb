@@ -3,7 +3,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 	before_action :get_calendar_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
-		@page_title = "Kicks4Love Admin | Calendar Posts"
+		@page_title = "Calendar Posts | Kicks4Love Admin"
 		@calendar_posts = CalendarPost.all
 		@expired_posts_count = CalendarPost.old.size
  		if params[:filter].present?
@@ -26,7 +26,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 
 	def new
 		@calendar_post = CalendarPost.new
-		@page_title = "Kicks4Love Admin | New Calendar Post"
+		@page_title = "New Calendar Post | Kicks4Love Admin"
 	end
 
 	def create
@@ -50,7 +50,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 	end
 
 	def edit
-		@page_title = "Kicks4Love Admin | Edit Calendar Post"
+		@page_title = "Edit Calendar Post | Kicks4Love Admin"
 	end
 
 	def destroy

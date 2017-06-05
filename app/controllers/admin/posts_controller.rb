@@ -4,14 +4,14 @@ class Admin::PostsController < Admin::AdminController
 	before_action :get_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
-		@page_title = "Kicks4Love Admin | Posts"
+		@page_title = "Posts | Kicks4Love Admin"
 		@posts = Post.posts
 		@news = Post.news
 	end
 
 	def new
 		@post = Post.new
-		@page_title = "Kicks4Love Admin | New Post"
+		@page_title = "New Post | Kicks4Love Admin"
 	end
 
 	def create
@@ -35,7 +35,7 @@ class Admin::PostsController < Admin::AdminController
 	end
 
 	def edit
-		@page_title = "Kicks4Love Admin | Edit Post"
+		@page_title = "Edit Post | Kicks4Love Admin"
 	end
 
 	def destroy

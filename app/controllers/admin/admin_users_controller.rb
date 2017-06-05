@@ -4,11 +4,14 @@ class Admin::AdminUsersController < Admin::AdminController
 	before_action :get_admin_user, :only => [:show, :destroy]
 
 	def index
+		@page_title = "Admin Users | Kicks4Love Admin"
 		@root_user = AdminUser.root_user
 		@admin_users = AdminUser.non_root_users
 	end
 
 	def show
+		user_name = AdminUser.find_by_id(params[:id]).username
+		@page_title = "#{user_name} | Kicks4Love Admin"
 	end
 
 	def destroy
