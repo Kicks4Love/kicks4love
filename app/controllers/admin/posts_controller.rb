@@ -61,6 +61,10 @@ class Admin::PostsController < Admin::AdminController
 			posts = TrendPost.select(:id, :title_en).latest
 		when "on_court"
 			posts = OnCourtPost.select(:id, :title_en).latest
+		when "street_snap"
+			posts = StreetSnapPost.select(:id, :title_en).latest
+		when "rumors"
+			posts = RumorPost.select(:id, :title_en).latest
 		end
 
 		render :json => posts.to_json, :layout => false

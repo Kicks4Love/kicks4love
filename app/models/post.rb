@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
 	enum :post_type => [:POST, :NEWS]
-	enum :pointer_type => [:FEATURES, :ON_COURT, :TREND, :CALENDAR]
+	enum :pointer_type => [:FEATURES, :ON_COURT, :TREND, :CALENDAR, :STREET_SNAP, :RUMORS]
 
 	scope :latest, -> {order(:created_at => :DESC)}
 	scope :posts, -> {where(:post_type => :POST)}

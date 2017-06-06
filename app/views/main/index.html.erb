@@ -15,11 +15,16 @@
                             case post.pointer_type
                             when "FEATURES"
                                 url = "/features/#{post.pointer_id}"
+                            when "CALENDAR"
+                                date = CalendarPost.find_by_id(post.pointer_id).release_date.strftime("%Y-%m-%d")
+                                url = "/calendar?date=#{date}"
                             when "TREND"
                                 url = "/trend/#{post.pointer_id}"
                             when "ON_COURT"
                                 url = "/oncourt/#{post.pointer_id}"
-                            when "RUMORS"
+                            when "STREET_SNAP"
+                                url = "/streetsnap/#{post.pointer_id}"
+                            else
                                 url = "/rumors/#{post.pointer_id}"
                             end
                         %>
@@ -58,7 +63,9 @@
                             url = "/trend/#{news.pointer_id}"
                         when "ON_COURT"
                             url = "/oncourt/#{news.pointer_id}"
-                        when "RUMORS"
+                        when "STREET_SNAP"
+                            url = "/streetsnap/#{post.pointer_id}"
+                        else
                             url = "/rumors/#{news.pointer_id}"
                         end
                     %>
@@ -91,7 +98,7 @@
                 when "StreetSnapPost"
                     link = "/streetsnap/#{feed.id}"
                     tag = "Street_Snap"
-                when "RumorPost"
+                else
                     link = "/rumors/#{feed.id}"
                     tag = "Rumors"
                 end
