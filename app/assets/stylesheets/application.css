@@ -319,10 +319,6 @@ p.copyright {
 }
 
 @media only screen and (max-width:767px) {
-	.topnav {
-        height: auto;
-    }
-
     .logo-pendant {
         right: 5px;
         top: 100px;

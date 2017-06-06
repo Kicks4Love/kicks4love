@@ -50,8 +50,8 @@
 <div class="main container">
     <div class="row">
         <% @news.each do |news| %>
-            <div class="banner-box col-sm-4">
-                <div class="new-box">
+            <div class="banner-box col-xs-4">
+                <div class="new-box" style="background-image:url('<%= news.image.url %>')">
                     <%
                         case news.pointer_type
                         when "FEATURES"
@@ -70,7 +70,6 @@
                         end
                     %>
                     <a href="<%= url %>">
-                        <%= image_tag news.image.url %>
                         <div class="kicks-filter">
                             <p><%= @chinese ? news.title_cn : news.title_en %></p>
                         </div>
