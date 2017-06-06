@@ -140,7 +140,7 @@
 
 		if (this.initial) {
 			var self = this;
-			 $('.month-alt').on('click', '.to-view-more' , function() {
+			$('.month-alt').on('click', '.to-view-more' , function() {
 				this.remove();
 
 				// copy the function currentMonthLargeIcon code instead of calling it directly to prevent stack overflow

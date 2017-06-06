@@ -59,10 +59,11 @@ function initImageSlider() {
 
 function initLoadPostHandler() {
 	/*--点击加载-lazyload--*/
-	$('.to-view-more').click(function() {
+	$('.to-view-more.current').one('click' ,function() {
+		var target = $(this);
 		var chinese = isChinese();
 		var nextPage = $('#next_page');
-		var target = $(this);
+		target.removeClass('current');
 		target.find('span').text(chinese ? '加载中...' : 'Loading...');
 
 		$.ajax({
@@ -110,7 +111,7 @@ function initLoadPostHandler() {
             		);
             	}
             	if (!data.no_more) {
-	            	parent.append('<div class="to-view-more"><span>' + (chinese ? '点击加载更多' : 'Click to view more') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>');
+	            	parent.append('<div class="to-view-more current"><span>' + (chinese ? '点击加载更多' : 'Click to view more') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>');
 	            	nextPage.val(parseInt(nextPage.val()) + 1);
 	            }
             	target.fadeOut();
