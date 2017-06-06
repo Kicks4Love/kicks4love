@@ -62,6 +62,27 @@
       		                  		<li class="dropdown-header"><%= t("LEISURE_ENTERTAINMENT") %></li>
       		                  		<li><%= link_to t("STREET_SNAP"), streetsnap_path %></li>
                                 <li><%= link_to t("RUMORS"), rumors_path %></li>
+                                <li role="separator" class="divider"></li>
+                                <li id="side-nav-mobile">
+                              			<a href='#' class="not-work">
+                                				<span><%= t("My_Account") %></span>
+                              			</a>
+                  			        </li>
+                  			        <li id="side-nav-mobile">
+                            			  <a href='#' class="not-work">
+                              				<span><%= t("My_Cart") %></span>
+                            			</a>
+                          			</li>
+                          			<li id="side-nav-mobile">
+                            			  <a href='#' data-toggle="modal" data-target="#language-modal">
+                              				  <span><%= t("Language") %></span>
+                            			</a>
+                          			</li>
+                          			<li id="side-nav-mobile">
+                            			<a href='<%= contact_us_path %>'>
+                              				<span><%= t("Contact_Us") %></span>
+                            			</a>
+                          			</li>
                      			 	</ul>
               			    </li>
             		    </ul>
