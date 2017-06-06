@@ -8,6 +8,7 @@ $(document).ready(function() {
 	initImageSlider();
 	initLoadPostHandler();
     initApplication(true, true);
+    $(window).trigger('resize');
 });
 
 function initImageSlider() {
@@ -52,6 +53,7 @@ function initImageSlider() {
 	}
 
 	function pagination(){
+		$(window).trigger('resize');
 		$('#pagination-wrap ul li').removeClass('active');
 		$('#pagination-wrap ul li:eq('+pos+')').addClass('active');
 	}

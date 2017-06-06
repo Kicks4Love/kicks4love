@@ -292,10 +292,10 @@
 
 	      		var data = this.dataset;
 	      		var modal = document.getElementById('release-modal');
-	      		var modalBody = modal.querySelector('.modal-body');
+	      		var modalImg = modal.querySelector('.modal-body img');
 	      		modal.getElementsByClassName('modal-title')[0].innerText = data.title;
-	      		modalBody.removeAttribute('style');
-	      		modalBody.setAttribute('style', "background-image:url('" + data.image + "')");
+	      		modalImg.removeAttribute('src');
+	      		modalImg.setAttribute('src', data.image);
 				var pricestr = data.price <= 0 ? "N/A" : parseFloat(data.price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 	      		var span = createElement('span', '', dollarSign + ' ' + pricestr);
 	      		modal.getElementsByClassName('modal-footer')[0].appendChild(span);
