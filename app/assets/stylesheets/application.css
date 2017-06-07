@@ -187,6 +187,36 @@ a {
     background-color: violet;
 }
 
+#side-nav-mobile {
+    text-align: center;
+    margin-top: -2px;
+    margin-bottom: 4px;
+    line-height: 25px;
+    list-style: none;
+    padding: 0;
+}
+#side-nav-mobile li {
+    padding: 0;
+}
+#side-nav-mobile li:hover a {
+    opacity: 0.6;
+}
+#side-nav-mobile li + li {
+    border-left: 1px solid #e7e7e7;
+}
+#side-nav-mobile a {
+    color: #777;
+    text-decoration: none;
+    display: inline;
+    white-space: nowrap;
+}
+#side-nav-mobile a span {
+  font-size: 10px;
+}
+#side-nav-mobile a i {
+  font-size: 18px;
+}
+
 #language-modal {
 	text-align: center;
 }
@@ -216,27 +246,27 @@ a {
     padding: 0.2em 0.5em;
     display: block;
     float: left;
-    margin-right: 1px; 
+    margin-right: 1px;
 }
 .pagination .disabled {
     color: #999999;
-    border: 1px solid #dddddd; 
+    border: 1px solid #dddddd;
 }
 .pagination .current {
     font-style: normal;
     font-weight: bold;
     background: #2e6ab1;
     color: white;
-    border: 1px solid #2e6ab1; 
+    border: 1px solid #2e6ab1;
 }
 .pagination a {
     text-decoration: none;
     color: #105cb6;
-    border: 1px solid #9aafe5; 
+    border: 1px solid #9aafe5;
 }
 .pagination a:hover, .pagination a:focus {
     color: #000033;
-    border-color: #000033; 
+    border-color: #000033;
     text-decoration: none;
 }
 .pagination .page_info {
@@ -245,7 +275,7 @@ a {
     padding: 0.4em 0.6em;
     width: 22em;
     margin-bottom: 0.3em;
-    text-align: center; 
+    text-align: center;
 }
 .pagination .page_info b {
     color: #000033;
@@ -256,13 +286,13 @@ a {
     display: block;
     height: 0;
     clear: both;
-    visibility: hidden; 
+    visibility: hidden;
 }
 * html .pagination {
-    height: 1%; 
+    height: 1%;
 }
 *:first-child + html .pagination {
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 #scroll-top {
@@ -340,19 +370,6 @@ p.copyright {
     }
     .logo-pendant:after {
         top: -60px;
-    }
-
-    #side-nav .fa {
-        font-size: 18px;
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-        opacity: 0.8;
-    }
-    #side-nav li span {
-        font-size: 15px;
-        height: 35px;
-        line-height: 35px;
     }
 
     #scroll-top {

@@ -73,13 +73,39 @@
                             </div>
                     		<% end %>
             				</div>
+                    <ul id="side-nav-mobile" class="visible-xs-block clearfix">
+                        <li class="col-xs-3">
+                            <a href='#' class="not-work">
+                                <i class="fa fa-user"></i>
+                                <span><%= t("My_Account") %></span>
+                            </a>
+                        </li>
+                        <li class="col-xs-3">
+                            <a href='#' class="not-work">
+                              <i class="fa fa-shopping-cart"></i>
+                              <span><%= t("My_Cart") %></span>
+                            </a>
+                        </li>
+                        <li class="col-xs-3">
+                          <a href='#' data-toggle="modal" data-target="#language-modal">
+                            <i class="fa fa-language"></i>
+                            <span><%= t("Language") %></span>
+                          </a>
+                        </li>
+                        <li class="col-xs-3">
+                          <a href="<%= contact_us_path %>">
+                            <i class="fa fa-envelope"></i>
+                            <span><%= t("Contact_Us") %></span>
+                          </a>
+                        </li>
+                      </ul>
         	      </div>
             </div>
         </nav>
         <div class="logo-pendant" style="display:none">
 		          <%= image_tag "main_logo.png" %>
         </div>
-        <div id='side-nav'>
+        <div id='side-nav' class="hidden-xs">
 		        <ul>
   			        <li>
               			<a href='#' class="not-work">
@@ -100,7 +126,7 @@
             			</a>
           			</li>
           			<li>
-            			<a href='<%= contact_us_path %>'>
+            			<a href="<%= contact_us_path %>">
               				<i class="fa fa-envelope"></i>
               				<span><%= t("Contact_Us") %></span>
             			</a>
