@@ -157,6 +157,7 @@
 .main .banner-box .new-box h3 {
  	color:white;
  	margin:0;
+ 	font-size: 26px;
  	text-shadow: 1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000,0px 1px 0 #000,0px -1px 0 #000,-1px 0px 0 #000,1px 0px 0 #000,2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0px 2px 0 #000,0px -2px 0 #000,-2px 0px 0 #000,2px 0px 0 #000,1px 2px 0 #000,-1px 2px 0 #000,1px -2px 0 #000,-1px -2px 0 #000,2px 1px 0 #000,-2px 1px 0 #000,2px -1px 0 #000,-2px -1px 0 #000;
 }
 
@@ -194,8 +195,11 @@
 }
 .main .kicks-intro .kicks-intro-content {
 	padding: 0 10px;
-	font-size: 14px;
+	font-size: 15px;
+}
+.main .kicks-intro .kicks-intro-content p {
 	line-height: 1.7em;
+	margin: 0;
 }
 .main .kicks-intro .kicks-intro-content span.post-date {
     padding: 0 10px;
