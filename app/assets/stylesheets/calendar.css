@@ -16,15 +16,6 @@ h1, h4 {
   text-align: center;
 }
 
-#release-modal {
-  text-align: center;
-}
-#release-modal .modal-footer > span {
-  color: black;
-  float: left;
-  font-size: 20px;
-}
-
 .main .opening-scene {
   display: block;
   background-color: black;
@@ -113,11 +104,15 @@ h1, h4 {
     box-sizing: border-box;
 }
 
+#release-modal {
+  text-align: center;
+}
 #release-modal .modal-header {
   background-color: #999999;
   box-shadow: inset 0 0 10px #000000;
+  height: 60px;
 }
-#release-modal .modal-header h4 {
+#release-modal .modal-header h3 {
   color: white;
   font-weight: bold;
 }
@@ -133,6 +128,14 @@ h1, h4 {
 }
 #release-modal .modal-footer {
   box-shadow: inset 0 0 10px #000000;
+  padding: 7px 20px;
+  height: 50px;
+}
+#release-modal .modal-footer > span {
+  color: black;
+  float: left;
+  font-size: 20px;
+  margin-top: 5px;
 }
 
 #calendar {
