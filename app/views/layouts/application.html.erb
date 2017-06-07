@@ -62,27 +62,6 @@
       		                  		<li class="dropdown-header"><%= t("LEISURE_ENTERTAINMENT") %></li>
       		                  		<li><%= link_to t("STREET_SNAP"), streetsnap_path %></li>
                                 <li><%= link_to t("RUMORS"), rumors_path %></li>
-                                <li role="separator" class="divider"></li>
-                                <li id="side-nav-mobile">
-                              			<a href='#' class="not-work">
-                                				<span><%= t("My_Account") %></span>
-                              			</a>
-                  			        </li>
-                  			        <li id="side-nav-mobile">
-                            			  <a href='#' class="not-work">
-                              				<span><%= t("My_Cart") %></span>
-                            			</a>
-                          			</li>
-                          			<li id="side-nav-mobile">
-                            			  <a href='#' data-toggle="modal" data-target="#language-modal">
-                              				  <span><%= t("Language") %></span>
-                            			</a>
-                          			</li>
-                          			<li id="side-nav-mobile">
-                            			<a href='<%= contact_us_path %>'>
-                              				<span><%= t("Contact_Us") %></span>
-                            			</a>
-                          			</li>
                      			 	</ul>
               			    </li>
             		    </ul>
@@ -94,13 +73,41 @@
                             </div>
                     		<% end %>
             				</div>
+                    <div id="side-nav-mobile" class="visible-xs-block">
+                      <ul>
+                        <li class="col-xs-3">
+                          <a href='#' class="not-work">
+                            <i class="fa fa-user"></i>
+                            <span><%= t("My_Account") %></span>
+                          </a>
+                        </li>
+                        <li class="col-xs-3">
+                          <a href='#' class="not-work">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span><%= t("My_Cart") %></span>
+                          </a>
+                        </li>
+                        <li class="col-xs-3">
+                          <a href='#' data-toggle="modal" data-target="#language-modal">
+                            <i class="fa fa-language"></i>
+                            <span><%= t("Language") %></span>
+                          </a>
+                        </li>
+                        <li class="col-xs-3">
+                          <a href='<%= contact_us_path %>'>
+                            <i class="fa fa-envelope"></i>
+                            <span><%= t("Contact_Us") %></span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
         	      </div>
             </div>
         </nav>
         <div class="logo-pendant" style="display:none">
 		          <%= image_tag "main_logo.png" %>
         </div>
-        <div id='side-nav'>
+        <div id='side-nav' class="hidden-xs">
 		        <ul>
   			        <li>
               			<a href='#' class="not-work">

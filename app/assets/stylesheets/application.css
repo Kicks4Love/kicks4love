@@ -186,9 +186,42 @@ a {
 #side-nav li:nth-child(10n+4) span, #side-nav li:nth-child(10n+4) a:hover .fa {
     background-color: violet;
 }
-#side-nav-mobile {
-  visibility: hidden;
+
+#side-nav-mobile * {
+  margin: 0;
+  padding: 0;
+  outline: 0;
 }
+
+#side-nav-mobile ul {
+  list-style: none;
+}
+
+#side-nav-mobile a {
+  text-decoration: none;
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#side-nav-mobile span {
+  font-size: 10px;
+  font-weight: lighter;
+  color: #555;
+  text-align: center;
+}
+
+#side-nav-mobile i {
+  color: #555;
+  font-size: 14px;
+  width: auto;
+  height: auto;
+  line-height: 35px;
+  opacity: 0.8;
+  vertical-align: middle;
+  text-align: center;
+}
+
 #language-modal {
 	text-align: center;
 }
@@ -335,25 +368,6 @@ p.copyright {
     .logo-pendant:after {
         top: -60px;
     }
-
-    #side-nav {
-      visibility: hidden;
-    }
-    #side-nav-mobile {
-      visibility: visible;
-    }
-    /*#side-nav .fa {
-        font-size: 18px;
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-        opacity: 0.8;
-    }
-    #side-nav li span {
-        font-size: 15px;
-        height: 35px;
-        line-height: 35px;
-    }*/
 
     #scroll-top {
         width: 35px;
