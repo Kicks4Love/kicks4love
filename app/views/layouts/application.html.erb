@@ -73,19 +73,18 @@
                             </div>
                     		<% end %>
             				</div>
-                    <div id="side-nav-mobile" class="visible-xs-block">
-                      <ul>
+                    <ul id="side-nav-mobile" class="visible-xs-block clearfix">
                         <li class="col-xs-3">
-                          <a href='#' class="not-work">
-                            <i class="fa fa-user"></i>
-                            <span><%= t("My_Account") %></span>
-                          </a>
+                            <a href='#' class="not-work">
+                                <i class="fa fa-user"></i>
+                                <span><%= t("My_Account") %></span>
+                            </a>
                         </li>
                         <li class="col-xs-3">
-                          <a href='#' class="not-work">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span><%= t("My_Cart") %></span>
-                          </a>
+                            <a href='#' class="not-work">
+                              <i class="fa fa-shopping-cart"></i>
+                              <span><%= t("My_Cart") %></span>
+                            </a>
                         </li>
                         <li class="col-xs-3">
                           <a href='#' data-toggle="modal" data-target="#language-modal">
@@ -94,13 +93,12 @@
                           </a>
                         </li>
                         <li class="col-xs-3">
-                          <a href='<%= contact_us_path %>'>
+                          <a href="<%= contact_us_path %>">
                             <i class="fa fa-envelope"></i>
                             <span><%= t("Contact_Us") %></span>
                           </a>
                         </li>
                       </ul>
-                    </div>
         	      </div>
             </div>
         </nav>
@@ -128,7 +126,7 @@
             			</a>
           			</li>
           			<li>
-            			<a href='<%= contact_us_path %>'>
+            			<a href="<%= contact_us_path %>">
               				<i class="fa fa-envelope"></i>
               				<span><%= t("Contact_Us") %></span>
             			</a>
