@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<%= cookies[:language] || 'en' %>" xml:lang="<%= cookies[:language] || 'en' %>">
   	<head>
-        <!-- Google AdSense -->
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-4802332774820705",
-            enable_page_level_ads: true
-          });
-        </script>
-
   	    <title><%= @page_title || "Kicks4Love鞋侣" %></title>
   	    <%= favicon_link_tag 'favicon.png' %>
   	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -175,7 +166,15 @@
 		        </div>
         </div>
 
+        <% unless controller.action_name == "index" %>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle main-ad" style="display:block;margin-top:50px" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <% end %>
 	      <%= yield %>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle main-ad" style="display:block" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
         <div id="scroll-top">
             <i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i>

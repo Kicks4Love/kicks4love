@@ -232,10 +232,13 @@ a {
 }
 
 .main {
-    margin-top: 50px;
     max-width: 1020px;
     font-weight: lighter;
     font-family: "Helvetica", sans-serif;
+}
+.main-ad {
+    text-align: center;
+    margin: 20px 0;
 }
 
 .pagination {
