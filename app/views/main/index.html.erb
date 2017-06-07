@@ -31,7 +31,7 @@
                         <li style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(<%= post.image.url %>)">
                             <a href="<%= url %>">
                                 <div class="slide-filter">
-                                    <h3><%= @chinese ? post.title_cn : post.title_en %></h3>
+                                    <h3 class="verticle-center"><%= @chinese ? post.title_cn : post.title_en %></h3>
                                 </div>
                             </a>
                         </li>
@@ -71,7 +71,7 @@
                     %>
                     <a href="<%= url %>">
                         <div class="kicks-filter">
-                            <p><%= @chinese ? news.title_cn : news.title_en %></p>
+                            <h3 class="verticle-center"><%= @chinese ? news.title_cn : news.title_en %></h3>
                         </div>
                     </a>
                 </div>

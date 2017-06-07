@@ -129,7 +129,7 @@
 			var pricestr = parseFloat(this.events[i].price) <= 0 ? 'N/A' : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
   										'<div class="kicks-box" style="background-image:url(' + this.events[i].image + ')">' +
-    									'<div class="cover top-left">' +
+    									'<div class="cover">' +
       									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
       									'<span class="date">' + dollarSign + ' ' + pricestr +
       									'</span></div></div><span style="color:#4A4A4A;width:100%">' + this.events[i].date.format('MM/DD') + '</span></div></div>';
@@ -150,7 +150,7 @@
 					var pricestr = parseFloat(self.events[i].price) <= 0 ? 'N/A' : parseFloat(self.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
 					self.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
   										'<div class="kicks-box" style="background-image:url(' + self.events[i].image + ')">' +
-    									'<div class="cover top-left">' +
+    									'<div class="cover">' +
       									'<h2 class="title">' + self.events[i].eventName + '</h2>' +
       									'<span class="date">' + dollarSign + ' ' + pricestr +
       									'</span></div></div><span style="color:#4A4A4A;width:100%">' + self.events[i].date.format('MM/DD') + '</span></div></div>';

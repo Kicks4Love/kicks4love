@@ -36,7 +36,6 @@
 #slider-wrap ul#slider li {
 	float: left;
 	position: relative;
-	width: 600px;
 	height: 100%;
 	background-position: center !important;
 	background-size: cover !important;	
@@ -44,11 +43,12 @@
 #slider-wrap ul#slider li a {
 	color: white;
 }
-#slider-wrap ul#slider li a > div {
+#slider-wrap ul#slider li a .slide-filter {
+	margin-top: -20px;
 	padding: 0 40px;
-	margin-top: 150px;	
+	height: 100%;	
 }
-#slider-wrap ul#slider li a > div h3 {
+#slider-wrap ul#slider li a .slide-filter h3 {
 	font-size: 42px;	
 	text-transform: uppercase;
 }
@@ -141,8 +141,6 @@
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-}
-.main .banner-box .new-box {
 	position: relative;
 	opacity: 0.7;
 }
@@ -156,13 +154,9 @@
 	top: 0;
  	text-align: center;
 }
-.main .banner-box .new-box p {
-	position: relative;
-	font-size:24px;
-	padding: 5px;
- 	top:25%;
- 	margin: 10px;
+.main .banner-box .new-box h3 {
  	color:white;
+ 	margin:0;
  	text-shadow: 1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000,0px 1px 0 #000,0px -1px 0 #000,-1px 0px 0 #000,1px 0px 0 #000,2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0px 2px 0 #000,0px -2px 0 #000,-2px 0px 0 #000,2px 0px 0 #000,1px 2px 0 #000,-1px 2px 0 #000,1px -2px 0 #000,-1px -2px 0 #000,2px 1px 0 #000,-2px 1px 0 #000,2px -1px 0 #000,-2px -1px 0 #000;
 }
 
@@ -190,6 +184,7 @@
 	text-align: center;
 }
 .main .kicks-intro .feed-title h3 {
+	font-weight: bold;
 	margin: 0;
 }
 .main .kicks-intro hr.title-divider {
@@ -200,6 +195,7 @@
 .main .kicks-intro .kicks-intro-content {
 	padding: 0 10px;
 	font-size: 14px;
+	line-height: 1.7em;
 }
 .main .kicks-intro .kicks-intro-content span.post-date {
     padding: 0 10px;
@@ -232,10 +228,7 @@
 		height: 300px;
 		padding: 0;
 	}
-	#slider-wrap ul#slider li a > div {
-		margin-top: 120px;	
-	}
-	#slider-wrap ul#slider li a > div h3 {
+	#slider-wrap ul#slider li a .slide-filter h3 {
 		font-size: 25px;	
 	}
 	#pagination-wrap {
@@ -251,11 +244,8 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.main .banner-box .new-box p {
+	.main .banner-box .new-box h3 {
 		font-size: 15px;
-		color: white;
-		top: 20%;
-		margin: 0;
 	}
 
 	.main .kicks-intro .feed-title h3 {
