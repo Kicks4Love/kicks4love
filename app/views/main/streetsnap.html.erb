@@ -17,8 +17,10 @@
                 <h1><a href="/streetsnap/<%= streetsnap_post.id %>"><%= streetsnap_post.title %></a></h1>
                 <div class="description">
                     <span>No.<%= index+1 %></span><span class="post-date"><%= streetsnap_post.created_at.strftime("%Y-%m-%d") %></span>
-                    <p><%= ActionView::Base.full_sanitizer.sanitize(streetsnap_post.content) %>...</p>
-                    <a href="/streetsnap/<%= streetsnap_post.id %>"><i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></a>
+                    <a href="/streetsnap/<%= streetsnap_post.id %>">
+                        <p><%= ActionView::Base.full_sanitizer.sanitize(streetsnap_post.content) %>...</p>
+                        <i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
             </div>

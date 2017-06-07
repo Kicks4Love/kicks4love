@@ -34,7 +34,7 @@
 	                    <span class="headline sub-title"><%= rumor_post.created_at.strftime("%Y-%m-%d") %></span>
 	                </p>
 	            </div>
-	            <p><%= ActionView::Base.full_sanitizer.sanitize(rumor_post.content[0])[0..200] %>... <a href="/rumors/<%= rumor_post.id %>">(<%= t("more") %>)</a></p>
+	            <p><%= ActionView::Base.full_sanitizer.sanitize(rumor_post.content[0])[0..120] %>... <a href="/rumors/<%= rumor_post.id %>">(<%= t("more") %>)</a></p>
                 <a href="/rumors/<%= rumor_post.id %>">
 	               <div class="photo" style="background-image:url('<%= rumor_post.cover_image.url %>')"></div>
                 </a>
