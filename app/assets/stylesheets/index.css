@@ -127,6 +127,14 @@
 	transition: all 0.3s cubic-bezier(1,.01,.32,1);	
 }
 
+.adsbygoogle.index-ad {
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+
+.main {
+	margin-top: 30px;
+}
 .main .row {
 	height: 180px;
 	margin-left: auto;

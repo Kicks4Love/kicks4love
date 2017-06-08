@@ -231,14 +231,20 @@ a {
 	background-color: #4c7cc9;
 }
 
+.adsbygoogle {
+    text-align: center;
+    margin: 20px 0;
+}
+.adsbygoogle.top-ad {
+    margin-top: 70px;
+    margin-bottom: -60px;
+}
+
 .main {
+    margin-top: 80px;
     max-width: 1020px;
     font-weight: lighter;
     font-family: "Helvetica", sans-serif;
-}
-.main-ad {
-    text-align: center;
-    margin: 20px 0;
 }
 
 .pagination {

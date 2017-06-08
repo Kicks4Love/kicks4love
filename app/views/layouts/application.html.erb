@@ -22,6 +22,7 @@
   	    	  var weiboUId = "<%= Rails.application.config.social_media[:weibo_u_id] %>";
   	    </script>
   	    <%= javascript_include_tag "application.js" %>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	  </head>
   	<body>
 
@@ -167,13 +168,11 @@
         </div>
 
         <% unless controller.action_name == "index" %>
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle main-ad" style="display:block;margin-top:50px" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
+            <ins class="adsbygoogle top-ad" style="display:block" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         <% end %>
 	      <%= yield %>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle main-ad" style="display:block" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
+        <ins class="adsbygoogle bottom-ad" style="display:block" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
         <div id="scroll-top">
