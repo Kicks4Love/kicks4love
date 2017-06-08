@@ -7,7 +7,6 @@ body {
 	user-select: none;
   overflow: hidden;
 }
-
 h1, h4 {
   color: #4A4A4A;
 }
@@ -15,7 +14,6 @@ h1, h4 {
 .main {
   text-align: center;
 }
-
 .main .opening-scene {
   display: block;
   background-color: black;
@@ -536,4 +534,13 @@ h1, h4 {
   color: #777;
   float: left;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  #release-modal .modal-header {
+    padding: 12px;
+  }
+  #release-modal .modal-header h3 {
+    font-size: 20px;
+  }
 }

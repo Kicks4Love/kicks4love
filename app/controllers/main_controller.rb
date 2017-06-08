@@ -52,6 +52,9 @@ class MainController < ApplicationController
 			@article_title = @feature_post.title_en
 			@content = @feature_post.content_en
 		end
+		if params[:lang].present? 
+			@page_title = params[:lang] == 'zh' ? @feature_post.title_cn : @feature_post.title_en
+		end
 		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
 	end
 
@@ -82,6 +85,9 @@ class MainController < ApplicationController
 			@article_title = @trend_post.title_en
 			@content = @trend_post.content_en
 		end
+		if params[:lang].present? 
+			@page_title = params[:lang] == 'zh' ? @trend_post.title_cn : @trend_post.title_en
+		end
 		@times = [@content.size, @trend_post.main_images.size].max
 		@og_image = "http://#{request.host}#{@trend_post.cover_image.url}"
 	end
@@ -108,6 +114,9 @@ class MainController < ApplicationController
 			@page_title = "#{@oncourt_post.title_en} #{@oncourt_post.title_cn}"
 			@article_title = @oncourt_post.title_en
 			@content = @oncourt_post.content_en
+		end
+		if params[:lang].present? 
+			@page_title = params[:lang] == 'zh' ? @oncourt_post.title_cn : @oncourt_post.title_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
 		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
@@ -137,6 +146,9 @@ class MainController < ApplicationController
 			@article_title = @streetsnap_post.title_en
 			@content = @streetsnap_post.content_en
 		end
+		if params[:lang].present? 
+			@page_title = params[:lang] == 'zh' ? @streetsnap_post.title_cn : @streetsnap_post.title_en
+		end
 		@og_image = "http://#{request.host}#{@streetsnap_post.cover_image.url}"
 	end
 
@@ -163,6 +175,9 @@ class MainController < ApplicationController
 			@page_title = "#{@rumor_post.title_en} #{@rumor_post.title_cn}"
 			@article_title = @rumor_post.title_en
 			@content = @rumor_post.content_en
+		end
+		if params[:lang].present? 
+			@page_title = params[:lang] == 'zh' ? @rumor_post.title_cn : @rumor_post.title_en
 		end
 		@times = [@content.size, @rumor_post.main_images.size].max
 		@og_image = "http://#{request.host}#{@rumor_post.cover_image.url}"
