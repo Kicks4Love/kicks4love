@@ -23,10 +23,10 @@ class Admin::StreetSnapPostsController < Admin::AdminController
 
     street_snap_post.author = current_admin_user
 
-    if street_snap_post.content_en.count > StreetSnapPost::MAX_NUMBER_ALLOW || street_snap_post.content_cn.count > StreetSnapPost::MAX_NUMBER_ALLOW 
+    if street_snap_post.content_en.count > StreetSnapPost::MAX_NUMBER_ALLOW || street_snap_post.content_cn.count > StreetSnapPost::MAX_NUMBER_ALLOW
           redirect_to :back, :alert => "Maximum paragraph number is #{StreetSnapPost::MAX_NUMBER_ALLOW}"
           return
-      elsif street_snap_post.main_images.count > StreetSnapPost::MAX_NUMBER_ALLOW 
+      elsif street_snap_post.main_images.count > StreetSnapPost::MAX_NUMBER_ALLOW
           redirect_to :back, :alert => "Maximum main image number is #{StreetSnapPost::MAX_NUMBER_ALLOW}"
           return
       end
@@ -41,10 +41,10 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   def update
     params = process_content(street_snap_post_params)
 
-    if params[:content_en].count > StreetSnapPost::MAX_NUMBER_ALLOW  || params[:content_cn].count > StreetSnapPost::MAX_NUMBER_ALLOW 
+    if params[:content_en].count > StreetSnapPost::MAX_NUMBER_ALLOW  || params[:content_cn].count > StreetSnapPost::MAX_NUMBER_ALLOW
           redirect_to :back, :alert => "Maximum paragraph number is #{StreetSnapPost::MAX_NUMBER_ALLOW }"
           return
-      elsif params[:main_images].present? && params[:main_images].count > StreetSnapPost::MAX_NUMBER_ALLOW 
+      elsif params[:main_images].present? && params[:main_images].count > StreetSnapPost::MAX_NUMBER_ALLOW
           redirect_to :back, :alert => "Maximum main image number is #{StreetSnapPost::MAX_NUMBER_ALLOW }"
           return
       end
@@ -62,6 +62,8 @@ class Admin::StreetSnapPostsController < Admin::AdminController
 
   def edit
     @page_title = "Edit Street Snap Post | Kicks4Love Admin"
+    @street_snap_post.content_en = @street_snap_post.content_en.map { |p| '>>' + p }
+    @street_snap_post.content_cn = @street_snap_post.content_cn.map { |p| '>>' + p }
   end
 
   def destroy
@@ -94,7 +96,9 @@ class Admin::StreetSnapPostsController < Admin::AdminController
 
   def process_content(params)
     params[:content_en] = params[:content_en].split(/\r?\n/)
+    params[:content_en] = params[:content_en].map { |p| Admin::AdminHelper.trim_str(p) }
     params[:content_cn] = params[:content_cn].split(/\r?\n/)
+    params[:content_cn] = params[:content_cn].map { |p| Admin::AdminHelper.trim_str(p) }
     params[:post_composition] = JSON.parse params[:post_composition]
       return params
     end
