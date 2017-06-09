@@ -61,6 +61,8 @@ class Admin::TrendPostsController < Admin::AdminController
 
 	def edit
 		@page_title = "Edit Trend Post | Kicks4Love Admin"
+		@trend_post.content_en = @trend_post.content_en.map {|p| '>>' + p}
+		@trend_post.content_cn = @trend_post.content_cn.map {|p| '>>' + p}
 	end
 
 	def destroy
@@ -91,8 +93,8 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def process_content(params)
-		params[:content_en] = params[:content_en].split(/\r?\n/)
-		params[:content_cn] = params[:content_cn].split(/\r?\n/)
+		params[:content_en] = params[:content_en].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
+		params[:content_cn] = params[:content_cn].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
     	return params
   	end
 

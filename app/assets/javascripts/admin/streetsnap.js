@@ -41,18 +41,18 @@ function initPostComposition() {
   var table = postComposition.find('table');
   var postCompositionJson = JSON.parse($('#post-composition-json').val());
 
-  $('#street_snap_post_content_en').keyup(function() {
+  $('#street_snap_post_content_en').keyup(function(event) {
     enCount = $(this).val().split(/\r|\n/).length;
     currentEnCount = parseInt(displayParagraph.text().split('/')[0]);
     displayParagraph.text(enCount + ' / ' + cnCount);
-    if (currentEnCount != enCount) {
-      updateCompositionTable();
-    }
+    if (currentEnCount != enCount) updateCompositionTable();
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
 
-  $('#street_snap_post_content_cn').keyup(function() {
+  $('#street_snap_post_content_cn').keyup(function(event) {
     cnCount = $(this).val().split(/\r|\n/).length;
     displayParagraph.text(enCount + ' / ' + cnCount);
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
 
   $('#street_snap_post_content_en').add('#street_snap_post_content_cn').keyup();

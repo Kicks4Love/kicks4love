@@ -1,6 +1,7 @@
 $(document).ready(function() {
   initOldPostRemoval();
   initTooltip();
+  initParagraphIndicator();
 });
 
 function initOldPostRemoval() {
@@ -31,4 +32,14 @@ function initOldPostRemoval() {
 
 function initTooltip() {
   $('#trend_post_content_en').add('#trend_post_content_cn').tooltip().off("mouseover mouseout");
+}
+
+function initParagraphIndicator() {
+  $('#trend_post_content_en').keyup(function(event) {
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
+  });
+  $('#trend_post_content_cn').keyup(function(event) {
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
+  });
+  $('#trend_post_content_en').add('#trend_post_content_cn').keyup();
 }
