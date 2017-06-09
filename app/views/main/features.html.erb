@@ -26,7 +26,7 @@
             <span><%= t("Click_to_view_more") %> <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
         </div>
     <% end %>
-    <%= hidden_field_tag "next_page", "2", :name => nil %>
+    <%= hidden_field_tag "next_page", "2", :name => nil, :autocomplete => "off" %>
 </div>
 
 <% content_for :end_of_body do %>
