@@ -1,4 +1,5 @@
 class Admin::CalendarPostsController < Admin::AdminController
+
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_calendar_post, :only => [:edit, :destroy, :update, :show]
 
@@ -19,7 +20,6 @@ class Admin::CalendarPostsController < Admin::AdminController
  		else
  			@calendar_posts.latest
  		end
-
 		@per_page = session[:calendar_post_per_page] || 5
 		@calendar_posts = @calendar_posts.paginate(:page => params[:page] || 1, :per_page => session[:calendar_post_per_page] || 5)
 	end
@@ -54,7 +54,9 @@ class Admin::CalendarPostsController < Admin::AdminController
 	end
 
 	def destroy
-		if @calendar_post.destroy
+		id = @calendar_post.id
+		if @calendar_post.delete
+			Admin::AdminHelper.remove_uploads_file('calendar_post', id)
 			flash[:notice] = "The calendar post has been deleted successfully"
 		else
 			flash[:alert] = "Error occurs while deleting the calendar post, please try again"
@@ -67,6 +69,7 @@ class Admin::CalendarPostsController < Admin::AdminController
 		old_posts = CalendarPost.old
 		return_posts = old_posts.to_a
 		if old_posts.delete_all
+			return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('calendar_post', post.id)}
 			render :json => return_posts.to_json, :layout => false
 		else
 			head :ok, :status => 500

@@ -37,7 +37,7 @@
         </thead>
       <tbody>
           <% @on_court_posts.each do |post| %>
-            <tr>
+            <tr data-id="<%= post.id %>">
                 <td>
                   <% if post.author.nil? %>
                     No author

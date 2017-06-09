@@ -36,7 +36,7 @@
     </thead>
     <tbody>
       <% @rumor_posts.each do |rumor_post| %>
-        <tr>
+        <tr data-id="<%= rumor_post.id %>">
           <td>
             <%= link_to "Edit", edit_admin_rumor_post_path(rumor_post) %>
             |
@@ -85,4 +85,3 @@
 <% content_for :end_of_body do %>
     <%= javascript_include_tag "admin/rumors.js" %>
 <% end %>
-

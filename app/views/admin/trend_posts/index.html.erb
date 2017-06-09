@@ -36,7 +36,7 @@
     </thead>
     <tbody>
       <% @trend_posts.each do |trend_post| %>
-        <tr>
+        <tr data-id="<%= trend_post.id %>">
           <td>
             <%= link_to "Edit", edit_admin_trend_post_path(trend_post) %>
             |

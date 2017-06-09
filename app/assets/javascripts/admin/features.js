@@ -16,10 +16,10 @@ function initOldPostRemoval() {
         var table =  $('table:visible > tbody > tr');
         self.addClass("disabled");
         table.each(function() {
-          row = $(this).context;
+          var row = $(this);
           for (var i = 0; i < data.length; i++) {
-            if (row.cells[1].textContent == data[i].title_en) {
-              $(row).fadeOut();
+            if (row.data().id == data[i].id) {
+              row.fadeOut();
               break;
             }
           }

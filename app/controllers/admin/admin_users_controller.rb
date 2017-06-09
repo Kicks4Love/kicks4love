@@ -22,7 +22,7 @@ class Admin::AdminUsersController < Admin::AdminController
 		is_root_user = current_admin_user.root_user?
 		sign_out @admin_user unless is_root_user
 
-		if @admin_user.destroy
+		if @admin_user.delete
 			if is_root_user
 				redirect_to admin_admin_users_path, :notice => "#{@admin_user.email} deleted successfully"
 			else

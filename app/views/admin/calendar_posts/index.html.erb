@@ -37,7 +37,7 @@
 		</tbody>
 		<tbody>
 			<% @calendar_posts.each do |calendar_post| %>
-				<tr>
+				<tr data-id="<%= calendar_post.id %>">
 					<td>
 						<%= link_to "Edit", edit_admin_calendar_post_path(calendar_post) %>
 						|

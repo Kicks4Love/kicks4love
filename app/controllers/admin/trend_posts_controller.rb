@@ -1,5 +1,5 @@
 class Admin::TrendPostsController < Admin::AdminController
-
+	
 	skip_before_filter :verify_authenticity_token, :only => [:destroy]
 	before_action :get_trend_post, :only => [:edit, :destroy, :update, :show]
 
@@ -21,7 +21,6 @@ class Admin::TrendPostsController < Admin::AdminController
 
 	def create
 		trend_post = TrendPost.new process_content(trend_post_params)
-
 		trend_post.author = current_admin_user
 
 		if trend_post.content_en.count > TrendPost::MAX_NUMBER_ALLOW || trend_post.content_cn.count > TrendPost::MAX_NUMBER_ALLOW
@@ -66,7 +65,9 @@ class Admin::TrendPostsController < Admin::AdminController
 	end
 
 	def destroy
-		if @trend_post.destroy
+		id = @trend_post.id
+		if @trend_post.delete
+			Admin::AdminHelper.remove_uploads_file('trend_post', id)
 			flash[:notice] = "The trend post has been deleted successfully"
 		else
 			flash[:error] = "Error occurs while deleting the trend post, please try again"
@@ -79,6 +80,7 @@ class Admin::TrendPostsController < Admin::AdminController
 		old_posts = TrendPost.old
 		return_posts = old_posts.to_a
 		if old_posts.delete_all
+			return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('trend_post', post.id)}
 			render :json => return_posts.to_json, :layout => false
 		else
 			head :ok, :status => 500

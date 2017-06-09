@@ -35,7 +35,7 @@
 		</tbody>
 		<tbody>
 			<% @street_snap_posts.each do |street_snap_post| %>
-				<tr>
+				<tr data-id="<%= street_snap_post.id %>">
 					<td>
 						<%= link_to "Edit", edit_admin_street_snap_post_path(street_snap_post) %>
 						|

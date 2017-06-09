@@ -1,4 +1,5 @@
 class Admin::OnCourtPostsController < Admin::AdminController
+
   before_action :get_on_court_post, :only => [:edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:destroy]
 
@@ -66,7 +67,9 @@ class Admin::OnCourtPostsController < Admin::AdminController
   end
 
   def destroy
-    if @on_court_post.destroy
+    id = @on_court_post.id
+    if @on_court_post.delete
+      Admin::AdminHelper.remove_uploads_file('on_court_post', id)
       flash[:notice] = "successfully deleted on court post"
     else
       flash[:alert] = "Something went wrong when deleting the post, please try again"
@@ -78,6 +81,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
     old_posts = OnCourtPost.old
 		return_posts = old_posts.to_a
 		if old_posts.delete_all
+      return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('on_court_post', post.id)}
 			render :json => return_posts.to_json, :layout => false
 		else
 			head :ok, :status => 500

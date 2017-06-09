@@ -1,4 +1,5 @@
 class Admin::StreetSnapPostsController < Admin::AdminController
+
   skip_before_filter :verify_authenticity_token, :only => [:destroy]
   before_action :get_street_snap_post, :only => [:edit, :destroy, :update, :show]
 
@@ -67,7 +68,9 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   end
 
   def destroy
-    if @street_snap_post.destroy
+    id = @street_snap_post.id
+    if @street_snap_post.delete
+      Admin::AdminHelper.remove_uploads_file('street_snap_post', id)
       flash[:notice] = "The street snap post has been deleted successfully"
     else
       flash[:alert] = "Error occurs while deleting the street snap post, please try again"
@@ -80,6 +83,7 @@ class Admin::StreetSnapPostsController < Admin::AdminController
     old_posts = StreetSnapPost.old
     return_posts = old_posts.to_a
     if old_posts.delete_all
+      return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('street_snap_post', post.id)}
       render :json => return_posts.to_json, :layout => false
     else
       head :ok, :status => 500

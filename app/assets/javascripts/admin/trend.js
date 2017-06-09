@@ -5,7 +5,6 @@ $(document).ready(function() {
 });
 
 function initOldPostRemoval() {
-  var table =  $('table:visible > tbody > tr');
   $("#remove-old").click(function() {
     var self = $(this);
     $.ajax({
@@ -14,11 +13,12 @@ function initOldPostRemoval() {
       dataType: "json",
       success: function(data) {
         self.addClass("disabled");
+        var table =  $('table:visible > tbody > tr');
         table.each(function() {
-          row = $(this).context;
+          var row = $(this);
           for (var i = 0; i < data.length; i++) {
-            if (row.cells[1].textContent == data[i].title_en) {
-              $(row).fadeOut();
+            if (row.data().id == data[i].id) {
+              row.fadeOut();
               break;
             }
           }
