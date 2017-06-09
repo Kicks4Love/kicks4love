@@ -1,3 +1,7 @@
+/*
+ *= require bootstrap.min.css
+ */
+
 .current-admin-user-bar {
 	padding: 10px;
     background-color: gray;

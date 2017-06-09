@@ -95,13 +95,11 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   end
 
   def process_content(params)
-    params[:content_en] = params[:content_en].split(/\r?\n/)
-    params[:content_en] = params[:content_en].map { |p| Admin::AdminHelper.trim_str(p) }
-    params[:content_cn] = params[:content_cn].split(/\r?\n/)
-    params[:content_cn] = params[:content_cn].map { |p| Admin::AdminHelper.trim_str(p) }
+    params[:content_en] = params[:content_en].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
+    params[:content_cn] = params[:content_cn].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
     params[:post_composition] = JSON.parse params[:post_composition]
-      return params
-    end
+    return params
+  end
 
   def get_street_snap_post
     @street_snap_post = StreetSnapPost.find_by_id(params[:id])

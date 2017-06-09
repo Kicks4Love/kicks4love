@@ -21,7 +21,6 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 	def create
 		feature_post = FeaturePost.new process_content(feature_post_params)
-
 		feature_post.author = current_admin_user
 
 		if feature_post.content_en.count > FeaturePost::MAX_NUMBER_ALLOW  || feature_post.content_cn.count > FeaturePost::MAX_NUMBER_ALLOW
@@ -96,10 +95,8 @@ class Admin::FeaturePostsController < Admin::AdminController
 	end
 
 	def process_content(params)
-		params[:content_en] = params[:content_en].split(/\r?\n/)
-		params[:content_en] = params[:content_en].map { |p| Admin::AdminHelper.trim_str(p) }
-		params[:content_cn] = params[:content_cn].split(/\r?\n/)
-		params[:content_cn] = params[:content_cn].map { |p| Admin::AdminHelper.trim_str(p) }
+		params[:content_en] = params[:content_en].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
+		params[:content_cn] = params[:content_cn].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
 		params[:post_composition] = JSON.parse params[:post_composition]
 		return params
 	end

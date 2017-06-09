@@ -14,4 +14,4 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.css bootstrap.mi
 Rails.application.config.assets.precompile += %w( index.css feature.css calendar.css trend.css oncourt.css streetsnap.css rumors.css contact.css show.css)
 Rails.application.config.assets.precompile += %w( index.js feature.js calendar.js trend.js oncourt.js streetsnap.js rumors.js contact.js show.js)
 Rails.application.config.assets.precompile += %w( admin/admin.css )
-Rails.application.config.assets.precompile += %w( admin/posts.js admin/calendar.js admin/features.js admin/oncourt.js admin/trend.js admin/streetsnap.js admin/rumors.js)
+Rails.application.config.assets.precompile += %w( admin/admin.js admin/posts.js admin/calendar.js admin/features.js admin/oncourt.js admin/trend.js admin/streetsnap.js admin/rumors.js)
