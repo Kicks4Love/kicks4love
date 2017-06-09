@@ -40,6 +40,8 @@ class Admin::OnCourtPostsController < Admin::AdminController
 
   def edit
     @page_title = "Edit a On Court post | Kicks4Love Admin"
+    @on_court_post.content_en = @on_court_post.content_en.map { |p| '>>' + p }
+    @on_court_post.content_cn = @on_court_post.content_cn.map { |p| '>>' + p }
   end
 
   def update
@@ -91,8 +93,8 @@ class Admin::OnCourtPostsController < Admin::AdminController
   end
 
   def process_content(params)
-		params[:content_en] = params[:content_en].split(/\r?\n/)
-		params[:content_cn] = params[:content_cn].split(/\r?\n/)
+		params[:content_en] = params[:content_en].split(/\r?\n/).map { |p| Admin::AdminHelper.trim_str(p) }
+		params[:content_cn] = params[:content_cn].split(/\r?\n/).map { |p| Admin::AdminHelper.trim_str(p) }
     return params
   end
 

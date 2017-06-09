@@ -21,9 +21,9 @@ class Admin::RumorPostsController < Admin::AdminController
 
 	def create
 		rumor_post = RumorPost.new process_content(rumor_post_params)
-		
+
 		rumor_post.author = current_admin_user
-		
+
 		if rumor_post.content_en.count > RumorPost::MAX_NUMBER_ALLOW || rumor_post.content_cn.count > RumorPost::MAX_NUMBER_ALLOW
 	      	redirect_to :back, :alert => "Maximum paragraph number is #{RumorPost::MAX_NUMBER_ALLOW}"
 	      	return
@@ -61,6 +61,8 @@ class Admin::RumorPostsController < Admin::AdminController
 
 	def edit
 		@page_title = "Edit Rumor Post | Kicks4Love Admin"
+		@rumor_post.content_en = @rumor_post.content_en.map { |p| '>>' + p }
+		@rumor_post.content_cn = @rumor_post.content_cn.map { |p| '>>' + p }
 	end
 
 	def destroy
@@ -92,8 +94,8 @@ class Admin::RumorPostsController < Admin::AdminController
 	end
 
 	def process_content(params)
-		params[:content_en] = params[:content_en].split(/\r?\n/)
-		params[:content_cn] = params[:content_cn].split(/\r?\n/)
+		params[:content_en] = params[:content_en].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
+		params[:content_cn] = params[:content_cn].split(/\r?\n/).map {|p| Admin::AdminHelper.trim_str(p)}
     	return params
   	end
 
