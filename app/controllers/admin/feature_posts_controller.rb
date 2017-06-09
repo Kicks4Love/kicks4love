@@ -62,8 +62,8 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 	def edit
 		@page_title = "Edit Feature Post | Kicks4Love Admin"
-		@feature_post.content_en = @feature_post.content_en.map { |p| '>>' + p }
-		@feature_post.content_cn = @feature_post.content_cn.map { |p| '>>' + p }
+		@feature_post.content_en = @feature_post.content_en.map {|p| '>>' + p}
+		@feature_post.content_cn = @feature_post.content_cn.map {|p| '>>' + p}
 	end
 
 	def destroy

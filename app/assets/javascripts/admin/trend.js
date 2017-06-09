@@ -36,10 +36,10 @@ function initTooltip() {
 
 function initParagraphIndicator() {
   $('#trend_post_content_en').keyup(function(event) {
-    if (event.which == 13 || !$(this).val()) $(this).val( $(this).val() + NEW_PARAGRAPH);
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
   $('#trend_post_content_cn').keyup(function(event) {
-    if (event.which == 13 || !$(this).val()) $(this).val( $(this).val() + NEW_PARAGRAPH);
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
   $('#trend_post_content_en').add('#trend_post_content_cn').keyup();
 }

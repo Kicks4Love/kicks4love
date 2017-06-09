@@ -46,14 +46,13 @@ function initPostComposition() {
     currentEnCount = parseInt(displayParagraph.text().split('/')[0]);
     displayParagraph.text(enCount + ' / ' + cnCount);
     if (currentEnCount != enCount) updateCompositionTable();
-    if (event.which == 13 || !$(this).val()) $(this).val( $(this).val() + NEW_PARAGRAPH);
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
 
   $('#street_snap_post_content_cn').keyup(function(event) {
     cnCount = $(this).val().split(/\r|\n/).length;
     displayParagraph.text(enCount + ' / ' + cnCount);
-    if (event.which == 13 || !$(this).val())
-      $(this).val( $(this).val() + NEW_PARAGRAPH);
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
 
   $('#street_snap_post_content_en').add('#street_snap_post_content_cn').keyup();

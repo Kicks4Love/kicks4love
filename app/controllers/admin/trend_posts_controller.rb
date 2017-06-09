@@ -61,8 +61,8 @@ class Admin::TrendPostsController < Admin::AdminController
 
 	def edit
 		@page_title = "Edit Trend Post | Kicks4Love Admin"
-		@trend_post.content_en = @trend_post.content_en.map { |p| '>>' + p }
-		@trend_post.content_cn = @trend_post.content_cn.map { |p| '>>' + p }
+		@trend_post.content_en = @trend_post.content_en.map {|p| '>>' + p}
+		@trend_post.content_cn = @trend_post.content_cn.map {|p| '>>' + p}
 	end
 
 	def destroy

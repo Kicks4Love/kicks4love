@@ -61,8 +61,8 @@ class Admin::RumorPostsController < Admin::AdminController
 
 	def edit
 		@page_title = "Edit Rumor Post | Kicks4Love Admin"
-		@rumor_post.content_en = @rumor_post.content_en.map { |p| '>>' + p }
-		@rumor_post.content_cn = @rumor_post.content_cn.map { |p| '>>' + p }
+		@rumor_post.content_en = @rumor_post.content_en.map {|p| '>>' + p}
+		@rumor_post.content_cn = @rumor_post.content_cn.map {|p| '>>' + p}
 	end
 
 	def destroy

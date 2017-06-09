@@ -36,10 +36,10 @@ function initTooltip() {
 
 function initParagraphIndicator() {
   $('#rumor_post_content_en').keyup(function(event) {
-    if (event.which == 13 || !$(this).val()) $(this).val( $(this).val() + NEW_PARAGRAPH);
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
   $('#rumor_post_content_cn').keyup(function(event) {
-    if (event.which == 13 || !$(this).val()) $(this).val( $(this).val() + NEW_PARAGRAPH);
+    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
   });
   $('#rumor_post_content_en').add('#rumor_post_content_cn').keyup();
 }

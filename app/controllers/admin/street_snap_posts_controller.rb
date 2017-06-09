@@ -62,8 +62,8 @@ class Admin::StreetSnapPostsController < Admin::AdminController
 
   def edit
     @page_title = "Edit Street Snap Post | Kicks4Love Admin"
-    @street_snap_post.content_en = @street_snap_post.content_en.map { |p| '>>' + p }
-    @street_snap_post.content_cn = @street_snap_post.content_cn.map { |p| '>>' + p }
+    @street_snap_post.content_en = @street_snap_post.content_en.map {|p| '>>' + p}
+    @street_snap_post.content_cn = @street_snap_post.content_cn.map {|p| '>>' + p}
   end
 
   def destroy
