@@ -2,7 +2,7 @@ module Admin::AdminHelper
 
 	def self.trim_str(string)
 	    return string if string.empty? || string.length < 2
-	    return string.delete(">>").strip
+	    return string.gsub('>>', '').strip
 	end
 
 	def self.remove_uploads_file(post_type, id)
