@@ -467,8 +467,7 @@ function initCalendar() {
   		}));
   	} finally {
   		setTimeout(function() {
-  			$('.opening-scene').remove();
-  			$('body').css('overflow', 'auto');
+  			document.getElementsByClassName('header')[0].style.webkitAnimationPlayState = 'paused';
   			if (!getQueryParams().date) $('.switch-checkbox').trigger('click');
   		}, 1000);
   	}

@@ -5,7 +5,6 @@ body {
 	-moz-user-select: none;
   -ms-user-select: none;
 	user-select: none;
-  overflow: hidden;
 }
 h1, h4 {
   color: #4A4A4A;
@@ -13,29 +12,6 @@ h1, h4 {
 
 .main {
   text-align: center;
-}
-.main .opening-scene {
-  display: block;
-  background-color: black;
-  opacity: 0.5;
-  text-align: center;
-  top: 50px;
-}
-.main .opening-scene span {
-  color: white;
-  font-size: 20px;
-  position: relative;
-  font-weight: normal;
-}
-.main .opening-scene span:before {
-  content: attr(data-text);
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  color: red;
-  -webkit-animation: fill-text 2s infinite;
-          animation: fill-text 2s infinite;
 }
 .main .header {
   font-size: 25px;
@@ -45,6 +21,9 @@ h1, h4 {
   background-size: 80px 80px;
   border-radius: 20px;
   border: 2px solid #a4a4a4;
+  -webkit-animation: loading 5s linear infinite;
+  -moz-animation: loading 5s linear infinite;
+  animation: loading 5s linear infinite;
 }
 .main .kicks-switch {
   width: 80px;
@@ -366,6 +345,18 @@ h1, h4 {
 #calendar .entry.green:after { background: rgba(153, 198, 109, 1); }
 #calendar .entry.yellow:after { background: rgba(249, 233, 0, 1); }
 
+@-webkit-keyframes loading  {
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+@-moz-keyframes loading  {
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+@keyframes loading  {
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
 
 @-webkit-keyframes fill-text {
   50% { width: 100%; }
