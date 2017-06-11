@@ -305,7 +305,7 @@ class MainController < ApplicationController
 		redirect_to :back and return unless params[:language].present?
 
 		I18n.locale = params[:language][:chinese].present? ? :zh : :en
-		cookies[:language] = I18n.locale
+		cookies.permanent[:language] = I18n.locale
 
 		redirect_to :back
 	end
