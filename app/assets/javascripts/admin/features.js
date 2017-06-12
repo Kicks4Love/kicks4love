@@ -46,13 +46,23 @@ function initPostComposition() {
     var currentEnCount = parseInt(displayParagraph.text().split('/')[0]);
     displayParagraph.text(enCount + ' / ' + cnCount);
     if (currentEnCount != enCount) updateCompositionTable();
-    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
+
+    var text = $(this).val();
+    if (event.which == 13 || !text) {
+      var selectPos = this.selectionStart;
+      $(this).val(text.substring(0, selectPos) + NEW_PARAGRAPH + text.substring(selectPos));
+    }
   });
 
   $('#feature_post_content_cn').keyup(function(event) {
     cnCount = $(this).val().split(/\r|\n/).length;
     displayParagraph.text(enCount + ' / ' + cnCount);
-    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
+
+    var text = $(this).val();
+    if (event.which == 13 || !text) {
+      var selectPos = this.selectionStart;
+      $(this).val(text.substring(0, selectPos) + NEW_PARAGRAPH + text.substring(selectPos));
+    }
   });
 
   $('#feature_post_content_en').add('#feature_post_content_cn').keyup();

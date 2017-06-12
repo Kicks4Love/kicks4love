@@ -36,10 +36,18 @@ function initTooltip() {
 
 function initParagraphIndicator() {
   $('#on_court_post_content_en').keyup(function(event) {
-    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
+    var text = $(this).val();
+    if (event.which == 13 || !text) {
+      var selectPos = this.selectionStart;
+      $(this).val(text.substring(0, selectPos) + NEW_PARAGRAPH + text.substring(selectPos));
+    }
   });
   $('#on_court_post_content_cn').keyup(function(event) {
-    if (event.which == 13 || !$(this).val()) $(this).val($(this).val() + NEW_PARAGRAPH);
+    var text = $(this).val();
+    if (event.which == 13 || !text) {
+      var selectPos = this.selectionStart;
+      $(this).val(text.substring(0, selectPos) + NEW_PARAGRAPH + text.substring(selectPos));
+    }
   });
   $('#on_court_post_content_en').add('#on_court_post_content_cn').keyup();
 }
