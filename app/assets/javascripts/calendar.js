@@ -32,11 +32,11 @@
 	}
 
 	Calendar.prototype.drawHeader = function() {
-	    var self = this;
 	    if (!this.header) {
+	    	var self = this;
+
 	      	this.header = createElement('div', 'calendar-header');
 	      	this.header.className = 'calendar-header';
-
 	      	this.title = createElement('h1');
 
 	      	var right = createElement('div', 'right');
@@ -54,7 +54,6 @@
 	      	this.header.appendChild(left);
 	      	this.el.appendChild(this.header);
 	    }
-
 	    this.title.innerHTML = this.current.format('MMMM YYYY');
 	}
 
@@ -69,7 +68,7 @@
 	        	self.backFill();
 	        	self.currentMonth();
 	        	self.fowardFill();
-	        	self.el.appendChild(self.month);
+	        	self.el.insertBefore(self.month, self.legend);
 	        	window.setTimeout(function() {
 	          		self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
 	       	 	}, 16);
@@ -77,14 +76,13 @@
 	      	this.currentMonthLargeIcon();
 	    } else {
 		    this.month = createElement('div', 'month');
-		    this.monthAlt = createElement('div', 'month-alt');
+		    this.monthAlt = $('.main');
 		    this.el.appendChild(this.month);
-		    this.el.appendChild(this.monthAlt);
 		    this.backFill();
 		    this.currentMonth();
-		    this.currentMonthLargeIcon();
 		    this.fowardFill();
 		    this.month.className = 'month new';
+		    this.currentMonthLargeIcon();
 	    }
 	    if (!this.calendarMode) updateHeader(this.chinese, this.current, this.events, this.calendarMode);
 	}
@@ -114,7 +112,7 @@
 	Calendar.prototype.currentMonth = function() {
 	   	var clone = this.current.clone();
 
-		while(clone.month() === this.current.month()) {
+		while (clone.month() === this.current.month()) {
 		    this.drawDay(clone);
 		    clone.add('days', 1);
 		}
@@ -123,42 +121,40 @@
 	Calendar.prototype.currentMonthLargeIcon = function() {
 		var dollarSign = this.chinese ? '¥' : '$';
 		this.currentIndex = 0;
-		this.monthAlt.innerHTML = '';
+		$('.product-container').add('.to-view-more').remove();
 		for (var i = this.currentIndex; i < this.currentIndex + 3; i++) {
 			if (this.events[i] === undefined) break;
 			var pricestr = parseFloat(this.events[i].price) <= 0 ? 'N/A' : parseFloat(this.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
-			this.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
-  										'<div class="kicks-box" style="background-image:url(' + this.events[i].image + ')">' +
-    									'<div class="cover">' +
-      									'<h2 class="title">' + this.events[i].eventName + '</h2>' +
-      									'<span class="date">' + dollarSign + ' ' + pricestr +
-      									'</span></div></div><span style="color:#4A4A4A;width:100%">' + this.events[i].date.format('MM/DD') + '</span></div></div>';
+			this.monthAlt.append('<div class="product-container' + (this.calendarMode ? ' no-display ' : ' ') + 'col-xs-12 col-sm-6 col-lg-4">' +
+  							'<div class="kicks-box" style="background-image:url(' + this.events[i].image + ')">' +
+    						'<div class="cover">' +
+      						'<h2 class="title">' + this.events[i].eventName + '</h2>' +
+      						'<span class="date">' + dollarSign + ' ' + pricestr +
+      						'</span></div></div><span style="color:#4A4A4A;width:100%">' + this.events[i].date.format('MM/DD') + '</span></div></div>');
 		}
 		this.currentIndex += 3;
 		if (this.events[this.currentIndex] !== undefined)
-			this.monthAlt.innerHTML += '<div class="to-view-more"><span>' + (this.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>';
+			this.monthAlt.append('<div class="to-view-more"><span>' + (this.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>');
 
 		if (this.initial) {
 			var self = this;
-			$('.month-alt').on('click', '.to-view-more' , function() {
+			this.monthAlt.on('click', '.to-view-more' , function() {
 				this.remove();
 
 				// copy the function currentMonthLargeIcon code instead of calling it directly to prevent stack overflow
 				for (var i = self.currentIndex; i < self.currentIndex + 3; i++) {
 					if (self.events[i] === undefined) break;
-					console.log(self.events[i].price);
 					var pricestr = parseFloat(self.events[i].price) <= 0 ? 'N/A' : parseFloat(self.events[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '1,');
-					self.monthAlt.innerHTML += '<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
-  										'<div class="kicks-box" style="background-image:url(' + self.events[i].image + ')">' +
-    									'<div class="cover">' +
-      									'<h2 class="title">' + self.events[i].eventName + '</h2>' +
-      									'<span class="date">' + dollarSign + ' ' + pricestr +
-      									'</span></div></div><span style="color:#4A4A4A;width:100%">' + self.events[i].date.format('MM/DD') + '</span></div></div>';
+					self.monthAlt.append('<div class="product-container col-xs-12 col-sm-6 col-lg-4">' +
+  									'<div class="kicks-box" style="background-image:url(' + self.events[i].image + ')">' +
+    								'<div class="cover">' +
+      								'<h2 class="title">' + self.events[i].eventName + '</h2>' +
+      								'<span class="date">' + dollarSign + ' ' + pricestr +
+      								'</span></div></div><span style="color:#4A4A4A;width:100%">' + self.events[i].date.format('MM/DD') + '</span></div></div>');
 				}
 				self.currentIndex += 3;
 				if (self.events[self.currentIndex] !== undefined)
-					self.monthAlt.innerHTML += '<div class="to-view-more"><span>' + (self.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>';
-				this.remove();
+					self.monthAlt.append('<div class="to-view-more"><span>' + (self.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>');
 			});
 		}
 	}
@@ -371,29 +367,31 @@
 	}
 
 	Calendar.prototype.drawOthers = function() {
-		var legend = createElement('div', 'legend');
-		legend.appendChild(createElement('span', 'entry orange', this.chinese ? '鞋子' : 'Sneaker'));
-		legend.appendChild(createElement('span', 'entry blue', this.chinese ? '服饰' : 'Cloth'));
-		legend.appendChild(createElement('span', 'entry yellow', this.chinese ? '配件' : 'Accessory'));
-		legend.appendChild(createElement('span', 'entry green', this.chinese ? '其它' : 'Other'));
-		this.el.appendChild(legend);
+		this.legend = createElement('div', 'legend');
+		this.legend.appendChild(createElement('span', 'entry orange', this.chinese ? '鞋子' : 'Sneaker'));
+		this.legend.appendChild(createElement('span', 'entry blue', this.chinese ? '服饰' : 'Cloth'));
+		this.legend.appendChild(createElement('span', 'entry yellow', this.chinese ? '配件' : 'Accessory'));
+		this.legend.appendChild(createElement('span', 'entry green', this.chinese ? '其它' : 'Other'));
+		this.el.appendChild(this.legend);
 
 		var self = this;
 		var warning = $('.press-warning');
 		document.getElementsByClassName('switch-checkbox')[0].addEventListener('click', function() {
 	  		var mainParent = this.parentElement;
 	  		if(this.checked) {
-	  			$(self.monthAlt).fadeOut();
+	  			$('.product-container').add('.to-view-more').hide();
 	    		mainParent.classList.add('active');
 	    		$(self.month).slideDown('slow');
-	    		legend.removeAttribute('style');
+	    		self.el.removeAttribute('style');
+	    		self.legend.removeAttribute('style');
 	    		warning.html(warning.data().image);
 	    		self.calendarMode = true;
 	  		} else {
 	    		$(self.month).slideUp('slow');
-	    		legend.style.display = 'none';
+	    		self.el.style.height = 'auto';
+	    		self.legend.style.display = 'none';
 	    		mainParent.classList.remove('active');
-	    		$(self.monthAlt).fadeIn();
+	    		$('.product-container').add('.to-view-more').show();
 	    		warning.html(warning.data().calendar);
 	    		self.calendarMode = false;
 	    		updateHeader(self.chinese, self.current, self.events, self.calendarMode);
