@@ -39,11 +39,13 @@ function initApplication(showPendant, showLanguage) {
         }, 1000);
         logoPendant.click(function() {
             if ($(this).attr('style') === undefined)
-                $(this).css('top', '30px');
+                $(this).css('opacity', '0.3');
             else
                 $(this).removeAttr('style');
         });
     }
+
+    ga('send', 'pageview');
 
     var scrollTopButton = $('#scroll-top');
     $(window).scroll(function() {
@@ -77,6 +79,8 @@ function getSourcePage() {
     return $('#page_source').val();
 }
 
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-100873227-1', 'auto');
 window.fbAsyncInit = function() {
     FB.init({
         appId      : facebookAppId,
@@ -85,7 +89,6 @@ window.fbAsyncInit = function() {
     });
      FB.AppEvents.logPageView();
 };
-
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
