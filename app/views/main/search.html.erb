@@ -68,7 +68,7 @@
 				<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= t(tag) %></p>
 				<% if post.try(:highlight).try(:content_cn) %>
         			<% post.highlight.content_cn.each do |snippet| %>
-          				<p><%= snippet.html_safe %>...</p>
+          				<p><%= sanitize(snippet, tags: %w(em)).html_safe %>...</p>
         			<% end %>
         		<% elsif !post._type == "calendar_post" && !post.content_cn.empty? %>
         			<p><%= post.content_cn[0][0..100] %>...</p>
@@ -78,7 +78,7 @@
 				<p class="post-type"><i class="fa fa-tags" aria-hidden="true"></i> <%= t(tag) %></p>
 				<% if post.try(:highlight).try(:content_en) %>
         			<% post.highlight.content_en.each do |snippet| %>
-          				<p><%= snippet.html_safe %>...</p>
+          				<p><%= sanitize(snippet, tags: %w(em)).html_safe %>...</p>
         			<% end %>
         		<% elsif !post._type == "calendar_post" && !post.content_en.empty? %>
         			<p><%= post.content_en[0][0..100] %>...</p>
