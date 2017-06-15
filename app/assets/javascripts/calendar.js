@@ -134,7 +134,7 @@
 		}
 		this.currentIndex += 3;
 		if (this.events[this.currentIndex] !== undefined)
-			this.monthAlt.append('<div class="to-view-more"><span>' + (this.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>');
+			this.monthAlt.append('<div class="to-view-more' + (this.calendarMode ? ' no-display ' : '') +'"><span>' + (this.chinese ? '点击加载更多' : 'Click To View More') + ' <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span></div>');
 
 		if (this.initial) {
 			var self = this;

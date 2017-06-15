@@ -455,7 +455,7 @@ h1, h4 {
   to { opacity: 0; padding: 0px; height: 0px; }
 }
 
-.main .product-container.no-display {
+.main .no-display {
   display: none;
 }
 .main .product-container .kicks-box {
