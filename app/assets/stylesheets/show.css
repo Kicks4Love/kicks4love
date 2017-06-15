@@ -13,6 +13,12 @@
   font-size: 1.342em;
   line-height: 1;
 }
+.main header .rating {
+  float: right;
+}
+.main header .rating .fa-heart {
+  color: lightgray;
+}
 .main header h1 {
   font-weight: bold;
   font-size: 2.415em;
@@ -30,6 +36,22 @@
 }
 .main figure {
   margin: 1em 0;
+}
+.main .new-rating {
+  text-align: center;
+}
+.main .new-rating .fa-heart {
+  color: lightgray;
+  cursor: pointer;
+}
+#rate-btn {
+  font-weight: bolder;
+  font-size: 1.3em;
+  color: lightgray;
+  cursor: pointer;
+}
+#rate-btn:hover {
+  color: pink;
 }
 .main .share-link button {
   color: white;

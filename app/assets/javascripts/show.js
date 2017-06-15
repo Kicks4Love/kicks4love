@@ -1,6 +1,22 @@
 $(document).ready(function() {
   	initApplication(true, true);
 
+    var ratingSet = false;
+    var rate = 0;
+    $('.new-rating .fa-heart').on('click mouseover', function(event) {
+      $('.new-rating .fa-heart').css('color', 'lightgray');
+      $(this).prevAll('.fa-heart').addBack().css('color', 'pink');
+      if (event.type == 'click') {
+        rate = $(this).data().rate;
+        ratingSet = true;
+      } else if (ratingSet) 
+        rate = $(this).data().rate;
+    });
+    $('.new-rating .fa-heart').on('mouseout', function() {
+      if (ratingSet) return;
+      $('.new-rating .fa-heart').css('color', 'lightgray');
+    });
+
   	document.getElementById('facebook-share').onclick = function() {
     	FB.ui({
       		method: 'share',
