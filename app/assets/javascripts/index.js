@@ -94,6 +94,12 @@ function initLoadPostHandler() {
             				tag = chinese ? '流言蜚语' : 'Rumors';
             				break;
             		}
+            		var scoreStr = '<div class="rating">';
+            		for (var j = 0; j < data.posts[i].score; j++)
+            			scoreStr += '<i class="fa fa-heart" style="color:pink" aria-hidden="true"></i>';
+            		for (var j = data.posts[i].score; j < 5; j++)
+            			scoreStr += '<i class="fa fa-heart" aria-hidden="true"></i>';
+            		scoreStr += '</div>';
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
             			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">' +
@@ -109,7 +115,7 @@ function initLoadPostHandler() {
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span></p>' +
                     	'<br/><i class="fa fa-tags" aria-hidden="true"></i>' +
                     	'<span class="post-tag">' + tag + '</span>' +
-                		'</div></div></div>'
+                    	scoreStr + '</div></div></div>'
             		);
             	}
             	if (!data.no_more) {

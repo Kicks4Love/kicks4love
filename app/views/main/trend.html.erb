@@ -11,6 +11,12 @@
     <section id="kicks-posts">
         <% @all_trend_posts.each do |trend_post| %>
             <a href="/trend/<%= trend_post.id %>" class="kicks-post col-xs-12 col-sm-6 col-lg-4" style="background-image:url(<%= trend_post.cover_image.url %>);">
+                <div class="rating">
+                    <% score = (trend_post.rates.average(:score) || 0).ceil %>
+                    <% (1..score).each do |i| %>
+                        <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+                    <% end %>
+                </div>
                 <h3><%= trend_post.title %></h3>
                 <span class="lead kicks-date"><%= trend_post.created_at.strftime("%Y-%m-%d") %></span>
             </a>
