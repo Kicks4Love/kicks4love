@@ -448,7 +448,12 @@ $(document).ready(function() {
 
 function initCalendar() {
 	try {
+		if ($('#calendar-set').val() == 'true') {
+			$('#calendar').empty();
+			$('.product-container').add('.to-view-more').remove();
+		}
   		var calendar = new Calendar('#calendar');
+  		$('#calendar-set').val('true');
   	} catch(e) {
   		var chinese = isChinese();
   		var errorDescription = chinese ? '错误发生当开启日历，请刷新网页重试' : 'Error occur while opening calendar. Please refresh the page.';
