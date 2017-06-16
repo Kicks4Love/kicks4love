@@ -14,10 +14,8 @@
   line-height: 1;
 }
 .main header .rating {
-  float: right;
-}
-.main header .rating .fa-heart {
   color: lightgray;
+  float: right;
 }
 .main header h1 {
   font-weight: bold;
@@ -38,10 +36,10 @@
   margin: 1em 0;
 }
 .main .new-rating {
+  color: lightgray;
   text-align: center;
 }
 .main .new-rating .fa-heart {
-  color: lightgray;
   cursor: pointer;
 }
 #rate-btn {
