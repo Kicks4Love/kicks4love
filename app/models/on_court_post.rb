@@ -11,6 +11,7 @@ class OnCourtPost < ApplicationRecord
 	serialize :content_cn, Array
 	serialize :main_images, JSON
 
+    has_many :rates, :as => :post, :dependent => :destroy
 	belongs_to :author, class_name: "AdminUser"
 
 	scope :latest, -> {order("created_at DESC")}

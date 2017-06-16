@@ -4,7 +4,7 @@
 	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="3"></i>
 	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="4"></i>
 	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="5"></i>
-	<span id="rate-btn"><%= t("Rate_it") %></span>
+	<span id="rate-btn" data-token="<%= form_authenticity_token.to_s %>"><%= t("Rate_it") %></span>
 </div>
 <div class="share-link">
     <span><%= t("Share_Article_To") %>:</span>

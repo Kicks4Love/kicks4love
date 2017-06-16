@@ -22,8 +22,8 @@ function initLoadPostHandler() {
 			type: 'GET',
                   url: '/main/get_posts?next_page=' + nextPage.val() + '&source_page=features',
                   dataType: 'json',
-                        success: function(data) { 
-                  	var parent = target.parent('.main');
+                  success: function(data) { 
+                        var parent = target.parent('.main');
                   	for (var i = 0; i < data.posts.length; i++) {
                               var right;
                               if (nextPage.val()%2 === 1)

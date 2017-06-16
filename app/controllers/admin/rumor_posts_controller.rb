@@ -67,7 +67,7 @@ class Admin::RumorPostsController < Admin::AdminController
 
 	def destroy
 		id = @rumor_post.id
-		if @rumor_post.delete
+		if @rumor_post.destroy
 			Admin::AdminHelper.remove_uploads_file('rumor_post', id)
 			flash[:notice] = "The rumor post has been deleted successfully"
 		else
@@ -80,7 +80,7 @@ class Admin::RumorPostsController < Admin::AdminController
 	def remove_old
 		old_posts = RumorPost.old
 		return_posts = old_posts.to_a
-		if old_posts.delete_all
+		if old_posts.destroy_all
 			return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('rumor_post', post.id)}
 			render :json => return_posts.to_json, :layout => false
 		else

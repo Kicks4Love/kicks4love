@@ -43,6 +43,22 @@ function initRating() {
   });
   $('#rate-btn').click(function() {
     if (!ratingSet) return;
+    $('.new-rating .fa-heart').unbind('click mouseover');
+    var token = $(this).data().token;
     $(this).replaceWith('<i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>');
+    $.ajax({
+      type: 'POST',
+      url: '/main/post_rating',
+      data: {source_page: getSourcePage(), id: $('#post_id').val(), score: rate},
+      headers: {'X-CSRF-Token': token},
+      dataType: 'json',
+      success: function(data) { 
+        console.log(data);
+        $('.new-rating .fa.fa-spinner').replaceWith(isChinese() ? '谢谢~' : 'Thank You~');
+        var rateDisplay = $('.rating .fa-heart');
+        rateDisplay.removeAttr('style');
+        rateDisplay.slice(0, data.score).css('color', 'pink');
+      }
+    });
   });
 }
