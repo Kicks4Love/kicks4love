@@ -52,7 +52,7 @@ class MainController < ApplicationController
 			@article_title = @feature_post.title_en
 			@content = @feature_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @feature_post.title_cn : @feature_post.title_en
 		end
 		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
@@ -85,7 +85,7 @@ class MainController < ApplicationController
 			@article_title = @trend_post.title_en
 			@content = @trend_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @trend_post.title_cn : @trend_post.title_en
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
@@ -115,7 +115,7 @@ class MainController < ApplicationController
 			@article_title = @oncourt_post.title_en
 			@content = @oncourt_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @oncourt_post.title_cn : @oncourt_post.title_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
@@ -146,7 +146,7 @@ class MainController < ApplicationController
 			@article_title = @streetsnap_post.title_en
 			@content = @streetsnap_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @streetsnap_post.title_cn : @streetsnap_post.title_en
 		end
 		@og_image = "http://#{request.host}#{@streetsnap_post.cover_image.url}"
@@ -176,7 +176,7 @@ class MainController < ApplicationController
 			@article_title = @rumor_post.title_en
 			@content = @rumor_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @rumor_post.title_cn : @rumor_post.title_en
 		end
 		@times = [@content.size, @rumor_post.main_images.size].max
@@ -308,6 +308,21 @@ class MainController < ApplicationController
 		cookies.permanent[:language] = I18n.locale
 
 		redirect_to :back
+	end
+
+	def subscribe
+		new_sub = Subsriber.create(email: params[:email])
+		if new_sub.errors.any?
+			logger.debug new_sub.errors.full_messages.first
+			cookies.permanent[:subscriber_email] = ''
+			head 500
+			# @message = new_sub.errors.full_messages.first
+		else
+			logger.info "new Subsriber created!"
+			# cookies.permanent[:subscriber_email] = new_sub.email
+			# @message = "Thank you for signing up! Fresh Sneaker feeds coming up every week.."
+			render :json => ActiveSupport::JSON.encode({ msg: 'done'}), :layout => false
+		end
 	end
 
 	private

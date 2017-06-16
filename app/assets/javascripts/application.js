@@ -18,8 +18,9 @@
 var autoSlider = null;
 
 function initApplication(showPendant, showLanguage) {
-    var languageSet = $('#language-set').val().length > 0;
-    
+  initSignupForm();
+  var languageSet = $('#language-set').val().length > 0;
+
 	if (!languageSet && showLanguage)
 		$('#language-modal').modal('show');
 
@@ -77,6 +78,38 @@ function isChinese() {
 
 function getSourcePage() {
     return $('#page_source').val();
+}
+
+function initSignupForm() {
+    $('.newsletter-subscribe').hide();
+    let sub_email = $('#newsletter_sub').val();
+    if (!sub_email) {
+      $('.newsletter-subscribe').show();
+      $('#signup-form').show();
+      $('.subscribe-message').hide();
+      $('#signup-form').submit(function(event) {
+        event.preventDefault();
+        let url = $(this).attr("action");
+        let sub_data = $(this).serializeArray();
+        let auth_token;
+        sub_data.forEach(function(param) {
+          if (param.name == "authenticity_token") {
+            auth_token = param.value;
+          }
+        })
+        $.post({ url: url,
+                 headers: {'X-CSRF-Token': auth_token} ,
+                 data: sub_data,
+                 dataType: "json"
+        }).done(function() {
+          $('#signup-form').hide();
+          $('.subscribe-message').show();
+        })
+        .fail(function() {
+          $('#signup-form').find(':submit').prop('disabled', false).val('Submit');
+        });
+      });
+    }
 }
 
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
