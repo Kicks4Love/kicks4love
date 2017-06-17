@@ -10,13 +10,22 @@
         <div class="sub-header"><%= t("Home_for_Trendsetter_All_Around_the_World") %></div>
     </div>
     <div class="content">
-        <% @streetsnap_posts.each_with_index do |streetsnap_post, index| %>
+        <% @streetsnap_posts.each_with_index do |streetsnap_post| %>
             <% streetsnap_post.content = streetsnap_post.content.blank? ? "" : streetsnap_post.content[0][0..110].strip %>
             <div class="col-xs-12 col-sm-6 col-lg-4">
             <div class="snap-card" style="background-image:url('<%= streetsnap_post.cover_image.url %>')">
                 <h1><a href="/streetsnap/<%= streetsnap_post.id %>"><%= streetsnap_post.title %></a></h1>
                 <div class="description">
-                    <span>No.<%= index+1 %></span><span class="post-date"><%= streetsnap_post.created_at.strftime("%Y-%m-%d") %></span>
+                    <div class="rating">
+                        <% score = (streetsnap_post.rates.average(:score) || 0).ceil %>
+                        <% (1..score).each do |i| %>
+                            <i class="fa fa-heart" style="color:pink" aria-hidden="true"></i>
+                        <% end %>
+                        <% (score+1..5).each do |i| %>
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                        <% end %>
+                    </div>
+                    <span class="post-date"><%= streetsnap_post.created_at.strftime("%Y-%m-%d") %></span><br/>
                     <a href="/streetsnap/<%= streetsnap_post.id %>">
                         <p><%= ActionView::Base.full_sanitizer.sanitize(streetsnap_post.content) %>...</p>
                         <i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i>

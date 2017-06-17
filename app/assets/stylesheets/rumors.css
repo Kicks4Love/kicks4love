@@ -62,10 +62,13 @@
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
+.main .content .collumn .headline.sub-title .fa-heart {
+    color: lightgray;
+}
 .main .content .collumn .headline.sub-title:before{
     border-top: 1px solid #2f2f2f;
     content: '';
-    width: 100px;
+    width: 150px;
     height: 7px;
     display: block;
     margin: 0 auto;
@@ -73,7 +76,7 @@
 .main .content .collumn .headline.sub-title:after{
     border-bottom: 1px solid #2f2f2f;
     content: '';
-    width: 100px;
+    width: 150px;
     height: 10px;
     display: block;
     margin: 0 auto;

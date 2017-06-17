@@ -71,11 +71,15 @@
   font-size: .8em;
   color: gray;
 }
-.main .content .snap-card .post-date {
+.main .content .snap-card .description .rating {
+  color: lightgray;
+  float: left;
+}
+.main .content .snap-card .description .post-date {
   float: right;
 }
 .main .content .snap-card .description p {
-  margin-top: 10px;
+  margin-top: 6px;
 }
 .main .content .snap-card:hover {
   -webkit-filter: grayscale(0%);
