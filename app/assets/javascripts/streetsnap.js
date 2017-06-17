@@ -6,5 +6,8 @@ $(document).ready(function() {
 	$('#navbar .dropdown ul li').eq(4).addClass('active');
 	
 	initApplication(true, true);
-	$('.snap-card').on('click touchstart', function() { $(this).toggleClass('active'); });
+	$('.snap-card').on('touchstart', function() { 
+		$(this).toggleClass('active'); 
+		$(this).parent().siblings().find('.snap-card').removeClass('active');
+	});
 });
