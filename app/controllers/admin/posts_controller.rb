@@ -71,7 +71,17 @@ class Admin::PostsController < Admin::AdminController
 
 		render :json => posts.to_json, :layout => false
 	end
-		
+
+	def send_newsletter
+		begin
+			CustomerServiceMailer.newsletter(Subsriber.all).deliver_now
+			flash[:notice] = "Newsletter sent"
+		rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError  => e
+			flash[:alert] = "Somthing wrong happened: " + e.message
+		end
+		redirect_to :back
+	end
+
 	private
 
 	def post_params

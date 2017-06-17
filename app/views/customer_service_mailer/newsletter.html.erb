@@ -1,0 +1,30 @@
+<div class="title" style="display:inline;">
+  <%= link_to image_tag("nav_logo.png"), root_url %>
+  <h2>Kicks4Love weekly digest | 鞋侣每周精选</h2>
+</div>
+<div class="container">
+  <h2>Best of the week | 本周最佳</h2>
+  <% @posts.each do |post|%>
+    <div class="post-container">
+      <%= link_to image_tag(post.image.url), root_url + post.pointer_type.delete('_').downcase + '/' + post.pointer_id.to_s %>
+      <h1><%=post.title_en%>  <%=post.title_cn%> </h1>
+    </div>
+  <% end %>
+</div>
+<div class="news container">
+  <h2>Latest news | 最新消息</h2>
+  <% @news.each do |news_post|%>
+    <div class="post-container">
+      <%= link_to image_tag(news_post.image.url), root_url + news_post.pointer_type.delete('_').downcase + '/' + news_post.pointer_id.to_s %>
+      <h1><%= news_post.title_en %>  <%=news_post.title_cn%> </h1>
+    </div>
+  <% end %>
+</div>
+<style media="screen">
+  .post-container {
+    background-color: #f8f8f8;
+  }
+  .post-container img {
+    width: 70%;
+  }
+</style>

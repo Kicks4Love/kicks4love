@@ -1,7 +1,12 @@
 <h1>Admin Post</h1>
 
-<hr/>
+<% if @posts.any? && @news.any? %>
+<%= form_tag(send_newsletter_admin_posts_path, method: :post) do%>
+	<%= submit_tag 'Send weekly newsletter', :class => "btn btn-default" %>
+<% end %>
+<% end %>
 
+<hr/>
 <% if @posts.any? %>
 	<% if @posts.count == 5 %>
 		<h2>Maximum 5 Posts</h2>
