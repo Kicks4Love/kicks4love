@@ -319,7 +319,7 @@ class MainController < ApplicationController
 			# @message = new_sub.errors.full_messages.first
 		else
 			logger.info "new Subsriber created!"
-			# cookies.permanent[:subscriber_email] = new_sub.email
+			cookies.permanent[:subscriber_email] = new_sub.email
 			# @message = "Thank you for signing up! Fresh Sneaker feeds coming up every week.."
 			render :json => ActiveSupport::JSON.encode({ msg: 'done'}), :layout => false
 		end

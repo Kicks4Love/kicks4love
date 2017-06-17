@@ -1,0 +1,15 @@
+Kicks4Love weekly digest | 鞋侣每周精选
+
+Best of the week | 本周最佳
+  <% @posts.each_with_index do |post, index|%>
+    <%= index + 1 %>. <%= post.title_en%> | <%= post.title_cn %> <%= root_url + post.pointer_type.delete('_').downcase + '/' + post.pointer_id.to_s %>
+  <% end %>
+
+Latest news | 最新消息
+  <% @news.each_with_index do |news_post, index|%>
+    <%= index + 1%>. <%=news_post.title_en%> | <%=news_post.title_cn%> <%= root_url + news_post.pointer_type.delete('_').downcase + '/' + news_post.pointer_id.to_s %>
+  <% end %>
+
+Enjoy!
+
+Handpicked by Kicks4Love鞋侣

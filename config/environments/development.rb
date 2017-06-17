@@ -31,7 +31,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
     :port                 => 465,
@@ -39,8 +39,8 @@ Rails.application.configure do
     :domain               => 'kicks4love.com',
     :password             => Rails.application.secrets.customer_service_email_password,
     :authentication       => 'plain',
-    :ssl                  => true,  
-    :tls                  => true 
+    :ssl                  => true,
+    :tls                  => true
   }
 
   # Print deprecation notices to the Rails logger.
@@ -66,4 +66,5 @@ Rails.application.configure do
 
   # Default url for Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.asset_host = 'localhost:3000'
 end
