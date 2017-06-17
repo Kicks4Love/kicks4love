@@ -25,13 +25,13 @@
 #kicks-posts .kicks-post .rating {
     position: absolute;
     z-index: 1;
-    top: 5px;
+    top: 20px;
     color: white;
 }
 #kicks-posts .kicks-post h3 {
     color: white;
     position: absolute;
-    bottom: 60px;
+    bottom: 80px;
     margin: 0;
     font-size: 35px;
     line-height: 0.9;
@@ -42,7 +42,7 @@
 #kicks-posts .kicks-post .kicks-date {
     color:#fff;
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     margin: 0;
     font-size: 22px;
     line-height: 0.8;

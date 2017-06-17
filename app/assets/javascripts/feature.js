@@ -32,9 +32,9 @@ function initLoadPostHandler() {
                                     right = i%2 === 0;
                               var scoreStr = '<div class="rating">';
                               for (var j = 0; j < data.posts[i].score; j++)
-                                    scoreStr += '<i class="fa fa-heart" style="color:pink" aria-hidden="true"></i>';
+                                    scoreStr += '<i class="fa fa-heart fa-fw" style="color:pink" aria-hidden="true"></i>';
                               for (var j = data.posts[i].score; j < 5; j++)
-                                    scoreStr += '<i class="fa fa-heart" aria-hidden="true"></i>';
+                                    scoreStr += '<i class="fa fa-heart fa-fw" aria-hidden="true"></i>';
                               scoreStr += '</div>';
                   		parent.append(
                               '<div class="kicks-post' + (right ? ' alt' : '') + '">' +

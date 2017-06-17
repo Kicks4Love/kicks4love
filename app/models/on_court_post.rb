@@ -3,7 +3,6 @@ require 'elasticsearch/model'
 class OnCourtPost < ApplicationRecord
 
     include Elasticsearch::Model
-    #include Elasticsearch::Model::Callbacks
 
 	attr_accessor :post_type
 

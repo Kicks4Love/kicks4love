@@ -13,6 +13,12 @@
             <li class="col-xs-12 col-sm-6 col-lg-4">
                 <div class="player-card" style="background-image:url('<%= post.cover_image.url %>');">
                     <span class="kicks-date"><%= post.created_at.strftime("%Y-%m-%d") %></span>
+                    <div class="rating">
+                        <% score = (post.rates.average(:score) || 0).ceil %>
+                        <% (1..score).each do |i| %>
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                        <% end %>
+                    </div>
                     <% if post.has_link %>
                         <a href="/oncourt/<%= post.id %>" class="flyout-button"><%= t("more") %></a>
                     <% end %>
