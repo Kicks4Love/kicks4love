@@ -26,14 +26,20 @@ $(document).ready(function() {
 });
 
 function initRating() {
+  var pathArray = window.location.pathname.split('/');
+  var cookieName = pathArray[1] + '-' + pathArray[2];
+  if (getCookie(cookieName)) return;
   var ratingSet = false;
   var rate = 0;
+  var chinese = isChinese();
+  $('.new-rating').removeClass('hide');
   $('.new-rating .fa-heart').on('click mouseover', function(event) {
     $('.new-rating .fa-heart').css('color', 'lightgray');
     $(this).prevAll('.fa-heart').addBack().css('color', 'pink');
     if (event.type == 'click') {
       rate = $(this).data().rate;
       ratingSet = true;
+      $('#rate-btn').text(chinese ? '确认!' : 'Confirm!');
     } else if (ratingSet) 
       rate = $(this).data().rate;
   });
@@ -53,11 +59,11 @@ function initRating() {
       headers: {'X-CSRF-Token': token},
       dataType: 'json',
       success: function(data) { 
-        console.log(data);
-        $('.new-rating .fa.fa-spinner').replaceWith(isChinese() ? '谢谢~' : 'Thank You~');
+        $('.new-rating .fa.fa-spinner').replaceWith(chinese ? '谢谢~' : 'Thank You~');
         var rateDisplay = $('.rating .fa-heart');
         rateDisplay.removeAttr('style');
         rateDisplay.slice(0, data.score).css('color', 'pink');
+        setCookie(cookieName, 'rated', 1);
       }
     });
   });
