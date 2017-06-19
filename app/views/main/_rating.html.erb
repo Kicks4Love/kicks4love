@@ -2,9 +2,9 @@
 <%= hidden_field_tag "post_id", @post_data[:post_id] %>
 <div class="rating">
 	<% (1..@post_data[:post_rate]).each do |i| %>
-    	<i class="fa fa-heart" style="color:pink" aria-hidden="true"></i>
+    	<%= image_tag "sneakerblack.png", :height => "15" %>
     <% end %>
     <% (@post_data[:post_rate]+1..5).each do |i| %>
-    	<i class="fa fa-heart" aria-hidden="true"></i>
+    	<%= image_tag "sneakergray.png", :height => "15" %>
     <% end %>
 </div>

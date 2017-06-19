@@ -1,9 +1,9 @@
 <div class="new-rating hide">
-	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="1"></i>
-	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="2"></i>
-	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="3"></i>
-	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="4"></i>
-	<i class="fa fa-heart fa-2x" aria-hidden="true" data-rate="5"></i>
+	<%= image_tag "sneakergray.png", :height => "32", :data => {:rate => 1} %>
+	<%= image_tag "sneakergray.png", :height => "32", :data => {:rate => 2} %>
+	<%= image_tag "sneakergray.png", :height => "32", :data => {:rate => 3} %>
+	<%= image_tag "sneakergray.png", :height => "32", :data => {:rate => 4} %>
+	<%= image_tag "sneakergray.png", :height => "32", :data => {:rate => 5} %>
 	<span id="rate-btn" data-token="<%= form_authenticity_token.to_s %>"><%= t("Rate_it") %></span>
 </div>
 <div class="share-link">

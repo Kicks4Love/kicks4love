@@ -27,7 +27,7 @@ function initLoadPostHandler() {
             	for (var i = 0; i < data.posts.length; i++) {
                     var scoreStr = '<div class="rating">';
                     for (var j = 0; j < data.posts[i].score; j++)
-                        scoreStr += '<i class="fa fa-heart fa-lg fa-fw" aria-hidden="true"></i>';
+                        scoreStr += '<img height="18" src="/assets/sneakerwhite.png"/>\n';
                     scoreStr += '</div>';
             		parent.append(
                         '<a href="/trend/' + data.posts[i].post.id + '" class="kicks-post col-xs-12 col-sm-6 col-lg-4 wait_load" ' +

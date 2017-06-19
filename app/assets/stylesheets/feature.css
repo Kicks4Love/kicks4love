@@ -9,12 +9,12 @@
   	position: relative;
   	font-size: 14px;
   	line-height: 1.45em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 .main .kicks-post .photo {
   	height: 200px;
   	position: relative;
+    background-size:cover;
+    background-position:center
 }
 .main .kicks-post .kicks-post-content {
   padding: 10px;
@@ -41,7 +41,7 @@
   margin: 1.2% 0;
 }
 .main .kicks-post .kicks-post-content .rating {
-  color: lightgray;
+  color: #9b9b9b;
   float: right;
   margin-top: -15px;
 }

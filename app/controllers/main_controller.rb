@@ -299,7 +299,7 @@ class MainController < ApplicationController
 		@return_posts = []
 		feeds.each do |post|
 			post_hash = {:post => post, :image_url => post.cover_image.url}
-			post_hash[:score] = (post.rates.average(:score) || 0).ceil if (defined? post.rates)
+			post_hash[:score] = (post.rates.average(:score) || 0).round(1) if (defined? post.rates)
 			post_hash[:post_type] = post.post_type if (defined? post.post_type)
 			@return_posts.push(post_hash)
 		end

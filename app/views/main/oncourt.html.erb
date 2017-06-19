@@ -16,7 +16,7 @@
                     <div class="rating">
                         <% score = (post.rates.average(:score) || 0).ceil %>
                         <% (1..score).each do |i| %>
-                            <i class="fa fa-heart" aria-hidden="true"></i>
+                            <%= image_tag "sneakerwhite.png", :height => "12" %>
                         <% end %>
                     </div>
                     <% if post.has_link %>

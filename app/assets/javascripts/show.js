@@ -33,9 +33,9 @@ function initRating() {
   var rate = 0;
   var chinese = isChinese();
   $('.new-rating').removeClass('hide');
-  $('.new-rating .fa-heart').on('click mouseover', function(event) {
-    $('.new-rating .fa-heart').css('color', 'lightgray');
-    $(this).prevAll('.fa-heart').addBack().css('color', 'pink');
+  $('.new-rating img').on('click mouseover', function(event) {
+    $('.new-rating img').prop('src', '/assets/sneakergray.png');
+    $(this).prevAll('img').addBack().prop('src', '/assets/sneakerblack.png');
     if (event.type == 'click') {
       rate = $(this).data().rate;
       ratingSet = true;
@@ -43,13 +43,13 @@ function initRating() {
     } else if (ratingSet) 
       rate = $(this).data().rate;
   });
-  $('.new-rating .fa-heart').on('mouseout', function() {
+  $('.new-rating img').on('mouseout', function() {
     if (ratingSet) return;
-    $('.new-rating .fa-heart').css('color', 'lightgray');
+    $('.new-rating img').prop('src', '/assets/sneakergray.png');
   });
   $('#rate-btn').click(function() {
     if (!ratingSet) return;
-    $('.new-rating .fa-heart').unbind('click mouseover');
+    $('.new-rating img').unbind('click mouseover');
     var token = $(this).data().token;
     $(this).replaceWith('<i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>');
     $.ajax({
@@ -60,9 +60,9 @@ function initRating() {
       dataType: 'json',
       success: function(data) { 
         $('.new-rating .fa.fa-spinner').replaceWith(chinese ? '谢谢~' : 'Thank You~');
-        var rateDisplay = $('.rating .fa-heart');
-        rateDisplay.removeAttr('style');
-        rateDisplay.slice(0, data.score).css('color', 'pink');
+        var rateDisplay = $('.rating img');
+        rateDisplay.prop('src', '/assets/sneakergray.png');
+        rateDisplay.slice(0, data.score).prop('src', '/assets/sneakerblack.png');
         setCookie(cookieName, 'rated', 1);
       }
     });

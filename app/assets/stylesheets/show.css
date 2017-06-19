@@ -14,7 +14,6 @@
   line-height: 1;
 }
 .main header .rating {
-  color: lightgray;
   float: right;
 }
 .main header h1 {
@@ -29,27 +28,27 @@
   font-size: 74.5%;
   font-size: 0.745em;
 }
-.main img {
+.main figure img {
   width: 100%;
 }
 .main figure {
   margin: 1em 0;
 }
 .main .new-rating {
-  color: lightgray;
+  color: #7b8994;
   text-align: center;
+  margin-bottom: 10px;
 }
-.main .new-rating .fa-heart {
+.main .new-rating img {
   cursor: pointer;
 }
 #rate-btn {
   font-weight: bolder;
   font-size: 1.3em;
-  color: lightgray;
   cursor: pointer;
 }
 #rate-btn:hover {
-  color: pink;
+  color: #333;
 }
 .main .share-link button {
   color: white;

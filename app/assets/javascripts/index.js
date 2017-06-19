@@ -94,12 +94,6 @@ function initLoadPostHandler() {
             				tag = chinese ? '流言蜚语' : 'Rumors';
             				break;
             		}
-            		var scoreStr = '<div class="rating">';
-            		for (var j = 0; j < data.posts[i].score; j++)
-            			scoreStr += '<i class="fa fa-heart fa-fw" style="color:pink" aria-hidden="true"></i>';
-            		for (var j = data.posts[i].score; j < 5; j++)
-            			scoreStr += '<i class="fa fa-heart fa-fw" aria-hidden="true"></i>';
-            		scoreStr += '</div>';
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
             			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">' +
@@ -115,7 +109,8 @@ function initLoadPostHandler() {
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span></p>' +
                     	'<br/><i class="fa fa-tags" aria-hidden="true"></i>' +
                     	'<span class="post-tag">' + tag + '</span>' +
-                    	scoreStr + '</div></div></div>'
+                    	'<div class="rating">' + data.posts[i].score + '/5.0 <img height="15" src="/assets/sneakerblack.png"/></div>' +
+                    	'</div></div></div>'
             		);
             	}
             	if (!data.no_more) {

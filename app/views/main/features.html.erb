@@ -11,20 +11,12 @@
         <% left = (index%2 == 0) %>
         <div class="kicks-post <%= ' alt' unless left %>">
             <a href="/features/<%= feature_post.id %>">
-                <div class="photo<%= left ? ' photo-left' : ' photo-right' %>" style="background-image:url('<%= feature_post.cover_image.url %>');background-size:cover;background-position:center"></div>
+                <div class="photo<%= left ? ' photo-left' : ' photo-right' %>" style="background-image:url('<%= feature_post.cover_image.url %>')"></div>
             </a>
             <div class="kicks-post-content">
                 <a href="/features/<%= feature_post.id %>"><h1><%= feature_post.title %></h1></a>
                 <h2><%= feature_post.created_at.strftime("%Y-%m-%d") %></h2>
-                <div class="rating">
-                    <% score = (feature_post.rates.average(:score) || 0).ceil %>
-                    <% (1..score).each do |i| %>
-                        <i class="fa fa-heart" style="color:pink" aria-hidden="true"></i>
-                    <% end %>
-                    <% (score+1..5).each do |i| %>
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                    <% end %>
-                </div>
+                <div class="rating"><%= (feature_post.rates.average(:score) || 0).round(1) %>/5.0 <%= image_tag "sneakerblack.png", :height => "15" %></div>
                 <p><%= ActionView::Base.full_sanitizer.sanitize(feature_post.content) %>...</p>
                 <a href="/features/<%= feature_post.id %>" class="kicks-post-more"><%= t("more") %></a>
             </div>
