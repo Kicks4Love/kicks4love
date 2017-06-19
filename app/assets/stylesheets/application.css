@@ -97,13 +97,23 @@ a {
 }
 
 #side-nav {
+    left: 0;
+    text-align: left;
+}
+#side-nav  li span {
+    left: -100px;
+}
+#side-nav li a:hover span {
+    left: 35px;
+}
+#side-nav {
     position: fixed;
     top: 20%;
-    left: 0;
     z-index: 1000;
-    background-color: #f8f8f8;
     font-size: 18px;
-    text-align: left;
+}
+#side-nav ul {
+    list-style: none;
 }
 #side-nav * {
     margin: 0;
@@ -117,17 +127,21 @@ a {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-#side-nav ul {
-    list-style: none;
-}
-#side-nav li + li {
-    border-top: 1px solid #e7e7e7;
-}
 #side-nav li a {
     text-decoration: none;
     color: white;
     display: block;
     position: relative;
+}
+#side-nav .fa {
+    vertical-align: middle;
+    font-size: 23px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    z-index: 4;
 }
 #side-nav li span {
     font-size: 18px;
@@ -143,26 +157,22 @@ a {
     top: 0;
     visibility: hidden;
     z-index: 3;
-    left: -100px;
-}
-#side-nav li .fa {
-    vertical-align: middle;
-    color: #777;
-    font-size: 23px;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    position: relative;
-    z-index: 4;
 }
 #side-nav li a:hover .fa {
-    color: white;
     transform: rotate(720deg);
 }
 #side-nav li a:hover span {
-    left: 35px;
     visibility: visible;
+}
+#side-nav li span {
+    background-color: #555;
+}
+#side-nav li .fa {
+    background-color: #e7e7e7;
+    color: #555
+}
+#side-nav li a:hover .fa {
+    color: white;
 }
 #side-nav li:nth-child(10n+1) span, #side-nav li:nth-child(10n+1) a:hover .fa {
     background-color: pink;
@@ -338,6 +348,48 @@ a {
     opacity: 0.5;
 }
 
+.newsletter-subscribe {
+    z-index: 1;
+    height: 50px;
+    background-color: #e7e7e7;
+    text-align: center;
+    bottom: -50px;
+    left: 5%;
+    position: fixed;
+    width: 40%;
+    border-radius: 7px;
+}
+
+.newsletter-subscribe.active {
+    bottom: 0px;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+}
+
+.subscribe-message {
+  display: none;
+  visibility: hidden;
+}
+
+.subscribe-message.active {
+  color: green;
+  font-weight: lighter;
+  margin: auto;
+  top: 50%;
+  display: table-cell;
+}
+
+#signup-form .btn {
+    color: white;
+    background-color: #999999;
+}
+
+#signup-form {
+    margin-top: 8px;
+}
+
 footer {
     padding: 50px 0;
     background-color: #f8f8f8;
@@ -375,6 +427,11 @@ p.copyright {
         width: 35px;
         height: 35px;
         padding: 0;
+    }
+
+    .newsletter-subscribe {
+        display: none;
+        visibility: hidden;
     }
 
     footer {
