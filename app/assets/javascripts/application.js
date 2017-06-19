@@ -18,7 +18,14 @@
 var autoSlider = null;
 
 function initApplication(showPendant, showLanguage) {
-  initSignupForm();
+  let sub_email = $('#newsletter_sub').val();
+  if (!sub_email) {
+    initSignupForm();
+  } else {
+    console.log("hide");
+    $('.newsletter-subscribe').hide();
+  }
+
   var languageSet = $('#language-set').val().length > 0;
 
 	if (!languageSet && showLanguage)
@@ -65,6 +72,10 @@ function initApplication(showPendant, showLanguage) {
         event.preventDefault();
         alert("即将来临\nComing soon");
     });
+    $('.show_signup').on('click submit', function (event) {
+        event.preventDefault();
+        initSignupForm();
+    })
 }
 
 function getQueryParams() {
@@ -99,12 +110,18 @@ function setCookie(name, value, days) {
 }
 
 function initSignupForm() {
-    $('.newsletter-subscribe').hide();
-    let sub_email = $('#newsletter_sub').val();
-    if (!sub_email) {
-      $('.newsletter-subscribe').show();
-      $('#signup-form').show();
-      $('.subscribe-message').hide();
+      console.log("initializing signup form");
+      if (!$('.newsletter-subscribe').hasClass('active')) {
+        $('#signup-form').show();
+        $('.newsletter-subscribe').show().addClass('active');
+      }
+      //   $('.newsletter-subscribe').show().animate({
+      //     bottom: "0"
+      //   }, 1000);
+      // } else {
+      //   $('.newsletter-subscribe').css('bottom', 0);
+      // localStorage.setItem('hasSignupFormShowed', true);
+
       $('#signup-form').submit(function(event) {
         event.preventDefault();
         let url = $(this).attr("action");
@@ -121,13 +138,35 @@ function initSignupForm() {
                  dataType: "json"
         }).done(function() {
           $('#signup-form').hide();
-          $('.subscribe-message').show();
-        })
-        .fail(function() {
+          dismissSignup(true);
+          return false;
+        }).fail(function() {
+          // TODO: show warning
+          return false;
+        }).always(function() {
           $('#signup-form').find(':submit').prop('disabled', false).val('Submit');
+          return false;
         });
       });
+}
+
+function dismissSignup(withMsg) {
+    var delay = 0;
+    if (withMsg) {
+      $('.subscribe-message').css('display', 'table-cell').css('visibility', 'visible');
+      // $('.subscribe-message').show();
+      delay = 10000;
     }
+    $('.newsletter-subscribe').delay( delay ).removeClass('active');
+    // localStorage.setItem('hasSignupFormShowed', false);
+    $('.subscribe-message').hide();
+    // .delay( delay )
+    // .animate({
+    //   bottom: "-=50"
+    // }, 1000, function () {
+    //   $(this).hide();
+    //   $('.subscribe-message').hide();
+    // })
 }
 
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
