@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 function initLoadPostHandler() {
-	/*--点击加载-lazyload--*/
+	var sneakerImgPath = $('#kicks-posts .kicks-post .rating img').attr('src');
 	$('.to-view-more.current').one('click', function() {
         var chinese = isChinese();
 		var nextPage = $('#next_page');
@@ -27,7 +27,7 @@ function initLoadPostHandler() {
             	for (var i = 0; i < data.posts.length; i++) {
                     var scoreStr = '<div class="rating">';
                     for (var j = 0; j < data.posts[i].score; j++)
-                        scoreStr += '<img height="18" src="/assets/sneakerwhite.png"/>\n';
+                        scoreStr += '<img height="18" src="' + sneakerImgPath + '"/>\n';
                     scoreStr += '</div>';
             		parent.append(
                         '<a href="/trend/' + data.posts[i].post.id + '" class="kicks-post col-xs-12 col-sm-6 col-lg-4 wait_load" ' +

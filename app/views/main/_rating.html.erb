@@ -1,5 +1,7 @@
 <%= hidden_field_tag "page_source", @post_data[:post_type] %>
 <%= hidden_field_tag "post_id", @post_data[:post_id] %>
+<%= hidden_field_tag "sneakerblack", asset_path("sneakerblack.png") %>
+<%= hidden_field_tag "sneakergray", asset_path("sneakergray.png") %>
 <div class="rating">
 	<% (1..@post_data[:post_rate]).each do |i| %>
     	<%= image_tag "sneakerblack.png", :height => "15" %>

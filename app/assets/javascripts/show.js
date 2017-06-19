@@ -32,10 +32,12 @@ function initRating() {
   var ratingSet = false;
   var rate = 0;
   var chinese = isChinese();
+  var sneakerblackImgPath = $('#sneakerblack').val();
+  var sneakergrayImgPath = $('#sneakergray').val();
   $('.new-rating').removeClass('hide');
   $('.new-rating img').on('click mouseover', function(event) {
-    $('.new-rating img').prop('src', '/assets/sneakergray.png');
-    $(this).prevAll('img').addBack().prop('src', '/assets/sneakerblack.png');
+    $('.new-rating img').prop('src', sneakergrayImgPath);
+    $(this).prevAll('img').addBack().prop('src', sneakerblackImgPath);
     if (event.type == 'click') {
       rate = $(this).data().rate;
       ratingSet = true;
@@ -45,7 +47,7 @@ function initRating() {
   });
   $('.new-rating img').on('mouseout', function() {
     if (ratingSet) return;
-    $('.new-rating img').prop('src', '/assets/sneakergray.png');
+    $('.new-rating img').prop('src', sneakergrayImgPath);
   });
   $('#rate-btn').click(function() {
     if (!ratingSet) return;
@@ -62,7 +64,7 @@ function initRating() {
         $('.new-rating .fa.fa-spinner').replaceWith(chinese ? '谢谢~' : 'Thank You~');
         var rateDisplay = $('.rating img');
         rateDisplay.prop('src', '/assets/sneakergray.png');
-        rateDisplay.slice(0, data.score).prop('src', '/assets/sneakerblack.png');
+        rateDisplay.slice(0, data.score).prop('src', sneakerblackImgPath);
         setCookie(cookieName, 'rated', 1);
       }
     });

@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 function initLoadPostHandler() {
-	/*--点击加载-lazyload--*/
+	var sneakerImgPath = $('.main .kicks-post .kicks-post-content .rating img').attr('src');
 	$('.to-view-more.current').one('click', function() {
             var chinese = isChinese();
 		var nextPage = $('#next_page');
@@ -37,7 +37,7 @@ function initLoadPostHandler() {
                               '</a><div class="kicks-post-content">' +
                               '<a href="/features/' + data.posts[i].post.id + '"><h1>' + data.posts[i].post.title + '</h1></a>' + 
                               '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' +
-                              '<div class="rating">' + data.posts[i].score + '/5.0 <img height="15" src="/assets/sneakerblack.png"/></div>' +
+                              '<div class="rating">' + data.posts[i].score + '/5.0 <img height="15" src="' + sneakerImgPath + '"/></div>' +
                               // hacky way to remove any html tags in the content
                               '<p>' + $('<p>' + data.posts[i].post.content[0] + '</p>').text().trim().slice(0, 120) + '...</p>' + 
                               '<a href="/features/' + data.posts[i].post.id + '" class="kicks-post-more">' + (chinese ? '更多' : 'more') + '</a>' +
