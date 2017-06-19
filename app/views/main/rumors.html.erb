@@ -33,7 +33,7 @@
 	                <p>
 	                    <span class="headline sub-title">
                             <%= rumor_post.created_at.strftime("%Y-%m-%d") %> ~
-                            <% score = (rumor_post.rates.average(:score) || 0).ceil %>
+                            <% score = (rumor_post.rates.average(:score) || 0).round %>
                             <% (1..score).each do |i| %>
                                 <%= image_tag "sneakerblack.png", :height => "12" %>
                             <% end %>

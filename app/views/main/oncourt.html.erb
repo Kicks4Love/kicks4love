@@ -14,7 +14,7 @@
                 <div class="player-card" style="background-image:url('<%= post.cover_image.url %>');">
                     <span class="kicks-date"><%= post.created_at.strftime("%Y-%m-%d") %></span>
                     <div class="rating">
-                        <% score = (post.rates.average(:score) || 0).ceil %>
+                        <% score = (post.rates.average(:score) || 0).round %>
                         <% (1..score).each do |i| %>
                             <%= image_tag "sneakerwhite.png", :height => "12" %>
                         <% end %>

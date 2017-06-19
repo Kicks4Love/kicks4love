@@ -17,7 +17,7 @@
                 <h1><a href="/streetsnap/<%= streetsnap_post.id %>"><%= streetsnap_post.title %></a></h1>
                 <div class="description">
                     <div class="rating">
-                        <% score = (streetsnap_post.rates.average(:score) || 0).ceil %>
+                        <% score = (streetsnap_post.rates.average(:score) || 0).round %>
                         <% (1..score).each do |i| %>
                             <%= image_tag "sneakerblack.png", :height => "15" %>
                         <% end %>

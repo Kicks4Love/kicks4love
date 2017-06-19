@@ -55,7 +55,7 @@ class MainController < ApplicationController
 		if params[:lang].present? 
 			@page_title = params[:lang] == 'zh' ? @feature_post.title_cn : @feature_post.title_en
 		end
-		@post_data = {:post_type => 'FeaturePost', :post_id => @feature_post.id, :post_rate => (@feature_post.rates.average(:score) || 0).ceil}
+		@post_data = {:post_type => 'FeaturePost', :post_id => @feature_post.id, :post_rate => (@feature_post.rates.average(:score) || 0).round}
 		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
 	end
 
@@ -90,7 +90,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @trend_post.title_cn : @trend_post.title_en
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
-		@post_data = {:post_type => 'TrendPost', :post_id => @trend_post.id, :post_rate => (@trend_post.rates.average(:score) || 0).ceil}
+		@post_data = {:post_type => 'TrendPost', :post_id => @trend_post.id, :post_rate => (@trend_post.rates.average(:score) || 0).round}
 		@og_image = "http://#{request.host}#{@trend_post.cover_image.url}"
 	end
 
@@ -121,7 +121,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @oncourt_post.title_cn : @oncourt_post.title_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
-		@post_data = {:post_type => 'OnCourtPost', :post_id => @oncourt_post.id, :post_rate => (@oncourt_post.rates.average(:score) || 0).ceil}
+		@post_data = {:post_type => 'OnCourtPost', :post_id => @oncourt_post.id, :post_rate => (@oncourt_post.rates.average(:score) || 0).round}
 		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
 	end
 
@@ -152,7 +152,7 @@ class MainController < ApplicationController
 		if params[:lang].present? 
 			@page_title = params[:lang] == 'zh' ? @streetsnap_post.title_cn : @streetsnap_post.title_en
 		end
-		@post_data = {:post_type => 'StreetSnapPost', :post_id => @streetsnap_post.id, :post_rate => (@streetsnap_post.rates.average(:score) || 0).ceil}
+		@post_data = {:post_type => 'StreetSnapPost', :post_id => @streetsnap_post.id, :post_rate => (@streetsnap_post.rates.average(:score) || 0).round}
 		@og_image = "http://#{request.host}#{@streetsnap_post.cover_image.url}"
 	end
 
@@ -184,7 +184,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @rumor_post.title_cn : @rumor_post.title_en
 		end
 		@times = [@content.size, @rumor_post.main_images.size].max
-		@post_data = {:post_type => 'RumorPost', :post_id => @rumor_post.id, :post_rate => (@rumor_post.rates.average(:score) || 0).ceil}
+		@post_data = {:post_type => 'RumorPost', :post_id => @rumor_post.id, :post_rate => (@rumor_post.rates.average(:score) || 0).round}
 		@og_image = "http://#{request.host}#{@rumor_post.cover_image.url}"
 	end
 
@@ -314,7 +314,7 @@ class MainController < ApplicationController
 			rate = Rate.create(:score => params[:score].to_i)
 			post.rates << rate
 			post.save
-			score = post.rates.average(:score).ceil
+			score = post.rates.average(:score).round
 		end
 
 		render :json => {:score => score}, :layout => false

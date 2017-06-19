@@ -12,7 +12,7 @@
         <% @all_trend_posts.each do |trend_post| %>
             <a href="/trend/<%= trend_post.id %>" class="kicks-post col-xs-12 col-sm-6 col-lg-4" style="background-image:url(<%= trend_post.cover_image.url %>);">
                 <div class="rating">
-                    <% score = (trend_post.rates.average(:score) || 0).ceil %>
+                    <% score = (trend_post.rates.average(:score) || 0).round %>
                     <% (1..score).each do |i| %>
                         <%= image_tag "sneakerwhite.png", :height => "18" %>
                     <% end %>
