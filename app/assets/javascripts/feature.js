@@ -22,8 +22,8 @@ function initLoadPostHandler() {
 			type: 'GET',
                   url: '/main/get_posts?next_page=' + nextPage.val() + '&source_page=features',
                   dataType: 'json',
-                        success: function(data) { 
-                  	var parent = target.parent('.main');
+                  success: function(data) { 
+                        var parent = target.parent('.main');
                   	for (var i = 0; i < data.posts.length; i++) {
                               var right;
                               if (nextPage.val()%2 === 1)
@@ -33,10 +33,11 @@ function initLoadPostHandler() {
                   		parent.append(
                               '<div class="kicks-post' + (right ? ' alt' : '') + '">' +
                               '<a href="/features/' + data.posts[i].post.id + '">' +
-                              '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background-image:url(' + data.posts[i].image_url + ');background-size:cover;background-position:center"></div>' +
+                              '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background-image:url(' + data.posts[i].image_url + ')"></div>' +
                               '</a><div class="kicks-post-content">' +
                               '<a href="/features/' + data.posts[i].post.id + '"><h1>' + data.posts[i].post.title + '</h1></a>' + 
-                              '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' + 
+                              '<h2>' + data.posts[i].post.created_at.slice(0, 10) + '</h2>' +
+                              '<div class="rating">' + data.posts[i].score + '/5.0 <img height="15" src="/assets/sneakerblack.png"/></div>' +
                               // hacky way to remove any html tags in the content
                               '<p>' + $('<p>' + data.posts[i].post.content[0] + '</p>').text().trim().slice(0, 120) + '...</p>' + 
                               '<a href="/features/' + data.posts[i].post.id + '" class="kicks-post-more">' + (chinese ? '更多' : 'more') + '</a>' +

@@ -3,7 +3,6 @@ require 'elasticsearch/model'
 class OnCourtPost < ApplicationRecord
 
     include Elasticsearch::Model
-    #include Elasticsearch::Model::Callbacks
 
 	attr_accessor :post_type
 
@@ -11,6 +10,7 @@ class OnCourtPost < ApplicationRecord
 	serialize :content_cn, Array
 	serialize :main_images, JSON
 
+    has_many :rates, :as => :post, :dependent => :destroy
 	belongs_to :author, class_name: "AdminUser"
 
 	scope :latest, -> {order("created_at DESC")}

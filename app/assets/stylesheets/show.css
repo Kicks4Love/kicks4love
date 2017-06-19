@@ -13,6 +13,9 @@
   font-size: 1.342em;
   line-height: 1;
 }
+.main header .rating {
+  float: right;
+}
 .main header h1 {
   font-weight: bold;
   font-size: 2.415em;
@@ -25,11 +28,27 @@
   font-size: 74.5%;
   font-size: 0.745em;
 }
-.main img {
+.main figure img {
   width: 100%;
 }
 .main figure {
   margin: 1em 0;
+}
+.main .new-rating {
+  color: #7b8994;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.main .new-rating img {
+  cursor: pointer;
+}
+#rate-btn {
+  font-weight: bolder;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+#rate-btn:hover {
+  color: #333;
 }
 .main .share-link button {
   color: white;

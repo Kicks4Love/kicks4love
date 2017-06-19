@@ -68,7 +68,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
 
   def destroy
     id = @on_court_post.id
-    if @on_court_post.delete
+    if @on_court_post.destroy
       Admin::AdminHelper.remove_uploads_file('on_court_post', id)
       flash[:notice] = "successfully deleted on court post"
     else
@@ -80,7 +80,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
   def remove_old
     old_posts = OnCourtPost.old
 		return_posts = old_posts.to_a
-		if old_posts.delete_all
+		if old_posts.destroy_all
       return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('on_court_post', post.id)}
 			render :json => return_posts.to_json, :layout => false
 		else

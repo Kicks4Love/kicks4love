@@ -118,6 +118,7 @@
                     <p><%= ActionView::Base.full_sanitizer.sanitize(feed.content) %>... <a href="<%= link %>">(<%= t("more") %>)</a><span class="post-date"><%= feed.created_at.strftime("%Y-%m-%d") %></span></p>
                     <br/>
                     <i class="fa fa-tags" aria-hidden="true"></i><span class="post-tag"><%= t(tag) %></span>
+                    <div class="rating"><%= (feed.rates.average(:score) || 0).round(1) %>/5.0 <%= image_tag "sneakerblack.png", :height => "15" %></div>
                 </div>
             </div>
         </div>

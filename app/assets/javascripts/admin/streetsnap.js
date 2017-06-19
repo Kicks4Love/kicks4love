@@ -1,6 +1,7 @@
 $(document).ready(function() {
   initOldPostRemoval();
   if ($('#post-composition').length) initPostComposition();
+  if ($('#more-dialog').length) initDialog();
   initTooltip();
   initFormSubmit();
 });
@@ -129,6 +130,21 @@ function initFormSubmit() {
       name: 'street_snap_post[post_composition]',
       value: JSON.stringify(postCompositionData)
     }).appendTo(this);
+  });
+}
+
+function initDialog() {
+  var dialog = $('#more-dialog');
+  dialog.dialog({autoOpen: false});
+  $('.more-dialog-btn').click(function(event) {
+    event.preventDefault();
+    data = $(this).data().rates;
+    dialog.empty();
+    context = '';
+    for (var key in data)
+      context += '<p>' + key + ': ' + data[key] + '</p>';
+    dialog.append(context);
+    dialog.dialog('open');
   });
 }
 

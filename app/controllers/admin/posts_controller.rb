@@ -40,7 +40,7 @@ class Admin::PostsController < Admin::AdminController
 
 	def destroy
 		id = @post.id
-		if @post.delete
+		if @post.destroy
 			Admin::AdminHelper.remove_uploads_file('post', id)
 			flash[:notice] = "The post has been deleted successfully"
 		else

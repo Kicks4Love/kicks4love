@@ -20,6 +20,7 @@
         <%= link_to 'Clear Filter', admin_on_court_posts_path %>
     <% end %>
     <br/>
+    <div id="more-dialog" title="More Information"></div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -68,6 +69,17 @@
                 <td>
                     <%= link_to "Edit", edit_admin_on_court_post_path(post), :class => "btn btn-primary" %>
                     <%= link_to "Delete", admin_on_court_post_path(post), :data => {:confirm => 'Are you sure to delete this post?'}, :method => :delete, :class => "btn btn-danger" %>
+                    <%
+                      rates = post.rates
+                      rates_json = {
+                        :one => rates.where(:score => 1).count,
+                        :two => rates.where(:score => 2).count,
+                        :three => rates.where(:score => 3).count,
+                        :four => rates.where(:score => 4).count,
+                        :five => rates.where(:score => 5).count
+                      }.to_json
+                    %>
+                    <a href="#" class="more-dialog-btn btn btn-info" data-rates="<%= rates_json %>">More</a>
                 </td>
             </tr>
           <% end %>

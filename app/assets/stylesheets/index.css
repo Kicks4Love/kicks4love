@@ -216,6 +216,11 @@
 .main .kicks-intro .kicks-intro-content span.post-tag {
 	border-bottom: 1px dashed #999;
 }
+.main .kicks-intro .kicks-intro-content .rating {
+	color: #9b9b9b;
+	margin-top: -2px;
+	float: right;
+}
 
 .main .wait_load {
 	display:none;

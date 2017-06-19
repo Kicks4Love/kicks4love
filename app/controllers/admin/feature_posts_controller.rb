@@ -68,7 +68,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 
 	def destroy
 		id = @feature_post.id
-		if @feature_post.delete
+		if @feature_post.destroy
 			Admin::AdminHelper.remove_uploads_file('feature_post', id)
 			flash[:notice] = "The feature_post has been deleted successfully"
 		else
@@ -81,7 +81,7 @@ class Admin::FeaturePostsController < Admin::AdminController
 	def remove_old
 		old_posts = FeaturePost.old
 		return_posts = old_posts.to_a
-		if old_posts.delete_all
+		if old_posts.destroy_all
 			return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('feature_post', post.id)}
 			render :json => return_posts.to_json, :layout => false
 		else

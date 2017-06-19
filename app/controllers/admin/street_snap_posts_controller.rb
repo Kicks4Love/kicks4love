@@ -69,7 +69,7 @@ class Admin::StreetSnapPostsController < Admin::AdminController
 
   def destroy
     id = @street_snap_post.id
-    if @street_snap_post.delete
+    if @street_snap_post.destroy
       Admin::AdminHelper.remove_uploads_file('street_snap_post', id)
       flash[:notice] = "The street snap post has been deleted successfully"
     else
@@ -82,7 +82,7 @@ class Admin::StreetSnapPostsController < Admin::AdminController
   def remove_old
     old_posts = StreetSnapPost.old
     return_posts = old_posts.to_a
-    if old_posts.delete_all
+    if old_posts.destroy_all
       return_posts.each {|post| Admin::AdminHelper.remove_uploads_file('street_snap_post', post.id)}
       render :json => return_posts.to_json, :layout => false
     else

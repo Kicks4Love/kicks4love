@@ -1,5 +1,6 @@
 $(document).ready(function() {
   initOldPostRemoval();
+  if ($('#more-dialog').length) initDialog();
   initTooltip();
   initParagraphIndicator();
 });
@@ -28,6 +29,21 @@ function initOldPostRemoval() {
       error: function() { alert('Something wrong while try to delete the old posts. Please try again'); }
     });
   })
+}
+
+function initDialog() {
+  var dialog = $('#more-dialog');
+  dialog.dialog({autoOpen: false});
+  $('.more-dialog-btn').click(function(event) {
+    event.preventDefault();
+    data = $(this).data().rates;
+    dialog.empty();
+    context = '';
+    for (var key in data)
+      context += '<p>' + key + ': ' + data[key] + '</p>';
+    dialog.append(context);
+    dialog.dialog('open');
+  });
 }
 
 function initTooltip() {

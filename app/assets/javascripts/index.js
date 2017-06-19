@@ -109,7 +109,8 @@ function initLoadPostHandler() {
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span></p>' +
                     	'<br/><i class="fa fa-tags" aria-hidden="true"></i>' +
                     	'<span class="post-tag">' + tag + '</span>' +
-                		'</div></div></div>'
+                    	'<div class="rating">' + data.posts[i].score + '/5.0 <img height="15" src="/assets/sneakerblack.png"/></div>' +
+                    	'</div></div></div>'
             		);
             	}
             	if (!data.no_more) {
