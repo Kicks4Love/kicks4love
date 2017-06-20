@@ -35,7 +35,8 @@ function initApplication(showPendant, showLanguage) {
     if (showPendant) {
         var logoPendant = $('.logo-pendant');
         setTimeout(function() {
-            logoPendant.fadeIn('slow', function() { $(this).removeAttr('style'); $(this).addClass('hide-small') });
+            logoPendant.addClass('hide-small');
+            logoPendant.removeAttr('style');
         }, 1000);
         logoPendant.click(function() {
             if ($(this).attr('style') === undefined)

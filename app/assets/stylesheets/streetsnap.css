@@ -78,7 +78,7 @@
   float: right;
 }
 .main .content .snap-card .description p {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .main .content .snap-card:hover {
   -webkit-filter: grayscale(0%);

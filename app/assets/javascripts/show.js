@@ -41,7 +41,7 @@ function initRating() {
     if (event.type == 'click') {
       rate = $(this).data().rate;
       ratingSet = true;
-      $('#rate-btn').text(chinese ? '确认!' : 'Confirm!');
+      $('#rate-btn').html(chinese ? '确认<i class="fa fa-hand-pointer-o" aria-hidden="true"></i>' : 'Confirm<i class="fa fa-hand-pointer-o" aria-hidden="true"></i>');
     } else if (ratingSet) 
       rate = $(this).data().rate;
   });
@@ -63,7 +63,7 @@ function initRating() {
       success: function(data) { 
         $('.new-rating .fa.fa-spinner').replaceWith(chinese ? '谢谢~' : 'Thank You~');
         var rateDisplay = $('.rating img');
-        rateDisplay.prop('src', '/assets/sneakergray.png');
+        rateDisplay.prop('src', sneakergrayImgPath);
         rateDisplay.slice(0, data.score).prop('src', sneakerblackImgPath);
         setCookie(cookieName, 'rated', 1);
       }
