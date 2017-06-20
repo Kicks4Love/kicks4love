@@ -321,6 +321,15 @@ class MainController < ApplicationController
 		render :json => {:score => score, :count => count}.to_json, :layout => false
 	end
 
+	def subscribe
+		new_sub = Subsriber.create(email: params[:email])
+		if new_sub.errors.any?
+			head 500
+		else	
+			render :json => ActiveSupport::JSON.encode({msg: 'done'}), :layout => false
+		end
+	end
+
 	def change_language
 		redirect_to :back and return unless params[:language].present?
 
@@ -328,21 +337,6 @@ class MainController < ApplicationController
 		cookies.permanent[:language] = I18n.locale
 
 		redirect_to :back
-	end
-
-	def subscribe
-		new_sub = Subsriber.create(email: params[:email])
-		if new_sub.errors.any?
-			logger.debug new_sub.errors.full_messages.first
-			cookies.permanent[:subscriber_email] = ''
-			head 500
-
-		else
-			logger.info "new Subsriber created!"
-			cookies.permanent[:subscriber_email] = new_sub.email
-			
-			render :json => ActiveSupport::JSON.encode({ msg: 'done'}), :layout => false
-		end
 	end
 
 	private

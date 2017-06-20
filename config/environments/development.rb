@@ -31,7 +31,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
     :port                 => 465,
