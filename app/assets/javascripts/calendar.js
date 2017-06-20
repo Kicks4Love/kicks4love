@@ -84,7 +84,7 @@
 		    this.month.className = 'month new';
 		    this.currentMonthLargeIcon();
 	    }
-	    if (!this.calendarMode) updateHeader(this.chinese, this.current, this.events, this.calendarMode);
+	    updateHeader(this.chinese, this.current, this.events, false);
 	}
 
 	Calendar.prototype.backFill = function() {
