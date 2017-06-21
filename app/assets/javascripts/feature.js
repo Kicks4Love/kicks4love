@@ -7,6 +7,7 @@ $(document).ready(function() {
 
 	initLoadPostHandler();
 	initApplication(true, true);
+      document.querySelector('.main').addEventListener('touchstart', function(){}, true);
 });
 
 function initLoadPostHandler() {

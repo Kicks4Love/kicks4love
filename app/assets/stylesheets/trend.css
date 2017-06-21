@@ -65,7 +65,7 @@
     content: '';
     z-index: 1;
 }
-#kicks-posts .kicks-post:hover:before {
+#kicks-posts .kicks-post:hover:before, #kicks-posts .kicks-post:active:before {
     opacity: 0.2;
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20);
     filter: alpha(opacity=20);

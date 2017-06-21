@@ -80,26 +80,14 @@
 .main .content .snap-card .description p {
   margin-top: 8px;
 }
-.main .content .snap-card:hover {
+.main .content .snap-card:hover, .main .content .snap-card:active {
   -webkit-filter: grayscale(0%);
   filter: none;
 }
-.main .content .snap-card:hover .description {
+.main .content .snap-card:hover .description, .main .content .snap-card:active .description {
   top: 0px;
 }
-.main .content .snap-card:hover h1  {
-  padding-top: 3em;
-  font-size: 2em;
-  margin-top: -2.5em;
-}
-.main .content .snap-card.active {
-  -webkit-filter: grayscale(0%);
-  filter: none;
-}
-.main .content .snap-card.active .description {
-	top: 0px;
-}
-.main .content .snap-card.active h1  {
+.main .content .snap-card:hover h1, .main .content .snap-card:active h1 {
   padding-top: 3em;
   font-size: 2em;
   margin-top: -2.5em;
