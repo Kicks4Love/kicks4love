@@ -16,6 +16,7 @@
 //= require bootstrap.min.js
 
 var autoSlider = null;
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function initApplication(showPendant, showLanguage) {
     // language setting
@@ -72,8 +73,12 @@ function initApplication(showPendant, showLanguage) {
         event.preventDefault();
         let $this = $(this);
         let subData = $this.serializeArray();
-        let authToken;
-        subData.forEach(function(param) {if (param.name == "authenticity_token")  authToken = param.value;});
+        let authToken, email;
+        subData.forEach(function(param) {
+            if (param.name == "authenticity_token")  authToken = param.value;
+            else if (param.name == "email") email = param.value;
+        });
+        if (!emailRegex.test(email)) return false;
         $.post({ 
             url: $this.attr('action'),
             headers: {'X-CSRF-Token': authToken},
@@ -133,7 +138,7 @@ window.fbAsyncInit = function() {
         xfbml      : true,
         version    : 'v2.9'
     });
-     FB.AppEvents.logPageView();
+    FB.AppEvents.logPageView();
 };
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
