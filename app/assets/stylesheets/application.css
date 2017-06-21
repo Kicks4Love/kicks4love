@@ -409,6 +409,9 @@ footer p.copyright {
         top: -60px;
     }
 
+    .subscribe {
+        width: 100%;
+    }
     #scroll-top {
         width: 35px;
         height: 35px;

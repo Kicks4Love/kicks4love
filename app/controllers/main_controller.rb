@@ -322,7 +322,7 @@ class MainController < ApplicationController
 	end
 
 	def subscribe
-		new_sub = Subsriber.create(email: params[:email])
+		new_sub = Subscriber.create(email: params[:email])
 		if new_sub.errors.any?
 			head 500
 		else	
