@@ -34,7 +34,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # For testing on actual email addresses, the host should be set to
   # your current ngrok domain, localhost:3000 won't serve images
-  #config.action_controller.asset_host = 'http://xxx.ngrok.io'
   #config.action_mailer.asset_host = 'http://xxx.ngrok.io'
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
