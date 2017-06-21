@@ -10,7 +10,6 @@ class CustomerServiceMailer < ApplicationMailer
 		@news = Post.latest.news
 		@posts = Post.latest.posts
 		subject = @posts.first.title_en + ' | ' + @posts.first.title_cn
-		# attachments.inline["nav_logo.png"] = File.read("#{Rails.root}/app/assets/images/nav_logo.png")
 		mail(:to => email, :subject => subject)
 	end
 

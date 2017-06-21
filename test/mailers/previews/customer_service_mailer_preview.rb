@@ -2,6 +2,6 @@
 class CustomerServiceMailerPreview < ActionMailer::Preview
   def newsletter
     all_subs = Subscriber.all
-    CustomerServiceMailer.newsletter("danielzhou@kicks4love.com")
+    CustomerServiceMailer.newsletter(Rails.application.config.email_list[:leon])
   end
 end

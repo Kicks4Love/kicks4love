@@ -1,9 +1,10 @@
 <h1>Admin Post</h1>
 
 <% if @posts.any? && @news.any? %>
-<%= form_tag(send_newsletter_admin_posts_path, method: :post) do%>
-	<%= submit_tag 'Send weekly newsletter', :class => "btn btn-info" %>
-<% end %>
+	<br/>
+	<%= form_tag(send_newsletter_admin_posts_path, method: :post) do%>
+		<%= submit_tag 'Send weekly newsletter', :class => "btn btn-info" %>
+	<% end %>
 <% end %>
 
 <hr/>

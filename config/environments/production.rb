@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_controller.asset_host = Rails.application.config.host
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -52,6 +54,8 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.action_mailer.default_url_options = { host: Rails.application.config.host }
+  config.action_mailer.asset_host = Rails.application.config.host
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
@@ -114,9 +118,5 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.action_controller.asset_host = 'https://kicks4love.com'
   config.active_record.dump_schema_after_migration = false
-
-  config.action_mailer.default_url_options = { host: 'https://kicks4love.com' }
-  config.action_mailer.asset_host = 'https://kicks4love.com'
 end
