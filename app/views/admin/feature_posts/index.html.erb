@@ -16,10 +16,11 @@
 	    <%= f.radio_button :per_page, 10, :checked => @per_page == 10 %>
 	    <%= f.label :per_page, 10, :value => 10  %>
 
-	    <%= f.submit 'Filter', :class => "btn btn-default"  %>
+	    <%= f.submit 'Filter', :class => "btn btn-default" %>
 	    <%= link_to 'Clear Filter', admin_feature_posts_path %>
 	<% end %>
 	<br/>
+	<div id="more-dialog" title="More Information"></div>
 	<table class="table table-bordered">
 		<tbody>
 			<tr>
@@ -40,6 +41,18 @@
 						<%= link_to "Edit", edit_admin_feature_post_path(feature_post) %>
 						|
 						<%= link_to "Delete", admin_feature_post_path(feature_post), :data => {:confirm => 'Are you sure?'}, :method => :delete %>
+						|
+						<%
+							rates = feature_post.rates
+							rates_json = {
+								:one => rates.where(:score => 1).count,
+								:two => rates.where(:score => 2).count,
+								:three => rates.where(:score => 3).count,
+								:four => rates.where(:score => 4).count,
+								:five => rates.where(:score => 5).count
+							}.to_json
+						%>
+						<a href="#" class="more-dialog-btn" data-rates="<%= rates_json %>">More</a>
 					</td>
 					<td>
 						<% if feature_post.author.nil? %>

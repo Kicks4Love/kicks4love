@@ -3,7 +3,6 @@ require 'elasticsearch/model'
 class FeaturePost < ApplicationRecord
 
     include Elasticsearch::Model
-    #include Elasticsearch::Model::Callbacks
 
 	attr_accessor :post_type
     
@@ -12,6 +11,7 @@ class FeaturePost < ApplicationRecord
 	serialize :main_images, JSON
 	serialize :post_composition, JSON
 
+    has_many :rates, :as => :post, :dependent => :destroy
 	belongs_to :author, class_name: "AdminUser"
 
   	scope :latest, -> {order(:created_at => :DESC)}

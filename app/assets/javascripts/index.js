@@ -60,7 +60,7 @@ function initImageSlider() {
 }
 
 function initLoadPostHandler() {
-	/*--点击加载-lazyload--*/
+	var sneakerImgPath = $('.main .kicks-box .kicks-intro .kicks-intro-content .rating img').attr('src');
 	$('.to-view-more.current').one('click' ,function() {
 		var target = $(this);
 		var chinese = isChinese();
@@ -109,7 +109,8 @@ function initLoadPostHandler() {
                     	'<span class="post-date">' + data.posts[i].post.created_at.slice(0, 10) + '</span></p>' +
                     	'<br/><i class="fa fa-tags" aria-hidden="true"></i>' +
                     	'<span class="post-tag">' + tag + '</span>' +
-                		'</div></div></div>'
+                    	'<div class="rating">' + data.posts[i].score + '/5.0 <img height="15" src="' + sneakerImgPath + '"/></div>' +
+                    	'</div></div></div>'
             		);
             	}
             	if (!data.no_more) {

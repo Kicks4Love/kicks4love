@@ -1,7 +1,3 @@
-<% content_for :head do %>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<% end %>
-
 <h1>New Street Snap Post</h1>
 
 <hr/><br/>
@@ -15,6 +11,5 @@
 <%= link_to "Back", admin_street_snap_posts_path, :class => "btn btn-default" %>
 
 <% content_for :end_of_body do %>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <%= javascript_include_tag "admin/streetsnap.js" %>
 <% end %>

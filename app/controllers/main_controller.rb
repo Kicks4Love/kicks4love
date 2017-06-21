@@ -55,6 +55,7 @@ class MainController < ApplicationController
 		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @feature_post.title_cn : @feature_post.title_en
 		end
+		@post_data = {:post_type => 'FeaturePost', :post_id => @feature_post.id, :post_rate => (@feature_post.rates.average(:score) || 0).round, :post_vote_count => @feature_post.rates.count}
 		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
 	end
 
@@ -89,6 +90,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @trend_post.title_cn : @trend_post.title_en
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
+		@post_data = {:post_type => 'TrendPost', :post_id => @trend_post.id, :post_rate => (@trend_post.rates.average(:score) || 0).round, :post_vote_count => @trend_post.rates.count}
 		@og_image = "http://#{request.host}#{@trend_post.cover_image.url}"
 	end
 
@@ -119,6 +121,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @oncourt_post.title_cn : @oncourt_post.title_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
+		@post_data = {:post_type => 'OnCourtPost', :post_id => @oncourt_post.id, :post_rate => (@oncourt_post.rates.average(:score) || 0).round, :post_vote_count => @oncourt_post.rates.count}
 		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
 	end
 
@@ -149,6 +152,7 @@ class MainController < ApplicationController
 		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @streetsnap_post.title_cn : @streetsnap_post.title_en
 		end
+		@post_data = {:post_type => 'StreetSnapPost', :post_id => @streetsnap_post.id, :post_rate => (@streetsnap_post.rates.average(:score) || 0).round, :post_vote_count => @streetsnap_post.rates.count}
 		@og_image = "http://#{request.host}#{@streetsnap_post.cover_image.url}"
 	end
 
@@ -180,6 +184,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @rumor_post.title_cn : @rumor_post.title_en
 		end
 		@times = [@content.size, @rumor_post.main_images.size].max
+		@post_data = {:post_type => 'RumorPost', :post_id => @rumor_post.id, :post_rate => (@rumor_post.rates.average(:score) || 0).round, :post_vote_count => @rumor_post.rates.count}
 		@og_image = "http://#{request.host}#{@rumor_post.cover_image.url}"
 	end
 
@@ -294,11 +299,35 @@ class MainController < ApplicationController
 		@return_posts = []
 		feeds.each do |post|
 			post_hash = {:post => post, :image_url => post.cover_image.url}
+			post_hash[:score] = (post.rates.average(:score) || 0).round(1) if (defined? post.rates)
 			post_hash[:post_type] = post.post_type if (defined? post.post_type)
 			@return_posts.push(post_hash)
 		end
 
 		render :json => {:no_more => @no_more, :posts => @return_posts}.to_json, :layout => false
+	end
+
+	def post_rating
+		score = count = 0
+		if params[:source_page].present?
+			post = params[:source_page].constantize.find_by_id(params[:id])
+			rate = Rate.create(:score => params[:score].to_i)
+			post.rates << rate
+			post.save
+			score = post.rates.average(:score).round
+			count = post.rates.count
+		end
+
+		render :json => {:score => score, :count => count}.to_json, :layout => false
+	end
+
+	def subscribe
+		new_sub = Subscriber.create(email: params[:email])
+		if new_sub.errors.any?
+			head 406
+		else	
+			render :json => ActiveSupport::JSON.encode({msg: 'done'}), :layout => false
+		end
 	end
 
 	def change_language

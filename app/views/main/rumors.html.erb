@@ -31,7 +31,16 @@
                         <span class="headline title"><%= rumor_post.title %></span>
                     </a>
 	                <p>
-	                    <span class="headline sub-title"><%= rumor_post.created_at.strftime("%Y-%m-%d") %></span>
+	                    <span class="headline sub-title">
+                            <%= rumor_post.created_at.strftime("%Y-%m-%d") %> ~
+                            <% score = (rumor_post.rates.average(:score) || 0).round %>
+                            <% (1..score).each do |i| %>
+                                <%= image_tag "sneakerblack.png", :height => "12" %>
+                            <% end %>
+                            <% (score+1..5).each do |i| %>
+                                <%= image_tag "sneakergray.png", :height => "12" %>
+                            <% end %>
+                        </span>
 	                </p>
 	            </div>
 	            <p><%= ActionView::Base.full_sanitizer.sanitize(rumor_post.content[0])[0..120] %>... <a href="/rumors/<%= rumor_post.id %>">(<%= t("more") %>)</a></p>

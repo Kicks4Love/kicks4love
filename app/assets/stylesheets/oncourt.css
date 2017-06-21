@@ -47,6 +47,10 @@
     float: left;
     opacity: 0.7;
 }
+.main ul li .player-card .rating {
+    float: left;
+    margin: 10px;
+}
 .main ul li .player-card .flyout-button {
 	color: white;
     width: 35px;

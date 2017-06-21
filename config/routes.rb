@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   		get 'get_posts'
       post 'change_language'
       post 'send_contact_us'
+      post 'post_rating'
+      post 'subscribe'
   	end
   end
 

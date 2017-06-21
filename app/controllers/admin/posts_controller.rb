@@ -40,7 +40,7 @@ class Admin::PostsController < Admin::AdminController
 
 	def destroy
 		id = @post.id
-		if @post.delete
+		if @post.destroy
 			Admin::AdminHelper.remove_uploads_file('post', id)
 			flash[:notice] = "The post has been deleted successfully"
 		else
@@ -74,7 +74,7 @@ class Admin::PostsController < Admin::AdminController
 
 	def send_newsletter
 		begin
-			CustomerServiceMailer.send_newsletter(Subsriber.all)
+			CustomerServiceMailer.send_newsletter(Subscriber.all)
 			flash[:notice] = "Newsletter sent"
 		rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError  => e
 			flash[:alert] = "Somthing wrong happened: " + e.message
