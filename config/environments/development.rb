@@ -31,7 +31,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
     :port                 => 465,
@@ -66,5 +67,8 @@ Rails.application.configure do
 
   # Default url for Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.asset_host = 'localhost:3000'
+  # For testing on actual email addresses, the host should be set to
+  # your current ngrok domain, localhost:3000 won't serve images
+  # config.action_controller.asset_host = 'http://*****.ngrok.io'
+  # config.action_mailer.asset_host = 'http://*****.ngrok.io'
 end

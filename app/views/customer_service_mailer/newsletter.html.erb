@@ -1,30 +1,95 @@
-<div class="title" style="display:inline;">
-  <%= link_to image_tag("nav_logo.png"), root_url %>
-  <h2>Kicks4Love weekly digest | 鞋侣每周精选</h2>
-</div>
 <div class="container">
-  <h2>Best of the week | 本周最佳</h2>
+  <table class="title">
+    <tr>
+      <td>
+        <div class="title-content">
+          <%= link_to image_tag('main_logo.png'), root_url %>
+          <div class="title-txt">Weekly digest  每周精选</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+<div class="container">
+  <h3>Best of the week   本周最佳</h3>
   <% @posts.each do |post|%>
     <div class="post-container">
-      <%= link_to image_tag(post.image.url), root_url + post.pointer_type.delete('_').downcase + '/' + post.pointer_id.to_s %>
-      <h1><%=post.title_en%>  <%=post.title_cn%> </h1>
+      <div>
+        <% post_url = root_url + post.pointer_type.delete('_').downcase + '/' + post.pointer_id.to_s %>
+        <%= link_to image_tag(post.image.url), post_url %>
+      </div>
+      <div class="post-title">
+        <%= link_to post.title_en + '  ' + post.title_cn, post_url, class: "post-title-link"%>
+      </div>
     </div>
   <% end %>
 </div>
 <div class="news container">
-  <h2>Latest news | 最新消息</h2>
+  <h3>Latest news   最新消息</h3>
   <% @news.each do |news_post|%>
     <div class="post-container">
-      <%= link_to image_tag(news_post.image.url), root_url + news_post.pointer_type.delete('_').downcase + '/' + news_post.pointer_id.to_s %>
-      <h1><%= news_post.title_en %>  <%=news_post.title_cn%> </h1>
+      <div>
+        <% post_url = root_url + news_post.pointer_type.delete('_').downcase + '/' + news_post.pointer_id.to_s %>
+        <%= link_to image_tag(news_post.image.url), post_url %>
+      </div>
+      <div class="post-title">
+        <%= link_to news_post.title_en + '  ' + news_post.title_cn, post_url, class: "post-title-link" %>
+      </div>
     </div>
   <% end %>
 </div>
 <style media="screen">
+  .title {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    color: #333332;
+    line-height: 1.4;
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Ubuntu','Open Sans','Helvetica Neue',sans-serif;
+
+  }
+  .title h1 {
+    font-size: 30px;
+    font-family: sans-serif;;
+    font-weight: 500;
+  }
+  .title img {
+    width: 60px;
+    /*height: 60px;*/
+  }
+  .title-content {
+    display: block;
+    text-align: left;
+  }
+  .title-txt {
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+  margin-left: 15px;
+  }
   .post-container {
     background-color: #f8f8f8;
+    display: list-item;
+    text-align: center;
   }
   .post-container img {
-    width: 70%;
+    width: 80%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .post-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .post-title a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 400;
   }
 </style>
