@@ -325,7 +325,7 @@ class MainController < ApplicationController
 		new_sub = Subscriber.create(email: params[:email])
 		if new_sub.errors.any?
 			head 406
-		else	
+		else
 			render :json => ActiveSupport::JSON.encode({msg: 'done'}), :layout => false
 		end
 	end
@@ -340,16 +340,16 @@ class MainController < ApplicationController
 	end
 
 	def subscribe
-		new_sub = Subsriber.create(email: params[:email])
+		new_sub = Subscriber.create(email: params[:email])
 		if new_sub.errors.any?
 			logger.debug new_sub.errors.full_messages.first
 			cookies.permanent[:subscriber_email] = ''
 			head 500
 
 		else
-			logger.info "new Subsriber created!"
+			logger.info "new Subscriber created!"
 			cookies.permanent[:subscriber_email] = new_sub.email
-			
+
 			render :json => ActiveSupport::JSON.encode({ msg: 'done'}), :layout => false
 		end
 	end

@@ -2,16 +2,11 @@
 
 <% if @posts.any? && @news.any? %>
 <%= form_tag(send_newsletter_admin_posts_path, method: :post) do%>
-	<%= submit_tag 'Send weekly newsletter', :class => "btn btn-default" %>
+	<%= submit_tag 'Send weekly newsletter', :class => "btn btn-info" %>
 <% end %>
 <% end %>
 
 <hr/>
-<% if @posts.any? && @news.any? %>
-	<%= form_tag(send_newsletter_admin_posts_path, method: :post) do%>
-		<%= submit_tag 'Send weekly newsletter', :class => "btn btn-info" %>
-	<% end %>
-<% end %>
 
 <% if @posts.any? %>
 	<% if @posts.count == 5 %>
