@@ -345,7 +345,8 @@ a {
     position: fixed;
     bottom: -100%;
     left: -100%;
-    padding: 10px;
+    padding: 0 10px;
+    width: 320px;
     height: 55px;
     color: white;
     z-index: 3;
@@ -375,6 +376,9 @@ a {
 }
 #signup-form input[type="submit"] {
     background-color: #999999;
+}
+#signup-form > div {
+    width: 100%;
 }
 
 footer {

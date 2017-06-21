@@ -324,7 +324,7 @@ class MainController < ApplicationController
 	def subscribe
 		new_sub = Subscriber.create(email: params[:email])
 		if new_sub.errors.any?
-			head 500
+			head 406
 		else	
 			render :json => ActiveSupport::JSON.encode({msg: 'done'}), :layout => false
 		end
