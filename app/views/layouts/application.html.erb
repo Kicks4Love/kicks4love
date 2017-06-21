@@ -194,7 +194,7 @@
             <i class="fa fa-times" aria-hidden="true"></i>
             <%= form_tag(subscribe_main_index_path, :method => "post", :class => "form-inline verticle-center", :id => "signup-form") do %>
                 <div class="input-group">
-                    <%= email_field_tag :email, nil, class: "form-control", placeholder: "user@host.com" %>
+                    <%= email_field_tag :email, nil, class: "form-control", placeholder: t("email_here") %>
                     <span class="input-group-btn"><%= submit_tag t("Sign_up"), data: {disable_with: t("Signing_up")}, class: "btn" %></span>
                 </div>
             <% end %>
