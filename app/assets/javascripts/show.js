@@ -65,6 +65,8 @@ function initRating() {
         var rateDisplay = $('.rating img');
         rateDisplay.prop('src', sneakergrayImgPath);
         rateDisplay.slice(0, data.score).prop('src', sneakerblackImgPath);
+        var rateText = $('.rating span').text();
+        $('.rating span').text(rateText.replace(/[0-9]/g, data.count));
         setCookie(cookieName, 'rated', 1);
       }
     });

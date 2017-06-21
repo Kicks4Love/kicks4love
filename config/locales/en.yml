@@ -57,6 +57,7 @@ en:
   Internal_server_error: "Internal server error"
   Internal_server_error_messege: "We're sorry, but something went wrong"
   Go_Back_Home: "Go Back Home"
+  votes: "votes"
   by: "by"
   posted: "posted"
   Switch_to_Image_Mode: "<b>Switch to</b> Image Mode"

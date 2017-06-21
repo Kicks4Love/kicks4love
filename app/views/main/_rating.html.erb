@@ -9,4 +9,5 @@
     <% (@post_data[:post_rate]+1..5).each do |i| %>
     	<%= image_tag "sneakergray.png", :height => "15" %>
     <% end %>
+    <br/><span>(<%= "#{@post_data[:post_vote_count]} #{t('votes')}" %>)</span>
 </div>

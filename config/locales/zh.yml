@@ -36,6 +36,7 @@ zh:
   Internal_server_error: "内部服务器错误"
   Internal_server_error_messege: "我们很抱歉，但是出现了一些问题"
   Go_Back_Home: "回到主页"
+  votes: "票"
   by: "出自于"
   posted: "发表于"
   Switch_to_Image_Mode: "<b>切换</b>至图片模式"

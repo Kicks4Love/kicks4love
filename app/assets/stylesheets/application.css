@@ -380,28 +380,25 @@ p.copyright {
     }
 
     footer {
-        padding: 20px 0 !important;
+        padding: 20px 0;
     }
-
     footer .footer-menu-divider {
         display: none !important;
     }
-
-    p.copyright {
-        margin: 0 !important;
+    footer p.copyright {
+        margin: 0;
         text-align: center;
     }
-
   	footer .container{
-    	width:80%;
+    	width: 80%;
     	margin:0 auto;
     	padding:0;
   	}
-
-  	footer ul li {
+  	footer ul.list-inline li {
     	text-align: center;
       	width: 33%;
       	float: left;
+        padding: 0;
       	height: 2em;
   	}
 }
