@@ -85,7 +85,7 @@ function initApplication(showPendant, showLanguage) {
             data: subData,
             dataType: 'json'
         }).done(function() {
-            $this.replaceWith(chinese ? '谢谢你的加入，每个星期你将会收到我们最新最火的内容' : 'Thank you for your subscription, you will receive our latest and hottest news weekly');
+            $this.replaceWith('<span style="position:absolute;top:5px;padding:0 10px">' + (chinese ? '谢谢你的加入，每个星期你将会收到我们最新最火的内容' : 'Thank you for your subscription, you will receive our latest and hottest news weekly') + '</span>');
         }).fail(function() {
             alert(chinese ? '请确定你输入的邮箱是正确的，或换另一个邮箱地址' : 'Please make sure the email you entered is correct, or try another email address');
             setTimeout(function() {$.rails.enableFormElements($this);}, 500);

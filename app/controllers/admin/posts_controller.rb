@@ -1,12 +1,13 @@
 class Admin::PostsController < Admin::AdminController
 
-	skip_before_filter :verify_authenticity_token, :only => [:destroy]
+	skip_before_filter :verify_authenticity_token, :only => [:destroy, :delete_subscriber]
 	before_action :get_post, :only => [:edit, :destroy, :update, :show]
 
 	def index
 		@page_title = "Posts | Kicks4Love Admin"
 		@posts = Post.posts
 		@news = Post.news
+		@subscribers = Subscriber.all
 	end
 
 	def new
@@ -70,6 +71,13 @@ class Admin::PostsController < Admin::AdminController
 		end
 
 		render :json => posts.to_json, :layout => false
+	end
+
+	def delete_subscriber
+		subscriber = Subscriber.find_by_id(params[:id])
+		subscriber.delete
+
+		head :ok
 	end
 
 	def send_newsletter

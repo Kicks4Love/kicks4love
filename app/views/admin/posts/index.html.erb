@@ -1,11 +1,23 @@
 <h1>Admin Post</h1>
 
+<br/>
 <% if @posts.any? && @news.any? %>
-	<br/>
 	<%= form_tag(send_newsletter_admin_posts_path, method: :post) do%>
 		<%= submit_tag 'Send weekly newsletter', :class => "btn btn-info" %>
 	<% end %>
 <% end %>
+<% if @subscribers.any? %>
+	<%= link_to "View all subscribers", '#', :id => "view-all-subscribers" %>
+<% end %>
+<div id="subscribers-dialog" title="All Subscribers" style="display:none">
+	<% @subscribers.each do |subscriber| %>
+		<div class="row">
+			<%= link_to "Delete", delete_subscriber_admin_post_path(subscriber), :class => "delete-subscriber" %>
+			| 
+			<%= subscriber.email %>
+		</div>
+	<% end %>
+</div>
 
 <hr/>
 
@@ -104,3 +116,7 @@
 <br/><br/>
 
 <p><%= link_to "Back", admin_root_path, :class => "btn btn-default" %></p>
+
+<% content_for :end_of_body do %>
+    <%= javascript_include_tag "admin/posts.js" %>
+<% end %>
