@@ -19,7 +19,7 @@ function initDialog() {
   });
   $('.delete-subscriber').click(function(event) {
     event.preventDefault();
-    let $this = $(this)
+    var $this = $(this);
     $this.parent('.row').remove();
     $.ajax({
       url: $this.attr('href'),

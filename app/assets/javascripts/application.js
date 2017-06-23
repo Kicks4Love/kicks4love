@@ -71,9 +71,9 @@ function initApplication(showPendant, showLanguage) {
     subscribeForm.on('click', 'i.fa-times', function() {subscribeForm.removeClass('show');});
     $('#signup-form').submit(function(event) {
         event.preventDefault();
-        let $this = $(this);
-        let subData = $this.serializeArray();
-        let authToken, email;
+        var $this = $(this);
+        var subData = $this.serializeArray();
+        var authToken, email;
         subData.forEach(function(param) {
             if (param.name == "authenticity_token")  authToken = param.value;
             else if (param.name == "email") email = param.value;
