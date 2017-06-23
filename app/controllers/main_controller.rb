@@ -52,7 +52,7 @@ class MainController < ApplicationController
 			@article_title = @feature_post.title_en
 			@content = @feature_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @feature_post.title_cn : @feature_post.title_en
 		end
 		@post_data = {:post_type => 'FeaturePost', :post_id => @feature_post.id, :post_rate => (@feature_post.rates.average(:score) || 0).round, :post_vote_count => @feature_post.rates.count}
@@ -86,7 +86,7 @@ class MainController < ApplicationController
 			@article_title = @trend_post.title_en
 			@content = @trend_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @trend_post.title_cn : @trend_post.title_en
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
@@ -117,7 +117,7 @@ class MainController < ApplicationController
 			@article_title = @oncourt_post.title_en
 			@content = @oncourt_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @oncourt_post.title_cn : @oncourt_post.title_en
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
@@ -149,7 +149,7 @@ class MainController < ApplicationController
 			@article_title = @streetsnap_post.title_en
 			@content = @streetsnap_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @streetsnap_post.title_cn : @streetsnap_post.title_en
 		end
 		@post_data = {:post_type => 'StreetSnapPost', :post_id => @streetsnap_post.id, :post_rate => (@streetsnap_post.rates.average(:score) || 0).round, :post_vote_count => @streetsnap_post.rates.count}
@@ -180,7 +180,7 @@ class MainController < ApplicationController
 			@article_title = @rumor_post.title_en
 			@content = @rumor_post.content_en
 		end
-		if params[:lang].present? 
+		if params[:lang].present?
 			@page_title = params[:lang] == 'zh' ? @rumor_post.title_cn : @rumor_post.title_en
 		end
 		@times = [@content.size, @rumor_post.main_images.size].max
@@ -319,6 +319,15 @@ class MainController < ApplicationController
 		end
 
 		render :json => {:score => score, :count => count}.to_json, :layout => false
+	end
+
+	def subscribe
+		new_sub = Subscriber.create(email: params[:email])
+		if new_sub.errors.any?
+			head 406
+		else
+			render :json => ActiveSupport::JSON.encode({msg: 'done'}), :layout => false
+		end
 	end
 
 	def change_language

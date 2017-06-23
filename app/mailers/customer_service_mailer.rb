@@ -1,5 +1,4 @@
 class CustomerServiceMailer < ApplicationMailer
-
 	# options include first_name, last_name, chinese and comment
 	def send_contact_email(email, options={})
 	  	@contact_information = {:email => email}.merge(options)
@@ -7,4 +6,18 @@ class CustomerServiceMailer < ApplicationMailer
 	  	mail(:to => email, :subject => I18n.t("contact_us_email_subject"), :bcc => [Rails.application.config.email_list[:leon], Rails.application.config.email_list[:robin]])
 	end
 
+	def newsletter(email, first_section, second_section)
+		@news = first_section
+		@posts = second_section
+		subject = "Kicks4Love Newsletter | 鞋侣时事通讯"
+		mail(:to => email, :subject => subject)
+	end
+
+	def self.send_newsletter(recipients)
+		news_posts = Post.latest.news
+		headline_posts = Post.latest.posts
+		recipients.each do |recipient|
+			newsletter(recipient.email, news_posts, headline_posts).deliver
+		end
+	end
 end

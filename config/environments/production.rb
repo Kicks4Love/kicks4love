@@ -52,6 +52,8 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.action_mailer.default_url_options = { host: Rails.application.config.host }
+  config.action_mailer.asset_host = Rails.application.config.host
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.zoho.com',
@@ -60,8 +62,8 @@ Rails.application.configure do
     :domain               => 'kicks4love.com',
     :password             => Rails.application.secrets.customer_service_email_password,
     :authentication       => 'plain',
-    :ssl                  => true,  
-    :tls                  => true 
+    :ssl                  => true,
+    :tls                  => true
   }
   config.middleware.use ExceptionNotification::Rack,
     :email => {
@@ -73,14 +75,14 @@ Rails.application.configure do
       :include_controller_and_action_names_in_subject => true,
       :delivery_method => :smtp,
       :smtp_settings => {
-      :address           =>     'smtp.zoho.com',  
-      :port              =>     465,  
-      :user_name         =>     Rails.application.config.email_list[:error_notification],  
-      :domain            =>     'kicks4love.com',  
-      :password          =>     Rails.application.secrets.error_notification_email_password,   
-      :authentication    =>     :plain,  
-      :ssl               =>     true,  
-      :tls               =>     true 
+      :address           =>     'smtp.zoho.com',
+      :port              =>     465,
+      :user_name         =>     Rails.application.config.email_list[:error_notification],
+      :domain            =>     'kicks4love.com',
+      :password          =>     Rails.application.secrets.error_notification_email_password,
+      :authentication    =>     :plain,
+      :ssl               =>     true,
+      :tls               =>     true
     }
   }
 

@@ -26,7 +26,6 @@
         <script async src='https://www.google-analytics.com/analytics.js'></script>
 	  </head>
   	<body>
-
   		  <%= content_for :head %>
   		  <%= hidden_field_tag "language-set", cookies[:language] %>
 
@@ -68,7 +67,7 @@
             				</div>
                     <ul id="side-nav-mobile" class="visible-xs-block clearfix">
                         <li class="col-xs-3">
-                            <a href='#' class="not-work">
+                            <a href='#' class="show-subscribe">
                                 <i class="fa fa-rss"></i>
                                 <span><%= t("Feed") %></span>
                             </a>
@@ -95,13 +94,11 @@
         	      </div>
             </div>
         </nav>
-        <div class="logo-pendant" style="opacity:0">
-		          <%= image_tag "main_logo.png" %>
-        </div>
+        <div class="logo-pendant" style="opacity:0"><%= image_tag "main_logo.png" %></div>
         <div id='side-nav' class="hidden-xs">
 		        <ul>
   			        <li>
-              			<a href='#' class="not-work">
+              			<a href='#' class="show-subscribe">
                 				<i class="fa fa-rss"></i>
                 				<span><%= t("Subscribe") %></span>
               			</a>
@@ -179,7 +176,6 @@
         <div id="scroll-top">
             <i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i>
         </div>
-
 	      <div class="social-media">
 		        <a href="<%= Rails.application.config.social_media[:facebook] %>" target="_blank" class="fa-stack fa-lg">
         				<i class="fa fa-circle-thin fa-stack-2x"></i>
@@ -194,54 +190,43 @@
         				<i class="fa fa-instagram fa-stack-1x"></i>
       			</a>
 	      </div>
+        <div class="subscribe">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <%= form_tag(subscribe_main_index_path, :method => "post", :class => "form-inline verticle-center", :id => "signup-form") do %>
+                <div class="input-group">
+                    <%= email_field_tag :email, nil, class: "form-control", placeholder: t("email_here") %>
+                    <span class="input-group-btn"><%= submit_tag t("Sign_up"), data: {disable_with: t("Signing_up")}, class: "btn" %></span>
+                </div>
+            <% end %>
+        </div>
       	<footer>
   		      <div class="container">
   		          <div class="row">
   		              <div class="col-lg-12">
     		                <ul class="list-inline">
-    		                    <li>
-    		    					          <%= link_to t("Home"), root_path %>
-    		                    </li>
+    		                    <li><%= link_to t("Home"), root_path %></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li>
-    		    					          <%= link_to t("Features"), features_path %>
-    		                    </li>
+    		                    <li><%= link_to t("Features"), features_path %></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		 					          <li>
-    		   						          <%= link_to t("Calendar"), calendar_path %>
-    		                    </li>
+    		 					          <li><%= link_to t("Calendar"), calendar_path %></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li>
-    		                        <%= link_to t("Trend"), trend_path %>
-    		                    </li>
+    		                    <li><%= link_to t("Trend"), trend_path %></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li>
-    		                        <%= link_to t("On_Court"), oncourt_path %>
-    		                    </li>
+    		                    <li><%= link_to t("On_Court"), oncourt_path %></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li>
-    		                        <%= link_to t("Street_Snap"), streetsnap_path%>
-    		                    </li>
+    		                    <li><%= link_to t("Street_Snap"), streetsnap_path%></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li>
-    		                        <%= link_to t("Rumors"), rumors_path%>
-    		                    </li>
+    		                    <li><%= link_to t("Rumors"), rumors_path%></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li>
-    		                        <%= link_to t("Privacy"), privacy_path %>
-    		                    </li>
+    		                    <li><%= link_to t("Privacy"), privacy_path %></li>
     		                    <li class="footer-menu-divider">&sdot;</li>
-    		                    <li>
-    		                        <%= link_to t("Contact_Us"), contact_us_path %>
-    		                    </li>
+    		                    <li><%= link_to t("Contact_Us"), contact_us_path %></li>
     		                </ul>
   		                  <p class="copyright text-muted small">Copyright &copy; Kicks4Love <%= Date.today.year %>. All Rights Reserved</p>
   		              </div>
   		          </div>
   		      </div>
   		  </footer>
-
         <%= content_for :end_of_body %>
-
   	</body>
 </html>

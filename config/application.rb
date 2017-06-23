@@ -12,7 +12,9 @@ module Kicks4love
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.host = 'https://kicks4love.com'
     config.exceptions_app = self.routes
+
     config.social_media = {
     	:facebook => 'https://www.facebook.com/kicks4love',
         :facebook_app_id => '1915795425355109',
@@ -20,6 +22,7 @@ module Kicks4love
         :weibo_u_id => '5704994024',
     	:instagram => 'https://www.instagram.com/kicks4love'
     }
+
     config.email_list = {
         :leon => 'leonma333@kicks4love.com',
         :daniel => 'danielzhou@kicks4love.com',
@@ -28,6 +31,5 @@ module Kicks4love
         :error_notification => 'error@kicks4love.com',
         :customer_service => 'customerservice@kicks4love.com'
     }
-
   end
 end

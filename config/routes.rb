@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       post 'change_language'
       post 'send_contact_us'
       post 'post_rating'
+      post 'subscribe'
   	end
   end
 
@@ -46,6 +47,10 @@ Rails.application.routes.draw do
   	resources :posts do
       collection do
         get 'get_posts'
+        post 'send_newsletter'
+      end
+      member do
+        delete 'delete_subscriber'
       end
     end
     resources :feature_posts do

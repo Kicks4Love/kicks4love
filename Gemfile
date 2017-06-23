@@ -34,6 +34,10 @@ gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 
+# HTML email inline styling
+gem 'premailer-rails'
+gem 'nokogiri'
+
 # Elasticsearch
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
