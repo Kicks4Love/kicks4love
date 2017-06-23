@@ -34,6 +34,10 @@ gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 
+# HTML email inline styling
+gem 'premailer-rails'
+gem 'nokogiri'
+
 # Elasticsearch
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
@@ -60,7 +64,3 @@ gem 'capistrano-rvm'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# HTML email inline styling
-gem 'premailer-rails'
-gem 'nokogiri'

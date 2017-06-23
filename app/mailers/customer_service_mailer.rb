@@ -9,7 +9,7 @@ class CustomerServiceMailer < ApplicationMailer
 	def newsletter(email, first_section, second_section)
 		@news = first_section
 		@posts = second_section
-		subject = @posts.first.title_en + ' | ' + @posts.first.title_cn
+		subject = "Kicks4Love Newsletter | 鞋侣时事通讯"
 		mail(:to => email, :subject => subject)
 	end
 
@@ -20,5 +20,4 @@ class CustomerServiceMailer < ApplicationMailer
 			newsletter(recipient.email, news_posts, headline_posts).deliver
 		end
 	end
-
 end
