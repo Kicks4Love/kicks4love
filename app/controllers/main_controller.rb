@@ -56,7 +56,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @feature_post.title_cn : @feature_post.title_en
 		end
 		@post_data = {:post_type => 'FeaturePost', :post_id => @feature_post.id, :post_rate => (@feature_post.rates.average(:score) || 0).round, :post_vote_count => @feature_post.rates.count}
-		@og_image = "http://#{request.host}#{@feature_post.cover_image.url}"
+		@og_image = "#{root_url}#{@feature_post.cover_image.url[1..-1]}"
 	end
 
 	def calendar
@@ -91,7 +91,7 @@ class MainController < ApplicationController
 		end
 		@times = [@content.size, @trend_post.main_images.size].max
 		@post_data = {:post_type => 'TrendPost', :post_id => @trend_post.id, :post_rate => (@trend_post.rates.average(:score) || 0).round, :post_vote_count => @trend_post.rates.count}
-		@og_image = "http://#{request.host}#{@trend_post.cover_image.url}"
+		@og_image = "#{root_url}#{@trend_post.cover_image.url[1..-1]}"
 	end
 
 	def oncourt
@@ -122,7 +122,7 @@ class MainController < ApplicationController
 		end
 		@times = [@content.size, @oncourt_post.main_images.size].max
 		@post_data = {:post_type => 'OnCourtPost', :post_id => @oncourt_post.id, :post_rate => (@oncourt_post.rates.average(:score) || 0).round, :post_vote_count => @oncourt_post.rates.count}
-		@og_image = "http://#{request.host}#{@oncourt_post.cover_image.url}"
+		@og_image = "#{root_url}#{@oncourt_post.cover_image.url[1..-1]}"
 	end
 
 	def streetsnap
@@ -153,7 +153,7 @@ class MainController < ApplicationController
 			@page_title = params[:lang] == 'zh' ? @streetsnap_post.title_cn : @streetsnap_post.title_en
 		end
 		@post_data = {:post_type => 'StreetSnapPost', :post_id => @streetsnap_post.id, :post_rate => (@streetsnap_post.rates.average(:score) || 0).round, :post_vote_count => @streetsnap_post.rates.count}
-		@og_image = "http://#{request.host}#{@streetsnap_post.cover_image.url}"
+		@og_image = "#{root_url}#{@streetsnap_post.cover_image.url[1..-1]}"
 	end
 
 	def rumors
@@ -185,7 +185,7 @@ class MainController < ApplicationController
 		end
 		@times = [@content.size, @rumor_post.main_images.size].max
 		@post_data = {:post_type => 'RumorPost', :post_id => @rumor_post.id, :post_rate => (@rumor_post.rates.average(:score) || 0).round, :post_vote_count => @rumor_post.rates.count}
-		@og_image = "http://#{request.host}#{@rumor_post.cover_image.url}"
+		@og_image = "#{root_url}#{@rumor_post.cover_image.url[1..-1]}"
 	end
 
 	def privacy
