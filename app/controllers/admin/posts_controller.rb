@@ -82,9 +82,9 @@ class Admin::PostsController < Admin::AdminController
 
 	def send_newsletter
 		begin
-			CustomerServiceMailer.send_newsletter(Subscriber.all)
+			CustomerServiceMailer.send_newsletter(Subscriber.all).deliver
 			flash[:notice] = "Newsletter sent"
-		rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError  => e
+		rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
 			flash[:alert] = "Somthing wrong happened: " + e.message
 		end
 		redirect_to :back
