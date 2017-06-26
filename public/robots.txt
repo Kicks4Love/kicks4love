@@ -3,3 +3,6 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+User-Agent: *
+Sitemap: https://kicks4love.com/sitemap.xml
+Disallow: /admin
