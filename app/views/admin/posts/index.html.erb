@@ -3,7 +3,7 @@
 <br/>
 <% if @posts.any? && @news.any? %>
 	<%= form_tag(send_newsletter_admin_posts_path, method: :post) do%>
-		<%= submit_tag 'Send weekly newsletter', :class => "btn btn-info" %>
+		<%= submit_tag 'Send weekly newsletter', :class => "btn btn-info", :onclick => "return confirm('Are you sure?')"%>
 	<% end %>
 <% end %>
 <% if @subscribers.any? %>
