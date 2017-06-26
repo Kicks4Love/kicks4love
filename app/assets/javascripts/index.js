@@ -96,8 +96,9 @@ function initLoadPostHandler() {
             		}
             		parent.append(
             			'<div class="kicks-box wait_load clearfix' + (i === data.posts.length - 1 ? ' last' : '') + '">' +
-            			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">' +
-                		'<img src="' + data.posts[i].image_url + '" class="col-xs-12 col-sm-4 kicks-pic"></a>' + 
+            			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '" class="col-xs-12 col-sm-4 load-image">' +
+            			'<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>' +
+                		'<img src="' + data.posts[i].image_url + '" class="kicks-pic"></a>' + 
             			'<div class="col-xs-12 col-sm-8 kicks-intro">' + 
             			'<a href="/' + data.posts[i].post_type + '/' + data.posts[i].post.id + '">' +
                 		'<div class="feed-title"><h3>' + data.posts[i].post.title + '</h3></div></a>' +
@@ -120,6 +121,7 @@ function initLoadPostHandler() {
             	target.fadeOut();
             	$('.wait_load').fadeIn(1000);
             	initLoadPostHandler();
+            	initImageLoader();
             }
 		});
 	});

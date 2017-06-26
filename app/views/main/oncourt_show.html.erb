@@ -19,7 +19,8 @@
       <p><%= @content[i].html_safe %></p>
     <% end %>
     <% unless @oncourt_post.main_images[i].nil? %>
-      <figure>
+      <figure class="load-image">
+        <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
         <%= image_tag @oncourt_post.main_images[i].url %>
       </figure>
     <% end %>

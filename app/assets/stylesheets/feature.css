@@ -13,6 +13,7 @@
 .main .kicks-post .photo {
   	height: 200px;
   	position: relative;
+    background-color: #f8f8f8;
     background-size:cover;
     background-position:center
 }

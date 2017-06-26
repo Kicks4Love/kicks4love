@@ -104,8 +104,9 @@
                     tag = "Rumors"
                 end
             %>
-            <a href="<%= link %>">
-                <%= image_tag feed.cover_image.url, :class => "col-xs-12 col-sm-4 kicks-pic" %>
+            <a href="<%= link %>" class="col-xs-12 col-sm-4 load-image">
+                <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                <%= image_tag feed.cover_image.url, :class => "kicks-pic" %>
             </a>
             <div class="col-xs-12 col-sm-8 kicks-intro">
                 <a href="<%= link %>">

@@ -92,10 +92,18 @@ function initApplication(showPendant, showLanguage) {
         });
     });
 
+    initImageLoader();
     $('.not-work').on('click submit' ,function(event) {
         event.preventDefault();
         alert("即将来临\nComing soon");
     });
+}
+function initImageLoader() {
+    $('.load-image img').on('load', function() {
+        var parent = $(this).parent('.load-image');
+        parent.removeClass('load-image');
+        parent.find('> i.fa').remove();
+    }).each(function() { if (this.complete) $(this).load(); });
 }
 
 function getQueryParams() {

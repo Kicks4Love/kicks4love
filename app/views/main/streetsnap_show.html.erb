@@ -17,9 +17,10 @@
 	<% image_index = paragraph_index = 0 %>
     <% @streetsnap_post.post_composition.each do |index, hash| %>
     	<% if hash['type'] == 'image' %>
-            <figure>
-    		  <%= image_tag @streetsnap_post.main_images[image_index].url %>
-    		  <% image_index += 1 %>
+            <figure class="load-image">
+                <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+    		    <%= image_tag @streetsnap_post.main_images[image_index].url %>
+    		    <% image_index += 1 %>
             </figure>
     	<% else %>
     		<p><%= @content[paragraph_index].html_safe %></p>

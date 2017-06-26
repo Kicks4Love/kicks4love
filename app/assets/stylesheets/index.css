@@ -177,8 +177,8 @@
 .main .kicks-box.last {
 	margin-bottom: 0;
 }
-.main .kicks-pic{
-	max-height: 350px;
+.main .kicks-pic {
+	width: 100%;
 	cursor:pointer;
 }
 

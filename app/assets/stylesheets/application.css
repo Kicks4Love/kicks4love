@@ -204,6 +204,7 @@ a {
 }
 #side-nav-mobile a i {
   font-size: 18px;
+  vertical-align: middle;
 }
 
 #language-modal {
@@ -293,6 +294,15 @@ a {
 }
 *:first-child + html .pagination {
     overflow: hidden;
+}
+
+.load-image {
+    width: 100%;
+    color: #333;
+    text-align: center;
+}
+.load-image img {
+    display: none;
 }
 
 #scroll-top {
