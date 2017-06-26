@@ -64,16 +64,6 @@ xml.tag! 'urlset', "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
     end
   end
 
-  unless @all_posts[:calendar_posts].blank?
-    @all_posts[:calendar_posts].each do |calendar_post|
-      xml.url do
-        xml.loc "#{calendar_url}/#{calendar_post.id}"
-        xml.lastmod calendar_post.updated_at.to_date
-        xml.changefreq "daily"
-      end
-    end
-  end
-
   unless @all_posts[:streetsnap_posts].blank?
     @all_posts[:streetsnap_posts].each do |streetsnap_post|
       xml.url do

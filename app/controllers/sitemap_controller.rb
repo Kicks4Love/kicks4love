@@ -7,7 +7,6 @@ class SitemapController < ApplicationController
     all_posts = { 
       feature_posts: FeaturePost.all,
       oncourt_posts: OnCourtPost.all,
-      calendar_posts: CalendarPost.all,
       streetsnap_posts: StreetSnapPost.all,
       rumor_posts: RumorPost.all,
       trend_posts: TrendPost.all 
