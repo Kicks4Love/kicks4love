@@ -142,11 +142,11 @@
 }
 #aboutus-accordion .card .card-header a:after {
     font-family: FontAwesome;
-    content: "\f078";    
+    content: "\f078";
     float: right;
     color: grey;
 }
-#aboutus-accordion .card .card-header a.collapsed:after {
+#aboutus-accordion .card .card-header.collapsed a:after {
     content: "\f054";
 }
 #aboutus-accordion .card .card-block {

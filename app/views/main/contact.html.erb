@@ -12,7 +12,7 @@
         </div>
         <div class="kicks-contact-row body">
             <%= form_tag url_for(:controller => "main", :action => "send_contact_us"), :id => "contact-form", :method => "post" do %>
-                <ul> 
+                <ul>
                     <li>
                         <p class="left">
                             <label for="first_name"><%= @contact_placeholder[:first_name_label] %></label>
@@ -20,7 +20,7 @@
                         </p>
                         <p class="pull-right">
                             <label for="last_name"><%= @contact_placeholder[:last_name_label] %></label>
-                            <input type="text" name="last_name" placeholder="<%= @contact_placeholder[:last_name_placeholder] %>" />      
+                            <input type="text" name="last_name" placeholder="<%= @contact_placeholder[:last_name_placeholder] %>" />
                         </p>
                     </li>
                     <li>
@@ -28,7 +28,7 @@
                             <label for="email"><%= @contact_placeholder[:email_label] %> <span class="req">*</span></label>
                             <input type="email" name="email" placeholder="<%= @contact_placeholder[:email_placeholder] %>" required/>
                         </p>
-                    </li>        
+                    </li>
                     <li><div class="divider"></div></li>
                     <li>
                         <label for="comments"><%= @contact_placeholder[:comments_label] %> <span class="req">*</span></label>
@@ -37,16 +37,16 @@
                     <li>
                         <%= submit_tag t("Submit"), :class => "btn btn-submit" %>
                         <small><%= raw @contact_placeholder[:enter_message] %></small>
-                    </li> 
+                    </li>
                 </ul>
-            <% end %>  
+            <% end %>
         </div>
     </div>
     <div id="aboutus-accordion" role="tablist">
         <div class="card">
-            <div class="card-header" role="tab">
+            <div class="card-header" href="#aboutus-collapse-1" role="tab" data-toggle="collapse" data-parent="#aboutus-accordion" aria-expanded="true">
                 <h4>
-                    <a data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-1" aria-expanded="true">
+                    <a>
                         <%= t("About_Us") %>
                     </a>
                 </h4>
@@ -58,9 +58,9 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-header" role="tab">
+            <div class="card-header" role="tab" class="collapsed" data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-2" aria-expanded="false">
                 <h4>
-                    <a class="collapsed" data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-2" aria-expanded="false">
+                    <a>
                         <%= t("about_us_2") %>
                     </a>
                 </h4>
@@ -72,9 +72,9 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-header" role="tab">
+            <div class="card-header" role="tab"  class="collapsed" data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-3" aria-expanded="false">
                 <h4>
-                    <a class="collapsed" data-toggle="collapse" data-parent="#aboutus-accordion" href="#aboutus-collapse-3" aria-expanded="false">
+                    <a>
                         <%= t("about_us_4") %>
                     </a>
                 </h4>
