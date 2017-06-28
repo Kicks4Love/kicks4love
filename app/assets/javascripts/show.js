@@ -19,6 +19,10 @@ $(document).ready(function() {
     window.open('http://tieba.baidu.com/f/commit/share/openShareApi?' + jQuery.param({title: document.title, url: document.URL, pic: imgs}));
   }
 
+  document.getElementById('twitter-share').onclick = function() {
+    window.open('https://twitter.com/intent/tweet?'+ jQuery.param({text: document.title, url: document.URL, hashtags: 'kicks4love'}));
+  }
+
 	document.getElementById('copy-share').onclick = function() {
 		var text = document.createElement('input');
 		text.value = document.URL;
