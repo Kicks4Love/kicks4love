@@ -16,9 +16,10 @@ $(document).ready(function() {
 
   document.getElementById('tieba-share').onclick = function() {
     var imgs = document.querySelector('meta[property="og:image"]').content;
-    window.open('http://tieba.baidu.com/f/commit/share/openShareApi?' + jQuery.param({title: document.title, url: document.URL, pic: imgs}));
+    var desc = document.querySelector('meta[name="description"]').content;
+    window.open('http://tieba.baidu.com/f/commit/share/openShareApi?' + jQuery.param({url: document.URL, title: document.title, desc: desc, pic: imgs}));
   }
-
+  
 	document.getElementById('copy-share').onclick = function() {
 		var text = document.createElement('input');
 		text.value = document.URL;
