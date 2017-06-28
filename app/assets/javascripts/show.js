@@ -14,6 +14,12 @@ $(document).ready(function() {
 		window.open('http://service.weibo.com/share/share.php?' + jQuery.param({url: document.URL, ralateUid: weiboUId, title: document.title, pic: imgs}));
 	}
 
+  document.getElementById('tieba-share').onclick = function() {
+    var imgs = document.querySelector('meta[property="og:image"]').content;
+    var desc = document.querySelector('meta[name="description"]').content;
+    window.open('http://tieba.baidu.com/f/commit/share/openShareApi?' + jQuery.param({url: document.URL, title: document.title, desc: desc, pic: imgs}));
+  }
+  
 	document.getElementById('copy-share').onclick = function() {
 		var text = document.createElement('input');
 		text.value = document.URL;
