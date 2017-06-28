@@ -15,9 +15,8 @@ $(document).ready(function() {
 	}
 
   document.getElementById('tieba-share').onclick = function() {
-    var imgs = document.querySelector('meta[property="og:image"]').content;
-    var desc = document.querySelector('meta[name="description"]').content;
-    window.open('http://tieba.baidu.com/f/commit/share/openShareApi?' + jQuery.param({url: document.URL, title: document.title, desc: desc, pic: imgs}));
+    var imgs = document.querySelector('meta[property="og:image"]').content.replace(/^https:\/\//i, 'http://');;
+    window.open('http://tieba.baidu.com/f/commit/share/openShareApi?' + jQuery.param({url: document.URL, title: document.title, pic: imgs}));
   }
 
   document.getElementById('twitter-share').onclick = function() {
