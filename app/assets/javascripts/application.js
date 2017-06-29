@@ -51,10 +51,13 @@ function initApplication(showPendant, showLanguage) {
     // scroll to top button
     var scrollTopButton = $('#scroll-top');
     $(window).scroll(function() {
-        if ($(this).scrollTop() > 100)
-            scrollTopButton.css('bottom', '15px');
-        else
-            scrollTopButton.removeAttr('style');
+        if ($(this).scrollTop() > 100 && !isNearBottom()) {
+            scrollTopButton.removeClass('near-bottom').addClass('fixed');
+        } else if (isNearBottom()) {
+            scrollTopButton.addClass('near-bottom').removeClass('fixed');
+        } else {
+          scrollTopButton.removeClass('near-bottom').removeClass('fixed');
+        }
     });
     scrollTopButton.click(function(){
         $('html, body').animate({scrollTop : 0},500);
@@ -135,6 +138,10 @@ function setCookie(name, value, days) {
     } else
         expires = '';
     document.cookie = name + '=' + value + expires;
+}
+
+function isNearBottom() {
+  return $(window).scrollTop() + $(window).height() > $(document).height() - 200;
 }
 
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

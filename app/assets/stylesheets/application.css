@@ -330,6 +330,18 @@ a {
 #scroll-top:hover {
     opacity: 1;
 }
+#scroll-top.fixed {
+    position: fixed;
+    bottom: 15px;
+}
+#scroll-top.near-bottom {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    float: right;
+    position: relative;
+    right: auto;
+    bottom: auto;
+}
 
 .social-media {
     text-align: center;
