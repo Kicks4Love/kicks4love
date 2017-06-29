@@ -25,6 +25,9 @@ a {
     cursor: pointer;
 }
 
+.navbar-brand img {
+    margin-top: -6px;
+}
 .navbar-brand > img:hover {
    opacity: 0.5;
 }
