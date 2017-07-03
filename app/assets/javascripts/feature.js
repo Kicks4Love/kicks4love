@@ -52,6 +52,7 @@ function initLoadPostHandler() {
             	     target.fadeOut();
             	     $('.wait_load').fadeIn(1000);
             	     initLoadPostHandler();
+                       $(window).scroll();
                   }
 		});
 	});

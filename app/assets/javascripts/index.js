@@ -122,6 +122,7 @@ function initLoadPostHandler() {
             	$('.wait_load').fadeIn(1000);
             	initLoadPostHandler();
             	initImageLoader();
+            	$(window).scroll();
             }
 		});
 	});
