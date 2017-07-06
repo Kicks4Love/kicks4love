@@ -11,7 +11,7 @@ class Admin::RumorPostsController < Admin::AdminController
 			session[:rumor_post_per_page] = params[:filter][:per_page].to_i
 		end
 		@per_page = session[:rumor_post_per_page] || 5
-		@feature_posts = @rumor_posts.paginate(:page => params[:page] || 1, :per_page => session[:rumor_post_per_page] || 5)
+		@rumor_posts = @rumor_posts.paginate(:page => params[:page] || 1, :per_page => session[:rumor_post_per_page] || 5)
 	end
 
 	def new

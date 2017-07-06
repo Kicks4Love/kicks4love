@@ -84,6 +84,7 @@
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate @rumor_posts, :previous_label => 'Prev', :next_label => 'Next' %>
 <% else %>
     <h2>No Record</h2>
 

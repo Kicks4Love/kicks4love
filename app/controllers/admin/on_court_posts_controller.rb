@@ -11,7 +11,7 @@ class Admin::OnCourtPostsController < Admin::AdminController
       session[:on_court_post_per_page] = params[:filter][:per_page].to_i
     end
     @per_page = session[:on_court_post_per_page] || 5
-    @on_court_posts = @on_court_posts.paginate(:page => params[:page] || 1, :per_page => session[:on_court_post_per_page] || 10)
+    @on_court_posts = @on_court_posts.paginate(:page => params[:page] || 1, :per_page => session[:on_court_post_per_page] || 5)
   end
 
   def new
