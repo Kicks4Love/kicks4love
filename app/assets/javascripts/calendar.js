@@ -24,11 +24,6 @@
 	Calendar.prototype.draw = function() {
 	    this.drawHeader();
 	    this.getEvents();
-	    this.drawMonth();
-	    if (this.initial) {
-	    	this.drawOthers();
-	    	this.initial = false;
-	    }
 	}
 
 	Calendar.prototype.drawHeader = function() {
@@ -333,7 +328,6 @@
 		var self = this;
 		$.ajax({
 			type: 'GET',
-			async : false,
             url: '/main/get_posts?next_page=1&source_page=calendar&month=' + (this.current.month() + 1) + "&year=" + this.current.year(),
             dataType: "json",
             success: function(data) {
@@ -348,9 +342,16 @@
             			image: ev.image_url
             		});
             	});
+            	self.events.sort(function(a,b) { return a.date - b.date; });
+            	self.drawMonth();
+            	if (self.initial) {
+	    			self.drawOthers();
+	    			self.initial = false;
+            		if (!getQueryParams().date) $('.switch-checkbox').trigger('click');
+				}
+            	document.getElementsByClassName('header')[0].style.webkitAnimationPlayState = 'paused';
             }
 		});
-		this.events.sort(function(a,b) { return a.date - b.date; });
 	}
 
 	Calendar.prototype.setColor = function(calendar) {
@@ -400,12 +401,14 @@
 	}
 
 	Calendar.prototype.nextMonth = function() {
+		document.getElementsByClassName('header')[0].style.webkitAnimationPlayState = 'running';
 		this.current.add('months', 1);
 	    this.next = true;
 	    this.draw();
 	}
 
 	Calendar.prototype.prevMonth = function() {
+		document.getElementsByClassName('header')[0].style.webkitAnimationPlayState = 'running';
 	    this.current.subtract('months', 1);
 	    this.next = false;
 	    this.draw();
@@ -468,10 +471,5 @@ function initCalendar() {
   				click: function() {location.reload();}
   			}
   		}));
-  	} finally {
-  		setTimeout(function() {
-  			document.getElementsByClassName('header')[0].style.webkitAnimationPlayState = 'paused';
-  			if (!getQueryParams().date) $('.switch-checkbox').trigger('click');
-  		}, 1000);
   	}
 }
