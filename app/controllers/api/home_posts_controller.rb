@@ -9,18 +9,7 @@ class Api::HomePostsController < ApplicationController
       @no_more = page_index >= feeds.count
       feeds = feeds[page_index - 6.. page_index - 1]
       feeds.each do |feed|
-        case feed.class.name
-          when "FeaturePost"
-              feed.post_type = "features"
-          when "TrendPost"
-            feed.post_type = "trend"
-          when "OnCourtPost"
-              feed.post_type = "oncourt"
-          when "StreetSnapPost"
-            feed.post_type = "streetsnap"
-          when "RumorPost"
-            feed.post_type = "rumors"
-          end
+        feed = Api::ApiHelper.set_post_type(feed)
       end
       @return_posts = Api::ApiHelper.reformat(feeds, root_url.chop)
     else
