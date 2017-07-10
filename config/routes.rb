@@ -95,6 +95,23 @@ Rails.application.routes.draw do
       end
       scope :featured_posts do
         get '/' => 'featured_posts#index'
+        get '/:id' => 'featured_posts#show'
+      end
+      scope :oncourt_posts do
+        get '/' => 'oncourt_posts#index'
+        get '/:id' => 'oncourt_posts#show'
+      end
+      scope :trend_posts do
+        get '/' => 'trend_posts#index'
+        get '/:id' => 'trend_posts#show'
+      end
+      scope :streetsnap_posts do
+        get '/' => 'streetsnap_posts#index'
+        get '/:id' => 'streetsnap_posts#show'
+      end
+      scope :rumor_posts do
+        get '/' => 'rumor_posts#index'
+        get '/:id' => 'rumor_posts#show'
       end
     end
   end
