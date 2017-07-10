@@ -88,4 +88,15 @@ Rails.application.routes.draw do
 
   get '/sitemap.xml', :to => 'sitemap#index', :defaults => {:format => 'xml'}
 
+  namespace :api do
+    scope :v0 do
+      scope :home_posts do
+        get '/' => 'home_posts#index'
+      end
+      scope :featured_posts do
+        get '/' => 'featured_posts#index'
+      end
+    end
+  end
+
 end
