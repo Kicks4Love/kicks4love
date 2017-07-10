@@ -1,12 +1,14 @@
 module Api::ApiHelper
 
-  def self.reformat(original_feeds, root_url)
+  def self.reformat_feeds(original_feeds, root_url, is_index=true)
     @return_posts = []
     original_feeds.each do |post|
       full_img_url = root_url + post.cover_image.url
       post_hash = {:post => post, :image_url => full_img_url}
       post_hash[:score] = (post.rates.average(:score) || 0).round(1) if (defined? post.rates)
-      post_hash[:post_type] = post.post_type if (defined? post.post_type)
+      if is_index
+        post_hash[:post_type] = post.post_type if (defined? post.post_type)
+      end
       @return_posts.push(post_hash)
     end
     return @return_posts

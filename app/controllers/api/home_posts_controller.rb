@@ -1,9 +1,8 @@
-class Api::HomePostsController < ApplicationController
+class Api::HomePostsController < Api::ApiBaseController
 
   def index
     if params[:next_page].present?
       logger.debug params[:l]
-      @chinese = params[:l] == 'cn';
       page_index = 6 * params[:next_page].to_i
       feeds = Post.get_posts(@chinese)
       @no_more = page_index >= feeds.count
@@ -11,7 +10,7 @@ class Api::HomePostsController < ApplicationController
       feeds.each do |feed|
         feed = Api::ApiHelper.set_post_type(feed)
       end
-      @return_posts = Api::ApiHelper.reformat(feeds, root_url.chop)
+      @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop)
     else
       @no_more = true
       @return_posts = []
