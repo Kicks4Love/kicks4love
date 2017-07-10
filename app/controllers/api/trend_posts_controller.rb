@@ -18,4 +18,13 @@ class Api::TrendPostsController < Api::ApiBaseController
 
   end
 
+  def show
+    begin
+      post = TrendPost.find(params[:id])
+      render json: { post: post }.to_json, status: :ok
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { message: e.message }.to_json, status: :not_found
+    end
+  end
+
 end

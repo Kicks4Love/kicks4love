@@ -22,9 +22,9 @@ class Api::FeaturedPostsController < Api::ApiBaseController
   def show
     begin
       post = FeaturePost.find(params[:id])
-      render json: {post: post}.to_json, status: :ok
+      render json: { post: post }.to_json, status: :ok
     rescue ActiveRecord::RecordNotFound => e
-      render json: {message: e.message}.to_json, status: :not_found
+      render json: { message: e.message }.to_json, status: :not_found
     end
   end
 
