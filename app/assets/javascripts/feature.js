@@ -32,7 +32,7 @@ function initLoadPostHandler() {
                               else
                                     right = i%2 === 0;
                   		parent.append(
-                              '<div class="kicks-post' + (right ? ' alt' : '') + '">' +
+                              '<div class="kicks-post' + (right ? ' alt ' : ' ') + 'wait_load">' +
                               '<a href="/features/' + data.posts[i].post.id + '">' +
                               '<div class="photo ' + (right ? 'photo-right' : 'photo-left') + '" style="background-image:url(' + data.posts[i].image_url + ')"></div>' +
                               '</a><div class="kicks-post-content">' +
