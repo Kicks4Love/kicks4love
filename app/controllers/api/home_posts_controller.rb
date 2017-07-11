@@ -1,8 +1,9 @@
 class Api::HomePostsController < Api::ApiBaseController
 
   def index
+    @return_posts = []
+    @slider_posts = []
     if params[:next_page].present?
-      logger.debug params[:l]
       page_index = 6 * params[:next_page].to_i
       feeds = Post.get_posts(@chinese)
       @no_more = page_index >= feeds.count
@@ -10,12 +11,14 @@ class Api::HomePostsController < Api::ApiBaseController
       feeds.each do |feed|
         feed = Api::ApiHelper.set_post_type(feed)
       end
-      @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop)
+      @return_posts.concat(Api::ApiHelper.reformat_feeds(feeds, root_url.chop))
+      if params[:next_page].to_i == 1 # first request
+        @slider_posts = Api::ApiHelper.get_slider_posts(@chinese, root_url.chop)
+      end
     else
       @no_more = true
-      @return_posts = []
     end
-    render json: Api::ApiHelper.json_response(@no_more, @return_posts), status: :ok
+    render json: Api::ApiHelper.json_response(@no_more, @return_posts, @slider_posts), status: :ok
 
   end
 
