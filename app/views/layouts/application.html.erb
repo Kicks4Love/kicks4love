@@ -22,7 +22,7 @@
   	    	  var weiboUId = "<%= Rails.application.config.social_media[:weibo_u_id] %>";
   	    </script>
   	    <%= javascript_include_tag "application.js" %>
-        <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script async src='https://www.google-analytics.com/analytics.js'></script>
 	  </head>
   	<body>
@@ -165,13 +165,13 @@
 		        </div>
         </div>
 
-        <!-- <%# unless controller.action_name == "index" %>
+        <% unless controller.action_name == "index" %>
             <ins class="adsbygoogle top-ad" style="display:block" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        <%# end %> -->
+        <% end %>
 	      <%= yield %>
-        <!--<ins class="adsbygoogle bottom-ad" style="display:block" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
+        <ins class="adsbygoogle bottom-ad" style="display:block" data-ad-client="ca-pub-4802332774820705" data-ad-slot="7048272677" data-ad-format="auto"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 	      <div class="social-media">
 		        <a href="<%= Rails.application.config.social_media[:facebook] %>" target="_blank" class="fa-stack fa-lg">
