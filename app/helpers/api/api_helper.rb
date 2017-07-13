@@ -1,6 +1,6 @@
 module Api::ApiHelper
 
-  def self.reformat_feeds(original_feeds, root_url, is_index=true)
+  def self.reformat_feeds(original_feeds, root_url, is_index=false)
     @return_posts = []
     original_feeds.each do |post|
       post_hash = format_post(post, root_url)
@@ -16,7 +16,7 @@ module Api::ApiHelper
     full_img_url = root_url + post.cover_image.url
     post_hash = {:post => post, :image_url => full_img_url}
     post_hash[:score] = (post.rates.average(:score) || 0).round(1) if (defined? post.rates)
-    unless post.main_images.blank?
+    unless !defined?(post.main_images) || post.main_images.blank?
       full_imgs = []
       post.main_images.each do |image|
         full_img_url = root_url + image.url

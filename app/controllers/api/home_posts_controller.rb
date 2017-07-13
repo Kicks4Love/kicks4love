@@ -12,7 +12,7 @@ class Api::HomePostsController < Api::ApiBaseController
         feeds.each do |feed|
           feed = Api::ApiHelper.set_post_type(feed)
         end
-        @return_posts.concat(Api::ApiHelper.reformat_feeds(feeds, root_url.chop))
+        @return_posts.concat(Api::ApiHelper.reformat_feeds(feeds, root_url.chop, true))
         if params[:next_page].to_i == 1 # first request
           @slider_posts = Api::ApiHelper.get_slider_posts(@chinese, root_url.chop)
         end

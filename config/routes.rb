@@ -113,6 +113,9 @@ Rails.application.routes.draw do
         get '/' => 'rumor_posts#index'
         get '/:id' => 'rumor_posts#show'
       end
+      scope :calendar_posts do
+        get '/' => 'calendar_posts#index'
+      end
     end
   end
 

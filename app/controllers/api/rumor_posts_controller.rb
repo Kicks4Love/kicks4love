@@ -12,7 +12,7 @@ class Api::RumorPostsController < Api::ApiBaseController
           feeds = feeds.select("id, title_en AS title, content_en AS content, cover_image, created_at")
         end
         feeds.each {|feed| feed.content = feed.content.blank? ? "" : YAML.load(feed.content)}
-        @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop, false)
+        @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop)
       end
     else
       @no_more = true

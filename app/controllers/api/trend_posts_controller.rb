@@ -11,7 +11,7 @@ class Api::TrendPostsController < Api::ApiBaseController
         else
           feeds = feeds.select("id, title_en AS title, cover_image, created_at")
         end
-        @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop, false)
+        @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop)
       end
     else
       @no_more = true
