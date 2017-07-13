@@ -8,12 +8,14 @@ class Api::HomePostsController < Api::ApiBaseController
       feeds = Post.get_posts(@chinese)
       @no_more = page_index >= feeds.count
       feeds = feeds[page_index - 6.. page_index - 1]
-      feeds.each do |feed|
-        feed = Api::ApiHelper.set_post_type(feed)
-      end
-      @return_posts.concat(Api::ApiHelper.reformat_feeds(feeds, root_url.chop))
-      if params[:next_page].to_i == 1 # first request
-        @slider_posts = Api::ApiHelper.get_slider_posts(@chinese, root_url.chop)
+      unless feeds.blank?
+        feeds.each do |feed|
+          feed = Api::ApiHelper.set_post_type(feed)
+        end
+        @return_posts.concat(Api::ApiHelper.reformat_feeds(feeds, root_url.chop))
+        if params[:next_page].to_i == 1 # first request
+          @slider_posts = Api::ApiHelper.get_slider_posts(@chinese, root_url.chop)
+        end
       end
     else
       @no_more = true
