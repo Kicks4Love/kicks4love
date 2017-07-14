@@ -116,6 +116,7 @@ Rails.application.routes.draw do
       scope :calendar_posts do
         get '/' => 'calendar_posts#index'
       end
+      get '/search' => 'api_base#search'
     end
   end
 

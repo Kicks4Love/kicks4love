@@ -12,6 +12,19 @@ module Api::ApiHelper
     return @return_posts
   end
 
+  def self.reformat_search_results(original_results, root_url)
+    return [] if original_results.blank?
+
+    results = []
+    original_results.each do |result|
+      result_hash = format_post(result._source, root_url)
+      result_hash[:post_type] = result._type
+      result_hash[:score] = result._score
+      results.push(result_hash)
+    end
+    return results
+  end
+
   def self.format_post(post, root_url)
     full_img_url = root_url + post.cover_image.url
     post_hash = {:post => post, :image_url => full_img_url}
