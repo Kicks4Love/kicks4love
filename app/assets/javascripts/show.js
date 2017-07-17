@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 function initRating() {
   var pathArray = window.location.pathname.split('/');
-  var cookieName = pathArray[1] + '-' + pathArray[2];
+  var cookieName = pathArray[1] + '_' + pathArray[2];
   if (getCookie(cookieName)) return;
   var ratingSet = false;
   var rate = 0;
