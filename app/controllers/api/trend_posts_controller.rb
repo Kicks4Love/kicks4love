@@ -7,9 +7,9 @@ class Api::TrendPostsController < Api::ApiBaseController
       @no_more = feeds.total_pages <= feeds.current_page
       unless feeds.blank?
         if @chinese
-          feeds = feeds.select("id, title_cn AS title, cover_image, created_at")
+          feeds = feeds.select("id, title_cn AS title, cover_image, created_at, author_id")
         else
-          feeds = feeds.select("id, title_en AS title, cover_image, created_at")
+          feeds = feeds.select("id, title_en AS title, cover_image, created_at, author_id")
         end
         @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop)
       end
