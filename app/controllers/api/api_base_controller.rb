@@ -15,7 +15,8 @@ class Api::ApiBaseController < ApplicationController
                 }
             }, highlight: { fields: {:'*' => {}} }
         }
-		results = Elasticsearch::Model.search(
+    results = Elasticsearch::Model
+    .search(
     query,
     [FeaturePost,
       OnCourtPost,
@@ -23,8 +24,10 @@ class Api::ApiBaseController < ApplicationController
       CalendarPost,
       StreetSnapPost,
       RumorPost]).page(params[:page] || 1).per_page(10).results
+    
+    no_more = results.total_pages <= results.current_page
 
-    render json: {results: Api::ApiHelper.reformat_search_results(results, root_url.chop)}.to_json, status: :ok
+    render json: {no_more: no_more, results: Api::ApiHelper.reformat_search_results(results, root_url.chop)}.to_json, status: :ok
 
   end
 
