@@ -28,7 +28,7 @@ module Api::ApiHelper
   def self.format_post(post, root_url)
     full_img_url = root_url + post.cover_image.url
     post_hash = {:post => post, :image_url => full_img_url}
-    post_hash[:score] = (post.rates.average(:score) || 0).round(1).to_i if (defined? post.rates)
+    post_hash[:score] = (post.rates.average(:score) || 0).round(1).to_f if (defined? post.rates)
     post_hash[:vote_count] = (defined? post.rates) ? post.rates.count : 0;
     if post.has_attribute?(:author_id)
       post_hash[:author_name] = post.author.username.empty? ? 'Kicks4Love' : post.author.username
