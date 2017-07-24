@@ -5,7 +5,7 @@ module Api::ApiHelper
     original_feeds.each do |post|
       post_hash = format_post(post, root_url)
       if is_index
-        post_hash[:post_type] = post.post_type if (defined? post.post_type)
+        post_hash[:post_type] = post_to_type(post)
       end
       @return_posts.push(post_hash)
     end
@@ -14,12 +14,10 @@ module Api::ApiHelper
 
   def self.reformat_search_results(original_results, root_url)
     return [] if original_results.blank?
-
     results = []
     original_results.each do |result|
-      result_hash = format_post(result._source, root_url)
-      result_hash[:post_type] = result._type
-      result_hash[:score] = result._score
+      result_hash = format_post(result, root_url)
+      result_hash[:post_type] = post_to_type(result)
       results.push(result_hash)
     end
     return results
@@ -65,20 +63,24 @@ module Api::ApiHelper
     return response.to_json
   end
 
-  def self.set_post_type(post)
+  def self.post_to_type(post)
     case post.class.name
     when "FeaturePost"
-      post.post_type = "features"
+      return "features"
     when "TrendPost"
-      post.post_type = "trend"
+      return "trend"
     when "OnCourtPost"
-      post.post_type = "oncourt"
+      return "oncourt"
     when "StreetSnapPost"
-      post.post_type = "streetsnap"
+      return "streetsnap"
     when "RumorPost"
-      post.post_type = "rumors"
+      return "rumors"
+    when "CalendarPost"
+      return "calendar"
+    else
+      return "post"
     end
-    return post
+
   end
 
 end
