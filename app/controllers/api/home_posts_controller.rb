@@ -3,6 +3,7 @@ class Api::HomePostsController < Api::ApiBaseController
   def index
     @return_posts = []
     @slider_posts = []
+
     if params[:next_page].present?
       page_index = 6 * params[:next_page].to_i
       feeds = Post.get_posts(@chinese)
@@ -20,8 +21,8 @@ class Api::HomePostsController < Api::ApiBaseController
     else
       @no_more = true
     end
-    render json: Api::ApiHelper.json_response(@no_more, @return_posts, @slider_posts), status: :ok
 
+    render json: Api::ApiHelper.json_response(@no_more, @return_posts, @slider_posts), status: :ok
   end
 
 end

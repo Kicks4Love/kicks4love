@@ -2,6 +2,7 @@ class Api::CalendarPostsController < Api::ApiBaseController
 
   def index
     @return_posts = []
+
     if params[:year].present? && params[:month].present?
       feeds = CalendarPost.where('extract(year from release_date) = ? AND extract(month from release_date) = ?', params[:year], params[:month])
       if @chinese
@@ -11,6 +12,7 @@ class Api::CalendarPostsController < Api::ApiBaseController
       end
       @return_posts = Api::ApiHelper.reformat_feeds(feeds, root_url.chop)
     end
+
     render json: { posts: @return_posts }.to_json, status: :ok
   end
 

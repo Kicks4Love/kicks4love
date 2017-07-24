@@ -2,6 +2,7 @@ class Api::FeaturedPostsController < Api::ApiBaseController
 
   def index
     @return_posts = []
+
     if params[:next_page].present?
       feeds = FeaturePost.paginate(:page => params[:next_page], :per_page => 6).latest
       logger.debug "total: " + feeds.total_pages.to_s + " current: " + feeds.current_page.to_s
@@ -18,8 +19,8 @@ class Api::FeaturedPostsController < Api::ApiBaseController
     else
       @no_more = true
     end
-    render json: Api::ApiHelper.json_response(@no_more, @return_posts), status: :ok
 
+    render json: Api::ApiHelper.json_response(@no_more, @return_posts), status: :ok
   end
 
   def show
