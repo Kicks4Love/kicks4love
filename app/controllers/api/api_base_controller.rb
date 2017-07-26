@@ -1,7 +1,7 @@
 class Api::ApiBaseController < ApplicationController
 
   protect_from_forgery with: :null_session
-  before_action :set_lang, :check_key # TODO: check auth key before every request
+  before_action :set_lang, :authenticate_request
 
   VALID_POST_TYPES =
   ['FeaturePost', 'OnCourtPost', 'TrendPost', 'StreetSnapPost', 'RumorPost']
@@ -53,8 +53,17 @@ class Api::ApiBaseController < ApplicationController
     @chinese = params[:l] == 'cn'
   end
 
+  def authenticate_request
+    check_key || render_error
+  end
+
+  def render_error
+    self.headers['WWW-Authenticate'] = 'Token realm="Application"'
+    render json: { message: 'API key required' }.to_json, status: :unauthorized
+  end
+
   def check_key
-    authenticate_or_request_with_http_token do |token, options|
+    authenticate_with_http_token do |token, options|
       ApiKey.exists?(access_token: token)
     end
   end
