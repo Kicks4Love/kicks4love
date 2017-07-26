@@ -10,7 +10,7 @@ class Admin::AdminUsersController < Admin::AdminController
 	end
 
 	def show
-		@api_key = @admin_user.api_key || ''
+		@api_key = @admin_user.api_key.present? ? @admin_user.api_key.access_token : ''
 		@page_title = "#{@admin_user.username} | Kicks4Love Admin"
 	end
 
@@ -30,7 +30,7 @@ class Admin::AdminUsersController < Admin::AdminController
 			end
 			return
 		end
-			
+
 		redirect_to :back, :alert => 'Unable to destroy the admin user: ' << @admin_user.errors[:base].to_s
 	end
 

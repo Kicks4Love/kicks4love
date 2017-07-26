@@ -30,15 +30,19 @@
 <label>Last Update Time:</label>
 <p><%= @admin_user.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
 
-<label>Api Key: </label>
-<p> <%= @api_key.access_token %> </p>
-
-<br/>
-
 <%
-	is_root_user = @admin_user.root_user?
-	is_same_user = @admin_user.email == current_admin_user.email
+is_root_user = @admin_user.root_user?
+current_is_root = current_admin_user.root_user?
+is_same_user = @admin_user.email == current_admin_user.email
 %>
+
+<label>Api Key: </label>
+<% if current_is_root || is_same_user %>
+<p> <%= @api_key %> </p>
+<% else %>
+<p> ***************** </p>
+<% end %>
+<br/>
 
 <% if is_same_user %>
 	<%= link_to "Edit", edit_admin_user_registration_path(@admin_user), :class => "btn btn-primary" %>
