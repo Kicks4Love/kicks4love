@@ -15,12 +15,33 @@ class Admin::RegistrationsController < Devise::RegistrationsController
 	    end
 	end
 
+	def create
+		super do |resource|
+			Rails.logger.debug params[:set_api_key]
+			if params[:set_api_key]
+				resource.api_key = ApiKey.create
+			end
+		end
+	end
+
+	def update
+		super do |resource|
+			Rails.logger.debug params[:set_api_key]
+			if params[:set_api_key]
+				if resource.api_key.present?
+					resource.api_key.delete
+				end
+				resource.api_key = ApiKey.create
+			end
+		end
+	end
+
 	def sign_up_params
-		params.require(:admin_user).permit(:username, :email, :password, :password_confirmation)
+		params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :set_api_key)
 	end
 
 	def account_update_params
-		params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :current_password)
+		params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :current_password, :set_api_key)
 	end
 
 	protected

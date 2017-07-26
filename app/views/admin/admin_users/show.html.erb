@@ -30,6 +30,9 @@
 <label>Last Update Time:</label>
 <p><%= @admin_user.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
 
+<label>Api Key: </label>
+<p> <%= @api_key.access_token %> </p>
+
 <br/>
 
 <%
