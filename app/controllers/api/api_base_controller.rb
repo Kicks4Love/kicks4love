@@ -1,7 +1,7 @@
 class Api::ApiBaseController < ApplicationController
 
   protect_from_forgery with: :null_session
-  before_action :set_lang # TODO: check auth key before every request
+  before_action :set_lang, :check_key # TODO: check auth key before every request
 
   VALID_POST_TYPES =
   ['FeaturePost', 'OnCourtPost', 'TrendPost', 'StreetSnapPost', 'RumorPost']
@@ -51,6 +51,12 @@ class Api::ApiBaseController < ApplicationController
   private
   def set_lang
     @chinese = params[:l] == 'cn'
+  end
+
+  def check_key
+    authenticate_or_request_with_http_token do |token, options|
+      ApiKey.exists?(access_token: token)
+    end
   end
 
 end
