@@ -87,10 +87,10 @@ function initImageModal() {
 	$('.close').on('click', function () {
 		$(this).parent().css("display", "none");
 	});
-	$('#enlarged-modal').on('click', function () {
+	$('.modal').on('click', function () {
 		$(this).css('display', 'none');
 	});
-	$('#content-img').on('click', function () {
+	$('.content-img').on('click', function () {
 		$(this).parent().next().css("display", "block");
 	});
 }

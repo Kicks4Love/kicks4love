@@ -32,13 +32,17 @@
   font-size: 0.745em;
 }
 
-#content-img {
+.content-img {
   width: 100%;
   cursor: zoom-in;
 }
 
-#content-img:hover {
+.content-img:hover {
   opacity: 0.8;
+}
+
+.enlarged-img {
+  cursor: zoom-out;
 }
 
 .modal {
