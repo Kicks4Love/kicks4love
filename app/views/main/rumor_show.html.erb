@@ -21,8 +21,11 @@
     <% unless @rumor_post.main_images[i].nil? %>
       <figure class="load-image">
         <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
-        <%= image_tag @rumor_post.main_images[i].url %>
+        <%= image_tag @rumor_post.main_images[i].url, :class => "content-img" %>
       </figure>
+      <div class="image-modal hide">
+        <%= image_tag @rumor_post.main_images[i].url, :class => "enlarged-img" %>
+      </div>
     <% end %>
   <% end %>
   <%= render "share" %>

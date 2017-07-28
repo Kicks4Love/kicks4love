@@ -1,13 +1,14 @@
 $(document).ready(function() {
 	initApplication(true, true);
   initRating();
+	initImageModal();
 
 	document.getElementById('facebook-share').onclick = function() {
   	FB.ui({
     		method: 'share',
     		href: document.URL,
   	}, function(response){});
-	} 
+	}
 
 	document.getElementById('weibo-share').onclick = function() {
     var imgs = document.querySelector('meta[property="og:image"]').content;
@@ -51,7 +52,7 @@ function initRating() {
       rate = $(this).data().rate;
       ratingSet = true;
       $('#rate-btn').html(chinese ? '确认<i class="fa fa-hand-pointer-o" aria-hidden="true"></i>' : 'Confirm<i class="fa fa-hand-pointer-o" aria-hidden="true"></i>');
-    } else if (ratingSet) 
+    } else if (ratingSet)
       rate = $(this).data().rate;
   });
   $('.new-rating img').on('mouseout', function() {
@@ -69,7 +70,7 @@ function initRating() {
       data: {source_page: getSourcePage(), id: $('#post_id').val(), score: rate},
       headers: {'X-CSRF-Token': token},
       dataType: 'json',
-      success: function(data) { 
+      success: function(data) {
         $('.new-rating .fa.fa-spinner').replaceWith(chinese ? '谢谢~' : 'Thank You~');
         var rateDisplay = $('.rating img');
         rateDisplay.prop('src', sneakergrayImgPath);
@@ -80,4 +81,13 @@ function initRating() {
       }
     });
   });
+}
+
+function initImageModal() {
+	$('.image-modal').on('click', function() {
+		$(this).toggleClass('hide');
+	});
+	$('.content-img').on('click', function() {
+		$(this).parent().next().toggleClass('hide');
+	});
 }
