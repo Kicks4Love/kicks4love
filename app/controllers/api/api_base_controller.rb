@@ -3,9 +3,7 @@ class Api::ApiBaseController < ApplicationController
   protect_from_forgery with: :null_session
   before_action :set_lang, :authenticate_request
 
-  VALID_POST_TYPES =
-  ['FeaturePost', 'OnCourtPost', 'TrendPost', 'StreetSnapPost', 'RumorPost']
-
+  VALID_POST_TYPES = ['FeaturePost', 'OnCourtPost', 'TrendPost', 'StreetSnapPost', 'RumorPost']
 
   def rate
     score = count = 0
@@ -21,11 +19,9 @@ class Api::ApiBaseController < ApplicationController
       rescue => error
         render :json => { :message => error.message }.to_json, :status => 400
       end
-
     else
       render :json => { :message => 'argument not right' }.to_json, :status => 422
     end
-
   end
 
   def search
@@ -38,17 +34,13 @@ class Api::ApiBaseController < ApplicationController
         }
       }
     }
-    results = Elasticsearch::Model
-      .search(query, [FeaturePost, OnCourtPost, TrendPost, CalendarPost, StreetSnapPost, RumorPost])
-      .page(params[:page] || 1)
-      .per_page(10)
-      .records
+    results = Elasticsearch::Model.search(query, [FeaturePost, OnCourtPost, TrendPost, CalendarPost, StreetSnapPost, RumorPost]).page(params[:page] || 1).per_page(10).records
     no_more = results.current_page >= results.total_pages
     render json: { no_more: no_more, results: Api::ApiHelper.reformat_search_results(results, root_url.chop) }.to_json, status: :ok
-
   end
 
   private
+
   def set_lang
     @chinese = params[:l] == 'cn'
   end

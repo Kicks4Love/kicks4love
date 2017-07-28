@@ -2,6 +2,7 @@ class Api::RumorPostsController < Api::ApiBaseController
 
   def index
     @return_posts = []
+
     if params[:next_page].present?
       feeds = RumorPost.paginate(:page => params[:next_page], :per_page => 6).latest
       @no_more = feeds.total_pages <= feeds.current_page
@@ -17,8 +18,8 @@ class Api::RumorPostsController < Api::ApiBaseController
     else
       @no_more = true
     end
-    render json: Api::ApiHelper.json_response(@no_more, @return_posts), status: :ok
 
+    render json: Api::ApiHelper.json_response(@no_more, @return_posts), status: :ok
   end
 
   def show

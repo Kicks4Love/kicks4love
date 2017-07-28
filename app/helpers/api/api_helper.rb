@@ -80,7 +80,6 @@ module Api::ApiHelper
     else
       return "post"
     end
-
   end
 
 end
