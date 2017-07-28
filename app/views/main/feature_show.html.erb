@@ -21,8 +21,8 @@
                 <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
     		    <%= image_tag @feature_post.main_images[image_index].url, :class => 'content-img' %>
             </figure>
-            <div class="modal">
-              <%= image_tag @feature_post.main_images[image_index].url, :class => 'enlarged-img' %>
+            <div class="image-modal hide">
+                <%= image_tag @feature_post.main_images[image_index].url, :class => 'enlarged-img' %>
             </div>
             <% image_index += 1 %>
     	<% else %>

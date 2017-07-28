@@ -84,13 +84,10 @@ function initRating() {
 }
 
 function initImageModal() {
-	$('.close').on('click', function () {
-		$(this).parent().css("display", "none");
+	$('.image-modal').on('click', function() {
+		$(this).toggleClass('hide');
 	});
-	$('.modal').on('click', function () {
-		$(this).css('display', 'none');
-	});
-	$('.content-img').on('click', function () {
-		$(this).parent().next().css("display", "block");
+	$('.content-img').on('click', function() {
+		$(this).parent().next().toggleClass('hide');
 	});
 }
