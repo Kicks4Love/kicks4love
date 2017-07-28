@@ -3,6 +3,10 @@ class Api::ApiBaseController < ApplicationController
   protect_from_forgery with: :null_session
   before_action :set_lang, :authenticate_request
 
+  rescue_from StandardError do |exception|
+    render json: { message: exception }.to_json, status: :internal_server_error
+  end
+
   VALID_POST_TYPES = ['FeaturePost', 'OnCourtPost', 'TrendPost', 'StreetSnapPost', 'RumorPost']
 
   def rate
@@ -42,7 +46,7 @@ class Api::ApiBaseController < ApplicationController
   private
 
   def set_lang
-    @chinese = params[:l] == 'cn'
+    @chinese = params[:l] == 'zh'
   end
 
   def authenticate_request

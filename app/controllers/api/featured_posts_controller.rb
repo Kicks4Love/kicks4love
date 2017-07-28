@@ -5,7 +5,6 @@ class Api::FeaturedPostsController < Api::ApiBaseController
 
     if params[:next_page].present?
       feeds = FeaturePost.paginate(:page => params[:next_page], :per_page => 6).latest
-      logger.debug "total: " + feeds.total_pages.to_s + " current: " + feeds.current_page.to_s
       @no_more = feeds.total_pages <= feeds.current_page
       unless feeds.blank?
         if @chinese
