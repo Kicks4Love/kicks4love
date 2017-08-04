@@ -12,12 +12,14 @@ module Api::ApiHelper
     return @return_posts
   end
 
-  def self.reformat_search_results(original_results, root_url)
+  def self.reformat_search_results(chinese, original_results, root_url)
     return [] if original_results.blank?
     results = []
     original_results.each do |result|
       result_hash = format_post(result, root_url)
       result_hash[:post_type] = post_to_type(result)
+      result_hash[:content] = chinese ? result_hash[:post][:content_cn] : result_hash[:post][:content_en]
+      result_hash[:title] = chinese ? result_hash[:post][:title_cn] : result_hash[:post][:title_en]
       results.push(result_hash)
     end
     return results
