@@ -12,13 +12,6 @@
 	    this.calendarMode = true;
 	    this.chinese = isChinese();
 	    this.draw();
-	    var current = this.target ? document.querySelector('.target') : document.querySelector('.today');
-	    if (current) {
-	     	var self = this;
-	      	window.setTimeout(function() {
-	        	self.openDay(current);
-	      	}, 500);
-	    }
 	}
 
 	Calendar.prototype.draw = function() {
@@ -348,6 +341,12 @@
 	    			self.drawOthers();
 	    			self.initial = false;
             		if (!getQueryParams().date) $('.switch-checkbox').trigger('click');
+            		var current = self.target ? document.querySelector('.target') : document.querySelector('.today');
+				    if (current) {
+				      	window.setTimeout(function() {
+				        	self.openDay(current);
+				      	}, 500);
+				    }
 				}
             	document.getElementsByClassName('header')[0].style.webkitAnimationPlayState = 'paused';
             }
