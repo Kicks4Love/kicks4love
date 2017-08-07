@@ -43,6 +43,22 @@ class Api::ApiBaseController < ApplicationController
     render json: { no_more: no_more, results: Api::ApiHelper.reformat_search_results(@chinese, results, root_url.chop) }.to_json, status: :ok
   end
 
+  def email
+    begin
+      email_options = {
+        :first_name => params[:first_name],
+        :last_name => params[:last_name],
+        :chinese => @chinese,
+        :comment => params[:comments]
+      }
+      CustomerServiceMailer.send_contact_email(params[:email], email_options).deliver_now
+      render json: { message: "Successfully sent email"}, status: :ok
+    rescue
+      message = @chinese ? "发送您的信息时发生了错误，请重试一遍" : "Error occurs while sending your message, please try again"
+      render json: { message: message }, status: 400
+    end
+  end
+
   private
 
   def set_lang

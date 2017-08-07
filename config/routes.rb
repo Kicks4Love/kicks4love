@@ -118,6 +118,7 @@ Rails.application.routes.draw do
       end
       get '/search' => 'api_base#search'
       post '/rate' => 'api_base#rate'
+      post '/email' => 'api_base#email'
     end
   end
 
