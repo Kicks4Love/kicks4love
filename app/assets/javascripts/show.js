@@ -1,4 +1,4 @@
-$(document).ready(function() {
+ $(document).ready(function() {
 	initApplication(true, true);
   initRating();
 	initImageModal();
@@ -76,7 +76,7 @@ function initRating() {
         rateDisplay.prop('src', sneakergrayImgPath);
         rateDisplay.slice(0, data.score).prop('src', sneakerblackImgPath);
         var rateText = $('.rating span').text();
-        $('.rating span').text(rateText.replace(/[0-9]/g, data.count));
+        $('.rating span').text(rateText.replace(/(\d+)/g, data.count));
         setCookie(cookieName, 'rated', 1);
       }
     });
