@@ -17,7 +17,6 @@ class Admin::RegistrationsController < Devise::RegistrationsController
 
 	def create
 		super do |resource|
-			Rails.logger.debug params[:set_api_key]
 			if params[:set_api_key]
 				resource.api_key = ApiKey.create
 			end
@@ -26,7 +25,6 @@ class Admin::RegistrationsController < Devise::RegistrationsController
 
 	def update
 		super do |resource|
-			Rails.logger.debug params[:set_api_key]
 			if params[:set_api_key]
 				if resource.api_key.present?
 					resource.api_key.delete

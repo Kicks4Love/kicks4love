@@ -38,9 +38,9 @@ is_same_user = @admin_user.email == current_admin_user.email
 
 <label>Api Key: </label>
 <% if current_is_root || is_same_user %>
-<p> <%= @api_key %> </p>
+	<p> <%= @api_key %> </p>
 <% else %>
-<p> ***************** </p>
+	<p> ***************** </p>
 <% end %>
 <br/>
 
