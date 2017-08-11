@@ -88,4 +88,38 @@ Rails.application.routes.draw do
 
   get '/sitemap.xml', :to => 'sitemap#index', :defaults => {:format => 'xml'}
 
+  namespace :api do
+    scope :v0 do
+      scope :home_posts do
+        get '/' => 'home_posts#index'
+      end
+      scope :featured_posts do
+        get '/' => 'featured_posts#index'
+        get '/:id' => 'featured_posts#show'
+      end
+      scope :oncourt_posts do
+        get '/' => 'oncourt_posts#index'
+        get '/:id' => 'oncourt_posts#show'
+      end
+      scope :trend_posts do
+        get '/' => 'trend_posts#index'
+        get '/:id' => 'trend_posts#show'
+      end
+      scope :streetsnap_posts do
+        get '/' => 'streetsnap_posts#index'
+        get '/:id' => 'streetsnap_posts#show'
+      end
+      scope :rumor_posts do
+        get '/' => 'rumor_posts#index'
+        get '/:id' => 'rumor_posts#show'
+      end
+      scope :calendar_posts do
+        get '/' => 'calendar_posts#index'
+      end
+      get '/search' => 'api_base#search'
+      post '/rate' => 'api_base#rate'
+      post '/email' => 'api_base#email'
+    end
+  end
+
 end

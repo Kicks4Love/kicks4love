@@ -40,6 +40,11 @@
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %>
     </div>
+    <div>
+      <% @api_text = resource.api_key.present? ? 'Reset your API key?' : 'Set API key?'%>
+      <label><%= @api_text %></label>
+  		<%= check_box_tag :set_api_key %>
+    </div>
 
     <br/>
 

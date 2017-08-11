@@ -2,6 +2,7 @@ class AdminUser < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
   validate :not_adding_root_user
+  has_one :api_key
 
   scope :non_root_users, -> {where("email NOT LIKE 'root%'")}
 
