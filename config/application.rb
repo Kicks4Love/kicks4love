@@ -31,5 +31,12 @@ module Kicks4love
         :error_notification => 'error@kicks4love.com',
         :customer_service => 'customerservice@kicks4love.com'
     }
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '/api/v0', :headers => :any, :methods => [:get, :post]
+      end
+    end
+    
   end
 end
