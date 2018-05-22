@@ -48,6 +48,8 @@ gem 'rack-cors', :require => 'rack/cors'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # test with rspec
+  gem 'rspec-rails', '~> 3.0.0'
 end
 
 group :development do
