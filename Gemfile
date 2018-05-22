@@ -50,6 +50,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # test with rspec
   gem 'rspec-rails', '~> 3.0.0'
+  gem "factory_bot_rails", "~> 4.0"
 end
 
 group :development do

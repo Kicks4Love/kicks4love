@@ -15,6 +15,10 @@ module Kicks4love
     config.host = 'https://kicks4love.com'
     config.exceptions_app = self.routes
 
+    config.generators do |g|
+      g.test_framework :rspec
+    end
+
     config.social_media = {
     	:facebook => 'https://www.facebook.com/kicks4love',
         :facebook_app_id => '1915795425355109',
