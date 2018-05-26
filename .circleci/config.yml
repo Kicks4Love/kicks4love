@@ -39,9 +39,11 @@ jobs:
       # Database setup
       - run: mv config/database.ci.yml config/database.yml
       - run: mv config/secrets.ci.yml config/secrets.yml
+
+
       - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-      - run: bundle exec rake db:test:prepare
+      #- run: bundle exec rake db:schema:load
+      # - run: bundle exec rake db:test:prepare
 
       # run tests!
       - run:
