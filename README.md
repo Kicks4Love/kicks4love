@@ -1,4 +1,6 @@
-# kicks4love
+# Kicks4Love
+
+[![CircleCI](https://circleci.com/gh/Kicks4Love/kicks4love.svg?style=svg)](https://circleci.com/gh/Kicks4Love/kicks4love)
 
 ## Setup instructions
 
