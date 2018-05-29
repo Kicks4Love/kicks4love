@@ -39,7 +39,7 @@ class OnCourtPost < ApplicationRecord
     end
 
 	def has_link
-		return self.main_images.count > 0 && self.content_en.count > 0 && self.content_cn.count > 0
+		main_images.count > 0 && content_en.count > 0 && content_cn.count > 0
 	end
 
 end
